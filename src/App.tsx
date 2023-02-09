@@ -1,12 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Parent from './components/Parent/parent';
+import { lazy } from "react";
+
+const Login = lazy(() => import("./components/login/login"));
 
 function App() {
-  return (
-    <Parent />
-  );
+  return <Login />;
 }
 
 export default App;

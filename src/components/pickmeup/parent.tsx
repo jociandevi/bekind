@@ -1,15 +1,5 @@
-import { Button } from "antd";
 import Title from "antd/es/typography/Title";
-import styled from "styled-components";
-
-const StyledContainer = styled.div`
-  display: grid;
-  margin: 10%;
-`;
-
-const StyledButton = styled(Button)`
-  width: fit-content;
-`;
+import { StyledButton, StyledContainer } from "../shared/sharedLayouts";
 
 const Parent: React.FC = () => {
   // identify logged in user
