@@ -9,7 +9,7 @@ export const StyledContainer = styled.div`
   margin: 10%;
 `;
 
-export const StyledButton = styled(Button)`
+export const StyledButton = styled(Button)<{ backgroundColor: string }>`
   height: 50px;
   border-radius: 50px;
   background-color: ${(props) => props.backgroundColor};
