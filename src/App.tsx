@@ -1,9 +1,40 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
 const Login = lazy(() => import("./components/login/login"));
+const Parent = lazy(() => import("./components/pickmeup/parent"));
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Outlet />}>
+      <Route
+        path="parent"
+        element={
+          <Suspense fallback={<>...</>}>
+            <Parent />
+          </Suspense>
+        }
+      />
+      <Route
+        path=""
+        element={
+          <Suspense fallback={<>...</>}>
+            <Login />
+          </Suspense>
+        }
+      />
+    </Route>
+  )
+);
 
 function App() {
-  return <Login />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;

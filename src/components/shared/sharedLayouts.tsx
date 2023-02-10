@@ -9,10 +9,10 @@ export const StyledContainer = styled.div`
   margin: 10%;
 `;
 
-export const StyledButton = styled(Button)<{ backgroundColor: string }>`
+export const StyledButton = styled(Button)<{ backgroundcolor: string }>`
   height: 50px;
   border-radius: 50px;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundcolor};
   width: 100%;
 `;
 
@@ -22,7 +22,7 @@ export const StyledInput = styled(Input)`
   border-radius: unset;
 `;
 
-export const StyledTitle = styled(Title)<{ color: string }>`
+export const StyledTitle = styled(Title)`
   font-weight: bold;
   color: ${variables.black};
 `;

@@ -1,5 +1,5 @@
-import { Button, Checkbox, Form, Input } from "antd";
-import Title from "antd/es/typography/Title";
+import { Checkbox, Form } from "antd";
+import { useNavigate } from "react-router-dom";
 import {
   StyledButton,
   StyledContainer,
@@ -10,9 +10,10 @@ import {
 import { variables } from "../shared/variables";
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const onFinish = (values: any) => {
     // lets make a backend call here to authenticate
-    console.log("Success:", values);
+    navigate("/parent");
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -21,9 +22,7 @@ const Login: React.FC = () => {
 
   return (
     <StyledContainer>
-      <StyledTitle level={3} color={variables.black}>
-        Hey!
-      </StyledTitle>
+      <StyledTitle level={3}>Hey!</StyledTitle>
       <StyledText
         color={variables.middleGray}
         fontSize="14px"
@@ -64,7 +63,7 @@ const Login: React.FC = () => {
           <StyledButton
             type="primary"
             htmlType="submit"
-            backgroundColor={variables.blue1}
+            backgroundcolor={variables.blue1}
           >
             LOGIN
           </StyledButton>
