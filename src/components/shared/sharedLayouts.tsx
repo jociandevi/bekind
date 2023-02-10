@@ -1,4 +1,4 @@
-import { Button, Input } from "antd";
+import { Alert, Button, Input } from "antd";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
@@ -25,6 +25,15 @@ export const StyledInput = styled(Input)`
 export const StyledTitle = styled(Title)`
   font-weight: bold;
   color: ${variables.black};
+`;
+
+export const StyledNotification = styled(Alert)`
+  height: 50px;
+  border-radius: 5px;
+  width: 100%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: inherit;
+  border: none;
 `;
 
 export const StyledText = styled(Text)<{

@@ -9,6 +9,7 @@ import {
 
 const Login = lazy(() => import("./components/login/login"));
 const Parent = lazy(() => import("./components/pickmeup/parent"));
+const Teacher = lazy(() => import("./components/pickmeup/teacher"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,14 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<>...</>}>
             <Parent />
+          </Suspense>
+        }
+      />
+      <Route
+        path="teacher"
+        element={
+          <Suspense fallback={<>...</>}>
+            <Teacher />
           </Suspense>
         }
       />
