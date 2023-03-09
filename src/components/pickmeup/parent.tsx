@@ -1,5 +1,5 @@
 import React from "react";
-import { getAPI, postAPI } from "../../common/apiCommon";
+import { getAPI } from "../../common/apiCommon";
 import {
   StyledButton,
   StyledContainer,
@@ -25,7 +25,6 @@ const Parent: React.FC = () => {
     getAPI("weatherforecast").then((res) => {
       if (res.status === 200) {
         setWeather(res.data);
-        console.log(weather);
       } else {
         console.log(res);
       }
@@ -36,25 +35,13 @@ const Parent: React.FC = () => {
     getData();
   }, []);
 
-  const sendHome = () => {
-    const now = new Date();
-    const pickupEvent = {
-      parent: user.id,
-      kid: user.canPickUp[0],
-      arrivedAt: now.toISOString(),
-    };
-    postAPI("pickupEvents", pickupEvent).then((res) => {
-      console.log(res);
-    });
-  };
-
   return (
     <StyledContainer>
       <StyledTitle level={3}>Hi {user.firstName}!</StyledTitle>
       <StyledButton
         backgroundcolor={variables.blue1}
         type="primary"
-        onClick={sendHome}
+        onClick={() => {}}
       >
         PICK UP {user.canPickUp[0].firstName.toUpperCase()}
       </StyledButton>
