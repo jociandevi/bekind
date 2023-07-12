@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const onFinish = (values: any) => {
     // lets make a backend call here to authenticate
-    navigate("/parent");
+    navigate("/random-act-of-kindness");
   };
 
   const onFinishFailed = (errorInfo: any) => {

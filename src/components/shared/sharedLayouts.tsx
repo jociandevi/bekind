@@ -9,6 +9,20 @@ export const StyledContainer = styled.div`
   margin: 10%;
 `;
 
+export const HorizontalScrollContainer = styled.div`
+  display: flex;
+  gap: 12px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  padding: 12px 0 20px 5px;
+  scroll-padding-left: 12px;
+  scroll-snap-type: x mandatory;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 export const StyledButton = styled(Button)<{ backgroundcolor: string }>`
   height: 50px;
   border-radius: 50px;
@@ -20,6 +34,12 @@ export const StyledInput = styled(Input)`
   border: none;
   border-bottom: 1px solid ${variables.lightGray};
   border-radius: unset;
+`;
+
+export const StyledSearch = styled(Input)`
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+  padding: 12px;
 `;
 
 export const StyledTitle = styled(Title)`
@@ -39,9 +59,9 @@ export const StyledNotification = styled(Alert)`
 export const StyledText = styled(Text)<{
   color: string;
   fontSize: string;
-  fontWeight: string;
+  fontWeight?: string;
 }>`
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
-  font-size: ${(props) => props.fontSize};
+  font-size: ${(props) => props.fontSize ?? "inherit"};
 `;

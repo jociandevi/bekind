@@ -8,25 +8,18 @@ import {
 } from "react-router-dom";
 
 const Login = lazy(() => import("./components/login/login"));
-const Parent = lazy(() => import("./components/pickmeup/parent"));
-const Teacher = lazy(() => import("./components/pickmeup/teacher"));
+const RandomActOfKindnessList = lazy(
+  () => import("./components/randomactsofkindness/randomActsOfKindnessList")
+);
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Outlet />}>
       <Route
-        path="parent"
+        path="random-act-of-kindness"
         element={
           <Suspense fallback={<>...</>}>
-            <Parent />
-          </Suspense>
-        }
-      />
-      <Route
-        path="teacher"
-        element={
-          <Suspense fallback={<>...</>}>
-            <Teacher />
+            <RandomActOfKindnessList />
           </Suspense>
         }
       />

@@ -1,4 +1,3 @@
-import { Swiper } from "antd-mobile";
 import {
   StyledButton,
   StyledContainer,
