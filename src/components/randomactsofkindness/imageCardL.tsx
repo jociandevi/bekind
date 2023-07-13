@@ -3,7 +3,7 @@ import { StyledText, StyledTitle } from "../shared/sharedLayouts";
 import { variables } from "../shared/variables";
 import styled from "styled-components";
 import { Button } from "antd";
-import { CaretRightOutlined } from "@ant-design/icons";
+import { CaretRightOutlined, HeartFilled } from "@ant-design/icons";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -28,9 +28,20 @@ const ButtonContainer = styled.div`
   margin-top: 15px;
 `;
 
-const IconButton = styled(Button)`
+const ImageContainer = styled.div`
+  position: relative;
+`;
+
+const IconButton = styled(Button)<{ backgroundcolor: string }>`
   color: white;
-  background-color: ${variables.black};
+  background-color: ${(props) => props.backgroundcolor};
+  border: none;
+`;
+
+const OverlayIconButton = styled(IconButton)`
+  position: absolute;
+  top: 15px;
+  right: 15px;
 `;
 
 interface Props {
@@ -40,7 +51,15 @@ interface Props {
 const ImageCardL: React.FC<Props> = ({ item }) => {
   return (
     <CardContainer>
-      <Image src={item.imageUrl} alt={item.title} />
+      <ImageContainer>
+        <Image src={item.imageUrl} alt={item.title} />
+        <OverlayIconButton
+          backgroundcolor={variables.pink}
+          icon={<HeartFilled />}
+          shape="circle"
+        />
+      </ImageContainer>
+
       <StyledTitle level={5} style={{ margin: "15px 0 0" }}>
         {item.title}
       </StyledTitle>
@@ -48,7 +67,11 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
         {item.description}
       </StyledText>
       <ButtonContainer>
-        <IconButton icon={<CaretRightOutlined />} shape="circle" />
+        <IconButton
+          backgroundcolor={variables.black}
+          icon={<CaretRightOutlined />}
+          shape="circle"
+        />
       </ButtonContainer>
     </CardContainer>
   );
