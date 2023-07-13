@@ -5,4 +5,5 @@ export const variables = {
   blue1: "#1c1ffc",
   green1: "#32c698",
   black: "#181618",
+  pink: "#ff5464",
 };

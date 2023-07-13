@@ -31,7 +31,7 @@ const RandomActOfKindnessList: React.FC = () => {
             item={{
               id: 1,
               title: "Pay it Backward",
-              description: "buy coffee for the person behind you in line",
+              description: "Buy coffee for the person behind you in line",
               imageUrl:
                 "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80",
             }}
@@ -39,7 +39,9 @@ const RandomActOfKindnessList: React.FC = () => {
           <ImageCardL
             item={{
               id: 1,
-              title: "Compliment the first three people you talk to today.",
+              title: "Give compliments",
+              description:
+                "Compliment the first three people you talk to today.",
               imageUrl:
                 "https://images.unsplash.com/photo-1662496619829-fcfa29c2d718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80",
             }}
@@ -47,7 +49,8 @@ const RandomActOfKindnessList: React.FC = () => {
           <ImageCardL
             item={{
               id: 1,
-              title:
+              title: "Send good vibes",
+              description:
                 "Send a positive text message to five different people right now.",
               imageUrl:
                 "https://images.unsplash.com/photo-1493401415972-d4001c9fa2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
@@ -56,7 +59,8 @@ const RandomActOfKindnessList: React.FC = () => {
           <ImageCardL
             item={{
               id: 1,
-              title:
+              title: "Decorate with post its",
+              description:
                 "Post inspirational sticky notes around your neighborhood, office, school, etc.",
               imageUrl:
                 "https://images.unsplash.com/photo-1541960071727-c531398e7494?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
