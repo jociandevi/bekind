@@ -1,10 +1,6 @@
 import React from "react";
 import { getAPI } from "../../common/apiCommon";
-import {
-  StyledButton,
-  StyledContainer,
-  StyledTitle,
-} from "../shared/sharedLayouts";
+import { StyledButton, StyledGrid, StyledTitle } from "../shared/sharedLayouts";
 import { variables } from "../shared/variables";
 
 const Parent: React.FC = () => {
@@ -36,7 +32,7 @@ const Parent: React.FC = () => {
   }, []);
 
   return (
-    <StyledContainer>
+    <StyledGrid>
       <StyledTitle level={3}>Hi {user.firstName}!</StyledTitle>
       <StyledButton
         backgroundcolor={variables.blue1}
@@ -50,7 +46,7 @@ const Parent: React.FC = () => {
         Today it is {weather[0].temperatureC} °C. What a {weather[0].summary}{" "}
         weather!
       </StyledTitle>
-    </StyledContainer>
+    </StyledGrid>
   );
 };
 

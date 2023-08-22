@@ -2,7 +2,7 @@ import { Checkbox, Form } from "antd";
 import { useNavigate } from "react-router-dom";
 import {
   StyledButton,
-  StyledContainer,
+  StyledGrid,
   StyledInput,
   StyledText,
   StyledTitle,
@@ -21,7 +21,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
+    <StyledGrid>
       <StyledTitle level={3}>Hey!</StyledTitle>
       <StyledText
         color={variables.middleGray}
@@ -69,7 +69,7 @@ const Login: React.FC = () => {
           </StyledButton>
         </Form.Item>
       </Form>
-    </StyledContainer>
+    </StyledGrid>
   );
 };
 

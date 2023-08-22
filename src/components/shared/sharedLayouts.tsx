@@ -4,7 +4,7 @@ import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "./variables";
 
-export const StyledContainer = styled.div`
+export const StyledGrid = styled.div`
   display: grid;
   margin: 10%;
 `;
@@ -23,11 +23,28 @@ export const HorizontalScrollContainer = styled.div`
   }
 `;
 
+export const Flexbox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+export const FlexboxCol = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const StyledButton = styled(Button)<{ backgroundcolor: string }>`
   height: 50px;
   border-radius: 50px;
   background-color: ${(props) => props.backgroundcolor};
   width: 100%;
+`;
+
+export const IconButton = styled(Button)<{ backgroundcolor: string }>`
+  color: white;
+  background-color: ${(props) => props.backgroundcolor};
+  border: none;
 `;
 
 export const StyledInput = styled(Input)`

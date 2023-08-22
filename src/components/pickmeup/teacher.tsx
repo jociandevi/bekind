@@ -1,6 +1,6 @@
 import {
   StyledButton,
-  StyledContainer,
+  StyledGrid,
   StyledNotification,
   StyledTitle,
 } from "../shared/sharedLayouts";
@@ -33,7 +33,7 @@ const Teacher: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
+    <StyledGrid>
       <StyledTitle level={3}>Hi {user.firstName}!</StyledTitle>
       {arrivedParents.map((item) => (
         <StyledNotification
@@ -49,7 +49,7 @@ const Teacher: React.FC = () => {
           SEND THEM ALL
         </StyledButton>
       )}
-    </StyledContainer>
+    </StyledGrid>
   );
 };
 

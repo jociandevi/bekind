@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { StyledText, StyledTitle } from "../shared/sharedLayouts";
+import {
+  Flexbox,
+  IconButton,
+  StyledText,
+  StyledTitle,
+} from "../shared/sharedLayouts";
 import { variables } from "../shared/variables";
 import styled from "styled-components";
 import { Button, Modal } from "antd";
@@ -47,20 +52,8 @@ const Image = styled.img`
   border-radius: 15px;
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 15px;
-`;
-
 const ImageContainer = styled.div`
   position: relative;
-`;
-
-const IconButton = styled(Button)<{ backgroundcolor: string }>`
-  color: white;
-  background-color: ${(props) => props.backgroundcolor};
-  border: none;
 `;
 
 const OverlayIconButton = styled(IconButton)`
@@ -149,14 +142,14 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
       <StyledText color={variables.middleGray} fontSize="14px">
         {item.description}
       </StyledText>
-      <ButtonContainer>
+      <Flexbox style={{ marginTop: variables.spacingXs }}>
         <IconButton
           backgroundcolor={variables.black}
           icon={<CaretRightOutlined />}
           shape="circle"
           onClick={onPlay}
         />
-      </ButtonContainer>
+      </Flexbox>
     </CardContainer>
   );
 };
