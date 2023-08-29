@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import {
   Flexbox,
   HorizontalScrollContainer,
@@ -12,6 +12,7 @@ import ImageCardL from "./imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../shared/variables";
 import { UserOutlined } from "@ant-design/icons";
+import AntdModal from "./modal";
 
 enum CategoryNames {
   "SOCIAL" = "Social",
@@ -99,6 +100,25 @@ export const raoks = [
 ];
 
 const RandomActOfKindnessList: React.FC = () => {
+  // backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
+  const userToPraise = {
+    id: 1,
+    firstName: "Shaun",
+    lastName: "Mendley",
+    photoUrl:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    recent: [...raoks][0],
+  };
+
+  // user reached a goal - appears by backend API call trigger instantly after logged in
+
+  const [isModalOpen, setIsModalOpen] = useState(true);
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    // todo: lets make a backend call to send a cheer message to these users
+  };
+
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
@@ -118,6 +138,17 @@ const RandomActOfKindnessList: React.FC = () => {
 
   return (
     <StyledGrid>
+      <AntdModal
+        title="Cheer on others"
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        onOk={handleOk}
+        description="Sean just bought a coffee for the person next in line! Want to high five him?"
+        image={userToPraise.photoUrl}
+        isProfileImage
+        okText="Sure!"
+        cancelText="Not today"
+      />
       <Flexbox style={{ marginBottom: variables.spacingS }}>
         <IconButton
           backgroundcolor={variables.black}

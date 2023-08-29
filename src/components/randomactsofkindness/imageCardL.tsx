@@ -7,8 +7,11 @@ import {
 } from "../shared/sharedLayouts";
 import { variables } from "../shared/variables";
 import styled from "styled-components";
-import { Button, Modal } from "antd";
+import { Button } from "antd";
 import { CaretRightOutlined, HeartFilled } from "@ant-design/icons";
+import AntdModal from "./modal";
+import GrowthImage from "../../img/growth.png";
+import FireImg from "../../img/fire.png";
 
 const breakpoints = {
   xs: "320px",
@@ -62,20 +65,6 @@ const OverlayIconButton = styled(IconButton)`
   right: 15px;
 `;
 
-const StyledModal = styled(Modal)`
-  .ant-btn-primary,
-  .ant-btn-primary:not(:disabled):hover {
-    background-color: ${variables.pink};
-  }
-`;
-
-const StyledFeedbackModal = styled(Modal)`
-  .ant-btn-primary,
-  .ant-btn-primary:not(:disabled):hover {
-    background-color: ${variables.pink};
-  }
-`;
-
 interface Props {
   item: { id: number; title: string; description?: string; imageUrl: string };
 }
@@ -86,19 +75,8 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
 
   const handleOk = () => {
     setIsModalOpen(false);
-
     // todo: lets make a backend call to add this to user's profile
-
-    // lets congratulate them on their streak
     setIsFeedbackModalOpen(true);
-  };
-
-  const handleContinue = () => {
-    setIsFeedbackModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
   };
 
   const onPlay = () => {
@@ -108,25 +86,28 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
 
   return (
     <CardContainer>
-      <StyledModal
+      <AntdModal
         title="Pick this challenge?"
-        open={isModalOpen}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
         onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Are you picking this kindness for today?</p>
-      </StyledModal>
-      <StyledFeedbackModal
-        title="Amazing!"
-        open={isFeedbackModalOpen}
+        description="Are you picking this kindness for today?"
+        image={GrowthImage}
+        okText="Yes, let's go!"
+      />
+
+      <AntdModal
+        isModalOpen={isFeedbackModalOpen}
+        setIsModalOpen={setIsFeedbackModalOpen}
+        title="Nice job, Lisa! That's a 5-day Streak!"
+        description="Thank you for making the world a better place!"
+        image={FireImg}
         footer={
-          <Button type="primary" onClick={handleContinue}>
+          <Button type="primary" onClick={() => setIsFeedbackModalOpen(false)}>
             Continue
           </Button>
         }
-      >
-        <p>This is a 5 day streak!</p>
-      </StyledFeedbackModal>
+      />
       <ImageContainer>
         <Image src={item.imageUrl} alt={item.title} />
         <OverlayIconButton
