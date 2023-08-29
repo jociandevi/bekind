@@ -111,7 +111,7 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
       <ImageContainer>
         <Image src={item.imageUrl} alt={item.title} />
         <OverlayIconButton
-          backgroundcolor={variables.pink}
+          backgroundcolor={variables.pink3}
           icon={<HeartFilled />}
           shape="circle"
         />

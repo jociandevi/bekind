@@ -14,7 +14,7 @@ import { variables } from "../shared/variables";
 import { UserOutlined } from "@ant-design/icons";
 import AntdModal from "./modal";
 
-enum CategoryNames {
+export enum CategoryNames {
   "SOCIAL" = "Social",
   "ANIMAL" = "Animal",
   "NEIGHBORHOOD" = "Neighborhood",

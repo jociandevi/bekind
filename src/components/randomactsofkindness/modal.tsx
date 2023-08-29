@@ -9,7 +9,7 @@ const { Text } = Typography;
 const StyledModal = styled(Modal)`
   .ant-btn-primary,
   .ant-btn-primary:not(:disabled):hover {
-    background-color: ${variables.pink};
+    background-color: ${variables.pink3};
   }
 
   .ant-btn {

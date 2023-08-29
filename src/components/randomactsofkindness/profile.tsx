@@ -7,6 +7,7 @@ import styled from "styled-components";
 import type { TabsProps } from "antd";
 import { raoks } from "./randomActsOfKindnessList";
 import ImageCardM from "./imageCardM";
+import ProfileStatistics from "./profileStatistics";
 
 const Image = styled.img`
   width: 30vw;
@@ -20,8 +21,10 @@ const Image = styled.img`
 `;
 
 const StyledTab = styled(Tabs)`
+  margin-top: ${variables.spacingS};
+
   & div.ant-tabs-tab.ant-tabs-tab-active {
-    background-color: ${variables.pink};
+    background-color: ${variables.pink3};
     border-radius: 15px;
 
     & .ant-tabs-tab-btn {
@@ -84,6 +87,7 @@ const Profile: React.FC = () => {
       <StyledTitle level={4}>
         {user.firstName} {user.lastName}
       </StyledTitle>
+      <ProfileStatistics />
       <StyledTab defaultActiveKey="1" items={items} onChange={onChange} />
     </StyledGrid>
   );
