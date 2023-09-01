@@ -83,6 +83,7 @@ const StatsCard: React.FC<Props> = ({
             />
           )}
           {Math.floor(Math.abs(number))}
+          {compareChange && "%"}
         </NumberDisplay>
         <TextDisplay color={secondaryColor}>{text}</TextDisplay>
       </NumberTextContainer>

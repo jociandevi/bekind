@@ -11,8 +11,9 @@ import { Form } from "antd";
 import ImageCardL from "./imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../shared/variables";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, PlusOutlined } from "@ant-design/icons";
 import AntdModal from "./modal";
+import BottomMenu from "./bottomMenu";
 
 export enum CategoryNames {
   "SOCIAL" = "Social",
@@ -137,44 +138,55 @@ const RandomActOfKindnessList: React.FC = () => {
   ];
 
   return (
-    <StyledGrid>
-      <AntdModal
-        title="Cheer on others"
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        onOk={handleOk}
-        description="Sean just bought a coffee for the person next in line! Want to high five him?"
-        image={userToPraise.photoUrl}
-        isProfileImage
-        okText="Sure!"
-        cancelText="Not today"
-      />
-      <Flexbox style={{ marginBottom: variables.spacingS }}>
-        <IconButton
-          backgroundcolor={variables.black}
-          icon={<UserOutlined />}
-          onClick={() => navigate("/profile")}
+    <>
+      <StyledGrid>
+        <AntdModal
+          title="Cheer on others"
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          onOk={handleOk}
+          description="Sean just bought a coffee for the person next in line! Want to high five him?"
+          image={userToPraise.photoUrl}
+          isProfileImage
+          okText="Sure!"
+          cancelText="Not today"
         />
-      </Flexbox>
+        <Flexbox style={{ marginBottom: variables.spacingS }}>
+          <IconButton
+            backgroundcolor={variables.black}
+            icon={<UserOutlined />}
+            onClick={() => navigate("/profile")}
+          />
+        </Flexbox>
 
-      <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
-        <Form.Item name="search">
-          <StyledSearch placeholder="Search" />
-        </Form.Item>
-      </Form>
-      {categories.map((category) => (
-        <Fragment key={category.id}>
-          <StyledTitle level={3}>{category.name}</StyledTitle>
-          <HorizontalScrollContainer>
-            {raoks
-              .filter((item) => item.category === category.name)
-              .map((item) => (
-                <ImageCardL item={item} key={item.id} />
-              ))}
-          </HorizontalScrollContainer>
-        </Fragment>
-      ))}
-    </StyledGrid>
+        <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
+          <Form.Item name="search">
+            <StyledSearch placeholder="Search" />
+          </Form.Item>
+        </Form>
+        {categories.map((category) => (
+          <Fragment key={category.id}>
+            <StyledTitle level={3}>{category.name}</StyledTitle>
+            <HorizontalScrollContainer>
+              {raoks
+                .filter((item) => item.category === category.name)
+                .map((item) => (
+                  <ImageCardL item={item} key={item.id} />
+                ))}
+            </HorizontalScrollContainer>
+          </Fragment>
+        ))}
+      </StyledGrid>
+      <BottomMenu
+        buttons={[
+          {
+            id: 1,
+            icon: <PlusOutlined />,
+            onClick: () => console.log("lets add a new kindness"),
+          },
+        ]}
+      />
+    </>
   );
 };
 
