@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import {
-  Flexbox,
-  IconButton,
-  StyledText,
-  StyledTitle,
-} from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+import { Flexbox, IconButton, StyledText, StyledTitle } from "./sharedLayouts";
+import { variables } from "./variables";
 import styled from "styled-components";
 import { Button } from "antd";
 import { CaretRightOutlined, HeartFilled } from "@ant-design/icons";

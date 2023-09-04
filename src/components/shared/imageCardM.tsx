@@ -5,8 +5,8 @@ import {
   IconButton,
   StyledText,
   StyledTitle,
-} from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+} from "./sharedLayouts";
+import { variables } from "./variables";
 import styled from "styled-components";
 import { CaretRightOutlined } from "@ant-design/icons";
 

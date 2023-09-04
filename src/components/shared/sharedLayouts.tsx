@@ -29,16 +29,22 @@ export const Flexbox = styled.div`
   align-items: flex-end;
 `;
 
+export const CenterAlignedFlexbox = styled(Flexbox)`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: inherit;
+`;
+
 export const FlexboxCol = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 export const StyledButton = styled(Button)<{ backgroundcolor: string }>`
-  height: 50px;
-  border-radius: 50px;
+  height: 40px;
+  border-radius: 15px;
   background-color: ${(props) => props.backgroundcolor};
-  width: 100%;
 `;
 
 export const IconButton = styled(Button)<{ backgroundcolor: string }>`

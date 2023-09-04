@@ -1,12 +1,12 @@
 import React from "react";
 import { StyledGrid, StyledTitle } from "../shared/sharedLayouts";
 import { Tabs } from "antd";
-import { devices } from "./imageCardL";
+import { devices } from "../shared/imageCardL";
 import { variables } from "../shared/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
 import { raoks } from "./randomActsOfKindnessList";
-import ImageCardM from "./imageCardM";
+import ImageCardM from "../shared/imageCardM";
 import ProfileStatistics from "./profileStatistics";
 
 const Image = styled.img`

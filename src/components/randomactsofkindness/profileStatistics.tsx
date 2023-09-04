@@ -3,7 +3,7 @@ import { FlexboxCol } from "../shared/sharedLayouts";
 import { variables } from "../shared/variables";
 import styled from "styled-components";
 import { CategoryNames } from "./randomActsOfKindnessList";
-import StatsCard from "./statscard";
+import StatsCard from "../shared/statscard";
 import { ReactComponent as LogoSvg } from "../../img/line-chart-svgrepo-com.svg";
 import { ReactComponent as HeartSvg } from "../../img/heart-svgrepo-com.svg";
 

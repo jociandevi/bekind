@@ -1,7 +1,7 @@
 import React from "react";
-import { Flexbox, FlexboxCol, StyledText } from "../shared/sharedLayouts";
+import { CenterAlignedFlexbox, FlexboxCol, StyledText } from "./sharedLayouts";
 import { Button } from "antd";
-import { variables } from "../shared/variables";
+import { variables } from "./variables";
 import styled from "styled-components";
 
 const StyledBottomMenu = styled.div`
@@ -20,13 +20,6 @@ const StyledBottomMenu = styled.div`
     margin-right: 5vw;
     margin-left: 5vw;
   }
-`;
-
-const CenterAlignedFlexbox = styled(Flexbox)`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: inherit;
 `;
 
 const MenuButton = styled(Button)<{ color?: string }>`

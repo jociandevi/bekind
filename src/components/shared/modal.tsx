@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import { FlexboxCol, StyledTitle } from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+import { FlexboxCol, StyledTitle } from "./sharedLayouts";
+import { variables } from "./variables";
 import styled from "styled-components";
 import { Modal, ModalProps, Typography } from "antd";
 
@@ -14,6 +14,7 @@ const StyledModal = styled(Modal)`
 
   .ant-btn {
     height: 40px;
+    border-radius: 15px;
   }
 
   .ant-modal-content {

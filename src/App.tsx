@@ -6,9 +6,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Profile from "./components/randomactsofkindness/profile";
 
 const Login = lazy(() => import("./components/login/login"));
+const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
+const AddNew = lazy(() => import("./components/randomactsofkindness/addNew"));
 const RandomActOfKindnessList = lazy(
   () => import("./components/randomactsofkindness/randomActsOfKindnessList")
 );
@@ -29,6 +30,14 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<>...</>}>
             <Profile />
+          </Suspense>
+        }
+      />
+      <Route
+        path="new"
+        element={
+          <Suspense fallback={<>...</>}>
+            <AddNew />
           </Suspense>
         }
       />

@@ -1,6 +1,6 @@
 import React from "react";
-import { FlexboxCol } from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+import { FlexboxCol } from "./sharedLayouts";
+import { variables } from "./variables";
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../img/arrow-up-svgrepo-com.svg";
 

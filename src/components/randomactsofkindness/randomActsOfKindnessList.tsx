@@ -8,12 +8,12 @@ import {
   StyledTitle,
 } from "../shared/sharedLayouts";
 import { Form } from "antd";
-import ImageCardL from "./imageCardL";
+import ImageCardL from "../shared/imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../shared/variables";
 import { UserOutlined, PlusOutlined } from "@ant-design/icons";
-import AntdModal from "./modal";
-import BottomMenu from "./bottomMenu";
+import AntdModal from "../shared/modal";
+import BottomMenu from "../shared/bottomMenu";
 
 export enum CategoryNames {
   "SOCIAL" = "Social",
@@ -21,6 +21,18 @@ export enum CategoryNames {
   "NEIGHBORHOOD" = "Neighborhood",
   "ENVIRONMENT" = "Environment",
 }
+
+export interface Category {
+  id: number;
+  name: string;
+}
+
+export const categories: Category[] = [
+  { id: 100, name: CategoryNames.SOCIAL },
+  { id: 200, name: CategoryNames.ANIMAL },
+  { id: 300, name: CategoryNames.ENVIRONMENT },
+  { id: 400, name: CategoryNames.NEIGHBORHOOD },
+];
 
 export const raoks = [
   {
@@ -130,13 +142,6 @@ const RandomActOfKindnessList: React.FC = () => {
     console.log("Failed:", errorInfo);
   };
 
-  const categories = [
-    { id: 100, name: CategoryNames.SOCIAL },
-    { id: 200, name: CategoryNames.ANIMAL },
-    { id: 300, name: CategoryNames.ENVIRONMENT },
-    { id: 400, name: CategoryNames.NEIGHBORHOOD },
-  ];
-
   return (
     <>
       <StyledGrid>
@@ -182,7 +187,7 @@ const RandomActOfKindnessList: React.FC = () => {
           {
             id: 1,
             icon: <PlusOutlined />,
-            onClick: () => console.log("lets add a new kindness"),
+            onClick: () => navigate("/new"),
             text: "Add new",
           },
         ]}
