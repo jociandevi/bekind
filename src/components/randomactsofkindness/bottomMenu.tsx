@@ -29,14 +29,15 @@ const CenterAlignedFlexbox = styled(Flexbox)`
   height: inherit;
 `;
 
-const MenuButton = styled(Button)`
+const MenuButton = styled(Button)<{ color?: string }>`
   color: ${variables.darkGray};
 
   &:hover,
   &:focus,
   &:active {
     color: ${variables.white} !important;
-    background-color: ${variables.pink3};
+    background-color: ${(props) => props.color ?? variables.pink3};
+    border-color: ${(props) => props.color ?? variables.pink3} !important;
   }
 `;
 
@@ -48,16 +49,11 @@ interface MenuButtonProps {
 }
 
 interface Props {
-  buttonColor?: string;
   activeButtonColor?: string;
   buttons: MenuButtonProps[];
 }
 
-const BottomMenu: React.FC<Props> = ({
-  buttonColor,
-  activeButtonColor,
-  buttons,
-}) => {
+const BottomMenu: React.FC<Props> = ({ activeButtonColor, buttons }) => {
   return (
     <StyledBottomMenu>
       <CenterAlignedFlexbox>
@@ -67,6 +63,7 @@ const BottomMenu: React.FC<Props> = ({
               icon={button.icon}
               shape="circle"
               onClick={button.onClick}
+              color={activeButtonColor}
             />
             <StyledText color={variables.middleGray} fontSize="12px">
               {button.text}

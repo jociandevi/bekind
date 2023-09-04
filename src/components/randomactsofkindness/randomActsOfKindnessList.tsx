@@ -183,6 +183,7 @@ const RandomActOfKindnessList: React.FC = () => {
             id: 1,
             icon: <PlusOutlined />,
             onClick: () => console.log("lets add a new kindness"),
+            text: "Add new",
           },
         ]}
       />
