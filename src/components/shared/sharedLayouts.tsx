@@ -2,7 +2,7 @@ import { Alert, Button, Input } from "antd";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
-import { variables } from "./variables";
+import { variables } from "../../common/variables";
 
 export const StyledGrid = styled.div`
   display: grid;
@@ -41,15 +41,13 @@ export const FlexboxCol = styled.div`
   flex-direction: column;
 `;
 
-export const StyledButton = styled(Button)<{ backgroundcolor: string }>`
+export const StyledButton = styled(Button)`
   height: 40px;
-  border-radius: 15px;
-  background-color: ${(props) => props.backgroundcolor};
 `;
 
-export const IconButton = styled(Button)<{ backgroundcolor: string }>`
+export const IconButton = styled(Button)<{ backgroundcolor?: string }>`
   color: white;
-  background-color: ${(props) => props.backgroundcolor};
+  background-color: ${(props) => props.backgroundcolor || "inherit"};
   border: none;
 `;
 
@@ -63,11 +61,6 @@ export const StyledSearch = styled(Input)`
   border: none;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   padding: 12px;
-`;
-
-export const StyledTitle = styled(Title)`
-  font-weight: bold;
-  color: ${variables.black};
 `;
 
 export const StyledNotification = styled(Alert)`

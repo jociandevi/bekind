@@ -5,9 +5,9 @@ import {
   StyledGrid,
   StyledInput,
   StyledText,
-  StyledTitle,
 } from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+import { variables } from "../../common/variables";
+import Title from "antd/es/typography/Title";
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Login: React.FC = () => {
 
   return (
     <StyledGrid>
-      <StyledTitle level={3}>Hey!</StyledTitle>
+      <Title level={3}>Hey!</Title>
       <StyledText
         color={variables.middleGray}
         fontSize="14px"
@@ -60,11 +60,7 @@ const Login: React.FC = () => {
         </Form.Item>
 
         <Form.Item>
-          <StyledButton
-            type="primary"
-            htmlType="submit"
-            backgroundcolor={variables.blue1}
-          >
+          <StyledButton type="primary" htmlType="submit">
             LOGIN
           </StyledButton>
         </Form.Item>

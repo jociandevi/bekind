@@ -1,13 +1,14 @@
 import React from "react";
-import { StyledGrid, StyledTitle } from "../shared/sharedLayouts";
+import { StyledGrid } from "../shared/sharedLayouts";
 import { Tabs } from "antd";
 import { devices } from "../shared/imageCardL";
-import { variables } from "../shared/variables";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
 import { raoks } from "./randomActsOfKindnessList";
 import ImageCardM from "../shared/imageCardM";
 import ProfileStatistics from "./profileStatistics";
+import Title from "antd/es/typography/Title";
 
 const Image = styled.img`
   width: 30vw;
@@ -82,11 +83,11 @@ const Profile: React.FC = () => {
 
   return (
     <StyledGrid>
-      <StyledTitle level={3}>Profile</StyledTitle>
+      <Title level={3}>Profile</Title>
       <Image src={user.photoUrl} alt={user.firstName} />
-      <StyledTitle level={4}>
+      <Title level={4}>
         {user.firstName} {user.lastName}
-      </StyledTitle>
+      </Title>
       <ProfileStatistics />
       <StyledTab defaultActiveKey="1" items={items} onChange={onChange} />
     </StyledGrid>

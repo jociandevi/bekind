@@ -1,7 +1,7 @@
 import React from "react";
 import { CenterAlignedFlexbox, FlexboxCol, StyledText } from "./sharedLayouts";
 import { Button } from "antd";
-import { variables } from "./variables";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 
 const StyledBottomMenu = styled.div`

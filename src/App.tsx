@@ -1,3 +1,4 @@
+import { ConfigProvider } from "antd";
 import { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
@@ -6,6 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { theme } from "./common/theme";
 
 const Login = lazy(() => import("./components/login/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
@@ -21,7 +23,9 @@ const router = createBrowserRouter(
         path="random-act-of-kindness"
         element={
           <Suspense fallback={<>...</>}>
-            <RandomActOfKindnessList />
+            <ConfigProvider theme={{ ...theme }}>
+              <RandomActOfKindnessList />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -29,7 +33,9 @@ const router = createBrowserRouter(
         path="profile"
         element={
           <Suspense fallback={<>...</>}>
-            <Profile />
+            <ConfigProvider theme={{ ...theme }}>
+              <Profile />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -37,7 +43,9 @@ const router = createBrowserRouter(
         path="new"
         element={
           <Suspense fallback={<>...</>}>
-            <AddNew />
+            <ConfigProvider theme={{ ...theme }}>
+              <AddNew />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -45,7 +53,9 @@ const router = createBrowserRouter(
         path=""
         element={
           <Suspense fallback={<>...</>}>
-            <Login />
+            <ConfigProvider theme={{ ...theme }}>
+              <Login />
+            </ConfigProvider>
           </Suspense>
         }
       />

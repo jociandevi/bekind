@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { Flexbox, IconButton, StyledText, StyledTitle } from "./sharedLayouts";
-import { variables } from "./variables";
+import { Flexbox, IconButton, StyledText } from "./sharedLayouts";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Button } from "antd";
 import { CaretRightOutlined, HeartFilled } from "@ant-design/icons";
 import AntdModal from "./modal";
 import GrowthImage from "../../img/growth.png";
 import FireImg from "../../img/fire.png";
+import Title from "antd/es/typography/Title";
 
 const breakpoints = {
   xs: "320px",
@@ -33,7 +34,7 @@ const CardContainer = styled.div`
     width: 15vw;
   }
   flex-shrink: 0;
-  border-radius: 15px;
+  border-radius: ${variables.borderRadius}px;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   padding: 15px;
@@ -47,7 +48,7 @@ const Image = styled.img`
     height: 15vw;
   }
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: ${variables.borderRadius}px;
 `;
 
 const ImageContainer = styled.div`
@@ -112,9 +113,9 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
         />
       </ImageContainer>
 
-      <StyledTitle level={5} style={{ margin: "15px 0 0" }}>
+      <Title level={5} style={{ margin: "15px 0 0" }}>
         {item.title}
-      </StyledTitle>
+      </Title>
       <StyledText color={variables.middleGray} fontSize="14px">
         {item.description}
       </StyledText>

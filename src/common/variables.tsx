@@ -15,5 +15,6 @@ export const variables = {
   spacingXxs: "8px",
   spacingXs: "12px",
   spacingS: "24px",
+  borderRadius: 15,
   white: "#fff",
 };

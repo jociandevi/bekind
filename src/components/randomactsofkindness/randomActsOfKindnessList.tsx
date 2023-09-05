@@ -5,15 +5,15 @@ import {
   IconButton,
   StyledGrid,
   StyledSearch,
-  StyledTitle,
 } from "../shared/sharedLayouts";
 import { Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
 import { useNavigate } from "react-router-dom";
-import { variables } from "../shared/variables";
+import { variables } from "../../common/variables";
 import { UserOutlined, PlusOutlined } from "@ant-design/icons";
 import AntdModal from "../shared/modal";
 import BottomMenu from "../shared/bottomMenu";
+import Title from "antd/es/typography/Title";
 
 export enum CategoryNames {
   "SOCIAL" = "Social",
@@ -171,7 +171,7 @@ const RandomActOfKindnessList: React.FC = () => {
         </Form>
         {categories.map((category) => (
           <Fragment key={category.id}>
-            <StyledTitle level={3}>{category.name}</StyledTitle>
+            <Title level={3}>{category.name}</Title>
             <HorizontalScrollContainer>
               {raoks
                 .filter((item) => item.category === category.name)

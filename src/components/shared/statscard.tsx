@@ -1,6 +1,6 @@
 import React from "react";
 import { FlexboxCol } from "./sharedLayouts";
-import { variables } from "./variables";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../img/arrow-up-svgrepo-com.svg";
 
@@ -11,7 +11,7 @@ const CardContainer = styled.div<{
 }>`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   flex-shrink: 0;
-  border-radius: 15px;
+  border-radius: ${variables.borderRadius}px;
   padding: ${variables.spacingXxs};
   padding-bottom: ${(props) => (props.icon ? 0 : "15px")}};
   display: flex;

@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  Flexbox,
-  FlexboxCol,
-  IconButton,
-  StyledText,
-  StyledTitle,
-} from "./sharedLayouts";
-import { variables } from "./variables";
+import { Flexbox, FlexboxCol, IconButton, StyledText } from "./sharedLayouts";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { CaretRightOutlined } from "@ant-design/icons";
+import Title from "antd/es/typography/Title";
 
 const breakpoints = {
   xs: "320px",
@@ -34,7 +29,7 @@ const CardContainer = styled.div`
     width: 15vw;
   }
   flex-shrink: 0;
-  border-radius: 15px;
+  border-radius: ${variables.borderRadius}px;
   scroll-snap-align: center;
   scroll-snap-stop: always;
   padding: 15px;
@@ -51,7 +46,7 @@ const Image = styled.img`
     height: 15vw;
   }
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: ${variables.borderRadius}px;
 `;
 
 interface Props {
@@ -67,9 +62,9 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
     <CardContainer>
       <Image src={item.imageUrl} alt={item.title} />
       <FlexboxCol style={{ width: "30vw" }}>
-        <StyledTitle level={5} style={{ margin: `0`, fontSize: "14px" }}>
+        <Title level={5} style={{ margin: `0`, fontSize: "14px" }}>
           {item.title}
-        </StyledTitle>
+        </Title>
         <StyledText color={variables.middleGray} fontSize="12px">
           {item.description}
         </StyledText>
@@ -77,7 +72,7 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
 
       <Flexbox>
         <IconButton
-          backgroundcolor={variables.black}
+          type="text"
           icon={<CaretRightOutlined />}
           shape="circle"
           onClick={onPlay}

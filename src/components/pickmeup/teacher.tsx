@@ -1,10 +1,9 @@
+import Title from "antd/es/typography/Title";
 import {
   StyledButton,
   StyledGrid,
   StyledNotification,
-  StyledTitle,
 } from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
 
 const Teacher: React.FC = () => {
   // get user
@@ -34,7 +33,7 @@ const Teacher: React.FC = () => {
 
   return (
     <StyledGrid>
-      <StyledTitle level={3}>Hi {user.firstName}!</StyledTitle>
+      <Title level={3}>Hi {user.firstName}!</Title>
       {arrivedParents.map((item) => (
         <StyledNotification
           message={`${item.firstName} ${item.lastName} arrived for ${item.canPickUp[0].firstName} ${item.canPickUp[0].lastName}`}
@@ -45,9 +44,7 @@ const Teacher: React.FC = () => {
         />
       ))}
       {arrivedParents.length > 1 && (
-        <StyledButton type="primary" backgroundcolor={variables.blue1}>
-          SEND THEM ALL
-        </StyledButton>
+        <StyledButton type="primary">SEND THEM ALL</StyledButton>
       )}
     </StyledGrid>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { FlexboxCol } from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { CategoryNames } from "./randomActsOfKindnessList";
 import StatsCard from "../shared/statscard";

@@ -1,22 +1,13 @@
 import React, { ReactNode } from "react";
-import { FlexboxCol, StyledTitle } from "./sharedLayouts";
-import { variables } from "./variables";
+import { FlexboxCol } from "./sharedLayouts";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Modal, ModalProps, Typography } from "antd";
+import Title from "antd/es/typography/Title";
 
 const { Text } = Typography;
 
 const StyledModal = styled(Modal)`
-  .ant-btn-primary,
-  .ant-btn-primary:not(:disabled):hover {
-    background-color: ${variables.pink3};
-  }
-
-  .ant-btn {
-    height: 40px;
-    border-radius: 15px;
-  }
-
   .ant-modal-content {
     border-radius: 15px;
   }
@@ -88,7 +79,7 @@ const AntdModal: React.FC<Props> = ({
           {image && isProfileImage && (
             <StyledProfileImage src={image} alt={image} />
           )}
-          <StyledTitle level={3}>{props.title}</StyledTitle>
+          <Title level={3}>{props.title}</Title>
           <Text>{description}</Text>
         </ModalContent>
       </StyledModal>

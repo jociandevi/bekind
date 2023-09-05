@@ -1,7 +1,7 @@
 import React from "react";
 import { getAPI } from "../../common/apiCommon";
-import { StyledButton, StyledGrid, StyledTitle } from "../shared/sharedLayouts";
-import { variables } from "../shared/variables";
+import { StyledButton, StyledGrid } from "../shared/sharedLayouts";
+import Title from "antd/es/typography/Title";
 
 const Parent: React.FC = () => {
   // identify logged in user
@@ -33,19 +33,15 @@ const Parent: React.FC = () => {
 
   return (
     <StyledGrid>
-      <StyledTitle level={3}>Hi {user.firstName}!</StyledTitle>
-      <StyledButton
-        backgroundcolor={variables.blue1}
-        type="primary"
-        onClick={() => {}}
-      >
+      <Title level={3}>Hi {user.firstName}!</Title>
+      <StyledButton type="primary" onClick={() => {}}>
         PICK UP {user.canPickUp[0].firstName.toUpperCase()}
       </StyledButton>
 
-      <StyledTitle level={4}>
+      <Title level={4}>
         Today it is {weather[0].temperatureC} °C. What a {weather[0].summary}{" "}
         weather!
-      </StyledTitle>
+      </Title>
     </StyledGrid>
   );
 };

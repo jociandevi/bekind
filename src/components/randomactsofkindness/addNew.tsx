@@ -5,21 +5,19 @@ import {
   StyledButton,
   StyledGrid,
   StyledInput,
-  StyledTitle,
 } from "../shared/sharedLayouts";
 import { Button, Form, Radio, Steps } from "antd";
-import { variables } from "../shared/variables";
+import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { InputRef } from "antd";
 import { Category, categories } from "./randomActsOfKindnessList";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import UploadImage from "../shared/uploadImage";
+import Title from "antd/es/typography/Title";
 
 const StyledRadioButton = styled(Button)`
-  border-radius: 15px;
   margin: ${variables.spacingXxs};
-  height: 40px;
 `;
 
 const AddNew: React.FC = () => {
@@ -71,7 +69,7 @@ const AddNew: React.FC = () => {
           marginBottom: variables.spacingS,
         }}
       >
-        <StyledTitle level={3}>Add New</StyledTitle>
+        <Title level={3}>Add New</Title>
         <IconButton
           backgroundcolor={variables.black}
           icon={<UserOutlined />}
@@ -131,15 +129,7 @@ const AddNew: React.FC = () => {
                         key={item.id}
                         value={item.name}
                         onClick={() => pickCategory(item)}
-                        style={
-                          item === category
-                            ? {
-                                backgroundColor: variables.pink3,
-                                color: variables.white,
-                                border: variables.pink3,
-                              }
-                            : {}
-                        }
+                        type={item === category ? "primary" : "default"}
                       >
                         {item.name}
                       </StyledRadioButton>
@@ -162,7 +152,6 @@ const AddNew: React.FC = () => {
           <StyledButton
             type="primary"
             htmlType="submit"
-            backgroundcolor={variables.pink3}
             style={{ marginTop: variables.spacingS }}
           >
             Save
