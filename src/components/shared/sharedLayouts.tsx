@@ -1,5 +1,4 @@
 import { Alert, Button, Input } from "antd";
-import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
