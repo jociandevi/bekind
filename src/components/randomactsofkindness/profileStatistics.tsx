@@ -5,7 +5,7 @@ import styled from "styled-components";
 import StatsCard from "../shared/statscard";
 import { ReactComponent as LogoSvg } from "../../img/line-chart-svgrepo-com.svg";
 import { ReactComponent as HeartSvg } from "../../img/heart-svgrepo-com.svg";
-import { CategoryNames, UserStats } from "../../common/interfaces";
+import { userStats } from "../../common/mockData";
 
 const Flexbox = styled.div`
   display: flex;
@@ -13,17 +13,6 @@ const Flexbox = styled.div`
 `;
 
 const ProfileStatistics: React.FC = () => {
-  const userStats: UserStats = {
-    id: 1,
-    firstName: "Liza",
-    lastName: "Bailey",
-    numberOfKindnessLast30Days: 14,
-    averageNumberOfKindnessLast30Days: 12,
-    monthlyStatsLast6Months: [3, 12, 18, 10, 4, 15],
-    totalNumberOfKindnesses: 53,
-    topCategory: CategoryNames.NEIGHBORHOOD,
-  };
-
   const comparedToOthers =
     (userStats.numberOfKindnessLast30Days /
       userStats.averageNumberOfKindnessLast30Days -
@@ -34,7 +23,7 @@ const ProfileStatistics: React.FC = () => {
 
   const comparedToYourself =
     (userStats.numberOfKindnessLast30Days /
-      userStats.monthlyStatsLast6Months[5] -
+      userStats.userMonthlyStatsLast6Months[5] -
       1) *
     100;
   const moreThanYou = comparedToYourself > 0;

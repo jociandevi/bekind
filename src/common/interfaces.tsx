@@ -24,7 +24,8 @@ export interface UserStats {
   lastName: string;
   numberOfKindnessLast30Days: number;
   averageNumberOfKindnessLast30Days: number;
-  monthlyStatsLast6Months: number[];
+  userMonthlyStatsLast6Months: number[];
+  avgMonthlyStatsLast6Months: number[];
   totalNumberOfKindnesses: number;
   topCategory: CategoryNames;
 }

@@ -5,11 +5,11 @@ import { devices } from "../shared/imageCardL";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
-import { raoks } from "./randomActsOfKindnessList";
 import ImageCardM from "../shared/imageCardM";
-import ProfileStatistics from "./profileStatistics";
 import Title from "antd/es/typography/Title";
 import BadgeList from "./badgeList";
+import { user } from "../../common/mockData";
+import GroupedBarChart from "../shared/groupedBarChart";
 
 const Image = styled.img`
   width: 30vw;
@@ -43,16 +43,6 @@ const StyledTab = styled(Tabs)`
 `;
 
 const Profile: React.FC = () => {
-  const user = {
-    id: 1,
-    firstName: "Liza",
-    lastName: "Bailey",
-    photoUrl:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
-    liked: [...raoks],
-    history: [...raoks],
-  };
-
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -74,6 +64,7 @@ const Profile: React.FC = () => {
       label: `History`,
       children: (
         <>
+          <GroupedBarChart />
           {user.history.map((item) => (
             <ImageCardM item={item} key={item.id} />
           ))}
@@ -89,12 +80,10 @@ const Profile: React.FC = () => {
 
   return (
     <StyledGrid>
-      <Title level={3}>Profile</Title>
       <Image src={user.photoUrl} alt={user.firstName} />
       <Title level={4}>
         {user.firstName} {user.lastName}
       </Title>
-      <ProfileStatistics />
       <StyledTab defaultActiveKey="1" items={items} onChange={onChange} />
     </StyledGrid>
   );
