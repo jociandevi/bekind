@@ -2,21 +2,10 @@ import React from "react";
 import { FlexboxCol } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { CategoryNames } from "./randomActsOfKindnessList";
 import StatsCard from "../shared/statscard";
 import { ReactComponent as LogoSvg } from "../../img/line-chart-svgrepo-com.svg";
 import { ReactComponent as HeartSvg } from "../../img/heart-svgrepo-com.svg";
-
-export interface UserStats {
-  id: number;
-  firstName: string;
-  lastName: string;
-  numberOfKindnessLast30Days: number;
-  averageNumberOfKindnessLast30Days: number;
-  monthlyStatsLast6Months: number[];
-  totalNumberOfKindnesses: number;
-  topCategory: CategoryNames;
-}
+import { CategoryNames, UserStats } from "../../common/interfaces";
 
 const Flexbox = styled.div`
   display: flex;

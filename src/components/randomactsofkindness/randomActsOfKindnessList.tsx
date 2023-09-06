@@ -14,18 +14,11 @@ import { UserOutlined, PlusOutlined } from "@ant-design/icons";
 import AntdModal from "../shared/modal";
 import BottomMenu from "../shared/bottomMenu";
 import Title from "antd/es/typography/Title";
-
-export enum CategoryNames {
-  "SOCIAL" = "Social",
-  "ANIMAL" = "Animal",
-  "NEIGHBORHOOD" = "Neighborhood",
-  "ENVIRONMENT" = "Environment",
-}
-
-export interface Category {
-  id: number;
-  name: string;
-}
+import {
+  Category,
+  CategoryNames,
+  KindnessAction,
+} from "../../common/interfaces";
 
 export const categories: Category[] = [
   { id: 100, name: CategoryNames.SOCIAL },
@@ -34,7 +27,7 @@ export const categories: Category[] = [
   { id: 400, name: CategoryNames.NEIGHBORHOOD },
 ];
 
-export const raoks = [
+export const raoks: KindnessAction[] = [
   {
     id: 1,
     title: "Pay it Backward",

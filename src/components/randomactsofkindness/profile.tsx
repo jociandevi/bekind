@@ -9,6 +9,7 @@ import { raoks } from "./randomActsOfKindnessList";
 import ImageCardM from "../shared/imageCardM";
 import ProfileStatistics from "./profileStatistics";
 import Title from "antd/es/typography/Title";
+import BadgeList from "./badgeList";
 
 const Image = styled.img`
   width: 30vw;
@@ -78,6 +79,11 @@ const Profile: React.FC = () => {
           ))}
         </>
       ),
+    },
+    {
+      key: "3",
+      label: `Badges`,
+      children: <BadgeList />,
     },
   ];
 

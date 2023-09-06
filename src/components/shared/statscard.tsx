@@ -1,5 +1,5 @@
 import React from "react";
-import { FlexboxCol } from "./sharedLayouts";
+import { FlexboxCol, TextDisplayS } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../img/arrow-up-svgrepo-com.svg";
@@ -33,11 +33,6 @@ const NumberDisplay = styled.div<{ color?: string }>`
   color: ${(props) => props.color ?? variables.black}};
   display: flex;
   align-items: center;
-`;
-
-const TextDisplay = styled.div<{ color?: string }>`
-  font-size: 10px;
-  color: ${(props) => props.color ?? variables.black}};
 `;
 
 interface Props {
@@ -85,7 +80,7 @@ const StatsCard: React.FC<Props> = ({
           {Math.floor(Math.abs(number))}
           {compareChange && "%"}
         </NumberDisplay>
-        <TextDisplay color={secondaryColor}>{text}</TextDisplay>
+        <TextDisplayS color={secondaryColor}>{text}</TextDisplayS>
       </NumberTextContainer>
       {!iconToTop && icon && icon}
     </CardContainer>

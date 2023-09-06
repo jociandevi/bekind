@@ -10,11 +10,12 @@ import { Button, Form, Radio, Steps } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { InputRef } from "antd";
-import { Category, categories } from "./randomActsOfKindnessList";
+import { categories } from "./randomActsOfKindnessList";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import UploadImage from "../shared/uploadImage";
 import Title from "antd/es/typography/Title";
+import { Category } from "../../common/interfaces";
 
 const StyledRadioButton = styled(Button)`
   margin: ${variables.spacingXxs};

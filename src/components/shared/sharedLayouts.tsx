@@ -40,6 +40,10 @@ export const FlexboxCol = styled.div`
   flex-direction: column;
 `;
 
+export const CenterAlignedFlexboxCol = styled(FlexboxCol)`
+  align-items: center;
+`;
+
 export const StyledButton = styled(Button)`
   height: 40px;
 `;
@@ -79,4 +83,9 @@ export const StyledText = styled(Text)<{
   color: ${(props) => props.color};
   font-weight: ${(props) => props.fontWeight};
   font-size: ${(props) => props.fontSize ?? "inherit"};
+`;
+
+export const TextDisplayS = styled.div<{ color?: string }>`
+  font-size: 10px;
+  color: ${(props) => props.color ?? variables.black}};
 `;
