@@ -34,6 +34,7 @@ export interface UserStats {
 export interface BadgeProps {
   id?: number;
   icon: React.ReactNode;
+  iconSrc?: string;
   enabled: boolean;
   name: string;
   necessaryActions: KindnessAction[];

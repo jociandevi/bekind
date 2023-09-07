@@ -88,7 +88,7 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
         setIsModalOpen={setIsModalOpen}
         onOk={handleOk}
         description="Are you picking this kindness for today?"
-        image={GrowthImage}
+        imageUrl={GrowthImage}
         okText="Yes, let's go!"
       />
 
@@ -97,7 +97,7 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
         setIsModalOpen={setIsFeedbackModalOpen}
         title="Nice job, Lisa! That's a 5-day Streak!"
         description="Thank you for making the world a better place!"
-        image={FireImg}
+        imageUrl={FireImg}
         footer={
           <Button type="primary" onClick={() => setIsFeedbackModalOpen(false)}>
             Continue

@@ -37,8 +37,36 @@ export const badges: BadgeProps[] = [
     enabled: true,
     id: 3,
     name: "Mayor!",
-    necessaryActions: [],
-    description: "You are an amazing mayor! I'd love to live in your street!",
+    necessaryActions: [
+      {
+        id: 10,
+        title: "Drive nicely!",
+        description: "Let someone merge in front of you today!",
+        category: CategoryNames.ENVIRONMENT,
+        imageUrl:
+          "https://images.unsplash.com/photo-1533408874882-397bf377a8c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      },
+      {
+        id: 4,
+        title: "Decorate with post its",
+        category: CategoryNames.NEIGHBORHOOD,
+        description:
+          "Post inspirational sticky notes around your neighborhood, office, school, etc.",
+        imageUrl:
+          "https://images.unsplash.com/photo-1541960071727-c531398e7494?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
+      },
+      {
+        id: 12,
+        title: "Just A Piece",
+        description:
+          "Pick up and throw out a piece of trash you see lying on the street today.",
+        category: CategoryNames.ENVIRONMENT,
+        imageUrl:
+          "https://images.unsplash.com/photo-1586041828039-b8d193d6d1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+      },
+    ],
+    description:
+      "You are an amazing neighbour! I'd love to live in your street!",
     tooltip: "Help out in our neighbourhood to achieve this",
   },
 ];
@@ -125,6 +153,32 @@ export const raoks: KindnessAction[] = [
     category: CategoryNames.ANIMAL,
     imageUrl:
       "https://images.unsplash.com/photo-1508609540374-67d1601ba520?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwdHJlYXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
+  },
+  {
+    id: 10,
+    title: "Drive nicely!",
+    description: "Let someone merge in front of you today!",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1533408874882-397bf377a8c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+  },
+  {
+    id: 11,
+    title: "Let Them Know You Care",
+    description:
+      "Reach out to an old friend today who you talked to long ago but are fond of.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1660733344431-f6a440cb7c6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
+  },
+  {
+    id: 12,
+    title: "Just A Piece",
+    description:
+      "Pick up and throw out a piece of trash you see lying on the street today.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1586041828039-b8d193d6d1dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
   },
 ];
 

@@ -44,7 +44,8 @@ interface Props extends ModalProps {
   isModalOpen: boolean;
   setIsModalOpen: (open: boolean) => void;
   description?: string;
-  image?: string;
+  imageUrl?: string;
+  image?: React.ReactNode;
   isProfileImage?: boolean;
 }
 
@@ -52,6 +53,7 @@ const AntdModal: React.FC<Props> = ({
   isModalOpen,
   setIsModalOpen,
   description,
+  imageUrl,
   image,
   isProfileImage,
   children,
@@ -75,10 +77,13 @@ const AntdModal: React.FC<Props> = ({
         title=""
       >
         <ModalContent>
-          {image && !isProfileImage && <StyledImage src={image} alt={image} />}
-          {image && isProfileImage && (
-            <StyledProfileImage src={image} alt={image} />
+          {imageUrl && !isProfileImage && (
+            <StyledImage src={imageUrl} alt={imageUrl} />
           )}
+          {imageUrl && isProfileImage && (
+            <StyledProfileImage src={imageUrl} alt={imageUrl} />
+          )}
+          {image && image}
           <Title level={3}>{props.title}</Title>
           <Text>{description}</Text>
         </ModalContent>

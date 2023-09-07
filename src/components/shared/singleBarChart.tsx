@@ -30,7 +30,6 @@ const SingleBarChart: React.FC<Props> = ({ item, color }) => {
         >{`${item.label}: ${item.value}`}</Flexbox>
       }
       arrow={false}
-      color={variables.middleGray}
     >
       <BarChart height={item.value} color={color} />
     </Tooltip>

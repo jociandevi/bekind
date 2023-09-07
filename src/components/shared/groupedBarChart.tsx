@@ -69,7 +69,7 @@ const GroupedBarChart: React.FC = () => {
       </LegendContainer>
       {months.map((month, index) => (
         <FlexboxCol key={index}>
-          <Flexbox>
+          <Flexbox style={{ justifyContent: "center" }}>
             {labels.map((label, index) => (
               <SingleBarChart
                 item={getItem(label, month)}

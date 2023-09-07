@@ -47,7 +47,7 @@ const RandomActOfKindnessList: React.FC = () => {
           setIsModalOpen={setIsModalOpen}
           onOk={handleOk}
           description="Sean just bought a coffee for the person next in line! Want to high five him?"
-          image={userToPraise.photoUrl}
+          imageUrl={userToPraise.photoUrl}
           isProfileImage
           okText="Sure!"
           cancelText="Not today"
