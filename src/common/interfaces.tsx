@@ -22,10 +22,11 @@ export interface UserStats {
   id: number;
   firstName: string;
   lastName: string;
-  numberOfKindnessLast30Days: number;
-  averageNumberOfKindnessLast30Days: number;
-  userMonthlyStatsLast6Months: number[];
-  avgMonthlyStatsLast6Months: number[];
+  historicalData: {
+    month: string;
+    label: string;
+    value: number;
+  }[];
   totalNumberOfKindnesses: number;
   topCategory: CategoryNames;
 }

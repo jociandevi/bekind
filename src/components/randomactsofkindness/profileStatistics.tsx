@@ -13,19 +13,22 @@ const Flexbox = styled.div`
 `;
 
 const ProfileStatistics: React.FC = () => {
-  const comparedToOthers =
-    (userStats.numberOfKindnessLast30Days /
-      userStats.averageNumberOfKindnessLast30Days -
-      1) *
-    100;
+  const today = new Date();
+  const currentMonth = new Date().toLocaleString("default", { month: "long" });
+  const lastMontName = new Date(
+    new Date().setDate(today.getDate() - 30)
+  ).toLocaleString("default", { month: "long" });
+  const thisMonth = userStats.historicalData.find(
+    (item) => item.label === currentMonth && item.label === "You"
+  );
+  const lastMonth = userStats.historicalData.find(
+    (item) => item.label === lastMontName && item.label === "You"
+  );
+  const comparedToOthers = (thisMonth!.value / thisMonth!.value - 1) * 100;
   const moreThanOthers = comparedToOthers > 0;
   const comparedToOthersText = moreThanOthers ? "More" : "Less";
 
-  const comparedToYourself =
-    (userStats.numberOfKindnessLast30Days /
-      userStats.userMonthlyStatsLast6Months[5] -
-      1) *
-    100;
+  const comparedToYourself = (thisMonth!.value / lastMonth!.value - 1) * 100;
   const moreThanYou = comparedToYourself > 0;
   const moreOrLessThanYourself = moreThanYou ? "More" : "Less";
 
@@ -35,7 +38,7 @@ const ProfileStatistics: React.FC = () => {
         <Flexbox>
           <StatsCard
             backgroundColor={variables.pink6}
-            number={userStats.numberOfKindnessLast30Days}
+            number={thisMonth!.value}
             text="Last 30 Days"
             color="white"
             secondaryColor="white"

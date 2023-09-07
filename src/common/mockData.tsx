@@ -151,10 +151,48 @@ export const userStats: UserStats = {
   id: 1,
   firstName: "Liza",
   lastName: "Bailey",
-  numberOfKindnessLast30Days: 14,
-  averageNumberOfKindnessLast30Days: 12,
-  userMonthlyStatsLast6Months: [3, 12, 18, 10, 4, 15],
-  avgMonthlyStatsLast6Months: [5, 12, 9, 11, 8, 10],
+  historicalData: [
+    {
+      month: "January",
+      label: "You",
+      value: 3,
+    },
+    {
+      month: "January",
+      label: "Average",
+      value: 5,
+    },
+    {
+      month: "February",
+      label: "You",
+      value: 12,
+    },
+    {
+      month: "February",
+      label: "Average",
+      value: 12,
+    },
+    {
+      month: "March",
+      label: "You",
+      value: 9,
+    },
+    {
+      month: "March",
+      label: "Average",
+      value: 18,
+    },
+    {
+      month: "April",
+      label: "You",
+      value: 10,
+    },
+    {
+      month: "April",
+      label: "Average",
+      value: 11,
+    },
+  ],
   totalNumberOfKindnesses: 53,
   topCategory: CategoryNames.NEIGHBORHOOD,
 };
