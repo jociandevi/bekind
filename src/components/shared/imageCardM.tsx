@@ -1,52 +1,25 @@
 import React from "react";
-import { Flexbox, FlexboxCol, IconButton, StyledText } from "./sharedLayouts";
+import {
+  CenterAlignedFlexbox,
+  FlexboxCol,
+  ResponsiveImage,
+  StyledText,
+} from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { CaretRightOutlined } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
-
-const breakpoints = {
-  xs: "320px",
-  sm: "640px",
-  md: "768px",
-  lg: "1024px",
-  xl: "1280px",
-  "2xl": "1536px",
-};
-
-export const devices = {
-  xs: `(min-width: ${breakpoints.xs})`,
-  sm: `(min-width: ${breakpoints.sm})`,
-  md: `(min-width: ${breakpoints.md})`,
-  lg: `(min-width: ${breakpoints.lg})`,
-  xl: `(min-width: ${breakpoints.xl})`,
-  "2xl": `(min-width: ${breakpoints["2xl"]})`,
-};
+import { Button } from "antd";
+import { useMediaQueries } from "../../common/mediaQueryHook";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
-  @media only screen and ${devices.md} {
-    width: 15vw;
-  }
   flex-shrink: 0;
   border-radius: ${variables.borderRadius}px;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  padding: 15px;
   display: flex;
-  gap: ${variables.spacingS};
   margin-bottom: ${variables.spacingS};
-`;
-
-const Image = styled.img`
-  width: 20vw;
-  height: 20vw;
-  @media only screen and ${devices.md} {
-    width: 15vw;
-    height: 15vw;
-  }
-  object-fit: cover;
-  border-radius: ${variables.borderRadius}px;
+  max-height: 30vw;
 `;
 
 interface Props {
@@ -54,30 +27,28 @@ interface Props {
 }
 
 const ImageCardL: React.FC<Props> = ({ item }) => {
+  const { md } = useMediaQueries();
+
   const onPlay = () => {
     // lets accept the challenge
   };
 
   return (
     <CardContainer>
-      <Image src={item.imageUrl} alt={item.title} />
-      <FlexboxCol style={{ width: "30vw" }}>
-        <Title level={5} style={{ margin: `0`, fontSize: "14px" }}>
+      <ResponsiveImage src={item.imageUrl} alt={item.title} md={md} />
+      <FlexboxCol style={{ width: "30vw", padding: "15px" }}>
+        <Title level={5} style={{ fontSize: "14px" }}>
           {item.title}
         </Title>
-        <StyledText color={variables.middleGray} fontSize="12px">
-          {item.description}
-        </StyledText>
+        {md && (
+          <StyledText color={variables.middleGray} fontSize="12px">
+            {item.description}
+          </StyledText>
+        )}
       </FlexboxCol>
-
-      <Flexbox>
-        <IconButton
-          type="text"
-          icon={<CaretRightOutlined />}
-          shape="circle"
-          onClick={onPlay}
-        />
-      </Flexbox>
+      <CenterAlignedFlexbox style={{ paddingRight: variables.spacingXs }}>
+        <Button onClick={onPlay}>Pick</Button>
+      </CenterAlignedFlexbox>
     </CardContainer>
   );
 };

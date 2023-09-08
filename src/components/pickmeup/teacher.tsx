@@ -1,9 +1,6 @@
 import Title from "antd/es/typography/Title";
-import {
-  StyledButton,
-  StyledGrid,
-  StyledNotification,
-} from "../shared/sharedLayouts";
+import { StyledGrid, StyledNotification } from "../shared/sharedLayouts";
+import { Button } from "antd";
 
 const Teacher: React.FC = () => {
   // get user
@@ -44,7 +41,7 @@ const Teacher: React.FC = () => {
         />
       ))}
       {arrivedParents.length > 1 && (
-        <StyledButton type="primary">SEND THEM ALL</StyledButton>
+        <Button type="primary">SEND THEM ALL</Button>
       )}
     </StyledGrid>
   );

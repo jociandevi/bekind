@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { userStats } from "../../common/mockData";
 import SingleBarChart from "./singleBarChart";
 
-const LegendContainer = styled.div<{}>`
+const LegendContainer = styled.div`
   position: absolute;
   top: 0;
 `;

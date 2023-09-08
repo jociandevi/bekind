@@ -1,9 +1,10 @@
 import React, { ReactNode } from "react";
-import { FlexboxCol } from "./sharedLayouts";
+import { CircleImage, FlexboxCol, ResponsiveImage } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Modal, ModalProps, Typography } from "antd";
 import Title from "antd/es/typography/Title";
+import { useMediaQueries } from "../../common/mediaQueryHook";
 
 const { Text } = Typography;
 
@@ -20,16 +21,6 @@ const StyledModal = styled(Modal)`
     align-items: center;
     border-radius: 8px;
   }
-`;
-
-const StyledImage = styled.img`
-  width: 50vw;
-  height: 50vw;
-  object-fit: cover;
-`;
-
-const StyledProfileImage = styled(StyledImage)`
-  border-radius: 50%;
 `;
 
 const ModalContent = styled(FlexboxCol)`
@@ -59,6 +50,8 @@ const AntdModal: React.FC<Props> = ({
   children,
   ...props
 }) => {
+  const { md } = useMediaQueries();
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -78,10 +71,10 @@ const AntdModal: React.FC<Props> = ({
       >
         <ModalContent>
           {imageUrl && !isProfileImage && (
-            <StyledImage src={imageUrl} alt={imageUrl} />
+            <ResponsiveImage src={imageUrl} alt={imageUrl} md={md} />
           )}
           {imageUrl && isProfileImage && (
-            <StyledProfileImage src={imageUrl} alt={imageUrl} />
+            <CircleImage src={imageUrl} alt={imageUrl} md={md} />
           )}
           {image && image}
           <Title level={3}>{props.title}</Title>

@@ -2,11 +2,10 @@ import React, { Fragment, useState } from "react";
 import {
   Flexbox,
   HorizontalScrollContainer,
-  IconButton,
-  StyledGrid,
+  ListLayout,
   StyledSearch,
 } from "../shared/sharedLayouts";
-import { Form } from "antd";
+import { Button, Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../../common/variables";
@@ -40,7 +39,7 @@ const RandomActOfKindnessList: React.FC = () => {
 
   return (
     <>
-      <StyledGrid>
+      <ListLayout>
         <AntdModal
           title="Cheer on others"
           isModalOpen={isModalOpen}
@@ -52,22 +51,28 @@ const RandomActOfKindnessList: React.FC = () => {
           okText="Sure!"
           cancelText="Not today"
         />
-        <Flexbox style={{ marginBottom: variables.spacingS }}>
-          <IconButton
-            backgroundcolor={variables.black}
+        <Flexbox style={{ margin: variables.spacingS }}>
+          <Button
+            style={{ border: "none" }}
             icon={<UserOutlined />}
             onClick={() => navigate("/profile")}
           />
         </Flexbox>
 
-        <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
+        <Form
+          style={{ margin: `0 ${variables.spacingS} ${variables.spacingXs} ` }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+        >
           <Form.Item name="search">
             <StyledSearch placeholder="Search" />
           </Form.Item>
         </Form>
         {categories.map((category) => (
           <Fragment key={category.id}>
-            <Title level={3}>{category.name}</Title>
+            <Title level={3} style={{ margin: `0 ${variables.spacingS}` }}>
+              {category.name}
+            </Title>
             <HorizontalScrollContainer>
               {raoks
                 .filter((item) => item.category === category.name)
@@ -77,7 +82,7 @@ const RandomActOfKindnessList: React.FC = () => {
             </HorizontalScrollContainer>
           </Fragment>
         ))}
-      </StyledGrid>
+      </ListLayout>
       <BottomMenu
         buttons={[
           {

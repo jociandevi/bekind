@@ -1,11 +1,6 @@
-import { Checkbox, Form } from "antd";
+import { Button, Checkbox, Form } from "antd";
 import { useNavigate } from "react-router-dom";
-import {
-  StyledButton,
-  StyledGrid,
-  StyledInput,
-  StyledText,
-} from "../shared/sharedLayouts";
+import { StyledGrid, StyledInput, StyledText } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import Title from "antd/es/typography/Title";
 
@@ -60,9 +55,9 @@ const Login: React.FC = () => {
         </Form.Item>
 
         <Form.Item>
-          <StyledButton type="primary" htmlType="submit">
-            LOGIN
-          </StyledButton>
+          <Button type="primary" htmlType="submit">
+            Login
+          </Button>
         </Form.Item>
       </Form>
     </StyledGrid>

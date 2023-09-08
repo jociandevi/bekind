@@ -1,7 +1,6 @@
 import React from "react";
-import { StyledGrid } from "../shared/sharedLayouts";
+import { CircleImage, StyledGrid } from "../shared/sharedLayouts";
 import { Tabs } from "antd";
-import { devices } from "../shared/imageCardL";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
@@ -10,17 +9,7 @@ import Title from "antd/es/typography/Title";
 import BadgeList from "./badgeList";
 import { user } from "../../common/mockData";
 import GroupedBarChart from "../shared/groupedBarChart";
-
-const Image = styled.img`
-  width: 30vw;
-  height: 30vw;
-  @media only screen and ${devices.md} {
-    width: 15vw;
-    height: 15vw;
-  }
-  object-fit: cover;
-  border-radius: 50%;
-`;
+import { useMediaQueries } from "../../common/mediaQueryHook";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingS};
@@ -43,6 +32,8 @@ const StyledTab = styled(Tabs)`
 `;
 
 const Profile: React.FC = () => {
+  const { md } = useMediaQueries();
+
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -80,7 +71,7 @@ const Profile: React.FC = () => {
 
   return (
     <StyledGrid>
-      <Image src={user.photoUrl} alt={user.firstName} />
+      <CircleImage src={user.photoUrl} alt={user.firstName} md={md} />
       <Title level={4}>
         {user.firstName} {user.lastName}
       </Title>

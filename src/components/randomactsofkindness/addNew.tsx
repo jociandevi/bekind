@@ -1,8 +1,6 @@
 import React, { useRef, useState } from "react";
 import {
   CenterAlignedFlexbox,
-  IconButton,
-  StyledButton,
   StyledGrid,
   StyledInput,
 } from "../shared/sharedLayouts";
@@ -71,8 +69,8 @@ const AddNew: React.FC = () => {
         }}
       >
         <Title level={3}>Add New</Title>
-        <IconButton
-          backgroundcolor={variables.black}
+        <Button
+          style={{ border: "none" }}
           icon={<UserOutlined />}
           onClick={() => navigate("/profile")}
         />
@@ -150,13 +148,13 @@ const AddNew: React.FC = () => {
           ]}
         />
         <Form.Item>
-          <StyledButton
+          <Button
             type="primary"
             htmlType="submit"
             style={{ marginTop: variables.spacingS }}
           >
             Save
-          </StyledButton>
+          </Button>
         </Form.Item>
       </Form>
     </StyledGrid>

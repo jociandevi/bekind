@@ -1,4 +1,4 @@
-import { Alert, Button, Input } from "antd";
+import { Alert, Input } from "antd";
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
@@ -8,9 +8,14 @@ export const StyledGrid = styled.div`
   margin: 10%;
 `;
 
+export const ListLayout = styled.div`
+  display: grid;
+  justify-content: center;
+`;
+
 export const HorizontalScrollContainer = styled.div`
   display: flex;
-  gap: 12px;
+  gap: ${variables.spacingS}};
   overflow-x: scroll;
   scrollbar-width: none;
   padding: 12px 0 20px 5px;
@@ -42,16 +47,6 @@ export const FlexboxCol = styled.div`
 
 export const CenterAlignedFlexboxCol = styled(FlexboxCol)`
   align-items: center;
-`;
-
-export const StyledButton = styled(Button)`
-  height: 40px;
-`;
-
-export const IconButton = styled(Button)<{ backgroundcolor?: string }>`
-  color: white;
-  background-color: ${(props) => props.backgroundcolor || "inherit"};
-  border: none;
 `;
 
 export const StyledInput = styled(Input)`
@@ -88,4 +83,24 @@ export const StyledText = styled(Text)<{
 export const TextDisplayS = styled.div<{ color?: string }>`
   font-size: 10px;
   color: ${(props) => props.color ?? variables.black}};
+`;
+
+export const ResponsiveImage = styled.img<{
+  md?: boolean;
+  biggerImage?: string;
+  smImage?: string;
+}>`
+  width: ${(props) =>
+    props.md ? props.smImage ?? "15vw" : props.biggerImage ?? "30vw"};
+  height: ${(props) =>
+    props.md ? props.smImage ?? "15vw" : props.biggerImage ?? "30vw"};
+  object-fit: cover;
+  border-radius: ${variables.borderRadius}px;
+`;
+
+export const CircleImage = styled.img<{ md?: boolean }>`
+  width: ${(props) => (props.md ? "15vw" : "30vw")};
+  height: ${(props) => (props.md ? "15vw" : "30vw")};
+  object-fit: cover;
+  border-radius: 50%;
 `;
