@@ -19,6 +19,12 @@
       "type": "image/png",
       "sizes": "384x384",
       "purpose": "any"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
