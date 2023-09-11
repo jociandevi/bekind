@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
+import AntdModal from "./modal";
+import DownloadImg from "../../img/inbox.png";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -11,10 +11,10 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
-const InstallButton: React.FC = () => {
+const InstallModal: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
-  const [isVisible, setVisibleState] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
@@ -23,7 +23,7 @@ const InstallButton: React.FC = () => {
 
       // Stash the event so it can be triggered later.
       setDeferredPrompt(event);
-      setVisibleState(true);
+      setIsModalOpen(true);
     };
 
     (window as any).addEventListener(
@@ -39,11 +39,8 @@ const InstallButton: React.FC = () => {
     };
   }, [deferredPrompt]);
 
-  if (!isVisible) {
-    return null;
-  }
-
-  const onClick = () => {
+  const handleOk = () => {
+    setIsModalOpen(false);
     deferredPrompt?.prompt();
     deferredPrompt?.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === "accepted") {
@@ -56,10 +53,18 @@ const InstallButton: React.FC = () => {
   };
 
   return (
-    <Button icon={<DownloadOutlined />} onClick={onClick}>
-      Install
-    </Button>
+    <AntdModal
+      title="Install the app"
+      isModalOpen={isModalOpen}
+      setIsModalOpen={setIsModalOpen}
+      onOk={handleOk}
+      description="Get our free app. It won't take up space on your phone."
+      imageUrl={DownloadImg}
+      isProfileImage
+      okText="Sure!"
+      cancelText="Not today"
+    />
   );
 };
 
-export default InstallButton;
+export default InstallModal;

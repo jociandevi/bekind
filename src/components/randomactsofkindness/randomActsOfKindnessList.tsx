@@ -14,7 +14,7 @@ import AntdModal from "../shared/modal";
 import BottomMenu from "../shared/bottomMenu";
 import Title from "antd/es/typography/Title";
 import { categories, raoks, userToPraise } from "../../common/mockData";
-import InstallButton from "../shared/installButton";
+import InstallModal from "../shared/installModal";
 
 const RandomActOfKindnessList: React.FC = () => {
   // backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
@@ -52,13 +52,14 @@ const RandomActOfKindnessList: React.FC = () => {
           okText="Sure!"
           cancelText="Not today"
         />
+        <InstallModal />
         <Flexbox style={{ margin: variables.spacingS }}>
           <Button
             style={{ border: "none" }}
             icon={<UserOutlined />}
             onClick={() => navigate("/profile")}
           />
-          <InstallButton />
+          <InstallModal />
         </Flexbox>
 
         <Form
