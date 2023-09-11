@@ -9,15 +9,12 @@ import { Button, Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../../common/variables";
-import {
-  UserOutlined,
-  PlusOutlined,
-  DownloadOutlined,
-} from "@ant-design/icons";
+import { UserOutlined, PlusOutlined } from "@ant-design/icons";
 import AntdModal from "../shared/modal";
 import BottomMenu from "../shared/bottomMenu";
 import Title from "antd/es/typography/Title";
 import { categories, raoks, userToPraise } from "../../common/mockData";
+import InstallButton from "../shared/installButton";
 
 const RandomActOfKindnessList: React.FC = () => {
   // backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
@@ -61,10 +58,7 @@ const RandomActOfKindnessList: React.FC = () => {
             icon={<UserOutlined />}
             onClick={() => navigate("/profile")}
           />
-          <Button
-            icon={<DownloadOutlined />}
-            onClick={() => navigate("/profile")}
-          />
+          <InstallButton />
         </Flexbox>
 
         <Form

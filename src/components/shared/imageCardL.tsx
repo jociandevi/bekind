@@ -34,7 +34,7 @@ const OverlayIconButton = styled(Button)`
   top: 15px;
   right: 15px;
   color: ${variables.white};
-  background: none;
+  background-color: #1816188c;
 `;
 
 interface Props {
