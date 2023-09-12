@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { theme } from "./common/theme";
+import { AuthProvider } from "./common/authProvider";
 
 const Login = lazy(() => import("./components/login/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
@@ -64,7 +65,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  );
 }
 
 export default App;

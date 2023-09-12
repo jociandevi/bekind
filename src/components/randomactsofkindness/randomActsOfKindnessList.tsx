@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import {
   Flexbox,
   HorizontalScrollContainer,
@@ -16,8 +16,11 @@ import Title from "antd/es/typography/Title";
 import { categories, raoks, userToPraise } from "../../common/mockData";
 import InstallModal from "../shared/installModal";
 import InstallButton from "../shared/installButton";
+import { AuthContext } from "../../common/authProvider";
+import GoogleLoginButton from "../shared/googleLoginButton";
 
 const RandomActOfKindnessList: React.FC = () => {
+  const { user } = useContext(AuthContext);
   // backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
@@ -53,13 +56,16 @@ const RandomActOfKindnessList: React.FC = () => {
           okText="Sure!"
           cancelText="Not today"
         />
-        <InstallModal />
         <Flexbox style={{ margin: variables.spacingS }}>
-          <Button
-            style={{ border: "none" }}
-            icon={<UserOutlined />}
-            onClick={() => navigate("/profile")}
-          />
+          {user ? (
+            <Button
+              style={{ border: "none" }}
+              icon={<UserOutlined />}
+              onClick={() => navigate("/profile")}
+            />
+          ) : (
+            <GoogleLoginButton />
+          )}
           <InstallButton />
           <InstallModal />
         </Flexbox>

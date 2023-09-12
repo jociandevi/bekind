@@ -1,30 +1,43 @@
-import { StyledGrid } from "../shared/sharedLayouts";
+import { useContext, useEffect } from "react";
+import GoogleLoginButton from "../shared/googleLoginButton";
+import { AuthContext } from "../../common/authProvider";
+import { useNavigate } from "react-router-dom";
+import { CenterAlignedFlexboxCol, StyledText } from "../shared/sharedLayouts";
 import Title from "antd/es/typography/Title";
+import { variables } from "../../common/variables";
+import { Button } from "antd";
+import SunriseImage from "../shared/sunriseImage";
+import styled from "styled-components";
+
+const LoginContainer = styled(CenterAlignedFlexboxCol)`
+  height: 80vh;
+  justify-content: space-evenly;
+`;
 
 const Login: React.FC = () => {
-  return (
-    <StyledGrid>
-      <Title level={3}>Hey!</Title>
-      <div
-        id="g_id_onload"
-        data-client_id="1089149343789-4eck6r05fbi0nesua0lkhn4udf7d5303.apps.googleusercontent.com"
-        data-context="use"
-        data-ux_mode="popup"
-        data-callback="https://nice-field-0f61b6b03.3.azurestaticapps.net/"
-        data-auto_select="true"
-        data-itp_support="true"
-      ></div>
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-      <div
-        className="g_id_signin"
-        data-type="standard"
-        data-shape="rectangular"
-        data-theme="outline"
-        data-text="signin_with"
-        data-size="large"
-        data-logo_alignment="left"
-      ></div>
-    </StyledGrid>
+  useEffect(() => {
+    if (user) {
+      navigate("/random-act-of-kindness");
+    }
+  }, [user, navigate]);
+
+  return (
+    <LoginContainer>
+      <SunriseImage />
+      <CenterAlignedFlexboxCol>
+        <Title level={3}>Welcome!</Title>
+        <StyledText color={variables.middleGray} fontSize="14px">
+          Ready Hero 1? Your journey begins... now!
+        </StyledText>
+      </CenterAlignedFlexboxCol>
+      <GoogleLoginButton />
+      <Button type="link" onClick={() => navigate("/random-act-of-kindness")}>
+        ...or skip for now
+      </Button>
+    </LoginContainer>
   );
 };
 
