@@ -1,65 +1,29 @@
-import { Button, Checkbox, Form } from "antd";
-import { useNavigate } from "react-router-dom";
-import { StyledGrid, StyledInput, StyledText } from "../shared/sharedLayouts";
-import { variables } from "../../common/variables";
+import { StyledGrid } from "../shared/sharedLayouts";
 import Title from "antd/es/typography/Title";
 
 const Login: React.FC = () => {
-  const navigate = useNavigate();
-  const onFinish = (values: any) => {
-    // lets make a backend call here to authenticate
-    navigate("/random-act-of-kindness");
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
-
   return (
     <StyledGrid>
       <Title level={3}>Hey!</Title>
-      <StyledText
-        color={variables.middleGray}
-        fontSize="14px"
-        fontWeight="inherit"
-      >
-        Absolutely anything will let you in right now.
-      </StyledText>
-      <Form onFinish={onFinish} onFinishFailed={onFinishFailed}>
-        <Form.Item
-          name="username"
-          rules={[{ required: true, message: "Please input your username!" }]}
-          style={{ marginTop: "40px", marginBottom: "40px" }}
-        >
-          <StyledInput placeholder="Username" />
-        </Form.Item>
+      <div
+        id="g_id_onload"
+        data-client_id="1089149343789-4eck6r05fbi0nesua0lkhn4udf7d5303.apps.googleusercontent.com"
+        data-context="use"
+        data-ux_mode="popup"
+        data-callback="https://nice-field-0f61b6b03.3.azurestaticapps.net/"
+        data-auto_select="true"
+        data-itp_support="true"
+      ></div>
 
-        <Form.Item
-          name="password"
-          rules={[{ required: true, message: "Please input your password!" }]}
-          style={{ marginTop: "40px", marginBottom: "40px" }}
-        >
-          <StyledInput type="password" placeholder="Password" />
-        </Form.Item>
-
-        <Form.Item name="remember" valuePropName="checked">
-          <Checkbox>
-            <StyledText
-              color={variables.black}
-              fontSize="12px"
-              fontWeight="bold"
-            >
-              Remember me
-            </StyledText>
-          </Checkbox>
-        </Form.Item>
-
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Login
-          </Button>
-        </Form.Item>
-      </Form>
+      <div
+        className="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-logo_alignment="left"
+      ></div>
     </StyledGrid>
   );
 };
