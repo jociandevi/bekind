@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Flexbox, ResponsiveImage, StyledText } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
@@ -9,6 +9,7 @@ import GrowthImage from "../../img/growth.png";
 import FireImg from "../../img/fire.png";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import { AuthContext } from "../../common/authProvider";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -45,6 +46,7 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const { md } = useMediaQueries();
+  const { user } = useContext(AuthContext);
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -68,10 +70,15 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
         imageUrl={GrowthImage}
         okText="Yes, let's go!"
       />
+
       <AntdModal
         isModalOpen={isFeedbackModalOpen}
         setIsModalOpen={setIsFeedbackModalOpen}
-        title="Nice job, Lisa! That's a 5-day Streak!"
+        title={
+          user
+            ? `Nice job, ${user.given_name}! That's a 5-day Streak!`
+            : "Nice job! Login to keep track of your streak!"
+        }
         description="Thank you for making the world a better place!"
         imageUrl={FireImg}
         footer={

@@ -3,13 +3,14 @@ import {
   Flexbox,
   HorizontalScrollContainer,
   ListLayout,
+  ProfileImageSm,
   StyledSearch,
 } from "../shared/sharedLayouts";
 import { Button, Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../../common/variables";
-import { UserOutlined, PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 import AntdModal from "../shared/modal";
 import BottomMenu from "../shared/bottomMenu";
 import Title from "antd/es/typography/Title";
@@ -60,7 +61,7 @@ const RandomActOfKindnessList: React.FC = () => {
           {user ? (
             <Button
               style={{ border: "none" }}
-              icon={<UserOutlined />}
+              icon={<ProfileImageSm src={user.picture} />}
               onClick={() => navigate("/profile")}
             />
           ) : (

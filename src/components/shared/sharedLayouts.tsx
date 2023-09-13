@@ -104,3 +104,10 @@ export const CircleImage = styled.img<{ md?: boolean }>`
   object-fit: cover;
   border-radius: 50%;
 `;
+
+export const ProfileImageSm = styled.img`
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+`;

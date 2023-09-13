@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { CircleImage, StyledGrid } from "../shared/sharedLayouts";
 import { Tabs } from "antd";
 import { variables } from "../../common/variables";
@@ -10,6 +10,8 @@ import BadgeList from "./badgeList";
 import { user } from "../../common/mockData";
 import GroupedBarChart from "../shared/groupedBarChart";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import { AuthContext } from "../../common/authProvider";
+import { useNavigate } from "react-router-dom";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingS};
@@ -33,6 +35,18 @@ const StyledTab = styled(Tabs)`
 
 const Profile: React.FC = () => {
   const { md } = useMediaQueries();
+  const { user: googleUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!googleUser) {
+      navigate("/random-act-of-kindness");
+    }
+  }, [navigate, googleUser]);
+
+  if (!googleUser) {
+    return null;
+  }
 
   const onChange = (key: string) => {
     console.log(key);
@@ -71,9 +85,13 @@ const Profile: React.FC = () => {
 
   return (
     <StyledGrid>
-      <CircleImage src={user.photoUrl} alt={user.firstName} md={md} />
+      <CircleImage
+        src={googleUser.picture}
+        alt={`Profile picture of ${googleUser.name}`}
+        md={md}
+      />
       <Title level={4}>
-        {user.firstName} {user.lastName}
+        {googleUser.given_name} {googleUser.family_name}
       </Title>
       <StyledTab defaultActiveKey="1" items={items} onChange={onChange} />
     </StyledGrid>
