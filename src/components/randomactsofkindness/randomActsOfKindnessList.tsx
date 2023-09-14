@@ -22,7 +22,9 @@ import GoogleLoginButton from "../shared/googleLoginButton";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
-  // backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
+  // API call >> backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
+  // API call >> GET /kindnessHistory/user >> has the user done a kindness today already?
+  const [isPickEnabled, setIsPickEnabled] = useState(true);
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
@@ -89,7 +91,12 @@ const RandomActOfKindnessList: React.FC = () => {
               {raoks
                 .filter((item) => item.category === category.name)
                 .map((item) => (
-                  <ImageCardL item={item} key={item.id} />
+                  <ImageCardL
+                    item={item}
+                    key={item.id}
+                    isPickEnabled={isPickEnabled}
+                    setIsPickEnabled={setIsPickEnabled}
+                  />
                 ))}
             </HorizontalScrollContainer>
           </Fragment>

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Flexbox, ResponsiveImage, StyledText } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import { HeartFilled } from "@ant-design/icons";
 import AntdModal from "./modal";
 import GrowthImage from "../../img/growth.png";
@@ -40,9 +40,15 @@ const OverlayIconButton = styled(Button)`
 
 interface Props {
   item: { id: number; title: string; description?: string; imageUrl: string };
+  isPickEnabled: boolean;
+  setIsPickEnabled: (value: boolean) => void;
 }
 
-const ImageCardL: React.FC<Props> = ({ item }) => {
+const ImageCardL: React.FC<Props> = ({
+  item,
+  isPickEnabled,
+  setIsPickEnabled,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const { md } = useMediaQueries();
@@ -52,9 +58,10 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
     setIsModalOpen(false);
     // todo: lets make a backend call to add this to user's profile
     setIsFeedbackModalOpen(true);
+    setIsPickEnabled(false);
   };
 
-  const onPlay = () => {
+  const onPick = () => {
     // lets ask the user if this is today's challenge
     setIsModalOpen(true);
   };
@@ -105,9 +112,20 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
           {item.description}
         </StyledText>
         <Flexbox style={{ margin: `${variables.spacingXxs} 0` }}>
-          <Button type="primary" onClick={onPlay}>
-            Pick
-          </Button>
+          {isPickEnabled ? (
+            <Button type="primary" onClick={onPick}>
+              Pick
+            </Button>
+          ) : (
+            <Tooltip
+              title="You already did your part today in making the world better!"
+              trigger={"hover"}
+            >
+              <Button type="primary" disabled>
+                Pick
+              </Button>
+            </Tooltip>
+          )}
         </Flexbox>
       </PaddingContainer>
     </CardContainer>
