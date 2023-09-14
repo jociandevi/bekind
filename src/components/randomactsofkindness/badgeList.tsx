@@ -4,11 +4,6 @@ import Badge from "../shared/badge";
 import { badges } from "../../common/mockData";
 
 const BadgeList: React.FC = () => {
-  // 1. lets make more + meaningful badges
-  // 2. lets create rules for them - add the necessary actions
-  // 3. when designing push notifications, let's offer actions that take the user to the next badge
-  // 4. lets put the badge on the profile
-
   return (
     <CenterAlignedFlexbox>
       {badges.map((item) => (
