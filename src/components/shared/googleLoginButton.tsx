@@ -25,6 +25,8 @@ const GoogleLoginButton: React.FC = () => {
       callback: handleCallbackResponse,
     });
 
+    console.log("google login button", process.env.REACT_APP_GOOGLE_CLIENT_ID);
+
     google.accounts.id.renderButton(document.getElementById("signInDiv")!, {
       theme: "outline",
       size: "large",
