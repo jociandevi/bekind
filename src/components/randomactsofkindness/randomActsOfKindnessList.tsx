@@ -25,6 +25,9 @@ const RandomActOfKindnessList: React.FC = () => {
   // API call >> backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
   // API call >> GET /kindnessHistory/user >> has the user done a kindness today already?
   const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const [form] = Form.useForm();
+  const [kindnessActions, setKindnessActions] = useState(raoks);
+  let searchTimeout: NodeJS.Timeout | null = null;
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
@@ -39,10 +42,35 @@ const RandomActOfKindnessList: React.FC = () => {
 
   const onFinish = (values: any) => {
     // lets filter
+    console.log(values);
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
+  };
+
+  const onChange = (_e?: React.ChangeEvent<HTMLInputElement>) => {
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
+    }
+
+    // Search after 0.7 seconds
+    searchTimeout = setTimeout(() => {
+      onSearch();
+    }, 700);
+  };
+
+  const onSearch = (_e?: React.KeyboardEvent<HTMLInputElement>) => {
+    const searchValue = form.getFieldValue("search");
+    const searchTerm = searchValue.toLowerCase();
+
+    const filteredRaoks = raoks.filter((item) => {
+      const title = item.title.toLowerCase();
+      const description = item.description?.toLowerCase();
+      return title.includes(searchTerm) || description?.includes(searchTerm);
+    });
+
+    setKindnessActions(filteredRaoks);
   };
 
   return (
@@ -77,28 +105,38 @@ const RandomActOfKindnessList: React.FC = () => {
           style={{ margin: `0 ${variables.spacingS} ${variables.spacingXs} ` }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
+          form={form}
         >
           <Form.Item name="search">
-            <StyledSearch placeholder="Search" />
+            <StyledSearch
+              placeholder="Search"
+              onChange={onChange}
+              onPressEnter={onSearch}
+            />
           </Form.Item>
         </Form>
         {categories.map((category) => (
           <Fragment key={category.id}>
-            <Title level={3} style={{ margin: `0 ${variables.spacingS}` }}>
-              {category.name}
-            </Title>
-            <HorizontalScrollContainer>
-              {raoks
-                .filter((item) => item.category === category.name)
-                .map((item) => (
-                  <ImageCardL
-                    item={item}
-                    key={item.id}
-                    isPickEnabled={isPickEnabled}
-                    setIsPickEnabled={setIsPickEnabled}
-                  />
-                ))}
-            </HorizontalScrollContainer>
+            {kindnessActions.filter((item) => item.category === category.name)
+              .length > 0 && (
+              <>
+                <Title level={3} style={{ margin: `0 ${variables.spacingS}` }}>
+                  {category.name}
+                </Title>
+                <HorizontalScrollContainer>
+                  {kindnessActions
+                    .filter((item) => item.category === category.name)
+                    .map((item) => (
+                      <ImageCardL
+                        item={item}
+                        key={item.id}
+                        isPickEnabled={isPickEnabled}
+                        setIsPickEnabled={setIsPickEnabled}
+                      />
+                    ))}
+                </HorizontalScrollContainer>
+              </>
+            )}
           </Fragment>
         ))}
       </ListLayout>

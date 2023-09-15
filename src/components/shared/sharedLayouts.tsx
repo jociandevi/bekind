@@ -10,7 +10,7 @@ export const StyledGrid = styled.div`
 
 export const ListLayout = styled.div`
   display: grid;
-  justify-content: center;
+  width: 100vw;
 `;
 
 export const HorizontalScrollContainer = styled.div`
