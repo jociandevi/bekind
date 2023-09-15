@@ -207,42 +207,42 @@ export const userStats: UserStats = {
   lastName: "Bailey",
   historicalData: [
     {
-      month: "January",
+      month: "June",
       label: "You",
       value: 3,
     },
     {
-      month: "January",
+      month: "June",
       label: "Average",
       value: 5,
     },
     {
-      month: "February",
+      month: "July",
       label: "You",
       value: 12,
     },
     {
-      month: "February",
+      month: "July",
       label: "Average",
       value: 12,
     },
     {
-      month: "March",
+      month: "August",
       label: "You",
       value: 9,
     },
     {
-      month: "March",
+      month: "August",
       label: "Average",
       value: 18,
     },
     {
-      month: "April",
+      month: "September",
       label: "You",
       value: 10,
     },
     {
-      month: "April",
+      month: "September",
       label: "Average",
       value: 11,
     },

@@ -10,8 +10,11 @@ import {
 import { theme } from "./common/theme";
 import { AuthProvider } from "./common/authProvider";
 
-const Login = lazy(() => import("./components/login/login"));
+const Login = lazy(() => import("./components/randomactsofkindness/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
+const Statistics = lazy(
+  () => import("./components/randomactsofkindness/statistics")
+);
 const AddNew = lazy(() => import("./components/randomactsofkindness/addNew"));
 const RandomActOfKindnessList = lazy(
   () => import("./components/randomactsofkindness/randomActsOfKindnessList")
@@ -36,6 +39,16 @@ const router = createBrowserRouter(
           <Suspense fallback={<>...</>}>
             <ConfigProvider theme={{ ...theme }}>
               <Profile />
+            </ConfigProvider>
+          </Suspense>
+        }
+      />
+      <Route
+        path="statistics"
+        element={
+          <Suspense fallback={<>...</>}>
+            <ConfigProvider theme={{ ...theme }}>
+              <Statistics />
             </ConfigProvider>
           </Suspense>
         }

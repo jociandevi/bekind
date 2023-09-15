@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CircleImage, StyledGrid } from "../shared/sharedLayouts";
-import { Tabs } from "antd";
+import { CircleImage, Flexbox, StyledGrid } from "../shared/sharedLayouts";
+import { Button, Tabs } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
@@ -8,11 +8,11 @@ import ImageCardM from "../shared/imageCardM";
 import Title from "antd/es/typography/Title";
 import BadgeList from "./badgeList";
 import { user } from "../../common/mockData";
-import GroupedBarChart from "../shared/groupedBarChart";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Pants } from "../../img/badges/pants.svg";
+import { BarChartOutlined } from "@ant-design/icons";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingS};
@@ -75,7 +75,6 @@ const Profile: React.FC = () => {
       label: `History`,
       children: (
         <>
-          <GroupedBarChart />
           {user.history.map((item) => (
             <ImageCardM item={item} key={item.id} />
           ))}
@@ -106,9 +105,7 @@ const Profile: React.FC = () => {
   };
 
   const renderLatestAchievedBadge = () => {
-    // get from last achieved badge from backend
-
-    // display it's image
+    // get from last achieved badge from backend and show that
     return (
       <BadgeContainer md={md} onClick={() => setActiveKey("3")}>
         <Pants
@@ -122,15 +119,26 @@ const Profile: React.FC = () => {
 
   return (
     <StyledGrid>
-      <ProfileImageContainer md={md}>
-        <CircleImage
-          src={googleUser.picture}
-          alt={`Profile picture of ${googleUser.name}`}
-          md={md}
-          style={{ position: "absolute", top: "0", left: "0" }}
+      <Flexbox
+        style={{ justifyContent: "space-between", alignItems: "flex-start" }}
+      >
+        <ProfileImageContainer md={md}>
+          <CircleImage
+            src={googleUser.picture}
+            alt={`Profile picture of ${googleUser.name}`}
+            md={md}
+            style={{ position: "absolute", top: "0", left: "0" }}
+          />
+          {renderLatestAchievedBadge()}
+        </ProfileImageContainer>
+        <Button
+          icon={<BarChartOutlined />}
+          style={{ border: "none" }}
+          size="large"
+          onClick={() => navigate("/statistics")}
         />
-        {renderLatestAchievedBadge()}
-      </ProfileImageContainer>
+      </Flexbox>
+
       <Title level={4}>
         {googleUser.given_name} {googleUser.family_name}
       </Title>

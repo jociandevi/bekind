@@ -19,12 +19,16 @@ const ProfileStatistics: React.FC = () => {
     new Date().setDate(today.getDate() - 30)
   ).toLocaleString("default", { month: "long" });
   const thisMonth = userStats.historicalData.find(
-    (item) => item.label === currentMonth && item.label === "You"
+    (item) => item.month === currentMonth && item.label === "You"
+  );
+  const thisMonthAverage = userStats.historicalData.find(
+    (item) => item.month === currentMonth && item.label === "Average"
   );
   const lastMonth = userStats.historicalData.find(
-    (item) => item.label === lastMontName && item.label === "You"
+    (item) => item.month === lastMontName && item.label === "You"
   );
-  const comparedToOthers = (thisMonth!.value / thisMonth!.value - 1) * 100;
+  const comparedToOthers =
+    (thisMonth!.value / thisMonthAverage!.value - 1) * 100;
   const moreThanOthers = comparedToOthers > 0;
   const comparedToOthersText = moreThanOthers ? "More" : "Less";
 

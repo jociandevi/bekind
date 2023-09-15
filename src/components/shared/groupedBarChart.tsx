@@ -55,6 +55,7 @@ const GroupedBarChart: React.FC = () => {
       style={{
         justifyContent: "space-between",
         margin: `${variables.spacingS} 0`,
+        position: "relative",
       }}
     >
       <LegendContainer>
