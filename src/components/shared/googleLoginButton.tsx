@@ -20,7 +20,8 @@ const GoogleLoginButton: React.FC = () => {
     };
 
     google.accounts.id.initialize({
-      client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID || "",
+      client_id:
+        "1089149343789-4eck6r05fbi0nesua0lkhn4udf7d5303.apps.googleusercontent.com",
       callback: handleCallbackResponse,
     });
 
