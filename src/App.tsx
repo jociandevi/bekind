@@ -27,9 +27,7 @@ const router = createBrowserRouter(
         path="random-act-of-kindness"
         element={
           <Suspense fallback={<>...</>}>
-            <ConfigProvider theme={{ ...theme }}>
-              <RandomActOfKindnessList />
-            </ConfigProvider>
+            <RandomActOfKindnessList />
           </Suspense>
         }
       />
@@ -37,9 +35,7 @@ const router = createBrowserRouter(
         path="profile"
         element={
           <Suspense fallback={<>...</>}>
-            <ConfigProvider theme={{ ...theme }}>
-              <Profile />
-            </ConfigProvider>
+            <Profile />
           </Suspense>
         }
       />
@@ -47,9 +43,7 @@ const router = createBrowserRouter(
         path="statistics"
         element={
           <Suspense fallback={<>...</>}>
-            <ConfigProvider theme={{ ...theme }}>
-              <Statistics />
-            </ConfigProvider>
+            <Statistics />
           </Suspense>
         }
       />
@@ -57,9 +51,7 @@ const router = createBrowserRouter(
         path="new"
         element={
           <Suspense fallback={<>...</>}>
-            <ConfigProvider theme={{ ...theme }}>
-              <AddNew />
-            </ConfigProvider>
+            <AddNew />
           </Suspense>
         }
       />
@@ -67,9 +59,7 @@ const router = createBrowserRouter(
         path=""
         element={
           <Suspense fallback={<>...</>}>
-            <ConfigProvider theme={{ ...theme }}>
-              <Login />
-            </ConfigProvider>
+            <Login />
           </Suspense>
         }
       />
@@ -80,7 +70,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <AuthProvider>
-      <RouterProvider router={router} />
+      <ConfigProvider theme={{ ...theme }}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </AuthProvider>
   );
 }

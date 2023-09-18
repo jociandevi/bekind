@@ -10,9 +10,7 @@ import { Button, Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
 import { useNavigate } from "react-router-dom";
 import { variables } from "../../common/variables";
-import { PlusOutlined } from "@ant-design/icons";
 import AntdModal from "../shared/modal";
-import BottomMenu from "../shared/bottomMenu";
 import Title from "antd/es/typography/Title";
 import { categories, raoks, userToPraise } from "../../common/mockData";
 import InstallModal from "../shared/installModal";
@@ -41,8 +39,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
-    // lets filter
-    console.log(values);
+    onSearch(values.search);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -140,16 +137,6 @@ const RandomActOfKindnessList: React.FC = () => {
           </Fragment>
         ))}
       </ListLayout>
-      <BottomMenu
-        buttons={[
-          {
-            id: 1,
-            icon: <PlusOutlined />,
-            onClick: () => navigate("/new"),
-            text: "Add new",
-          },
-        ]}
-      />
     </>
   );
 };
