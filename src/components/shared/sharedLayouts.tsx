@@ -98,6 +98,16 @@ export const ResponsiveImage = styled.img<{
   border-radius: ${variables.borderRadius}px;
 `;
 
+export const ImageSizeL = styled.img<{
+  md?: boolean;
+}>`
+  width: ${(props) => (props.md ? "40vw" : "100vw")};
+  height: ${(props) => (props.md ? "40vw" : "100vw")};
+  object-fit: cover;
+  border-radius: ${variables.borderRadiusPercent}%
+    ${variables.borderRadiusPercent}% 0 ${variables.borderRadiusPercent}%;
+`;
+
 export const CircleImage = styled.img<{ md?: boolean }>`
   width: ${(props) => (props.md ? "15vw" : "30vw")};
   height: ${(props) => (props.md ? "15vw" : "30vw")};
@@ -105,9 +115,6 @@ export const CircleImage = styled.img<{ md?: boolean }>`
   border-radius: 50%;
 `;
 
-export const ProfileImageSm = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
+export const ImageContainer = styled.div`
+  position: relative;
 `;

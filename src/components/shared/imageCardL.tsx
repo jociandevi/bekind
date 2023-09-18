@@ -1,5 +1,10 @@
 import React, { useContext, useState } from "react";
-import { Flexbox, ResponsiveImage, StyledText } from "./sharedLayouts";
+import {
+  Flexbox,
+  ImageContainer,
+  ResponsiveImage,
+  StyledText,
+} from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Button, Tooltip } from "antd";
@@ -10,6 +15,7 @@ import FireImg from "../../img/fire.png";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
+import { useNavigate } from "react-router-dom";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -20,14 +26,11 @@ const CardContainer = styled.div<{
   border-radius: ${variables.borderRadius}px;
   scroll-snap-align: center;
   scroll-snap-stop: always;
+  cursor: pointer;
 `;
 
 const PaddingContainer = styled.div`
   padding: 0 ${variables.spacingXs};
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
 `;
 
 const OverlayIconButton = styled(Button)`
@@ -53,6 +56,7 @@ const ImageCardL: React.FC<Props> = ({
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const { md } = useMediaQueries();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -67,7 +71,7 @@ const ImageCardL: React.FC<Props> = ({
   };
 
   return (
-    <CardContainer md={md}>
+    <CardContainer md={md} onClick={() => navigate(`/kindness/${item.id}`)}>
       <AntdModal
         title="Pick this challenge?"
         isModalOpen={isModalOpen}

@@ -12,5 +12,6 @@ export const theme: ThemeConfig = {
     boxShadow: "rgba(0, 0, 0, 0.25) 0px 5px 15px;",
     boxShadowSecondary: "rgba(0, 0, 0, 0.25) 0px 5px 15px;",
     borderRadius: variables.borderRadius,
+    lineHeight: 2,
   },
 };

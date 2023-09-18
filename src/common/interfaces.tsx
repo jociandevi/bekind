@@ -14,6 +14,7 @@ export interface KindnessAction {
   id: number;
   title: string;
   description?: string;
+  longDescription?: string;
   category: CategoryNames;
   imageUrl: string;
 }

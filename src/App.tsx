@@ -16,6 +16,9 @@ const Statistics = lazy(
   () => import("./components/randomactsofkindness/statistics")
 );
 const AddNew = lazy(() => import("./components/randomactsofkindness/addNew"));
+const KindnessDetails = lazy(
+  () => import("./components/randomactsofkindness/kindnessDetails")
+);
 const RandomActOfKindnessList = lazy(
   () => import("./components/randomactsofkindness/randomActsOfKindnessList")
 );
@@ -24,10 +27,18 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Outlet />}>
       <Route
-        path="random-act-of-kindness"
+        path="kindness"
         element={
           <Suspense fallback={<>...</>}>
             <RandomActOfKindnessList />
+          </Suspense>
+        }
+      />
+      <Route
+        path="kindness/:id"
+        element={
+          <Suspense fallback={<>...</>}>
+            <KindnessDetails />
           </Suspense>
         }
       />
@@ -55,6 +66,7 @@ const router = createBrowserRouter(
           </Suspense>
         }
       />
+
       <Route
         path=""
         element={

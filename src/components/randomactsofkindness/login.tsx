@@ -43,7 +43,7 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/random-act-of-kindness");
+      navigate("/kindness");
     }
   }, [user, navigate]);
 
@@ -59,7 +59,7 @@ const Login: React.FC = () => {
           </StyledText>
         </CenterAlignedFlexboxCol>
         <GoogleLoginButton />
-        <Button type="link" onClick={() => navigate("/random-act-of-kindness")}>
+        <Button type="link" onClick={() => navigate("/kindness")}>
           ...or skip for now
         </Button>
       </CenterAlignedFlexboxCol>

@@ -92,7 +92,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     if (!googleUser) {
-      navigate("/random-act-of-kindness");
+      navigate("/kindness");
     }
   }, [navigate, googleUser]);
 

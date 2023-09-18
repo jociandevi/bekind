@@ -3,12 +3,10 @@ import {
   Flexbox,
   HorizontalScrollContainer,
   ListLayout,
-  ProfileImageSm,
   StyledSearch,
 } from "../shared/sharedLayouts";
-import { Button, Form } from "antd";
+import { Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
-import { useNavigate } from "react-router-dom";
 import { variables } from "../../common/variables";
 import AntdModal from "../shared/modal";
 import Title from "antd/es/typography/Title";
@@ -16,7 +14,7 @@ import { categories, raoks, userToPraise } from "../../common/mockData";
 import InstallModal from "../shared/installModal";
 import InstallButton from "../shared/installButton";
 import { AuthContext } from "../../common/authProvider";
-import GoogleLoginButton from "../shared/googleLoginButton";
+import UserProfileIcon from "../shared/userProfileIcon";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -33,10 +31,8 @@ const RandomActOfKindnessList: React.FC = () => {
 
   const handleOk = () => {
     setIsModalOpen(false);
-    // todo: lets make a backend call to send a cheer message to these users
+    // API call: lets make a backend call to send a cheer message to these users
   };
-
-  const navigate = useNavigate();
 
   const onFinish = (values: any) => {
     onSearch(values.search);
@@ -85,15 +81,7 @@ const RandomActOfKindnessList: React.FC = () => {
           cancelText="Not today"
         />
         <Flexbox style={{ margin: variables.spacingS }}>
-          {user ? (
-            <Button
-              style={{ border: "none" }}
-              icon={<ProfileImageSm src={user.picture} />}
-              onClick={() => navigate("/profile")}
-            />
-          ) : (
-            <GoogleLoginButton />
-          )}
+          <UserProfileIcon user={user} />
           <InstallButton />
           <InstallModal />
         </Flexbox>

@@ -19,6 +19,10 @@ export const variables = {
   spacingXxs: "8px",
   spacingXs: "12px",
   spacingS: "24px",
+  spacingM: "32px",
+  spacingL: "40px",
   borderRadius: 15,
+  borderRadiusPercent: 15,
   white: "#fff",
+  shadow1: "rgba(99, 99, 99, 0.2) 0px 2px 8px",
 };

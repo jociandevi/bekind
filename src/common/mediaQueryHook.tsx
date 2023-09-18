@@ -15,7 +15,7 @@ const useMediaQuery = (query: string) => {
 };
 
 export const useMediaQueries = () => {
-  const md = useMediaQuery("(min-width: 800px)");
+  const md = useMediaQuery("(min-width: 600px)");
   const lg = useMediaQuery("(min-width: 1200px)");
 
   return { md, lg };
