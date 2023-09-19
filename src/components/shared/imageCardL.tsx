@@ -29,8 +29,14 @@ const CardContainer = styled.div<{
   cursor: pointer;
 `;
 
-const PaddingContainer = styled.div`
-  padding: 0 ${variables.spacingXs};
+const PaddingContainer = styled.div<{
+  md?: boolean;
+}>`
+  padding: 0 ${variables.spacingXs} ${variables.spacingXs};
+  height: ${(props) => (props.md ? "20vw" : "70vw")};
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const OverlayIconButton = styled(Button)`
@@ -58,20 +64,35 @@ const ImageCardL: React.FC<Props> = ({
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleOk = () => {
+  const handleOk = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
     setIsModalOpen(false);
     // todo: lets make a backend call to add this to user's profile
     setIsFeedbackModalOpen(true);
     setIsPickEnabled(false);
   };
 
-  const onPick = () => {
+  const onPick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
     // lets ask the user if this is today's challenge
     setIsModalOpen(true);
   };
 
+  const onLike = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+  };
+
+  const cardAreaClicked = () => {
+    navigate(`/kindness/${item.id}`);
+  };
+
+  const onCheers = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setIsFeedbackModalOpen(false);
+  };
+
   return (
-    <CardContainer md={md} onClick={() => navigate(`/kindness/${item.id}`)}>
+    <CardContainer md={md} onClick={cardAreaClicked}>
       <AntdModal
         title="Pick this challenge?"
         isModalOpen={isModalOpen}
@@ -93,7 +114,7 @@ const ImageCardL: React.FC<Props> = ({
         description="Thank you for making the world a better place!"
         imageUrl={FireImg}
         footer={
-          <Button type="primary" onClick={() => setIsFeedbackModalOpen(false)}>
+          <Button type="primary" onClick={onCheers}>
             Cheers!
           </Button>
         }
@@ -106,9 +127,13 @@ const ImageCardL: React.FC<Props> = ({
           biggerImage="40vw"
           smImage="20vw"
         />
-        <OverlayIconButton icon={<HeartFilled />} shape="circle" />
+        <OverlayIconButton
+          icon={<HeartFilled />}
+          shape="circle"
+          onClick={onLike}
+        />
       </ImageContainer>
-      <PaddingContainer>
+      <PaddingContainer md={md}>
         <Title level={5} style={{ margin: "15px 0 0" }}>
           {item.title}
         </Title>

@@ -16,15 +16,18 @@ export const ListLayout = styled.div`
 export const HorizontalScrollContainer = styled.div`
   display: flex;
   gap: ${variables.spacingS}};
-  overflow-x: scroll;
-  scrollbar-width: none;
-  padding: 12px 0 20px 5px;
-  scroll-padding-left: 12px;
-  scroll-snap-type: x mandatory;
+  @media only screen and (max-width: 600px) {
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-padding-left: 12px;
+    scroll-snap-type: x mandatory;
 
-  ::-webkit-scrollbar {
-    display: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
+  padding: 12px 0 20px 5px;
+  
 `;
 
 export const Flexbox = styled.div`
@@ -104,8 +107,7 @@ export const ImageSizeL = styled.img<{
   width: ${(props) => (props.md ? "40vw" : "100vw")};
   height: ${(props) => (props.md ? "40vw" : "100vw")};
   object-fit: cover;
-  border-radius: ${variables.borderRadiusPercent}%
-    ${variables.borderRadiusPercent}% 0 ${variables.borderRadiusPercent}%;
+  border-radius: 0 0 0 ${variables.borderRadiusPercent}%;
 `;
 
 export const CircleImage = styled.img<{ md?: boolean }>`

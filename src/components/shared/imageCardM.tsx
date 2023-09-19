@@ -37,7 +37,7 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
     <CardContainer>
       <ResponsiveImage src={item.imageUrl} alt={item.title} md={md} />
       <FlexboxCol style={{ width: "30vw", padding: "15px" }}>
-        <Title level={5} style={{ fontSize: "14px" }}>
+        <Title level={5} style={{ fontSize: "14px", margin: 0 }}>
           {item.title}
         </Title>
         {md && (

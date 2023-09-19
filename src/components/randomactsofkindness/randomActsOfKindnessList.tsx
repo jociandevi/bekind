@@ -18,7 +18,6 @@ import UserProfileIcon from "../shared/userProfileIcon";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
-  // API call >> backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
   // API call >> GET /kindnessHistory/user >> has the user done a kindness today already?
   const [isPickEnabled, setIsPickEnabled] = useState(true);
   const [form] = Form.useForm();
@@ -27,7 +26,8 @@ const RandomActOfKindnessList: React.FC = () => {
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  // API call >> backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOk = () => {
     setIsModalOpen(false);

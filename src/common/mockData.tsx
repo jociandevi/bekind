@@ -178,7 +178,7 @@ export const raoks: KindnessAction[] = [
     id: 11,
     title: "Reach Out To An Old Friend",
     description:
-      "Think of someone you really like but haven't talked to in a long while. Ask them how they are.",
+      "Think of someone you really like but haven't talked to in a long while.",
     category: CategoryNames.SOCIAL,
     imageUrl:
       "https://images.unsplash.com/photo-1660733344431-f6a440cb7c6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
@@ -212,9 +212,9 @@ export const raoks: KindnessAction[] = [
   },
   {
     id: 15,
-    title: "Plan some quality time",
+    title: "Set a date for quality time",
     description:
-      "Think of a nice activity to do with your spouse, friend or family member. Set a date.",
+      "Think of a new activity to do with your spouse, friend or family member.",
     category: CategoryNames.SOCIAL,
     imageUrl:
       "https://images.unsplash.com/photo-1569965335962-2317ff2a7658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1338&q=80",

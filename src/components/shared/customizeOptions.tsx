@@ -44,13 +44,8 @@ const CustomizeOptions: React.FC = () => {
         }}
       >
         {options.map((item, index) => (
-          <Tooltip title={item.name}>
-            <OptionButton
-              key={index}
-              shape="circle"
-              size="small"
-              color={item.color}
-            />
+          <Tooltip key={index} title={item.name}>
+            <OptionButton shape="circle" size="small" color={item.color} />
           </Tooltip>
         ))}
       </Flexbox>
