@@ -3,6 +3,10 @@ import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
 
+export const phoneCardWidth = "50vw";
+export const tabletCardWidth = "35vw";
+export const laptopCardWidth = "20vw";
+
 export const StyledGrid = styled.div`
   display: grid;
   margin: 10%;
@@ -90,13 +94,13 @@ export const TextDisplayS = styled.div<{ color?: string }>`
 
 export const ResponsiveImage = styled.img<{
   md?: boolean;
-  biggerImage?: string;
-  smImage?: string;
+  lg?: boolean;
 }>`
   width: ${(props) =>
-    props.md ? props.smImage ?? "15vw" : props.biggerImage ?? "30vw"};
+    props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
   height: ${(props) =>
-    props.md ? props.smImage ?? "15vw" : props.biggerImage ?? "30vw"};
+    props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
+
   object-fit: cover;
   border-radius: ${variables.borderRadius}px;
 `;

@@ -4,6 +4,9 @@ import {
   ImageContainer,
   ResponsiveImage,
   StyledText,
+  laptopCardWidth,
+  phoneCardWidth,
+  tabletCardWidth,
 } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
@@ -19,9 +22,11 @@ import { useNavigate } from "react-router-dom";
 
 const CardContainer = styled.div<{
   md?: boolean;
+  lg?: boolean;
 }>`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
-  width: ${(props) => (props.md ? "20vw" : "40vw")};
+  width: ${(props) =>
+    props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
   flex-shrink: 0;
   border-radius: ${variables.borderRadius}px;
   scroll-snap-align: center;
@@ -31,12 +36,13 @@ const CardContainer = styled.div<{
 
 const PaddingContainer = styled.div<{
   md?: boolean;
+  lg?: boolean;
 }>`
   padding: 0 ${variables.spacingXs} ${variables.spacingXs};
-  height: ${(props) => (props.md ? "20vw" : "70vw")};
+  height: ${(props) => (props.lg ? "15vw" : props.md ? "30vw" : "40vw")};
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 `;
 
 const OverlayIconButton = styled(Button)`
@@ -60,7 +66,7 @@ const ImageCardL: React.FC<Props> = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-  const { md } = useMediaQueries();
+  const { md, lg } = useMediaQueries();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -92,7 +98,7 @@ const ImageCardL: React.FC<Props> = ({
   };
 
   return (
-    <CardContainer md={md} onClick={cardAreaClicked}>
+    <CardContainer md={md} lg={lg} onClick={cardAreaClicked}>
       <AntdModal
         title="Pick this challenge?"
         isModalOpen={isModalOpen}
@@ -120,43 +126,37 @@ const ImageCardL: React.FC<Props> = ({
         }
       />
       <ImageContainer>
-        <ResponsiveImage
-          src={item.imageUrl}
-          alt={item.title}
-          md={md}
-          biggerImage="40vw"
-          smImage="20vw"
-        />
+        <ResponsiveImage src={item.imageUrl} alt={item.title} md={md} lg={lg} />
         <OverlayIconButton
           icon={<HeartFilled />}
           shape="circle"
           onClick={onLike}
         />
       </ImageContainer>
-      <PaddingContainer md={md}>
+      <PaddingContainer md={md} lg={lg}>
         <Title level={5} style={{ margin: "15px 0 0" }}>
           {item.title}
         </Title>
         <StyledText color={variables.middleGray} fontSize="14px">
           {item.description}
         </StyledText>
-        <Flexbox style={{ margin: `${variables.spacingXxs} 0` }}>
-          {isPickEnabled ? (
-            <Button type="primary" onClick={onPick}>
+      </PaddingContainer>
+      <Flexbox style={{ margin: `${variables.spacingXxs}` }}>
+        {isPickEnabled ? (
+          <Button type="primary" onClick={onPick}>
+            Pick
+          </Button>
+        ) : (
+          <Tooltip
+            title="You already did your part today in making the world better!"
+            trigger={"hover"}
+          >
+            <Button type="primary" disabled>
               Pick
             </Button>
-          ) : (
-            <Tooltip
-              title="You already did your part today in making the world better!"
-              trigger={"hover"}
-            >
-              <Button type="primary" disabled>
-                Pick
-              </Button>
-            </Tooltip>
-          )}
-        </Flexbox>
-      </PaddingContainer>
+          </Tooltip>
+        )}
+      </Flexbox>
     </CardContainer>
   );
 };
