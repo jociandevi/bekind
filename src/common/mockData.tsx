@@ -3,15 +3,14 @@ import { ReactComponent as Pants } from "../img/badges/pants.svg";
 import { ReactComponent as Hotel } from "../img/badges/hotel.svg";
 import { ReactComponent as DivingGoggles } from "../img/badges/diving-goggles.svg";
 import {
+  ArticlePart,
+  ArticleElement,
   BadgeProps,
   Category,
   CategoryNames,
   KindnessAction,
   UserStats,
 } from "./interfaces";
-
-const loremIpsum =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id volutpat lacus laoreet non curabitur. Neque gravida in fermentum et sollicitudin ac orci phasellus. Id cursus metus aliquam eleifend mi in. Suspendisse in est ante in nibh. Nascetur ridiculus mus mauris vitae. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse sed. Magna fermentum iaculis eu non diam phasellus vestibulum lorem. Lacinia at quis risus sed vulputate odio. Blandit libero volutpat sed cras ornare arcu dui vivamus arcu.\nId nibh tortor id aliquet. Natoque penatibus et magnis dis parturient montes. Venenatis tellus in metus vulputate eu scelerisque. Lectus nulla at volutpat diam ut venenatis. Eget arcu dictum varius duis at consectetur lorem donec. Amet mattis vulputate enim nulla aliquet porttitor lacus luctus. Nibh mauris cursus mattis molestie a iaculis at erat pellentesque. Integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Mauris cursus mattis molestie a iaculis. Massa enim nec dui nunc mattis enim. Elementum nisi quis eleifend quam adipiscing vitae proin. Iaculis nunc sed augue lacus viverra vitae congue. Cursus eget nunc scelerisque viverra.\nMattis aliquam faucibus purus in massa tempor. Nec sagittis aliquam malesuada bibendum arcu vitae elementum curabitur vitae. Non arcu risus quis varius quam. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Eget gravida cum sociis natoque penatibus et magnis dis. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum lectus. Neque aliquam vestibulum morbi blandit. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Bibendum arcu vitae elementum curabitur. Ut ornare lectus sit amet est placerat in egestas. Venenatis urna cursus eget nunc scelerisque viverra. Massa tincidunt dui ut ornare. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Non diam phasellus vestibulum lorem. Donec et odio pellentesque diam volutpat commodo sed egestas.\nEgestas quis ipsum suspendisse ultrices gravida dictum fusce. Cursus mattis molestie a iaculis. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Et molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Cras adipiscing enim eu turpis egestas pretium. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Nulla malesuada pellentesque elit eget gravida cum sociis. At erat pellentesque adipiscing commodo elit at imperdiet dui. Hendrerit dolor magna eget est. Est velit egestas dui id ornare arcu odio ut sem. Elementum eu facilisis sed odio morbi quis commodo. In arcu cursus euismod quis viverra nibh cras pulvinar mattis. Condimentum mattis pellentesque id nibh tortor id aliquet.\nSuspendisse faucibus interdum posuere lorem ipsum dolor sit. Massa eget egestas purus viverra. Lorem ipsum dolor sit amet consectetur adipiscing. Purus non enim praesent elementum facilisis leo vel. Condimentum id venenatis a condimentum. Ipsum dolor sit amet consectetur. Libero volutpat sed cras ornare arcu. Tellus integer feugiat scelerisque varius morbi enim nunc faucibus a. Euismod in pellentesque massa placerat duis. Duis convallis convallis tellus id interdum. Cursus sit amet dictum sit. Turpis egestas pretium aenean pharetra magna ac placerat vestibulum. Non odio euismod lacinia at quis risus sed vulputate. Dictum non consectetur a erat nam at lectus urna. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet. Vulputate ut pharetra sit amet aliquam id. Massa eget egestas purus viverra accumsan in nisl nisi. Magna sit amet purus gravida quis blandit turpis cursus in.";
 
 export const badges: BadgeProps[] = [
   {
@@ -81,13 +80,47 @@ export const categories: Category[] = [
   { id: 400, name: CategoryNames.NEIGHBORHOOD },
 ];
 
+export const article: ArticlePart[] = [
+  {
+    id: 1,
+    text: "The surprising truths about putting surpsrise notes all around you",
+    type: ArticleElement.HEADER_MEDIUM,
+  },
+  {
+    id: 2,
+    text: "If you’re feeling stuck in a rut, it may be time to shake up your daily routine and help your body feel energized again. And you’ll be pleased to know that this doesn’t require an entire overhaul of your life. In fact, adopting just a few healthy daily habits can make all the difference in the world. (Great news for those of us who happily identify as lazy.)",
+    type: ArticleElement.TEXT,
+  },
+  {
+    id: 3,
+    text: "A lot of these tips support physical health, but remember the power of the mind-body connection. Implementing daily healthy habits that benefit your body has a positive ripple effect on your mind and soul as well. As you’ll discover after you try a few of these, it’s often the small changes that make the biggest difference.    ",
+    type: ArticleElement.TEXT,
+  },
+  { id: 4, text: "1. Go on a Walk", type: ArticleElement.HEADER_MEDIUM },
+  {
+    id: 5,
+    text: "Breathing in some fresh air while on a walk is sure to improve your mood, clear a muddled head, and offer a moment away from the computer. It’s also an incredibly underrated form of exercise that can strengthen your heart and lungs, reduce the risk of heart disease and stroke, improve high blood pressure and high cholesterol, ease joint pain, and much more. Put it this way: Walking is a simple, fun, and low-impact way to improve your overall health.  ",
+    type: ArticleElement.TEXT,
+  },
+  {
+    id: 6,
+    text: "2. Cut Out Inflammatory Foods",
+    type: ArticleElement.HEADER_MEDIUM,
+  },
+  {
+    id: 7,
+    text: "Inflammation can be caused by a variety of factors—one of which is the food we consume. There are many foods that can increase inflammation in our body, and while all inflammatory foods cannot be avoided, many can be swapped for healthier options that will lessen the negative impact on our bodies. A Mediterranean diet is a great way to incorporate anti-inflammatory foods—such as salmon, avocado, and olive oil—into your meals.    ",
+    type: ArticleElement.TEXT,
+  },
+];
+
 export const raoks: KindnessAction[] = [
   {
     id: 1,
     title: "Pay it Backward",
     description: "Buy coffee for the person behind you in line",
-    longDescription: loremIpsum,
     category: CategoryNames.SOCIAL,
+    article: [...article],
     imageUrl:
       "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80",
   },
@@ -95,7 +128,6 @@ export const raoks: KindnessAction[] = [
     id: 2,
     title: "Give compliments",
     description: "Compliment the first three people you talk to today.",
-    longDescription: loremIpsum,
     category: CategoryNames.SOCIAL,
     imageUrl:
       "https://images.unsplash.com/photo-1662496619829-fcfa29c2d718?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80",
@@ -105,7 +137,6 @@ export const raoks: KindnessAction[] = [
     title: "Send good vibes",
     description:
       "Send a positive text message to five different people right now.",
-    longDescription: loremIpsum,
     category: CategoryNames.SOCIAL,
     imageUrl:
       "https://images.unsplash.com/photo-1493401415972-d4001c9fa2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
@@ -114,7 +145,6 @@ export const raoks: KindnessAction[] = [
     id: 4,
     title: "Decorate with post its",
     category: CategoryNames.NEIGHBORHOOD,
-    longDescription: loremIpsum,
     description:
       "Post inspirational sticky notes around your neighborhood, office, school, etc.",
     imageUrl:
@@ -124,7 +154,6 @@ export const raoks: KindnessAction[] = [
     id: 5,
     title: "Donate old towels or blankets to an animal shelter.",
     category: CategoryNames.ANIMAL,
-    longDescription: loremIpsum,
     imageUrl:
       "https://images.unsplash.com/photo-1553688738-a278b9f063e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
   },
@@ -134,7 +163,7 @@ export const raoks: KindnessAction[] = [
     description:
       "Place a positive body image notes in jean pockets at a department store",
     category: CategoryNames.ENVIRONMENT,
-    longDescription: loremIpsum,
+    article: [...article],
     imageUrl:
       "https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
   },
@@ -143,7 +172,6 @@ export const raoks: KindnessAction[] = [
     title: "Donate",
     description: "Give away stuff for free on Craig’s List.",
     category: CategoryNames.ENVIRONMENT,
-    longDescription: loremIpsum,
     imageUrl:
       "https://images.unsplash.com/photo-1505455184862-554165e5f6ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80",
   },
@@ -152,7 +180,6 @@ export const raoks: KindnessAction[] = [
     title: "Clean it",
     description: "Have a clean up party at a beach or park.",
     category: CategoryNames.ENVIRONMENT,
-    longDescription: loremIpsum,
     imageUrl:
       "https://images.unsplash.com/photo-1676642061313-320659a528ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
   },
@@ -162,7 +189,6 @@ export const raoks: KindnessAction[] = [
     description:
       "Purchase extra dog or cat food and bring it to an animal shelter.",
     category: CategoryNames.ANIMAL,
-    longDescription: loremIpsum,
     imageUrl:
       "https://images.unsplash.com/photo-1508609540374-67d1601ba520?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwdHJlYXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
   },
@@ -216,6 +242,7 @@ export const raoks: KindnessAction[] = [
     description:
       "Think of a new activity to do with your spouse, friend or family member.",
     category: CategoryNames.SOCIAL,
+    article: [...article],
     imageUrl:
       "https://images.unsplash.com/photo-1569965335962-2317ff2a7658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1338&q=80",
   },

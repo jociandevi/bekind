@@ -20,6 +20,7 @@ import {
 } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
 import CustomizeOptions from "../shared/customizeOptions";
+import Article from "../shared/article";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM};
@@ -55,6 +56,16 @@ const OverlayProfileContainer = styled.div`
 
 const HighlightedTitle = styled(Title)`
   color: ${variables.pink3};
+`;
+
+const ItemDetailPagePrimaryBtn = styled(Button)`
+  border-radius: 25vw 0 0 0;
+  width: 50vw;
+  background: ${variables.black};
+  color: white;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 `;
 
 const KindnessDetails: React.FC = () => {
@@ -103,10 +114,9 @@ const KindnessDetails: React.FC = () => {
         <StyledText color={variables.middleGray} fontSize="14px">
           {kindness.description}
         </StyledText>
-        <StyledText color={variables.middleGray} fontSize="14px">
-          {kindness.longDescription}
-        </StyledText>
+        <Article article={kindness.article} />
       </MarginContainer>
+      <ItemDetailPagePrimaryBtn>+ Pick</ItemDetailPagePrimaryBtn>
     </FlexboxCol>
   );
 };

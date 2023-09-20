@@ -10,13 +10,29 @@ export interface Category {
   name: string;
 }
 
+export enum ArticleElement {
+  "TEXT" = "Text",
+  "IMAGE" = "Image",
+  "VIDEO" = "Video",
+  "HEADER_LARGE" = "HeaderLarge",
+  "HEADER_MEDIUM" = "HeaderMedium",
+  "HEADER_SMALL" = "HeaderSmall",
+  "LIST_ITEM" = "ListItem",
+}
+
+export interface ArticlePart {
+  id: number;
+  text: string;
+  type: ArticleElement;
+}
+
 export interface KindnessAction {
   id: number;
   title: string;
   description?: string;
-  longDescription?: string;
   category: CategoryNames;
   imageUrl: string;
+  article?: ArticlePart[];
 }
 
 export interface UserStats {
