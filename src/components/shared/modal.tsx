@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { CircleImage, FlexboxCol, ResponsiveImage } from "./sharedLayouts";
+import { CircleImage, FlexboxCol, ResponsiveImageLarge } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Modal, ModalProps, Typography } from "antd";
@@ -71,7 +71,7 @@ const AntdModal: React.FC<Props> = ({
       >
         <ModalContent>
           {imageUrl && !isProfileImage && (
-            <ResponsiveImage src={imageUrl} alt={imageUrl} md={md} />
+            <ResponsiveImageLarge src={imageUrl} alt={imageUrl} md={md} />
           )}
           {imageUrl && isProfileImage && (
             <CircleImage src={imageUrl} alt={imageUrl} md={md} />

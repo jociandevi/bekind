@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { BadgeProps } from "../../common/interfaces";
 import { Tooltip, Typography } from "antd";
 import AntdModal from "./modal";
+import { useMediaQueries } from "../../common/mediaQueryHook";
 
 const { Text } = Typography;
 
@@ -21,9 +22,11 @@ const DisabledBadge = styled.div`
   }
 `;
 
-const Image = styled.img`
-  width: 12vw;
-  height: 12vw;
+const Image = styled.img<{
+  md?: boolean;
+}>`
+  width: ${(props) => (props.md ? "6vw" : "12vw")};
+  height: ${(props) => (props.md ? "6vw" : "12vw")};
   object-fit: cover;
   border-radius: 50%;
   margin-left: ${variables.spacingXs};
@@ -32,6 +35,7 @@ const Image = styled.img`
 const Badge: React.FC<BadgeProps> = ({ ...item }) => {
   const { enabled, icon, name, description, tooltip, necessaryActions } = item;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { md } = useMediaQueries();
 
   return (
     <>
@@ -46,7 +50,7 @@ const Badge: React.FC<BadgeProps> = ({ ...item }) => {
           <CenterAlignedFlexbox>
             <Text>Achieved by:</Text>
             {necessaryActions.map((item, index) => (
-              <Image key={index} src={item.imageUrl} alt={item.title} />
+              <Image key={index} src={item.imageUrl} alt={item.title} md={md} />
             ))}
           </CenterAlignedFlexbox>
         }

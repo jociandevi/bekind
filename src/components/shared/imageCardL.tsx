@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import {
   Flexbox,
   ImageContainer,
-  ResponsiveImage,
+  ResponsiveImageLarge,
   StyledText,
   laptopCardWidth,
   phoneCardWidth,
@@ -126,7 +126,12 @@ const ImageCardL: React.FC<Props> = ({
         }
       />
       <ImageContainer>
-        <ResponsiveImage src={item.imageUrl} alt={item.title} md={md} lg={lg} />
+        <ResponsiveImageLarge
+          src={item.imageUrl}
+          alt={item.title}
+          md={md}
+          lg={lg}
+        />
         <OverlayIconButton
           icon={<HeartFilled />}
           shape="circle"

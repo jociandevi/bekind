@@ -92,7 +92,7 @@ export const TextDisplayS = styled.div<{ color?: string }>`
   color: ${(props) => props.color ?? variables.black}};
 `;
 
-export const ResponsiveImage = styled.img<{
+export const ResponsiveImageLarge = styled.img<{
   md?: boolean;
   lg?: boolean;
 }>`
@@ -101,6 +101,16 @@ export const ResponsiveImage = styled.img<{
   height: ${(props) =>
     props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
 
+  object-fit: cover;
+  border-radius: ${variables.borderRadius}px;
+`;
+
+export const ResponsiveImageMedium = styled.img<{
+  md?: boolean;
+  lg?: boolean;
+}>`
+  width: ${(props) => (props.md ? "20vw" : "30vw")};
+  height: ${(props) => (props.md ? "20vw" : "30vw")};
   object-fit: cover;
   border-radius: ${variables.borderRadius}px;
 `;
