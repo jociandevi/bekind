@@ -11,6 +11,7 @@ import Title from "antd/es/typography/Title";
 import { Button, Tooltip } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { KindnessAction } from "../../common/interfaces";
+import { useNavigate } from "react-router-dom";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -31,9 +32,14 @@ interface Props {
 
 const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   const { md } = useMediaQueries();
+  const navigate = useNavigate();
+
+  const cardAreaClicked = () => {
+    navigate(`/kindness/${item.id}`);
+  };
 
   return (
-    <CardContainer>
+    <CardContainer onClick={cardAreaClicked}>
       <ResponsiveImageMedium src={item.imageUrl} alt={item.title} md={md} />
       <FlexboxCol style={{ width: "30vw", padding: "15px" }}>
         <Title level={5} style={{ fontSize: "14px", margin: 0 }}>

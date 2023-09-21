@@ -68,6 +68,7 @@ const Profile: React.FC = () => {
     event: React.MouseEvent<HTMLElement>,
     item: KindnessAction
   ) => {
+    console.log(item);
     event.stopPropagation();
     setIsConfirmModalOpen(true);
   };
