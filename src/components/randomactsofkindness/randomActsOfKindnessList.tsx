@@ -8,13 +8,15 @@ import {
 import { Form } from "antd";
 import ImageCardL from "../shared/imageCardL";
 import { variables } from "../../common/variables";
-import AntdModal from "../shared/modal";
 import Title from "antd/es/typography/Title";
-import { categories, raoks, userToPraise } from "../../common/mockData";
+import { categories, raoks } from "../../common/mockData";
 import InstallModal from "../shared/installModal";
 import InstallButton from "../shared/installButton";
 import { AuthContext } from "../../common/authProvider";
 import UserProfileIcon from "../shared/userProfileIcon";
+import FeedbackModal from "./modals/feedbackModal";
+import ConfirmModal from "./modals/confirmModal";
+import CheersModal from "./modals/cheersModal";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -22,17 +24,12 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isPickEnabled, setIsPickEnabled] = useState(true);
   const [form] = Form.useForm();
   const [kindnessActions, setKindnessActions] = useState(raoks);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let searchTimeout: NodeJS.Timeout | null = null;
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
-
-  // API call >> backend sends user to praise - this API call should happen randomly in the next 10-60 seconds after user logs in
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-    // API call: lets make a backend call to send a cheer message to these users
-  };
 
   const onFinish = (values: any) => {
     onSearch(values.search);
@@ -66,19 +63,36 @@ const RandomActOfKindnessList: React.FC = () => {
     setKindnessActions(filteredRaoks);
   };
 
+  const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setIsConfirmModalOpen(false);
+    // API call: lets make a backend call to add this to user's profile
+    setIsFeedbackModalOpen(true);
+    setIsPickEnabled(false);
+  };
+
+  const onPick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    // lets ask the user if this is today's challenge
+    setIsConfirmModalOpen(true);
+  };
+
   return (
     <>
       <ListLayout>
-        <AntdModal
-          title="Cheer on others"
+        <CheersModal
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
-          onOk={handleOk}
-          description="Sean just bought a coffee for the person next in line! Want to high five him?"
-          imageUrl={userToPraise.photoUrl}
-          isProfileImage
-          okText="Sure!"
-          cancelText="Not today"
+        />
+        <ConfirmModal
+          isModalOpen={isConfirmModalOpen}
+          setIsModalOpen={setIsConfirmModalOpen}
+          onOk={onConfirmOk}
+        />
+        <FeedbackModal
+          isModalOpen={isFeedbackModalOpen}
+          setIsModalOpen={setIsFeedbackModalOpen}
+          userName={user?.given_name ?? undefined}
         />
         <Flexbox style={{ margin: variables.spacingS }}>
           <UserProfileIcon user={user} />
@@ -116,7 +130,7 @@ const RandomActOfKindnessList: React.FC = () => {
                         item={item}
                         key={item.id}
                         isPickEnabled={isPickEnabled}
-                        setIsPickEnabled={setIsPickEnabled}
+                        onPick={onPick}
                       />
                     ))}
                 </HorizontalScrollContainer>

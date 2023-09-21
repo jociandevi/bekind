@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import {
   Flexbox,
   ImageContainer,
@@ -12,13 +12,10 @@ import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Button, Tooltip } from "antd";
 import { HeartFilled } from "@ant-design/icons";
-import AntdModal from "./modal";
-import GrowthImage from "../../img/growth.png";
-import FireImg from "../../img/fire.png";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
-import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
+import { KindnessAction } from "../../common/interfaces";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -56,33 +53,12 @@ const OverlayIconButton = styled(Button)`
 interface Props {
   item: { id: number; title: string; description?: string; imageUrl: string };
   isPickEnabled: boolean;
-  setIsPickEnabled: (value: boolean) => void;
+  onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
 }
 
-const ImageCardL: React.FC<Props> = ({
-  item,
-  isPickEnabled,
-  setIsPickEnabled,
-}) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+const ImageCardL: React.FC<Props> = ({ item, isPickEnabled, onPick }) => {
   const { md, lg } = useMediaQueries();
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const handleOk = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    setIsModalOpen(false);
-    // todo: lets make a backend call to add this to user's profile
-    setIsFeedbackModalOpen(true);
-    setIsPickEnabled(false);
-  };
-
-  const onPick = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    // lets ask the user if this is today's challenge
-    setIsModalOpen(true);
-  };
 
   const onLike = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -92,39 +68,8 @@ const ImageCardL: React.FC<Props> = ({
     navigate(`/kindness/${item.id}`);
   };
 
-  const onCheers = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    setIsFeedbackModalOpen(false);
-  };
-
   return (
     <CardContainer md={md} lg={lg} onClick={cardAreaClicked}>
-      <AntdModal
-        title="Pick this challenge?"
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-        onOk={handleOk}
-        description="Are you picking this kindness for today?"
-        imageUrl={GrowthImage}
-        okText="Yes, let's go!"
-      />
-
-      <AntdModal
-        isModalOpen={isFeedbackModalOpen}
-        setIsModalOpen={setIsFeedbackModalOpen}
-        title={
-          user
-            ? `Nice job, ${user.given_name}! That's a 5-day Streak!`
-            : "Nice job! Login to keep track of your streak!"
-        }
-        description="Thank you for making the world a better place!"
-        imageUrl={FireImg}
-        footer={
-          <Button type="primary" onClick={onCheers}>
-            Cheers!
-          </Button>
-        }
-      />
       <ImageContainer>
         <ResponsiveImageLarge
           src={item.imageUrl}
@@ -148,7 +93,7 @@ const ImageCardL: React.FC<Props> = ({
       </PaddingContainer>
       <Flexbox style={{ margin: `${variables.spacingXxs}` }}>
         {isPickEnabled ? (
-          <Button type="primary" onClick={onPick}>
+          <Button type="primary" onClick={(e) => onPick(e, item)}>
             Pick
           </Button>
         ) : (
