@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   FlexboxCol,
   ImageContainer,
@@ -21,6 +21,8 @@ import {
 import UserProfileIcon from "../shared/userProfileIcon";
 import CustomizeOptions from "../shared/customizeOptions";
 import Article from "../shared/article";
+import ConfirmModal from "./modals/confirmModal";
+import FeedbackModal from "./modals/feedbackModal";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM};
@@ -73,6 +75,9 @@ const KindnessDetails: React.FC = () => {
   const { md } = useMediaQueries();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+  const [isPickEnabled, setIsPickEnabled] = useState(true);
 
   // API: GET /kindness/:id >> get kindness with this id
 
@@ -80,9 +85,33 @@ const KindnessDetails: React.FC = () => {
 
   const options = true;
 
+  const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setIsConfirmModalOpen(false);
+    // API call: lets make a backend call to add this to user's profile
+    setIsFeedbackModalOpen(true);
+    setIsPickEnabled(false);
+  };
+
+  const onPick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    // lets ask the user if this is today's challenge
+    setIsConfirmModalOpen(true);
+  };
+
   return (
     <FlexboxCol>
       <ImageContainer>
+        <ConfirmModal
+          isModalOpen={isConfirmModalOpen}
+          setIsModalOpen={setIsConfirmModalOpen}
+          onOk={onConfirmOk}
+        />
+        <FeedbackModal
+          isModalOpen={isFeedbackModalOpen}
+          setIsModalOpen={setIsFeedbackModalOpen}
+          userName={user?.given_name ?? undefined}
+        />
         <ImageSizeL
           src={kindness?.imageUrl}
           alt={`Image of ${kindness?.title}`}
@@ -116,7 +145,9 @@ const KindnessDetails: React.FC = () => {
         </StyledText>
         <Article article={kindness.article} />
       </MarginContainer>
-      <ItemDetailPagePrimaryBtn>+ Pick</ItemDetailPagePrimaryBtn>
+      <ItemDetailPagePrimaryBtn disabled={!isPickEnabled} onClick={onPick}>
+        + Pick
+      </ItemDetailPagePrimaryBtn>
     </FlexboxCol>
   );
 };

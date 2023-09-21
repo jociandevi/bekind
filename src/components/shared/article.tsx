@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { FlexboxCol, StyledText } from "./sharedLayouts";
 import { ArticleElement, ArticlePart } from "../../common/interfaces";
 import { variables } from "../../common/variables";
@@ -12,13 +12,9 @@ const Article: React.FC<Props> = ({ article }) => {
   return (
     <FlexboxCol>
       {article?.map((item, index) => (
-        <>
+        <Fragment key={index}>
           {item.type === ArticleElement.TEXT && (
-            <StyledText
-              key={index}
-              color={variables.middleGray}
-              fontSize="14px"
-            >
+            <StyledText color={variables.middleGray} fontSize="14px">
               {item.text}
             </StyledText>
           )}
@@ -28,7 +24,7 @@ const Article: React.FC<Props> = ({ article }) => {
           {item.type === ArticleElement.HEADER_MEDIUM && (
             <Title level={5}>{item.text}</Title>
           )}
-        </>
+        </Fragment>
       ))}
     </FlexboxCol>
   );
