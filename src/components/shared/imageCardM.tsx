@@ -8,8 +8,9 @@ import {
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
-import { Button } from "antd";
+import { Button, Tooltip } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import { KindnessAction } from "../../common/interfaces";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -24,14 +25,12 @@ const CardContainer = styled.div`
 
 interface Props {
   item: { id: number; title: string; description?: string; imageUrl: string };
+  onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
+  isPickEnabled: boolean;
 }
 
-const ImageCardL: React.FC<Props> = ({ item }) => {
+const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   const { md } = useMediaQueries();
-
-  const onPlay = () => {
-    // lets accept the challenge
-  };
 
   return (
     <CardContainer>
@@ -47,7 +46,18 @@ const ImageCardL: React.FC<Props> = ({ item }) => {
         )}
       </FlexboxCol>
       <CenterAlignedFlexbox style={{ paddingRight: variables.spacingXs }}>
-        <Button onClick={onPlay}>Pick</Button>
+        {isPickEnabled ? (
+          <Button onClick={(e) => onPick(e, item)}>Pick</Button>
+        ) : (
+          <Tooltip
+            title="You already did your part today in making the world better!"
+            trigger={"hover"}
+          >
+            <Button type="primary" disabled>
+              Pick
+            </Button>
+          </Tooltip>
+        )}
       </CenterAlignedFlexbox>
     </CardContainer>
   );

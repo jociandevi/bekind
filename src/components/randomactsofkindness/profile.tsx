@@ -13,6 +13,9 @@ import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Pants } from "../../img/badges/pants.svg";
 import { BarChartOutlined } from "@ant-design/icons";
+import ConfirmModal from "./modals/confirmModal";
+import FeedbackModal from "./modals/feedbackModal";
+import { KindnessAction } from "../../common/interfaces";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingS};
@@ -57,6 +60,17 @@ const Profile: React.FC = () => {
   const { md } = useMediaQueries();
   const { user: googleUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+  const [isPickEnabled, setIsPickEnabled] = useState(true);
+
+  const onPick = (
+    event: React.MouseEvent<HTMLElement>,
+    item: KindnessAction
+  ) => {
+    event.stopPropagation();
+    setIsConfirmModalOpen(true);
+  };
 
   const items: TabsProps["items"] = [
     {
@@ -65,7 +79,12 @@ const Profile: React.FC = () => {
       children: (
         <>
           {user.liked.map((item) => (
-            <ImageCardM item={item} key={item.id} />
+            <ImageCardM
+              item={item}
+              key={item.id}
+              onPick={onPick}
+              isPickEnabled={isPickEnabled}
+            />
           ))}
         </>
       ),
@@ -76,7 +95,12 @@ const Profile: React.FC = () => {
       children: (
         <>
           {user.history.map((item) => (
-            <ImageCardM item={item} key={item.id} />
+            <ImageCardM
+              item={item}
+              key={item.id}
+              onPick={onPick}
+              isPickEnabled={isPickEnabled}
+            />
           ))}
         </>
       ),
@@ -105,7 +129,7 @@ const Profile: React.FC = () => {
   };
 
   const renderLatestAchievedBadge = () => {
-    // get from last achieved badge from backend and show that
+    // API: get from last achieved badge from backend and show that
     return (
       <BadgeContainer md={md} onClick={() => setActiveKey("3")}>
         <Pants
@@ -117,8 +141,26 @@ const Profile: React.FC = () => {
     );
   };
 
+  const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setIsConfirmModalOpen(false);
+    // API call: lets make a backend call to add this to user's profile
+    setIsFeedbackModalOpen(true);
+    setIsPickEnabled(false);
+  };
+
   return (
     <StyledGrid>
+      <ConfirmModal
+        isModalOpen={isConfirmModalOpen}
+        setIsModalOpen={setIsConfirmModalOpen}
+        onOk={onConfirmOk}
+      />
+      <FeedbackModal
+        isModalOpen={isFeedbackModalOpen}
+        setIsModalOpen={setIsFeedbackModalOpen}
+        userName={googleUser?.given_name ?? undefined}
+      />
       <Flexbox
         style={{ justifyContent: "space-between", alignItems: "flex-start" }}
       >
