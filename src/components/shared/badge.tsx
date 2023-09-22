@@ -10,6 +10,7 @@ import { BadgeProps } from "../../common/interfaces";
 import { Tooltip, Typography } from "antd";
 import AntdModal from "./modal";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import { useNavigate } from "react-router-dom";
 
 const { Text } = Typography;
 
@@ -36,6 +37,7 @@ const Badge: React.FC<BadgeProps> = ({ ...item }) => {
   const { enabled, icon, name, description, tooltip, necessaryActions } = item;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { md } = useMediaQueries();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -50,7 +52,14 @@ const Badge: React.FC<BadgeProps> = ({ ...item }) => {
           <CenterAlignedFlexbox>
             <Text>Achieved by:</Text>
             {necessaryActions.map((item, index) => (
-              <Image key={index} src={item.imageUrl} alt={item.title} md={md} />
+              <Tooltip key={index} title={item.title} trigger={"hover"}>
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  md={md}
+                  onClick={() => navigate(`/kindness/${item.id}`)}
+                />
+              </Tooltip>
             ))}
           </CenterAlignedFlexbox>
         }
