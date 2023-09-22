@@ -94,14 +94,17 @@ const RandomActOfKindnessList: React.FC = () => {
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.given_name ?? undefined}
         />
-        <Flexbox style={{ margin: variables.spacingS }}>
+        <Flexbox style={{ margin: variables.spacingS, width: "95vw" }}>
           <UserProfileIcon user={user} />
           <InstallButton />
           <InstallModal />
         </Flexbox>
 
         <Form
-          style={{ margin: `0 ${variables.spacingS} ${variables.spacingXs} ` }}
+          style={{
+            margin: `0 ${variables.spacingS} ${variables.spacingXs}`,
+            width: "95vw",
+          }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           form={form}
