@@ -3,14 +3,26 @@ import { FlexboxCol, StyledText } from "./sharedLayouts";
 import { ArticleElement, ArticlePart } from "../../common/interfaces";
 import { variables } from "../../common/variables";
 import Title from "antd/es/typography/Title";
+import styled from "styled-components";
+import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 
 interface Props {
   article?: ArticlePart[];
 }
 
+export const ArticleContainer = styled(FlexboxCol)`
+  width: 90vw;
+  @media only screen and ${mdBreakPoint} {
+    width: 75vw;
+  }
+  @media only screen and ${lgBreakPoint} {
+    width: 50vw;
+  }
+`;
+
 const Article: React.FC<Props> = ({ article }) => {
   return (
-    <FlexboxCol>
+    <ArticleContainer>
       {article?.map((item, index) => (
         <Fragment key={index}>
           {item.type === ArticleElement.TEXT && (
@@ -26,7 +38,7 @@ const Article: React.FC<Props> = ({ article }) => {
           )}
         </Fragment>
       ))}
-    </FlexboxCol>
+    </ArticleContainer>
   );
 };
 

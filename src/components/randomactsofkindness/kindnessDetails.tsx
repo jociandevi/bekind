@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   FlexboxCol,
   ImageContainer,
-  ImageSizeL,
   StyledText,
 } from "../shared/sharedLayouts";
 import { Button } from "antd";
@@ -10,13 +9,13 @@ import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
 import { raoks } from "../../common/mockData";
-import { useMediaQueries } from "../../common/mediaQueryHook";
+import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   HeartFilled,
   ArrowLeftOutlined,
-  ClockCircleOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
 import CustomizeOptions from "../shared/customizeOptions";
@@ -25,7 +24,11 @@ import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 
 const MarginContainer = styled(FlexboxCol)`
-  margin: ${variables.spacingM};
+  margin: ${variables.spacingM} auto;
+  width: 90vw;
+  @media only screen and ${mdBreakPoint} {
+    width: inherit;
+  }
 `;
 
 const OverlayBackButton = styled(Button)`
@@ -70,9 +73,21 @@ const ItemDetailPagePrimaryBtn = styled(Button)`
   right: 0;
 `;
 
+const ArticleImage = styled.img`
+  width: 100vw;
+  @media only screen and ${mdBreakPoint} {
+    width: 75vw;
+  }
+  @media only screen and ${lgBreakPoint} {
+    width: 50vw;
+  }
+  height: ${50 / 1.618}vw;
+  border-radius: 0;
+  object-fit: cover;
+`;
+
 const KindnessDetails: React.FC = () => {
   const params = useParams();
-  const { md } = useMediaQueries();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
@@ -80,6 +95,9 @@ const KindnessDetails: React.FC = () => {
   const [isPickEnabled, setIsPickEnabled] = useState(true);
 
   // API: GET /kindness/:id >> get kindness with this id
+
+  // API: GET /kindnessHistory/:id/count >> get total number of times this kindness has been done
+  const totalTimesDone = 110;
 
   const kindness = raoks.find((item) => item.id.toString() === params.id)!;
 
@@ -101,7 +119,7 @@ const KindnessDetails: React.FC = () => {
 
   return (
     <FlexboxCol>
-      <ImageContainer>
+      <ImageContainer style={{ margin: "0 auto" }}>
         <ConfirmModal
           isModalOpen={isConfirmModalOpen}
           setIsModalOpen={setIsConfirmModalOpen}
@@ -112,10 +130,9 @@ const KindnessDetails: React.FC = () => {
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.given_name ?? undefined}
         />
-        <ImageSizeL
+        <ArticleImage
           src={kindness?.imageUrl}
           alt={`Image of ${kindness?.title}`}
-          md={md}
         />
         <OverlayBackButton
           icon={<ArrowLeftOutlined />}
@@ -134,7 +151,8 @@ const KindnessDetails: React.FC = () => {
           style={{ margin: 0, color: variables.pink3 }}
           level={2}
         >
-          <ClockCircleOutlined /> 5 min
+          <UserOutlined />
+          {totalTimesDone}
         </HighlightedTitle>
         <Title style={{ margin: `0 0 ${variables.spacingM}` }} level={4}>
           {kindness.title}

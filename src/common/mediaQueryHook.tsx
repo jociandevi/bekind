@@ -1,5 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 
+export const mdBreakPoint = "(min-width: 600px)";
+export const lgBreakPoint = "(min-width: 900px)";
+
 const useMediaQuery = (query: string) => {
   const mediaQuery = useMemo(() => window.matchMedia(query), [query]);
   const [match, setMatch] = useState(mediaQuery.matches);
@@ -15,8 +18,8 @@ const useMediaQuery = (query: string) => {
 };
 
 export const useMediaQueries = () => {
-  const md = useMediaQuery("(min-width: 600px)");
-  const lg = useMediaQuery("(min-width: 900px)");
+  const md = useMediaQuery(mdBreakPoint);
+  const lg = useMediaQuery(lgBreakPoint);
 
   return { md, lg };
 };
