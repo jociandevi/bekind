@@ -50,7 +50,7 @@ const AntdModal: React.FC<Props> = ({
   children,
   ...props
 }) => {
-  const { md } = useMediaQueries();
+  const { md, lg } = useMediaQueries();
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -71,7 +71,12 @@ const AntdModal: React.FC<Props> = ({
       >
         <ModalContent>
           {imageUrl && !isProfileImage && (
-            <ResponsiveImageLarge src={imageUrl} alt={imageUrl} md={md} />
+            <ResponsiveImageLarge
+              src={imageUrl}
+              alt={imageUrl}
+              md={md}
+              lg={lg}
+            />
           )}
           {imageUrl && isProfileImage && (
             <CircleImage src={imageUrl} alt={imageUrl} md={md} />
