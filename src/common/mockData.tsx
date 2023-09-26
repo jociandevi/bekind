@@ -3,8 +3,6 @@ import { ReactComponent as Pants } from "../img/badges/pants.svg";
 import { ReactComponent as Hotel } from "../img/badges/hotel.svg";
 import { ReactComponent as DivingGoggles } from "../img/badges/diving-goggles.svg";
 import {
-  ArticlePart,
-  ArticleElement,
   BadgeProps,
   Category,
   CategoryNames,
@@ -80,47 +78,12 @@ export const categories: Category[] = [
   { id: 400, name: CategoryNames.NEIGHBORHOOD },
 ];
 
-export const article: ArticlePart[] = [
-  {
-    id: 1,
-    text: "The surprising truths about putting surpsrise notes all around you",
-    type: ArticleElement.HEADER_MEDIUM,
-  },
-  {
-    id: 2,
-    text: "If you’re feeling stuck in a rut, it may be time to shake up your daily routine and help your body feel energized again. And you’ll be pleased to know that this doesn’t require an entire overhaul of your life. In fact, adopting just a few healthy daily habits can make all the difference in the world. (Great news for those of us who happily identify as lazy.)",
-    type: ArticleElement.TEXT,
-  },
-  {
-    id: 3,
-    text: "A lot of these tips support physical health, but remember the power of the mind-body connection. Implementing daily healthy habits that benefit your body has a positive ripple effect on your mind and soul as well. As you’ll discover after you try a few of these, it’s often the small changes that make the biggest difference.    ",
-    type: ArticleElement.TEXT,
-  },
-  { id: 4, text: "1. Go on a Walk", type: ArticleElement.HEADER_MEDIUM },
-  {
-    id: 5,
-    text: "Breathing in some fresh air while on a walk is sure to improve your mood, clear a muddled head, and offer a moment away from the computer. It’s also an incredibly underrated form of exercise that can strengthen your heart and lungs, reduce the risk of heart disease and stroke, improve high blood pressure and high cholesterol, ease joint pain, and much more. Put it this way: Walking is a simple, fun, and low-impact way to improve your overall health.  ",
-    type: ArticleElement.TEXT,
-  },
-  {
-    id: 6,
-    text: "2. Cut Out Inflammatory Foods",
-    type: ArticleElement.HEADER_MEDIUM,
-  },
-  {
-    id: 7,
-    text: "Inflammation can be caused by a variety of factors—one of which is the food we consume. There are many foods that can increase inflammation in our body, and while all inflammatory foods cannot be avoided, many can be swapped for healthier options that will lessen the negative impact on our bodies. A Mediterranean diet is a great way to incorporate anti-inflammatory foods—such as salmon, avocado, and olive oil—into your meals.    ",
-    type: ArticleElement.TEXT,
-  },
-];
-
 export const raoks: KindnessAction[] = [
   {
     id: 1,
     title: "Pay it Backward",
     description: "Buy coffee for the person behind you in line",
     category: CategoryNames.SOCIAL,
-    article: [...article],
     imageUrl:
       "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80",
   },
@@ -163,7 +126,6 @@ export const raoks: KindnessAction[] = [
     description:
       "Place a positive body image notes in jean pockets at a department store",
     category: CategoryNames.ENVIRONMENT,
-    article: [...article],
     imageUrl:
       "https://images.unsplash.com/photo-1604176354204-9268737828e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
   },
@@ -242,7 +204,6 @@ export const raoks: KindnessAction[] = [
     description:
       "Think of a new activity to do with your spouse, friend or family member.",
     category: CategoryNames.SOCIAL,
-    article: [...article],
     imageUrl:
       "https://images.unsplash.com/photo-1569965335962-2317ff2a7658?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1338&q=80",
   },

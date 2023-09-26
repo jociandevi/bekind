@@ -21,7 +21,7 @@ export enum ArticleElement {
 }
 
 export interface ArticlePart {
-  id: number;
+  credit?: string;
   text: string;
   type: ArticleElement;
 }

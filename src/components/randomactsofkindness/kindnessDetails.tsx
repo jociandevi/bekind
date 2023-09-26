@@ -73,7 +73,7 @@ const ItemDetailPagePrimaryBtn = styled(Button)`
   right: 0;
 `;
 
-const ArticleImage = styled.img`
+export const ArticleImage = styled.img`
   width: 100vw;
   @media only screen and ${mdBreakPoint} {
     width: 75vw;
@@ -161,7 +161,7 @@ const KindnessDetails: React.FC = () => {
         <StyledText color={variables.middleGray} fontSize="14px">
           {kindness.description}
         </StyledText>
-        <Article article={kindness.article} />
+        <Article item={kindness} />
       </MarginContainer>
       <ItemDetailPagePrimaryBtn disabled={!isPickEnabled} onClick={onPick}>
         + Pick
