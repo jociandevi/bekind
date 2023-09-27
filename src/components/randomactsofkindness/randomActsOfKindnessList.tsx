@@ -1,14 +1,7 @@
-import React, { Fragment, useContext, useState } from "react";
-import {
-  Flexbox,
-  HorizontalScrollContainer,
-  ListLayout,
-  StyledSearch,
-} from "../shared/sharedLayouts";
+import React, { useContext, useState } from "react";
+import { Flexbox, ListLayout, StyledSearch } from "../shared/sharedLayouts";
 import { Form } from "antd";
-import ImageCardL from "../shared/imageCardL";
 import { variables } from "../../common/variables";
-import Title from "antd/es/typography/Title";
 import { categories, raoks } from "../../common/mockData";
 import InstallModal from "../shared/installModal";
 import InstallButton from "../shared/installButton";
@@ -17,6 +10,7 @@ import UserProfileIcon from "../shared/userProfileIcon";
 import FeedbackModal from "./modals/feedbackModal";
 import ConfirmModal from "./modals/confirmModal";
 import CheersModal from "./modals/cheersModal";
+import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -117,29 +111,14 @@ const RandomActOfKindnessList: React.FC = () => {
             />
           </Form.Item>
         </Form>
-        {categories.map((category) => (
-          <Fragment key={category.id}>
-            {kindnessActions.filter((item) => item.category === category.name)
-              .length > 0 && (
-              <>
-                <Title level={3} style={{ margin: `0 ${variables.spacingS}` }}>
-                  {category.name}
-                </Title>
-                <HorizontalScrollContainer>
-                  {kindnessActions
-                    .filter((item) => item.category === category.name)
-                    .map((item) => (
-                      <ImageCardL
-                        item={item}
-                        key={item.id}
-                        isPickEnabled={isPickEnabled}
-                        onPick={onPick}
-                      />
-                    ))}
-                </HorizontalScrollContainer>
-              </>
-            )}
-          </Fragment>
+        {categories.map((category, index) => (
+          <HorizontalScrollContainers
+            category={category}
+            onPick={onPick}
+            isPickEnabled={isPickEnabled}
+            kindnessActions={kindnessActions}
+            key={index}
+          />
         ))}
       </ListLayout>
     </>

@@ -19,7 +19,9 @@ export const ListLayout = styled.div`
 
 export const HorizontalScrollContainer = styled.div`
   display: flex;
+  position: relative;
   gap: ${variables.spacingS}};
+  width: 100vw;
   @media only screen and (max-width: 600px) {
     overflow-x: scroll;
     scrollbar-width: none;
