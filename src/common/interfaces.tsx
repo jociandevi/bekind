@@ -1,6 +1,6 @@
 export enum CategoryNames {
   "SOCIAL" = "Social",
-  "ANIMAL" = "Animal",
+  "YOU" = "You",
   "NEIGHBORHOOD" = "Neighborhood",
   "ENVIRONMENT" = "Environment",
 }
@@ -18,6 +18,7 @@ export enum ArticleElement {
   "HEADER_MEDIUM" = "HeaderMedium",
   "HEADER_SMALL" = "HeaderSmall",
   "LIST_ITEM" = "ListItem",
+  "FOOTNOTE" = "Footnote",
 }
 
 export interface ArticlePart {
@@ -32,7 +33,7 @@ export interface KindnessAction {
   description?: string;
   category?: CategoryNames;
   imageUrl: string;
-  article?: ArticlePart[];
+  credit?: string;
 }
 
 export interface UserStats {

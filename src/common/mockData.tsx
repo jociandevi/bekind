@@ -73,7 +73,7 @@ export const badges: BadgeProps[] = [
 
 export const categories: Category[] = [
   { id: 100, name: CategoryNames.SOCIAL },
-  { id: 200, name: CategoryNames.ANIMAL },
+  { id: 200, name: CategoryNames.YOU },
   { id: 300, name: CategoryNames.ENVIRONMENT },
   { id: 400, name: CategoryNames.NEIGHBORHOOD },
 ];
@@ -116,7 +116,7 @@ export const raoks: KindnessAction[] = [
   {
     id: 5,
     title: "Donate old towels or blankets to an animal shelter.",
-    category: CategoryNames.ANIMAL,
+    category: CategoryNames.NEIGHBORHOOD,
     imageUrl:
       "https://images.unsplash.com/photo-1553688738-a278b9f063e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
   },
@@ -150,7 +150,7 @@ export const raoks: KindnessAction[] = [
     title: "Treat the doggies",
     description:
       "Purchase extra dog or cat food and bring it to an animal shelter.",
-    category: CategoryNames.ANIMAL,
+    category: CategoryNames.NEIGHBORHOOD,
     imageUrl:
       "https://images.unsplash.com/photo-1508609540374-67d1601ba520?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nJTIwdHJlYXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
   },
@@ -226,12 +226,47 @@ export const raoks: KindnessAction[] = [
   },
   {
     id: 18,
-    title: "Share your apprecition",
+    title: "Share your appreciation",
     description:
       "Think about someone who you appreciate / are grateful for. Tell them.",
     category: CategoryNames.SOCIAL,
     imageUrl:
       "https://images.unsplash.com/photo-1579208570378-8c970854bc23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1522&q=80",
+  },
+  {
+    id: 19,
+    title: "Walk In Nature",
+    description: "And appreciate its beauty.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+  },
+  {
+    id: 20,
+    title: "Smile At A Stranger",
+    description: "Make their days and yours!",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Lesly Juarez",
+  },
+  {
+    id: 21,
+    title: "Declutter",
+    description: "Clear up your shelf, books or clothes.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1529957018945-07aed3538ad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Edgar Chaparro",
+  },
+  {
+    id: 22,
+    title: "Buy a Gift",
+    description: "Early for Christmas or just because!",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1512909006721-3d6018887383?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Kira auf der Heide",
   },
 ];
 

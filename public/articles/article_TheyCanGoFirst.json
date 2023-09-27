@@ -30,39 +30,27 @@
   },
 
   {
-    "id": 8,
     "text": "They Are Humans",
-    "type": "HeaderMedium",
-    "articleId": 1
+    "type": "HeaderMedium"
   },
   {
-    "id": 9,
     "text": "So, why does this all matter? Often, we see others as mere obstacles in our path. The car in front? Just another slow driver. The person double-checking their items in the checkout line? A delay in your day. But when you let someone else go ahead, a transformation happens. They’re no longer faceless hindrances. They’re humans, much like you. By a mere act of goodwill, you've humanized them.",
-    "type": "Text",
-    "articleId": 1
+    "type": "Text"
   },
   {
-    "id": 10,
     "text": "Benefits of Empathy",
-    "type": "HeaderMedium",
-    "articleId": 1
+    "type": "HeaderMedium"
   },
   {
-    "id": 11,
     "text": "Empathy is the snug blanket that brings everything together. It cultivates lovely vibes, turning on those joy switches in your brain. It’s an anchor to your character, a constant whisper saying, \"I'm someone with a big heart.\" Empathy acts as a shield against negativity, endorsing emotional and physical health. Remember, empathy is more than just sharing feelings; it's about understanding. And the perks? Boundless! Studies indicate that empathy propels kind behaviors, aids in resolving conflicts, and enhances our understanding of various standpoints.",
-    "type": "Text",
-    "articleId": 1
+    "type": "Text"
   },
   {
-    "id": 12,
     "text": "Embracing the Journey",
-    "type": "HeaderMedium",
-    "articleId": 1
+    "type": "HeaderMedium"
   },
   {
-    "id": 13,
     "text": "So, the next time you're in line, navigating a bustling street, or even exploring new ventures, remember - sometimes, the smallest shifts make the most profound difference. Let someone go first. Because life isn't just about the end goal; it's about the bonds we form along the journey. And who knows? Perhaps, in the end, we'll all find where we truly belong, relishing every twist and turn along the way.",
-    "type": "Text",
-    "articleId": 1
+    "type": "Text"
   }
 ]

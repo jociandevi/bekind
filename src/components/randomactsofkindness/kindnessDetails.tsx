@@ -101,7 +101,7 @@ const KindnessDetails: React.FC = () => {
 
   const kindness = raoks.find((item) => item.id.toString() === params.id)!;
 
-  const options = true;
+  const options = false;
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -154,7 +154,7 @@ const KindnessDetails: React.FC = () => {
           <UserOutlined />
           {totalTimesDone}
         </HighlightedTitle>
-        <Title style={{ margin: `0 0 ${variables.spacingM}` }} level={4}>
+        <Title style={{ margin: `0 0 0.5em` }} level={4}>
           {kindness.title}
         </Title>
         {options && <CustomizeOptions />}
