@@ -268,6 +268,33 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1512909006721-3d6018887383?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Kira auf der Heide",
   },
+  {
+    id: 23,
+    title: "Cook A Meal",
+    description: "Make the favorite dish of your child, spouse or friend!",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1616169776580-c86189ee67b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Micheile Henderson",
+  },
+  {
+    id: 24,
+    title: "Say No",
+    description: "To Something You Don't Want To Do.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1518305846259-a810cb6afa1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Jonathan Mast",
+  },
+  {
+    id: 25,
+    title: "Give Away Something You Love",
+    description: "Share an item of your favorites.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1638740395403-39494228e8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+    credit: "Unsplash - Aleksei Ezhkov",
+  },
 ];
 
 export const user = {
