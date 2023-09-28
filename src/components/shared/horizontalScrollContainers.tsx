@@ -134,7 +134,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
       // Use a timeout to reset the isScrolling state after a delay
       setTimeout(() => {
         setIsScrolling(false);
-      }, 200);
+      }, 300);
     }
     previousScrollPosition.current = currentScrollPosition;
   };
