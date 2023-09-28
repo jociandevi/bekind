@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useState,
   useCallback,
+  useRef,
 } from "react";
 import ImageCardL from "./imageCardL";
 import { variables } from "../../common/variables";
@@ -13,6 +14,7 @@ import styled from "styled-components";
 import { Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import { debounce } from "lodash";
 
 interface Props {
   category: Category;
@@ -67,6 +69,8 @@ const HorizontalScrollContainers: React.FC<Props> = ({
 }) => {
   const [displayed, setDisplayed] = useState<LinkedKindnessAction[]>([]);
   const { md } = useMediaQueries();
+  const previousScrollPosition = useRef(0);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const linkedItems: LinkedKindnessAction[] = useMemo(() => {
     const categoryItems = kindnessActions.filter(
@@ -118,6 +122,30 @@ const HorizontalScrollContainers: React.FC<Props> = ({
     return null;
   }
 
+  const handleScroll = (currentScrollPosition: number) => {
+    if (!isScrolling) {
+      setIsScrolling(true);
+      if (currentScrollPosition > previousScrollPosition.current) {
+        goRight();
+      } else if (currentScrollPosition < previousScrollPosition.current) {
+        goLeft();
+      }
+
+      // Use a timeout to reset the isScrolling state after a delay
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 200);
+    }
+    previousScrollPosition.current = currentScrollPosition;
+  };
+
+  const onScrollHandler = (event: React.UIEvent<HTMLDivElement>) => {
+    const currentScrollPosition = event.currentTarget.scrollLeft;
+    debouncedHandleScroll(currentScrollPosition);
+  };
+
+  const debouncedHandleScroll = debounce(handleScroll, 200);
+
   return (
     <Fragment key={category.id}>
       <Title
@@ -126,7 +154,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
       >
         {category.name}
       </Title>
-      <HorizontalScrollContainer>
+      <HorizontalScrollContainer onScroll={onScrollHandler}>
         {displayed.map((item) => (
           <ImageCardL
             item={item}
