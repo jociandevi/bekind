@@ -17,25 +17,6 @@ export const ListLayout = styled.div`
   width: 100vw;
 `;
 
-export const HorizontalScrollContainer = styled.div`
-  display: flex;
-  position: relative;
-  gap: ${variables.spacingS}};
-  width: 100vw;
-  @media only screen and (max-width: 600px) {
-    overflow-x: scroll;
-    scrollbar-width: none;
-    scroll-padding-left: 12px;
-    scroll-snap-type: x mandatory;
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  padding: 12px 0 20px 5px;
-  
-`;
-
 export const Flexbox = styled.div`
   display: flex;
   justify-content: flex-end;

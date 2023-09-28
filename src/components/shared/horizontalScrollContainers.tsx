@@ -1,5 +1,10 @@
-import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { HorizontalScrollContainer } from "./sharedLayouts";
+import React, {
+  Fragment,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+} from "react";
 import ImageCardL from "./imageCardL";
 import { variables } from "../../common/variables";
 import Title from "antd/es/typography/Title";
@@ -7,6 +12,7 @@ import { Category, KindnessAction } from "../../common/interfaces";
 import styled from "styled-components";
 import { Button } from "antd";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
+import { useMediaQueries } from "../../common/mediaQueryHook";
 
 interface Props {
   category: Category;
@@ -34,6 +40,25 @@ const RightArrowButton = styled(Button)`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
 `;
 
+const HorizontalScrollContainer = styled.div`
+  display: flex;
+  position: relative;
+  gap: ${variables.spacingS}};
+  width: 100vw;
+  @media only screen and (max-width: 600px) {
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-padding-left: 12px;
+    scroll-snap-type: x mandatory;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  padding: 12px 0 20px 5px;
+  
+`;
+
 const HorizontalScrollContainers: React.FC<Props> = ({
   category,
   onPick,
@@ -41,6 +66,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
   kindnessActions,
 }) => {
   const [displayed, setDisplayed] = useState<LinkedKindnessAction[]>([]);
+  const { md } = useMediaQueries();
 
   const linkedItems: LinkedKindnessAction[] = useMemo(() => {
     const categoryItems = kindnessActions.filter(
@@ -64,8 +90,19 @@ const HorizontalScrollContainers: React.FC<Props> = ({
     setDisplayed(linkedItems.slice(0, 5));
   }, [linkedItems]);
 
-  const goLeft = () => {};
-  const goRight = () => {
+  const goLeft = useCallback(() => {
+    setDisplayed((prev) => {
+      const nextArray = prev.slice(0, -1);
+      const prevItem = prev[0].prev;
+      const nextLinkedItem = linkedItems.find(
+        (item) => item.id === prevItem.id
+      );
+      nextArray.unshift(nextLinkedItem!);
+      return nextArray;
+    });
+  }, [linkedItems]);
+
+  const goRight = useCallback(() => {
     setDisplayed((prev) => {
       const nextArray = prev.slice(1);
       const nextItem = prev[prev.length - 1].next;
@@ -75,13 +112,11 @@ const HorizontalScrollContainers: React.FC<Props> = ({
       nextArray.push(nextLinkedItem!);
       return nextArray;
     });
-  };
+  }, [linkedItems]);
 
   if (displayed.length === 0) {
     return null;
   }
-
-  // lets show arrow buttons to both ways
 
   return (
     <Fragment key={category.id}>
@@ -100,16 +135,20 @@ const HorizontalScrollContainers: React.FC<Props> = ({
             onPick={onPick}
           />
         ))}
-        <LeftArrowButton
-          shape="circle"
-          icon={<LeftOutlined />}
-          onClick={goLeft}
-        />
-        <RightArrowButton
-          shape="circle"
-          icon={<RightOutlined />}
-          onClick={goRight}
-        />
+        {md && (
+          <LeftArrowButton
+            shape="circle"
+            icon={<LeftOutlined />}
+            onClick={goLeft}
+          />
+        )}
+        {md && (
+          <RightArrowButton
+            shape="circle"
+            icon={<RightOutlined />}
+            onClick={goRight}
+          />
+        )}
       </HorizontalScrollContainer>
     </Fragment>
   );
