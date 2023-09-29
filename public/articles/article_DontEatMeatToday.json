@@ -1,0 +1,75 @@
+[
+  {
+    "text": "Don't Eat Meat Today: A Simple Step with Profound Impact",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "The choices we make daily, especially about food, have a ripple effect on our planet. One of the most straightforward yet profoundly impactful decisions? Skipping meat for just one day.",
+    "type": "Text"
+  },
+  {
+    "text": "The Environmental Cost of Meat",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Producing meat, especially beef, has a hefty environmental toll. For instance, producing just one kilogram of beef requires about 15,000 liters of water¹ and emits 27 kg of CO2². Chicken, though less resource-intensive than beef, still requires 3,900 liters of water for one kilogram³ and emits 6.9 kg of CO2⁴.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1508900138639-8d3ff3f49d78?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Alexandra Andersson"
+  },
+  {
+    "text": "The Plant-Based Advantage",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "In contrast, a plant-based meal is significantly more eco-friendly. For example, producing a kilogram of tomatoes requires only 180 liters of water⁵ and emits a mere 0.9 kg of CO2⁶. By choosing a plant-based meal over a beef meal, you can save around 25 kg of CO2 and 14,415 liters of water in just one meal! Opting for plants over chicken? You're still saving 6 kg of CO2 and 3,720 liters of water.",
+    "type": "Text"
+  },
+  {
+    "text": "Your Daily Carbon Footprint",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "To put things in perspective, the average person in the US has a carbon footprint of about 16 tons annually, which breaks down to roughly 44 kg per day⁷. Globally, the average is around 4 tons annually or about 11 kg daily⁸. By choosing a plant-based meal, you're making a dent in your daily carbon footprint.",
+    "type": "Text"
+  },
+  {
+    "text": "So, the next time you're planning a meal, consider the broader impact of your choices. A simple shift towards more plant-based options can make a significant difference for our planet.",
+    "type": "Text"
+  },
+  {
+    "text": "¹ Mekonnen, M.M. & Hoekstra, A.Y. (2010). The green, blue and grey water footprint of farm animals and animal products, Volume 1.",
+    "type": "Footnote"
+  },
+  {
+    "text": "² Scarborough, P., Appleby, P.N., Mizdrak, A. et al. (2014). Dietary greenhouse gas emissions of meat-eaters, fish-eaters, vegetarians and vegans in the UK.",
+    "type": "Footnote"
+  },
+  {
+    "text": "³ Mekonnen, M.M. & Hoekstra, A.Y. (2012). A Global Assessment of the Water Footprint of Farm Animal Products.",
+    "type": "Footnote"
+  },
+  {
+    "text": "⁴ Cederberg, C., & Stadig, M. (2003). System expansion and allocation in life cycle assessment of milk and beef production.",
+    "type": "Footnote"
+  },
+  {
+    "text": "⁵ Chapagain, A.K., & Hoekstra, A.Y. (2003). Virtual water flows between nations in relation to trade in livestock and livestock products.",
+    "type": "Footnote"
+  },
+  {
+    "text": "⁶ Baroni, L., Cenci, L., Tettamanti, M., & Berati, M. (2007). Evaluating the environmental impact of various dietary patterns combined with different food production systems.",
+    "type": "Footnote"
+  },
+  {
+    "text": "⁷ U.S. Environmental Protection Agency. (2020). Sources of Greenhouse Gas Emissions.",
+    "type": "Footnote"
+  },
+  {
+    "text": "⁸ World Bank. (2020). CO2 emissions (metric tons per capita).",
+    "type": "Footnote"
+  }
+]

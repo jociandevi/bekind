@@ -39,9 +39,10 @@ const Article: React.FC<Props> = ({ item }) => {
   const [article, setArticle] = useState<ArticlePart[]>([]);
 
   useEffect(() => {
-    const concvertItemTitleToJsonName = () => {
+    const convertItemTitleToJsonName = () => {
       const title = item.title;
       return title
+        .replace(/'/g, "")
         .split(" ")
         .map(
           (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
@@ -49,7 +50,7 @@ const Article: React.FC<Props> = ({ item }) => {
         .join("");
     };
     axios
-      .get(`/articles/article_${concvertItemTitleToJsonName()}.json`)
+      .get(`/articles/article_${convertItemTitleToJsonName()}.json`)
       .then((response) => {
         setArticle(response.data);
       })
@@ -78,7 +79,7 @@ const Article: React.FC<Props> = ({ item }) => {
           fontWeight="800"
         >
           {title}
-          {": "}
+          {description && ": "}
         </StyledText>
         <StyledText color={variables.middleGray} fontSize="14px">
           {description}

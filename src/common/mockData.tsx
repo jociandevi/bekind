@@ -105,15 +105,6 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1493401415972-d4001c9fa2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
   },
   {
-    id: 4,
-    title: "Decorate with post its",
-    category: CategoryNames.NEIGHBORHOOD,
-    description:
-      "Post inspirational sticky notes around your neighborhood, office, school, etc.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1541960071727-c531398e7494?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80",
-  },
-  {
     id: 5,
     title: "Donate old towels or blankets to an animal shelter.",
     category: CategoryNames.NEIGHBORHOOD,
@@ -294,6 +285,78 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1638740395403-39494228e8a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
     credit: "Unsplash - Aleksei Ezhkov",
+  },
+  {
+    id: 26,
+    title: "Make a DIY Gift",
+    description: "Anything from a card to pottery.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1488806374796-a4071c52353b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Myrlene NUMA",
+  },
+  {
+    id: 27,
+    title: "Don't Eat Meat Today",
+    description: "Save 4.9kg of CO2 consumption as opposed to a chicken meal.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1519996409144-56c88c9aa612?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Jo Sonn",
+  },
+  {
+    id: 28,
+    title: "Post It",
+    description: "Leave a post-it with your favorite quote",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1501747315-124a0eaca060?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Brigitte Tohm",
+  },
+  {
+    id: 29,
+    title: "Forget Someone Who Hurt You",
+    description: "And let yourself free.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1517728848779-e95acb6ac40f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Ankush Minda",
+  },
+  {
+    id: 30,
+    title: "Apologize",
+    description: "Clear the air and your mind.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1531951657915-02db328ae9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80",
+    credit: "Unsplash - Paul Pastourmatzis",
+  },
+  {
+    id: 31,
+    title: "Plant A Flower Bees Like",
+    description: "And support the Earth",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1504392022767-a8fc0771f239?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
+    credit: "Unsplash - Aaron Burden",
+  },
+  {
+    id: 32,
+    title: "Do Someone Else's Chores",
+    description: "Surprise your partner or roommate.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Maria Lin Kim",
+  },
+  {
+    id: 33,
+    title: "Offer Your Seat",
+    description: "On public transport.",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1605367177286-f3d4789c47a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+    credit: "Unsplash - Dennis Siqueira",
   },
 ];
 
