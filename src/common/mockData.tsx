@@ -358,6 +358,25 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1605367177286-f3d4789c47a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
     credit: "Unsplash - Dennis Siqueira",
   },
+  {
+    id: 34,
+    title: "Write a good review for a small business",
+    description:
+      "A coffee, restaurant, gardening service etc. you genuinely like.",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1573612664822-d7d347da7b80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - S O C I A L . C U T",
+  },
+  {
+    id: 35,
+    title: "Support A Charity",
+    description: "One that tries to improve the world.",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1621272156568-7306716648df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - ",
+  },
 ];
 
 export const user = {
