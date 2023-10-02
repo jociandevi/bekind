@@ -66,7 +66,13 @@ const HorizontalScrollContainers: React.FC<Props> = ({
       >
         {category.name}
       </Title>
-      <StyledCarousel responsive={responsive} infinite={true}>
+      <StyledCarousel
+        responsive={responsive}
+        infinite={true}
+        ssr={true}
+        customTransition="all .5"
+        transitionDuration={100}
+      >
         {filteredActions.map((item) => (
           <ImageCardL
             item={item}
