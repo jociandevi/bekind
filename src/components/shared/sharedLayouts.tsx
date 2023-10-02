@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { variables } from "../../common/variables";
 
 export const phoneCardWidth = "50vw";
-export const tabletCardWidth = "35vw";
-export const laptopCardWidth = "20vw";
+export const tabletCardWidth = "30vw";
+export const laptopCardWidth = "22vw";
 
 export const StyledGrid = styled.div`
   display: grid;

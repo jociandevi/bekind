@@ -17,15 +17,13 @@ const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   flex-shrink: 0;
   border-radius: ${variables.borderRadius}px;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
   display: flex;
   margin-bottom: ${variables.spacingS};
   max-height: 30vw;
 `;
 
 interface Props {
-  item: { id: number; title: string; description?: string; imageUrl: string };
+  item: KindnessAction;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled: boolean;
 }

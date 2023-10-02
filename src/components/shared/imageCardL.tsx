@@ -52,7 +52,7 @@ const OverlayIconButton = styled(Button)`
 `;
 
 interface Props {
-  item: { id: number; title: string; description?: string; imageUrl: string };
+  item: KindnessAction;
   isPickEnabled: boolean;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
 }
@@ -92,7 +92,7 @@ const ImageCardL: React.FC<Props> = ({ item, isPickEnabled, onPick }) => {
           {item.description}
         </StyledText>
       </PaddingContainer>
-      <Flexbox style={{ margin: `${variables.spacingXxs}` }}>
+      <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
         {isPickEnabled ? (
           <Button type="primary" onClick={(e) => onPick(e, item)}>
             Pick

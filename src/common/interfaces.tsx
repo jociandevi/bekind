@@ -31,7 +31,7 @@ export interface KindnessAction {
   id: number;
   title: string;
   description?: string;
-  category?: CategoryNames;
+  category: CategoryNames;
   imageUrl: string;
   credit?: string;
 }
