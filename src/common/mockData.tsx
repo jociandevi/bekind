@@ -81,8 +81,8 @@ export const categories: Category[] = [
 export const raoks: KindnessAction[] = [
   {
     id: 1,
-    title: "Pay it Backward",
-    description: "Buy coffee for the person behind you in line",
+    title: "Surprise Someone With a Coffee",
+    description: "Or tea. Bring a cup of joy.",
     category: CategoryNames.SOCIAL,
     imageUrl:
       "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80",
@@ -376,6 +376,15 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1621272156568-7306716648df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     credit: "Unsplash - ",
+  },
+  {
+    id: 36,
+    title: "Buy Local Food",
+    description: "Choose locally produced fruits, veggies and bread.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1444459094717-a39f1e3e0903?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80",
+    credit: "Unsplash - Will",
   },
 ];
 

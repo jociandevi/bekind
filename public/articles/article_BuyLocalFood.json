@@ -1,0 +1,65 @@
+[
+  {
+    "text": "Why You Should Totally Be Besties with Local Food 🥦🍎",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "1. The Environment Gives You a Thumbs Up 👍",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "When you buy local, the Earth literally breathes a sigh of relief. Why? Because local food doesn't need to hop on a plane or take a cross-country road trip to get to you. It's like choosing to walk to your friend's house instead of taking a 5-hour flight. Local food typically travels a shorter distance to markets and stores, which means less pollution and fewer carbon emissions. Plus, think about all the plastic packaging you're avoiding when you buy from a farm stand. Less waste, more taste!",
+    "type": "Text"
+  },
+  { "text": "2. Your Body Will Thank You 🙏", "type": "HeaderMedium" },
+  {
+    "text": "Local foods are like the superheroes of the nutrition world. They're often picked when they're perfectly ripe, which means they're bursting with nutrients. Some studies even suggest that local foods retain more nutrients compared to their long-traveled counterparts. And guess what? When you buy local, you're also less likely to consume foods artificially ripened with ethylene gas or doused in a cocktail of pesticides.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1567306295427-94503f8300d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1442&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Shelley Pauls"
+  },
+  {
+    "text": "3. Boosting Biodiversity and Loving Local Ecosystems 🌱",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Supporting local farmers isn't just about getting the freshest lettuce. It's also about maintaining green spaces and farmland in your area. Farms that use sustainable practices can boost biodiversity, protect our buzzy bee friends, and promote clean air, water, and soil.",
+    "type": "Text"
+  },
+  {
+    "text": "4. Foods You Should Totally Buy Locally 🛒",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Fruits: Think apples from the orchard down the road or berries from the local farmer's market.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Vegetables: Fresh greens, tomatoes, and everything in between.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Dairy: Creamy milk, cheese, and yogurt from happy, local cows.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Bread: Freshly baked loaves from local grains.",
+    "type": "ListItem"
+  },
+  { "text": "5. The Bigger Picture 🌍", "type": "HeaderMedium" },
+  {
+    "text": "While buying local is awesome, it's just one piece of the puzzle. Sometimes, food produced farther away might be more sustainable if it's grown responsibly or has a smaller ecological footprint. And hey, let's not forget about plant-based foods. They're superstars in the sustainability arena. So, mix it up! Go local, go organic, and go green.",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [7 Fantastic Benefits of Eating Local - Healthline](https://www.healthline.com/nutrition/why-eat-local-food)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [Why Buy Local Food? It's Healthier & Better for the Environment](https://foodrevolution.org/blog/why-buy-local-food/)",
+    "type": "Footnote"
+  }
+]
