@@ -26,9 +26,10 @@ const CardContainer = styled.div<{
     props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
   flex-shrink: 0;
   border-radius: ${variables.borderRadius}px;
+  cursor: pointer;
+  flex: 0 0 auto;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  cursor: pointer;
 `;
 
 const PaddingContainer = styled.div<{
