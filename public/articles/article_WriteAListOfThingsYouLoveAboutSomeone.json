@@ -1,0 +1,77 @@
+[
+  {
+    "text": "Feeling blue? This 3-minute action will make you feel way better!",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "We all have that one person. You know, the one who's like the Wi-Fi signal in a world of dial-up connections. The one who's the peanut butter to your jelly, the Batman to your Robin, or the caffeine to your Monday mornings. They're the unsung heroes in our orbit, and while we might not always belt out ballads in their honor, deep down, we're constantly composing silent symphonies of gratitude for them. Here's a list of things that make these humans so darn lovable:",
+    "type": "Text"
+  },
+  { "text": "1. Their Infectious Enthusiasm 🚀", "type": "HeaderMedium" },
+  {
+    "text": "Ever noticed how some people can make even a trip to the dentist sound like an adventure to Disneyland? That's them. Their zest for life is so contagious that even mundane tasks feel like quests. Studies have shown that being around enthusiastic individuals can boost our own mood and productivity[^1^].",
+    "type": "Text"
+  },
+  { "text": "2. The \"I've Got Your Back\" Vibe 🛡️", "type": "HeaderMedium" },
+  {
+    "text": "Whether it's defending you in a heated debate about pineapple on pizza or being there for you during 3 AM existential crises, they're your ride or die. In fact, research indicates that having such supportive figures in our lives can significantly reduce stress levels[^2^].",
+    "type": "Text"
+  },
+  { "text": "3. Memory Keepers 📸", "type": "HeaderMedium" },
+  {
+    "text": "Remember that time you both got lost during a road trip and ended up discovering the world's best ice cream parlor? Or the time you danced in the rain, not caring about the world? They're the guardians of these golden memories, often reminding you of them just when you need a pick-me-up.",
+    "type": "Text"
+  },
+  { "text": "4. The Art of Listening 👂", "type": "HeaderMedium" },
+  {
+    "text": "In a world where everyone's eager to put in their two cents, they're the rare gems who genuinely listen. They don't just hear words; they absorb emotions, making you feel seen and heard. It's no surprise that active listening is linked to stronger relationships[^3^].",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1553530979-fbb9e4aee36f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Boxed Water Is Better"
+  },
+  { "text": "5. Their Quirks Make Them, Them 🦄", "type": "HeaderMedium" },
+  {
+    "text": "Maybe it's their obsession with collecting vintage postcards, their knack for speaking in movie quotes, or their peculiar dance moves. These quirks, which might seem odd to the outside world, are what make them uniquely endearing to us.",
+    "type": "Text"
+  },
+  { "text": "6. Growth Cheerleaders 🌱", "type": "HeaderMedium" },
+  {
+    "text": "They celebrate your victories, no matter how small. Got a promotion? They're popping the champagne. Managed to bake without burning the kitchen down? They're your biggest fans. Their belief in us often propels us to achieve more than we thought possible.",
+    "type": "Text"
+  },
+  { "text": "7. The Comfort of Silence 🤫", "type": "HeaderMedium" },
+  {
+    "text": "With them, every moment doesn't need to be filled with chatter. Sometimes, just sitting in silence, sipping coffee, and watching the world go by is enough. It's in these silent moments that we often find the most profound connection.",
+    "type": "Text"
+  },
+  { "text": "8. The Brutal Honesty 🚫🍬", "type": "HeaderMedium" },
+  {
+    "text": "While they're your biggest cheerleaders, they're also not afraid to call you out when needed. They'll tell you if that dress isn't flattering or if you're being unreasonable. And while it might sting for a moment, deep down, we appreciate their honesty.",
+    "type": "Text"
+  },
+  { "text": "9. The Shared Weirdness 🤪", "type": "HeaderMedium" },
+  {
+    "text": "Every duo or group has its own set of weird rituals or inside jokes that make no sense to the outside world. It's this shared weirdness that strengthens the bond and makes the relationship special.",
+    "type": "Text"
+  },
+  { "text": "10. Unwavering Loyalty 🐺", "type": "HeaderMedium" },
+  {
+    "text": "Through thick and thin, highs and lows, they're by your side, proving that loyalty isn't just a trait reserved for dogs.",
+    "type": "Text"
+  },
+  {
+    "text": "So, whether you choose to share this list with your unsung hero or keep it to yourself, take a moment to bask in the warmth of gratitude. After all, life's a tad bit brighter with them in it.",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: The Importance of Genuine Enthusiasm - Psychology Today [https://www.psychologytoday.com/intl/blog/the-search-meaning-after-age-50/202202/the-importance-genuine-enthusiasm]",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^3^]: Physical Activity Is Good for the Mind and the Body - Health.gov [https://health.gov/news/202112/physical-activity-good-mind-and-body]",
+    "type": "Footnote"
+  }
+]

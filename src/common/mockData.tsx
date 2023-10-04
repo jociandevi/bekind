@@ -386,6 +386,24 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1444459094717-a39f1e3e0903?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80",
     credit: "Unsplash - Will",
   },
+  {
+    id: 37,
+    title: "Write A Card To Sick Children",
+    description: "Send it to a hospital.",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1637597384611-0c33cef6ec03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+    credit: "Unsplash - rc.xyz NFT gallery",
+  },
+  {
+    id: 38,
+    title: "Write a List Of Things You Love About Someone",
+    description: "You do't need to share it with them - but you can.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
+    credit: "Unsplash - Elevate",
+  },
 ];
 
 export const user = {

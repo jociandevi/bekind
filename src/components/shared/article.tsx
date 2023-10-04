@@ -88,6 +88,10 @@ const Article: React.FC<Props> = ({ item }) => {
     );
   };
 
+  const renderText = (text: string): string => {
+    return text;
+  };
+
   return (
     <>
       <ArticleContainer>
@@ -134,7 +138,7 @@ const Article: React.FC<Props> = ({ item }) => {
                 fontSize="10px"
                 style={{ marginBottom: variables.spacingXs }}
               >
-                {item.text}
+                {renderText(item.text)}
               </StyledText>
             )}
           </Fragment>

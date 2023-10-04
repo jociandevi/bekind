@@ -1,0 +1,57 @@
+[
+  { "text": "The Power of a Simple Card 💌", "type": "HeaderLarge" },
+  {
+    "text": "Hey there, awesome reader! Ever thought about the magic a simple card can do? Especially when it's sent to sick children in a hospital? Let's dive into this world of words, emotions, and the impact they can have.",
+    "type": "Text"
+  },
+  { "text": "Why Cards Matter 🤔", "type": "HeaderMedium" },
+  {
+    "text": "Cards are more than just pieces of paper. They're a tangible representation of someone's thoughts, feelings, and well-wishes. For a child in a hospital, it's a reminder that there's a world outside those walls filled with people who care.",
+    "type": "Text"
+  },
+  { "text": "Some Surprising Stats 📊", "type": "HeaderMedium" },
+  {
+    "text": "Did you know that in 2022, 1.5% of children aged 0-4 years were in fair or poor health? And 2.2% of children aged 5-11 years were in a similar health condition. Moreover, there's been a significant spike in respiratory illnesses among children, with some pediatric hospitals running out of beds. These numbers are not just statistics; they represent real kids with real stories.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1606618742139-a5f068a9f16a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Kristine Wook"
+  },
+  { "text": "What to Write in the Card ✍️", "type": "HeaderMedium" },
+  {
+    "text": "Start with Encouragement: \"Hey champ, every day you're getting stronger!\"",
+    "type": "ListItem"
+  },
+  {
+    "text": "Share a Fun Fact: \"Did you know that elephants can't jump? But they sure can dance!\" 🐘",
+    "type": "ListItem"
+  },
+  {
+    "text": "Draw a Doodle: Even if you're no Picasso, a simple smiley face can brighten a day.",
+    "type": "ListItem"
+  },
+  {
+    "text": "End with Hope: \"Can't wait to hear about all the fun things you'll do once you're out of here!\"",
+    "type": "ListItem"
+  },
+  { "text": "The Ripple Effect 🌊", "type": "HeaderMedium" },
+  {
+    "text": "Imagine being a kid, stuck in a hospital room. Now, imagine getting a card filled with love and positivity. That card doesn't just affect that moment; it creates a ripple. It boosts morale, brings smiles, and might even speed up recovery. Plus, it reminds the child's family that they're not alone in this journey.",
+    "type": "Text"
+  },
+  { "text": "A Call to Action 📣", "type": "HeaderMedium" },
+  {
+    "text": "Next time you're buying groceries or browsing online, consider picking up a card or two for a child in a hospital. It's a small gesture with a massive impact. And who knows, you might just start a trend in your community!",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [FastStats - Child Health - Centers for Disease Control and Prevention](https://www.cdc.gov/nchs/fastats/child-health.htm)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [There's a spike in respiratory illness among children - NPR](https://www.npr.org/2022/10/11/1127873967/respiratory-illness-covid-children-hospitalizations-health)",
+    "type": "Footnote"
+  }
+]
