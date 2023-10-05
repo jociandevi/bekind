@@ -1,0 +1,40 @@
+[
+  { "text": "Trees: Nature's Climate Warriors", "type": "HeaderMedium" },
+  {
+    "text": "Trees are like the superheroes of our environment. They don't wear capes, but they have superpowers. One of their most impressive feats? They munch on greenhouse gases for breakfast, lunch, and dinner. Through photosynthesis, trees absorb carbon dioxide and store it, helping to combat the rapid warming of our planet. In fact, smart management of trees in the US alone could offset the carbon equivalent of taking 57 million cars off the road.",
+    "type": "Text"
+  },
+  { "text": "The Mental Oasis: Nature's Green Spaces", "type": "HeaderMedium" },
+  {
+    "text": "Ever felt that wave of calm wash over you during a walk in the park? There's science behind that. Spending time among trees correlates with a drop in anxiety and depression. Even a short stroll in your local green space can have therapeutic effects. Plus, these green spaces encourage us to move, reducing obesity rates.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Jeremy Bishop"
+  },
+  { "text": "A Single Tree: The CO2 Offset Champion", "type": "HeaderMedium" },
+  {
+    "text": "An acre of trees can absorb the carbon dioxide equivalent of driving a car for 26,000 miles in a year. That's a lot of road trips! And a single tree? It can produce enough oxygen for four people.",
+    "type": "Text"
+  },
+  { "text": "Bees, Birds, and Biodiversity", "type": "HeaderMedium" },
+  {
+    "text": "Trees aren't just for us humans. They're condominiums for wildlife. From birds to bees to squirrels, trees provide shelter and food. An apple tree alone can produce about 20 fruit bushels annually, feeding a myriad of creatures.",
+    "type": "Text"
+  },
+  { "text": "Can't Plant a Tree? No Problem!", "type": "HeaderMedium" },
+  {
+    "text": "Not everyone has a backyard or the means to plant a tree. But guess what? You can still make a difference. By supporting organizations that plant trees on your behalf, you're contributing to a greener, healthier planet.",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: The Nature Conservancy - Benefits of Trees and Forests(https://www.nature.org/en-us/what-we-do/our-priorities/build-healthy-cities/cities-stories/benefits-of-trees-forests/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: 10 Environmental Benefits of Planting a Tree - Greenpop(https://greenpop.org/10-environmental-benefits-planting-tree/)",
+    "type": "Footnote"
+  }
+]

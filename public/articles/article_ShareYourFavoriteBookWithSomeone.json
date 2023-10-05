@@ -1,0 +1,73 @@
+[
+  { "text": "The Bookish Gesture 📚❤️", "type": "HeaderMedium" },
+  {
+    "text": "Ever had that feeling when you finish a book, and your first thought is, \"Wow, [Friend's Name] would LOVE this!\"? Well, you're not alone. Many of us have felt the urge to share a book we loved with someone we think would appreciate it just as much. But why is this gesture so special? Let's break it down.",
+    "type": "Text"
+  },
+
+  { "text": "The Magic of Sharing a Story 🌌", "type": "HeaderMedium" },
+  {
+    "text": "When you share a book, you're not just passing on a bunch of pages with words. You're sharing an experience, a journey you've been on, and inviting someone else to embark on the same adventure. It's like giving them a ticket to a secret world only you and the author know about... until now.",
+    "type": "Text"
+  },
+
+  { "text": "Why Buy or Lend? 🤔", "type": "HeaderMedium" },
+  {
+    "text": "Personal Touch: Buying someone a book shows you've put thought into their interests and tastes. It's a personalized gift that says, \"I know you, and I think you'll love this.\"",
+    "type": "ListItem"
+  },
+  {
+    "text": "Spread the Love: Lending a book is like sharing a piece of your heart. It's a way of saying, \"This story touched me, and I want it to touch you too.\"",
+    "type": "ListItem"
+  },
+  {
+    "text": "Economic Sense: The U.S. book industry made a whopping $28.1 billion in revenue in 2022.",
+    "type": "ListItem"
+  },
+  {
+    "text": "[^1^]: [U.S. book industry statistics - Zippia](https://www.zippia.com/advice/us-book-industry-statistics/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1533327325824-76bc4e62d560?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Clay Banks"
+  },
+  { "text": "The Joy of Discovery 🌍", "type": "HeaderMedium" },
+  {
+    "text": "There's a unique joy in discovering a book through a recommendation. It's like being part of an exclusive club. Plus, it gives you and your friend something new to talk about. \"Did you get to that twist on page 237?!\" becomes the new \"Did you see last night's episode?\"",
+    "type": "Text"
+  },
+  {
+    "text": "Imagine this: You lend a book to a friend. They love it and lend it to another friend. This cycle continues, and before you know it, a single book has touched dozens of lives. It's like a literary version of the butterfly effect! (Let's just hope that you get the book back at some point...)",
+    "type": "Text"
+  },
+  {
+    "text": "So, the next time you finish a book and think of someone who'd love it, don't hesitate. Whether you buy them a copy or lend yours, you're doing more than just sharing a book. You're sharing an experience, fostering connections, and creating ripples that can touch countless lives.",
+    "type": "Text"
+  },
+  {
+    "text": "If You're Unsure What to Dive Into Next... 🤷‍♂️📖",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Choosing the next book to read or buy can sometimes feel like picking a needle out of a haystack. So if you are out of ideas, let me share my recent favorites:",
+    "type": "Text"
+  },
+  {
+    "text": "A Hugely Underrated Book About Life and Success: [Complete and Utter F**k-Up](https://www.amazon.com/McDermottComplete-Utter-F-k-Up/dp/129234282X/)",
+    "type": "ListItem"
+  },
+  {
+    "text": "An Inspiring Read on Building a Great Life: [The Code of the Extraordinary Mind](https://www.amazon.com/Code-Extraordinary-Mind-Unconventional-Redefine/dp/B0CGFCFLS1/)",
+    "type": "ListItem"
+  },
+  {
+    "text": "For Those in Need of a Good Laugh: [Lessons in Chemistry: A Novel](https://www.amazon.com/Lessons-in-Chemistry-A-Novel/dp/B09BBK79VB/)",
+    "type": "ListItem"
+  },
+  {
+    "text": "A Spiritually Uplifting Journey: [Inner Engineering](https://www.amazon.com/Inner-Engineering-audiobook/dp/B078RV7YW3/)",
+    "type": "ListItem"
+  }
+]

@@ -404,6 +404,42 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
     credit: "Unsplash - Elevate",
   },
+  {
+    id: 39,
+    title: "Brag About An Employee To Their Manager",
+    description: "If you enjoy working them, don't miss the chance.",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80",
+    credit: "Unsplash - Tedd F",
+  },
+  {
+    id: 40,
+    title: "Share your favorite book with someone",
+    description: "Buy or lend it for them.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1599733442143-127f1f5540f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Richa Sharma",
+  },
+  {
+    id: 41,
+    title: "Go By Bicycle Today",
+    description: "Instead of driving",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1501147830916-ce44a6359892?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Murillo de Paula",
+  },
+  {
+    id: 42,
+    title: "Plant a Tree",
+    description: "The second best time to plant a tree is today!",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1564860924912-f27764fd2ab6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Richard Loader",
+  },
 ];
 
 export const user = {

@@ -1,0 +1,58 @@
+[
+  {
+    "text": "Why You Should Totally Ditch Your Car and Hop on a Bicycle Today 🚴‍♂️",
+    "type": "HeaderLarge"
+  },
+  { "text": "The CO2 Savings Game 🌍", "type": "HeaderMedium" },
+  {
+    "text": "Did you know that a typical passenger vehicle emits about 400 grams of CO2 per mile? Now, let's do some quick math. If you cycle for 16km (which is roughly 10 miles), you'd save about 4kg of CO2! That's equivalent to the CO2 emissions from driving a car for 10 miles.",
+    "type": "Text"
+  },
+  { "text": "Your Daily CO2 Footprint 👣", "type": "HeaderMedium" },
+  {
+    "text": "On average, the average person uses about 4.7 tons of carbon dioxide per year. If we calculate it for days, this means the average is 12.8 kg CO2 consumption. And by choosing cycling, you just saved 4kg! If you are otherwise an average consumer, with just this small action, you decreased your daily CO2 consumption by an amazing 31%!",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1588777930357-fb171e43f7ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Noral Nayla"
+  },
+  { "text": "More Than Just CO2 Savings 🌟", "type": "HeaderMedium" },
+  { "text": "Exercise and Calorie Burn", "type": "HeaderSmall" },
+  {
+    "text": "Cycling is a fantastic way to get your daily dose of exercise. For a 70kg person, cycling at a moderate pace can burn around 500 calories in an hour. That's like munching on two chocolate bars and not gaining a gram!",
+    "type": "ListItem"
+  },
+  { "text": "Speed Comparison", "type": "HeaderSmall" },
+  {
+    "text": "In city traffic, a bicycle can often be faster than a car. No more getting stuck in traffic jams or searching for parking spots. Plus, you get the added bonus of feeling smug as you whizz past those stationary cars 🚗.",
+    "type": "ListItem"
+  },
+  { "text": "Nature Time", "type": "HeaderSmall" },
+  {
+    "text": "Cycling allows you to connect with nature, especially if you choose scenic routes. The wind in your hair, the sun on your skin, and the world whizzing by – it's a sensory treat!",
+    "type": "ListItem"
+  },
+  { "text": "Mood Lifter", "type": "HeaderSmall" },
+  {
+    "text": "Physical activity releases endorphins, the body's natural feel-good chemicals. So, not only are you doing good for the planet, but you're also giving yourself a mood boost.",
+    "type": "ListItem"
+  },
+  {
+    "text": "[^1^]: [Greenhouse Gas Emissions from a Typical Passenger Vehicle - EPA](https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [Calories Burned While Cycling - Healthline](https://www.healthline.com/health/fitness-exercise/cycling-calories-burned#1)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^3^]: [Exercise and Endorphins - WebMD](https://www.webmd.com/depression/guide/exercise-depression#1)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^4^]: [The world's top 1% of emitters produce over 1000 times more CO2 than the bottom 1% - IEA](https://www.iea.org/commentaries/the-world-s-top-1-of-emitters-produce-over-1000-times-more-co2-than-the-bottom-1)",
+    "type": "Footnote"
+  }
+]
