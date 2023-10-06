@@ -458,6 +458,15 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1576695139696-e053aae84148?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
     credit: "Unsplash - Guido Coppa",
   },
+  {
+    id: 45,
+    title: "Sell An Item Online",
+    description: "Help yourself, the earth and the buyer.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Brooke Lark",
+  },
 ];
 
 export const user = {
