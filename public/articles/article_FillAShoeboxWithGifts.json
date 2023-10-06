@@ -1,0 +1,74 @@
+[
+  {
+    "text": "The Shoebox Surprise: A Gift of Love and Decluttering 🎁",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "Hey there, fellow human! Ever found yourself drowning in a sea of things you don't really use anymore? Or perhaps you've stumbled upon that toy your kid played with once and then forgot about? Well, here's a fun idea: why not turn that clutter into a heartwarming gift? 🎉",
+    "type": "Text"
+  },
+  { "text": "1. The Shoebox Gift Phenomenon 📦", "type": "HeaderMedium" },
+  {
+    "text": "You might've heard of the concept before. It's simple: grab a shoebox, fill it with gifts, and give it to someone who'd cherish it. In 2022, over 10.5 million shoebox gifts were collected globally, with 9.3 million coming from the U.S. alone[^1^]. That's a lot of joy spread around, and you can be a part of this wave!",
+    "type": "Text"
+  },
+  { "text": "2. Decluttering: The Unexpected Joy 🧹", "type": "HeaderMedium" },
+  {
+    "text": "Now, I know what you're thinking. \"Guys, I'm not Santa. I don't have a workshop full of elves making toys.\" And I get it. But here's the twist: you don't need to buy new things. Just look around your home:",
+    "type": "Text"
+  },
+  {
+    "text": "Kids' Toys: That action figure or doll that's been gathering dust? Perfect for the shoebox.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Your Clothes: Got a t-shirt or scarf you haven't worn in ages? Someone else might love it.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Bathroom & Kitchen: Unused toiletries or that extra set of spoons? Yep, they can go in too.",
+    "type": "ListItem"
+  },
+  {
+    "text": "But remember, the key is to gift things that others would value. It's not about offloading junk, but about sharing treasures you no longer need.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1571510175566-8aa5f41ebcc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80",
+    "type": "Image",
+    "credit": "Unsplash - rosebox"
+  },
+  {
+    "text": "3. The Destination: Where Does the Box Go? 🚗",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Once your shoebox is ready, you have options. You can keep it until Christmas and play Santa in your neighborhood. Or, if you're feeling extra generous, pop it in your car and take it to a charity. Organizations like Operation Christmas Child have been doing this for years, delivering shoebox gifts to children in over 170 countries[^2^].",
+    "type": "Text"
+  },
+  {
+    "text": "4. The Bigger Picture: More Than Just a Gift 🌍",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Beyond the immediate joy of giving, there's a ripple effect. These shoebox gifts often reach children in hard-to-reach, impoverished communities. For many, it's the first gift they've ever received[^3^]. And it's not just about the material items. It's about the message of love, care, and community that comes with it.",
+    "type": "Text"
+  },
+  {
+    "text": "So, next time you're feeling overwhelmed by the stuff in your home, think of the shoebox. It's a small gesture that can make a big difference. And who knows, you might just discover the joy of decluttering and giving all in one go!",
+    "type": "Text"
+  },
+  { "text": "Happy gifting! 🎄", "type": "Text" },
+  {
+    "text": "[^1^]: [Fact Sheet: Operation Christmas Child - Samaritan's Purse](https://www.samaritanspurse.org/operation-christmas-child/fact-sheet-occ/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [Operation Christmas Child Fact Sheet - Samaritan's Purse Canada](https://samaritanspurse.ca/operation-christmas-child-fact-sheet)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^3^]: [Official Shoebox Gift Suggestions - Samaritan's Purse](https://www.samaritanspurse.org/operation-christmas-child/what-goes-in-my-shoebox-suggestions/)",
+    "type": "Footnote"
+  }
+]

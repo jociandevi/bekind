@@ -1,0 +1,64 @@
+[
+  { "text": "The Plastic Bag Predicament", "type": "HeaderLarge" },
+  {
+    "text": "You stroll into a store, grab a few items, and head to the checkout. The cashier asks, \"Would you like a bag?\" Before you answer, let's pause and rewind. What if, instead of saying \"yes\", you whip out your own reusable bag? Sounds simple, right? But this tiny act can have a massive impact on our planet. Let's break it down.",
+    "type": "Text"
+  },
+  {
+    "text": "The Environmental Downside of Convenience",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Plastic bags might seem harmless, but they're like that sneaky villain in movies that causes chaos behind the scenes. Here's the lowdown:",
+    "type": "Text"
+  },
+  { "text": "Decomposition Drama", "type": "HeaderSmall" },
+  {
+    "text": "Plastic bags take years, sometimes centuries, to decompose. And when they do, they release toxic substances into the soil and air. Not the kind of legacy we want to leave behind, right?",
+    "type": "ListItem"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1570913196444-6f013e478152?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Priscilla Du Preez"
+  },
+  { "text": "Wildlife Woes", "type": "HeaderSmall" },
+  {
+    "text": "Animals often mistake plastic bags for food. Consuming them can block their digestive processes, leading to starvation, choking, and even death. Picture a majestic turtle suffocating because it swallowed a plastic bag thinking it was seaweed. Heartbreaking, isn't it?",
+    "type": "ListItem"
+  },
+  { "text": "Marine Mayhem", "type": "HeaderSmall" },
+  {
+    "text": "Plastics, including bags, are now omnipresent in marine environments. This not only harms marine life but also affects tourism and economic activities. Imagine a pristine beach littered with plastic bags. Not the ideal vacation spot, huh?",
+    "type": "ListItem"
+  },
+  {
+    "text": "According to co2everything.com, by not buying a single plastic bag, you will save 1.58kg of CO2! An average person's daily CO2 consumption is 12.8 kg CO2. So, by this small act, you just reduced your daily carbon footprint by 12%! Amazing! 🌍✨",
+    "type": "Text"
+  },
+  { "text": "The Wellbeing Boost", "type": "HeaderMedium" },
+  {
+    "text": "Being environmentally conscious isn't just about saving the planet; it's also about enhancing our wellbeing. When we make eco-friendly choices:",
+    "type": "Text"
+  },
+  { "text": "We feel a sense of accomplishment", "type": "ListItem" },
+  { "text": "We're part of a larger purpose", "type": "ListItem" },
+  { "text": "We foster a connection with nature", "type": "ListItem" },
+  { "text": "So, What's the Verdict?", "type": "HeaderMedium" },
+  {
+    "text": "Next time you're at the store, think twice before grabbing that plastic bag. By making a small change in our habits, we can make a big difference in the world. And remember, every bag counts!",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [The negative environmental effects of plastic shopping bags - IBA](https://www.ibanet.org/article/76F8D2A9-1A1D-4A2F-8A6F-0A70149FD4D5)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [CO2e of a Plastic Bag - CO2Everything](https://www.co2everything.com/co2e-of/plastic-bag)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^3^]: [The world's top 1% of emitters produce over 1000 times more CO2 than the bottom 1% - IEA](https://www.iea.org/commentaries/the-world-s-top-1-of-emitters-produce-over-1000-times-more-co2-than-the-bottom-1)",
+    "type": "Footnote"
+  }
+]
