@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { CircleImage, FlexboxCol, ResponsiveImageLarge } from "./sharedLayouts";
+import { FlexboxCol } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Modal, ModalProps, Typography } from "antd";
@@ -9,8 +9,18 @@ import { useMediaQueries } from "../../common/mediaQueryHook";
 const { Text } = Typography;
 
 const StyledModal = styled(Modal)`
+  margin: 0;
+  @media only screen and (min-width: 600px) {
+    margin: auto;
+  }
+
   .ant-modal-content {
-    border-radius: 15px;
+    width: 100vw;
+    border-radius: 15px 15px 0 0;
+    @media only screen and (min-width: 600px) {
+      width: inherit;
+      border-radius: 15px;
+    }
   }
 
   .ant-modal-close-x {
@@ -23,11 +33,27 @@ const StyledModal = styled(Modal)`
   }
 `;
 
-const ModalContent = styled(FlexboxCol)`
+const ModalContent = styled(FlexboxCol)<{ imageBackgroundColor?: string }>`
   align-items: center;
   gap: ${variables.spacingXxs};
   padding: ${variables.spacingS} ${variables.spacingXxs};
   text-align: center;
+
+  & img,
+  svg {
+    object-fit: cover;
+    border-radius: 50%;
+    border: #ffffff solid 4px;
+    margin-top: -20vw;
+    width: 20vw;
+    height: 20vw;
+    @media only screen and (min-width: 600px) {
+      margin-top: -10vw;
+      width: 10vw;
+      height: 10vw;
+    }
+    background-color: ${(props) => props.imageBackgroundColor};
+  }
 `;
 
 interface Props extends ModalProps {
@@ -38,6 +64,8 @@ interface Props extends ModalProps {
   imageUrl?: string;
   image?: React.ReactNode;
   isProfileImage?: boolean;
+  imageBackgroundColor?: string;
+  modalHeight: number;
 }
 
 const AntdModal: React.FC<Props> = ({
@@ -47,10 +75,12 @@ const AntdModal: React.FC<Props> = ({
   imageUrl,
   image,
   isProfileImage,
+  imageBackgroundColor,
   children,
+  modalHeight,
   ...props
 }) => {
-  const { md, lg } = useMediaQueries();
+  const { md } = useMediaQueries();
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -68,19 +98,10 @@ const AntdModal: React.FC<Props> = ({
         onOk={handleOk}
         {...props}
         title=""
+        style={md ? {} : { top: `calc(100vh - ${modalHeight}px)` }}
       >
-        <ModalContent>
-          {imageUrl && !isProfileImage && (
-            <ResponsiveImageLarge
-              src={imageUrl}
-              alt={imageUrl}
-              md={md}
-              lg={lg}
-            />
-          )}
-          {imageUrl && isProfileImage && (
-            <CircleImage src={imageUrl} alt={imageUrl} md={md} />
-          )}
+        <ModalContent imageBackgroundColor={imageBackgroundColor}>
+          {imageUrl && <img src={imageUrl} alt={imageUrl} />}
           {image && image}
           <Title level={3}>{props.title}</Title>
           <Text>{description}</Text>

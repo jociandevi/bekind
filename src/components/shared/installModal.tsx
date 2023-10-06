@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import AntdModal from "./modal";
-import DownloadImg from "../../img/inbox.png";
+import BeKindLogo from "../../android-chrome-192x192.png";
+import { useMediaQueries } from "../../common/mediaQueryHook";
+import { Button } from "antd";
+import { CenterAlignedFlexboxCol } from "./sharedLayouts";
+import styled from "styled-components";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -11,10 +15,16 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
+const StyledButton = styled(Button)`
+  border: none;
+  width: 100%;
+`;
+
 const InstallModal: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { md } = useMediaQueries();
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
@@ -23,7 +33,10 @@ const InstallModal: React.FC = () => {
 
       // Stash the event so it can be triggered later.
       setDeferredPrompt(event);
-      setIsModalOpen(true);
+      // this modal should only appear on phones
+      if (!md) {
+        setIsModalOpen(true);
+      }
     };
 
     (window as any).addEventListener(
@@ -37,7 +50,7 @@ const InstallModal: React.FC = () => {
         handleBeforeInstallPrompt
       );
     };
-  }, [deferredPrompt]);
+  }, [deferredPrompt, md]);
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -54,15 +67,24 @@ const InstallModal: React.FC = () => {
 
   return (
     <AntdModal
-      title="Install the app"
+      title="Get the full experience with the app"
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
       onOk={handleOk}
-      description="Get our free app. It won't take up space on your phone."
-      imageUrl={DownloadImg}
+      description="Enjoy the additional features."
+      imageUrl={BeKindLogo}
+      modalHeight={334}
       isProfileImage
-      okText="Sure!"
-      cancelText="Not today"
+      footer={
+        <CenterAlignedFlexboxCol style={{ gap: "2px" }}>
+          <StyledButton type="primary" onClick={handleOk}>
+            Open BeKind
+          </StyledButton>
+          <StyledButton onClick={() => setIsModalOpen(false)}>
+            Not Today
+          </StyledButton>
+        </CenterAlignedFlexboxCol>
+      }
     />
   );
 };

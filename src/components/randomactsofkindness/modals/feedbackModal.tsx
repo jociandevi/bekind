@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "antd";
 import AntdModal from "../../shared/modal";
 import FireImg from "../../../img/fire.png";
+import { variables } from "../../../common/variables";
 
 interface Props {
   userName?: string;
@@ -23,6 +24,7 @@ const FeedbackModal: React.FC<Props> = ({
     <AntdModal
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
+      modalHeight={292}
       title={
         userName
           ? `Nice job, ${userName}! That's a 5-day Streak!`
@@ -30,6 +32,7 @@ const FeedbackModal: React.FC<Props> = ({
       }
       description="Thank you for making the world a better place!"
       imageUrl={FireImg}
+      imageBackgroundColor={variables.pink1}
       footer={
         <Button type="primary" onClick={onCheers}>
           Cheers!

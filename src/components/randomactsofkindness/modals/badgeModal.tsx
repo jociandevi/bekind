@@ -34,10 +34,12 @@ const BadgeModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen, item }) => {
   return (
     <AntdModal
       title={name}
+      modalHeight={298}
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
       onOk={() => setIsModalOpen(false)}
       description={description}
+      imageBackgroundColor={variables.lightGray}
       image={icon}
       footer={
         <CenterAlignedFlexbox>

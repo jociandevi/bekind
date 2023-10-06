@@ -18,6 +18,7 @@ const CheersModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen }) => {
   return (
     <AntdModal
       title="Cheer on others"
+      modalHeight={288}
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
       onOk={onOk}
