@@ -18,7 +18,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isPickEnabled, setIsPickEnabled] = useState(true);
   const [form] = Form.useForm();
   const [kindnessActions, setKindnessActions] = useState(raoks);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let searchTimeout: NodeJS.Timeout | null = null;
