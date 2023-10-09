@@ -1,0 +1,59 @@
+[
+  {
+    "text": "There Is Nothing At Home, Right? Wrong! I Bet You Have Everything You Need For Today",
+    "type": "HeaderLarge"
+  },
+  { "text": "The Budget-Friendly Approach 💸", "type": "HeaderMedium" },
+  {
+    "text": "Every day, the average consumer is bombarded with countless advertisements, urging them to buy more and more. But have you ever stopped to think about how much you spend daily? In 2023, the average consumer unit in the United States spent about $9,343 on food alone.",
+    "type": "Text"
+  },
+  { "text": "A Nod to Mother Earth 🌱", "type": "HeaderMedium" },
+  {
+    "text": "Our planet is groaning under the weight of our consumption habits. Every product we buy has an environmental footprint, from the resources used to produce it to the emissions from its transportation. By cutting back on our daily purchases, even if it's just for a day, we're reducing our carbon footprint and making a positive impact on the environment.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1468408816249-a6778cf9ace2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Peter F."
+  },
+  {
+    "text": "Boosting Creativity with Simple Recipes 🎨",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "When was the last time you looked in your pantry and thought, \"I have nothing to eat,\" despite it being full? Many times, the challenge isn't the lack of ingredients but the lack of imagination. Here are some simple yet delicious recipes you can whip up with just three ingredients:",
+    "type": "Text"
+  },
+  {
+    "text": "Banana Pancake: Mix oatmeal, a banana, and an egg. Voila! A healthy breakfast option.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Pesto Pasta: Combine pasta with some pesto and cheese, and you have a delightful Italian dish.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Quesadilla: Got tortilla and cheese? That's all you need for a quick and tasty snack.",
+    "type": "ListItem"
+  },
+  { "text": "The Feeling of Freedom and Power 💪", "type": "HeaderMedium" },
+  {
+    "text": "There's something liberating about not being tied to the constant cycle of buying. When you challenge yourself to not purchase anything for a day, you realize that many of our daily purchases are not necessities but mere wants. This realization can be empowering. It gives you a sense of control over your life and your choices.",
+    "type": "Text"
+  },
+  { "text": "The Joy of Rediscovery 🔍", "type": "HeaderMedium" },
+  {
+    "text": "Remember that book you bought months ago and never got around to reading? Or the DIY kit gathering dust in your closet? Not buying anything new gives you the opportunity to rediscover and enjoy what you already have. It's a reminder that happiness doesn't always come from the latest gadget or fashion trend but from appreciating the simple things in life.",
+    "type": "Text"
+  },
+  {
+    "text": "So, the next time you feel the urge to swipe your card or click \"buy now,\" pause for a moment. Challenge yourself to not buy anything for a day. You might be surprised at the benefits it brings, both to your wallet and your well-being.",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [U.S. annual consumer spending 2023, by type - Statista](https://www.statista.com/statistics/247407/average-annual-consumer-spending-in-the-us-by-type/)",
+    "type": "Footnote"
+  }
+]
