@@ -3,22 +3,26 @@ import {
   CenterAlignedFlexboxCol,
   FlexboxCol,
   StyledText,
-} from "./sharedLayouts";
+} from "../sharedLayouts";
 import {
   ArticleElement,
   ArticlePart,
   KindnessAction,
-} from "../../common/interfaces";
-import { variables } from "../../common/variables";
+} from "../../../common/interfaces";
+import { variables } from "../../../common/variables";
 import Title from "antd/es/typography/Title";
 import styled from "styled-components";
-import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
+import { lgBreakPoint, mdBreakPoint } from "../../../common/mediaQueryHook";
 import axios from "axios";
-import { ArticleImage } from "../randomactsofkindness/kindnessDetails";
-import { RightOutlined } from "@ant-design/icons";
+import { ArticleImage } from "../../randomactsofkindness/kindnessDetails";
+import ListItem from "./listItem";
+import Text from "./text";
+import { Button } from "antd";
 
 interface Props {
   item: KindnessAction;
+  onPick: (event: React.MouseEvent<HTMLElement>) => void;
+  isPickEnabled: boolean;
 }
 
 export const ArticleContainer = styled(FlexboxCol)`
@@ -31,11 +35,7 @@ export const ArticleContainer = styled(FlexboxCol)`
   }
 `;
 
-const ListItemContainer = styled.div`
-  margin-bottom: ${variables.spacingXs};
-`;
-
-const Article: React.FC<Props> = ({ item }) => {
+const Article: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   const [article, setArticle] = useState<ArticlePart[]>([]);
 
   useEffect(() => {
@@ -58,39 +58,6 @@ const Article: React.FC<Props> = ({ item }) => {
         console.error("Error fetching the article data:", error);
       });
   }, [item.title]);
-
-  const renderListItem = (text: string) => {
-    const cleanedText = text.replace(/^\s*-?\s*/, "");
-    const [title, description] = cleanedText
-      .split(":")
-      .map((part) => part.trim());
-    return (
-      <ListItemContainer>
-        <RightOutlined
-          style={{
-            fontSize: "12px",
-            color: variables.pink3,
-            margin: `auto ${variables.spacingXs}`,
-          }}
-        />
-        <StyledText
-          color={variables.middleGray}
-          fontSize="14px"
-          fontWeight="800"
-        >
-          {title}
-          {description && ": "}
-        </StyledText>
-        <StyledText color={variables.middleGray} fontSize="14px">
-          {description}
-        </StyledText>
-      </ListItemContainer>
-    );
-  };
-
-  const renderText = (text: string): string => {
-    return text;
-  };
 
   return (
     <>
@@ -117,29 +84,34 @@ const Article: React.FC<Props> = ({ item }) => {
                 <ArticleImage
                   style={{ margin: `${variables.spacingS} 0 0` }}
                   src={item.text}
-                  alt="Image of related to subheader"
+                  alt="Image related to subheader"
                 />
                 <StyledText color={variables.middleGray} fontSize="10px">
                   {item.credit}
                 </StyledText>
               </CenterAlignedFlexboxCol>
             )}
-            {item.type === ArticleElement.LIST_ITEM &&
-              renderListItem(item.text)}
+            {item.type === ArticleElement.LIST_ITEM && (
+              <ListItem text={item.text} />
+            )}
           </Fragment>
         ))}
+        <Button
+          type="primary"
+          style={{ marginTop: variables.spacingS }}
+          onClick={onPick}
+          disabled={!isPickEnabled}
+        >
+          Pick
+        </Button>
       </ArticleContainer>
-      <ArticleContainer style={{ marginTop: variables.spacingL }}>
+      <ArticleContainer
+        style={{ marginTop: variables.spacingL, display: "inline" }}
+      >
         {article?.map((item, index) => (
           <Fragment key={index}>
             {item.type === ArticleElement.FOOTNOTE && (
-              <StyledText
-                color={variables.middleGray}
-                fontSize="10px"
-                style={{ marginBottom: variables.spacingXs }}
-              >
-                {renderText(item.text)}
-              </StyledText>
+              <Text fontSize="10px" text={item.text} />
             )}
           </Fragment>
         ))}

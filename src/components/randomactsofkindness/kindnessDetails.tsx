@@ -19,7 +19,7 @@ import {
 } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
 import CustomizeOptions from "../shared/customizeOptions";
-import Article from "../shared/article";
+import Article from "../shared/article/article";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 
@@ -63,14 +63,10 @@ const HighlightedTitle = styled(Title)`
   color: ${variables.pink3};
 `;
 
-const ItemDetailPagePrimaryBtn = styled(Button)`
-  border-radius: 25vw 0 0 0;
-  width: 50vw;
-  background: ${variables.black};
-  color: white;
+const InstallButton = styled(Button)`
   position: fixed;
-  bottom: 0;
-  right: 0;
+  bottom: ${variables.spacingM};
+  right: ${variables.spacingM};
 `;
 
 export const ArticleImage = styled.img`
@@ -161,11 +157,13 @@ const KindnessDetails: React.FC = () => {
         <StyledText color={variables.middleGray} fontSize="14px">
           {kindness.description}
         </StyledText>
-        <Article item={kindness} />
+        <Article
+          item={kindness}
+          onPick={onPick}
+          isPickEnabled={isPickEnabled}
+        />
       </MarginContainer>
-      <ItemDetailPagePrimaryBtn disabled={!isPickEnabled} onClick={onPick}>
-        + Pick
-      </ItemDetailPagePrimaryBtn>
+      <InstallButton>Get the app</InstallButton>
     </FlexboxCol>
   );
 };
