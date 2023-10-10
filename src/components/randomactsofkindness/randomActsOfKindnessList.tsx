@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Flexbox, ListLayout, StyledSearch } from "../shared/sharedLayouts";
 import { Form } from "antd";
 import { variables } from "../../common/variables";
@@ -12,13 +12,22 @@ import ConfirmModal from "./modals/confirmModal";
 import CheersModal from "./modals/cheersModal";
 import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
+import { KindnessAction } from "../../common/interfaces";
+
+const shuffleArray = (array: KindnessAction[]) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
   // API call >> GET /kindnessHistory/user >> has the user done a kindness today already?
   const [isPickEnabled, setIsPickEnabled] = useState(true);
   const [form] = Form.useForm();
-  const [kindnessActions, setKindnessActions] = useState(raoks);
+  const [kindnessActions, setKindnessActions] = useState(shuffleArray(raoks));
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
