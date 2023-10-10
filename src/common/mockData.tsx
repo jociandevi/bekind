@@ -485,6 +485,24 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Cathryn Lavery",
   },
+  {
+    id: 48,
+    title: "Don't Buy Any Clothes Today",
+    description: "Or challenge yourself for a month!",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Alyssa Strohmann",
+  },
+  {
+    id: 49,
+    title: "List Your Top 10 Values",
+    description: "And see your mindset change.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1606363968796-14be04915c81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Nareeta Martin",
+  },
 ];
 
 export const user = {

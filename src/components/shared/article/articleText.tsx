@@ -60,6 +60,7 @@ const ArticleText: React.FC<Props> = ({
       style={{
         marginBottom: isFootNote ? "inherit" : variables.spacingS,
         fontWeight: fontWeight ?? "inherit",
+        lineHeight: isFootNote ? 1 : 2,
       }}
     >
       {textItemList.map((item, index) => (

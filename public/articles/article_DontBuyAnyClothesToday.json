@@ -1,0 +1,63 @@
+[
+  {
+    "text": "It Shocked Me How Much CO2 I Can Save By Not Buying A Single T-Shirt 🌍",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "Hey there, fashion-forward reader! Ever thought about the impact of that snazzy t-shirt or those killer jeans on our planet? Let's dive into a challenge that might just change the way you shop. 🛍️",
+    "type": "Text"
+  },
+  { "text": "The Challenge: A Wardrobe Fast 🚫👗", "type": "HeaderMedium" },
+  {
+    "text": "Before you panic, no, I'm not asking you to go around in your birthday suit. But how about a little experiment? Try not buying any clothes for a set period. Maybe 7 days? Or if you're feeling brave, stretch it to 14, 21, or even 30 days! Think of it as a detox, but for your wardrobe.",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Nordwod Themes"
+  },
+  { "text": "The Double-Take Rule 🤔🤔", "type": "HeaderMedium" },
+  {
+    "text": "Before you swipe that card or click 'buy now', pause. Think twice. Do you really need that item? Is it going to be a cherished piece in your wardrobe, or just another impulse buy that gathers dust?",
+    "type": "Text"
+  },
+  { "text": "The Carbon Footprint of Your Closet 👣", "type": "HeaderMedium" },
+  { "text": "Let's get real with some numbers:", "type": "Text" },
+  {
+    "text": "T-shirt: A t-shirt has a carbon footprint of 7 kg of CO2 equivalent on average. Considering an average person's daily CO2 consumption is 12.8 kg CO2, by not buying that one t-shirt, you've just reduced your daily carbon footprint by about 55%!",
+    "type": "ListItem"
+  },
+  {
+    "text": "Jeans: The manufacturing of a pair of jeans releases an equivalent of 13 kilos of carbon dioxide. So, by resisting the urge to buy those jeans, you've essentially offset your entire daily CO2 consumption if you're an average consumer. High five!",
+    "type": "ListItem"
+  },
+  {
+    "text": "Dress: A dress comes with a carbon price tag of 22 kg of CO2 equivalent. That's almost double the daily CO2 consumption of an average person. Think about that the next time you're eyeing a new dress.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Shoes: A typical pair of running shoes generates 13kg of carbon dioxide emissions. That's right, just by skipping on one pair, you've balanced out your daily carbon emissions.",
+    "type": "ListItem"
+  },
+  {
+    "text": "[^1^]: [Carbon Fact - T-shirt](https://www.carbonfact.com/blog/tshirt)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [IEA - World's top 1% of emitters](https://www.iea.org/commentaries/the-world-s-top-1-of-emitters-produce-over-1000-times-more-co2-than-the-bottom-1)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^3^]: [Iberdrola - Biodegradable Clothing](https://www.iberdrola.com/documents/20125/40477/Infographic_Biodegradable_Clothing.pdf/5cc1feb2-7d09-7f69-72b5-d38453f90e2c?t=1634702770073)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^4^]: [Carbon Fact - Dress](https://www.carbonfact.com/blog/dress)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^5^]: [MIT News - Footwear Carbon Footprint](https://news.mit.edu/2013/footwear-carbon-footprint-0522)",
+    "type": "Footnote"
+  }
+]

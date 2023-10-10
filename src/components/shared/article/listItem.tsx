@@ -29,7 +29,7 @@ const ListItem: React.FC<Props> = ({ text }) => {
         }}
       />
       <ArticleText text={title} fontWeight={800} />
-      {description && <ArticleText text=": " fontWeight={800} />}
+      {description && title && <ArticleText text=": " fontWeight={800} />}
       <ArticleText text={description} />
     </ListItemContainer>
   );
