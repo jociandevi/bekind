@@ -22,7 +22,7 @@ import CustomizeOptions from "../shared/customizeOptions";
 import Article from "../shared/article/article";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
-import InstallButton from "../shared/installButton";
+import InstallButton from "../shared/pwaCustomInstalls/installButton";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;

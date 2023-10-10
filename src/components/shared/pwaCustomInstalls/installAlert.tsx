@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "antd";
+import { Alert, Button } from "antd";
 import styled from "styled-components";
-import { variables } from "../../common/variables";
-import { useMediaQueries } from "../../common/mediaQueryHook";
+import { variables } from "../../../common/variables";
+import { useMediaQueries } from "../../../common/mediaQueryHook";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -13,13 +13,22 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
-const StyledButton = styled(Button)`
+const StyledAlert = styled(Alert)`
   position: fixed;
-  bottom: ${variables.spacingM};
-  right: ${variables.spacingM};
+  bottom: 0;
+  right: 0;
+  border: none;
+  border-radius: 0;
+  width: 100vw;
+  background-color: ${variables.black};
+  color: ${variables.white};
+
+  & svg {
+    color: ${variables.white};
+  }
 `;
 
-const InstallButton: React.FC = () => {
+const InstallAlert: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -60,11 +69,27 @@ const InstallButton: React.FC = () => {
     setDeferredPrompt(null);
   };
 
-  if (!isVisible || !md) {
+  if (!isVisible || md) {
     return null;
   }
 
-  return <StyledButton onClick={onClick}>Get the app</StyledButton>;
+  return (
+    <StyledAlert
+      message="Get the full experience with the app"
+      type="warning"
+      action={
+        <Button
+          type="primary"
+          size="small"
+          onClick={onClick}
+          style={{ marginRight: variables.spacingXs }}
+        >
+          Open
+        </Button>
+      }
+      closable
+    />
+  );
 };
 
-export default InstallButton;
+export default InstallAlert;

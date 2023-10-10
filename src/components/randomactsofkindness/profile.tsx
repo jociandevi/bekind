@@ -16,7 +16,7 @@ import { BarChartOutlined } from "@ant-design/icons";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import { KindnessAction } from "../../common/interfaces";
-import InstallButton from "../shared/installButton";
+import InstallButton from "../shared/pwaCustomInstalls/installButton";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingS};

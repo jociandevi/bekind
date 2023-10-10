@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import AntdModal from "./modal";
-import BeKindLogo from "../../android-chrome-192x192.png";
-import { useMediaQueries } from "../../common/mediaQueryHook";
 import { Button } from "antd";
-import { CenterAlignedFlexboxCol } from "./sharedLayouts";
 import styled from "styled-components";
+import { variables } from "../../../common/variables";
+import { useMediaQueries } from "../../../common/mediaQueryHook";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -16,14 +14,15 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 const StyledButton = styled(Button)`
-  border: none;
-  width: 100%;
+  position: fixed;
+  bottom: ${variables.spacingM};
+  right: ${variables.spacingM};
 `;
 
-const InstallModal: React.FC = () => {
+const InstallButton: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const { md } = useMediaQueries();
 
   useEffect(() => {
@@ -33,10 +32,7 @@ const InstallModal: React.FC = () => {
 
       // Stash the event so it can be triggered later.
       setDeferredPrompt(event);
-      // this modal should only appear on phones
-      if (!md) {
-        setIsModalOpen(true);
-      }
+      setIsVisible(true);
     };
 
     (window as any).addEventListener(
@@ -50,10 +46,9 @@ const InstallModal: React.FC = () => {
         handleBeforeInstallPrompt
       );
     };
-  }, [deferredPrompt, md]);
+  }, [deferredPrompt]);
 
-  const handleOk = () => {
-    setIsModalOpen(false);
+  const onClick = () => {
     deferredPrompt?.prompt();
     deferredPrompt?.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === "accepted") {
@@ -65,28 +60,11 @@ const InstallModal: React.FC = () => {
     setDeferredPrompt(null);
   };
 
-  return (
-    <AntdModal
-      title="Get the full experience with the app"
-      isModalOpen={isModalOpen}
-      setIsModalOpen={setIsModalOpen}
-      onOk={handleOk}
-      description="Enjoy the additional features."
-      imageUrl={BeKindLogo}
-      modalHeight={334}
-      isProfileImage
-      footer={
-        <CenterAlignedFlexboxCol style={{ gap: "2px" }}>
-          <StyledButton type="primary" onClick={handleOk}>
-            Open BeKind
-          </StyledButton>
-          <StyledButton onClick={() => setIsModalOpen(false)}>
-            Not Today
-          </StyledButton>
-        </CenterAlignedFlexboxCol>
-      }
-    />
-  );
+  if (!isVisible || !md) {
+    return null;
+  }
+
+  return <StyledButton onClick={onClick}>Get the app</StyledButton>;
 };
 
-export default InstallModal;
+export default InstallButton;

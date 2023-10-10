@@ -3,14 +3,15 @@ import { Flexbox, ListLayout, StyledSearch } from "../shared/sharedLayouts";
 import { Form } from "antd";
 import { variables } from "../../common/variables";
 import { categories, raoks } from "../../common/mockData";
-import InstallModal from "../shared/installModal";
-import InstallButton from "../shared/installButton";
+import InstallModal from "../shared/pwaCustomInstalls/installModal";
+import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import { AuthContext } from "../../common/authProvider";
 import UserProfileIcon from "../shared/userProfileIcon";
 import FeedbackModal from "./modals/feedbackModal";
 import ConfirmModal from "./modals/confirmModal";
 import CheersModal from "./modals/cheersModal";
 import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
+import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -120,6 +121,7 @@ const RandomActOfKindnessList: React.FC = () => {
           />
         ))}
         <InstallButton />
+        <InstallAlert />
       </ListLayout>
     </>
   );
