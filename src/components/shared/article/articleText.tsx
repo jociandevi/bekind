@@ -9,6 +9,7 @@ interface Props {
   text: string;
   fontSize?: string;
   isFootNote?: boolean;
+  fontWeight?: number;
 }
 
 const Sub = styled.span`
@@ -21,7 +22,12 @@ const BasicText = styled.span`
   color: ${variables.middleGray};
 `;
 
-const ArticleText: React.FC<Props> = ({ text, fontSize, isFootNote }) => {
+const ArticleText: React.FC<Props> = ({
+  text,
+  fontSize,
+  isFootNote,
+  fontWeight,
+}) => {
   const squareBracketDigitPattern = /(\[\d+\])/;
   const caretBracketPattern = /(\[\^\d+\^\])/;
   const linkPattern = /(\[[^\]]+\])/g;
@@ -50,7 +56,12 @@ const ArticleText: React.FC<Props> = ({ text, fontSize, isFootNote }) => {
   });
 
   return (
-    <Text style={{ marginBottom: isFootNote ? "inherit" : variables.spacingS }}>
+    <Text
+      style={{
+        marginBottom: isFootNote ? "inherit" : variables.spacingS,
+        fontWeight: fontWeight ?? "inherit",
+      }}
+    >
       {textItemList.map((item, index) => (
         <span key={index} style={{ fontSize: fontSize ?? "14px" }}>
           {item.type === "text" && <BasicText>{item.text}</BasicText>}

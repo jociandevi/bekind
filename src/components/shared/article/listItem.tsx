@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledText } from "../sharedLayouts";
 import { variables } from "../../../common/variables";
 import styled from "styled-components";
 import { RightOutlined } from "@ant-design/icons";
+import ArticleText from "./articleText";
 
 interface Props {
   text: string;
@@ -14,9 +14,11 @@ const ListItemContainer = styled.div`
 
 const ListItem: React.FC<Props> = ({ text }) => {
   const cleanedText = text.replace(/^\s*-?\s*/, "");
-  const [title, description] = cleanedText
-    .split(":")
-    .map((part) => part.trim());
+
+  const index = cleanedText.indexOf(":");
+  const title = cleanedText.substring(0, index).trim();
+  const description = cleanedText.substring(index + 1).trim();
+
   return (
     <ListItemContainer>
       <RightOutlined
@@ -26,13 +28,9 @@ const ListItem: React.FC<Props> = ({ text }) => {
           margin: `auto ${variables.spacingXs}`,
         }}
       />
-      <StyledText color={variables.middleGray} fontSize="14px" fontWeight="800">
-        {title}
-        {description && ": "}
-      </StyledText>
-      <StyledText color={variables.middleGray} fontSize="14px">
-        {description}
-      </StyledText>
+      <ArticleText text={title} fontWeight={800} />
+      {description && <ArticleText text=": " fontWeight={800} />}
+      <ArticleText text={description} />
     </ListItemContainer>
   );
 };
