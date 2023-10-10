@@ -37,7 +37,7 @@ const PaddingContainer = styled.div<{
   lg?: boolean;
 }>`
   padding: 0 ${variables.spacingXs} ${variables.spacingXs};
-  height: ${(props) => (props.lg ? "15vw" : props.md ? "30vw" : "40vw")};
+  height: ${(props) => (props.lg ? "15vw" : props.md ? "30vw" : "32vw")};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

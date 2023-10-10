@@ -1,9 +1,9 @@
-import { Alert, Input } from "antd";
+import { Alert, Button, Input } from "antd";
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
 
-export const phoneCardWidth = "50vw";
+export const phoneCardWidth = "45vw";
 export const tabletCardWidth = "30vw";
 export const laptopCardWidth = "22vw";
 
@@ -116,4 +116,10 @@ export const CircleImage = styled.img<{ md?: boolean }>`
 
 export const ImageContainer = styled.div`
   position: relative;
+`;
+
+export const CategoryButton = styled(Button)`
+  width: fit-content;
+  margin-left: ${variables.spacingXs};
+  font-weight: 600;
 `;

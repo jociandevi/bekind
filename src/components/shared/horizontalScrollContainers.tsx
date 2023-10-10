@@ -1,17 +1,19 @@
 import React, { Fragment } from "react";
 import ImageCardL from "./imageCardL";
 import { variables } from "../../common/variables";
-import Title from "antd/es/typography/Title";
 import { Category, KindnessAction } from "../../common/interfaces";
 import styled from "styled-components";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { Button } from "antd";
+import { CategoryButton } from "./sharedLayouts";
 
 interface Props {
   category: Category;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled: boolean;
   kindnessActions: KindnessAction[];
+  filterByCategory: (category: Category) => void;
 }
 
 const StyledCarousel = styled(Carousel)`
@@ -28,6 +30,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
   onPick,
   isPickEnabled,
   kindnessActions,
+  filterByCategory,
 }) => {
   const filteredActions = kindnessActions.filter(
     (item) => item.category === category.name
@@ -57,15 +60,13 @@ const HorizontalScrollContainers: React.FC<Props> = ({
 
   return (
     <Fragment key={category.id}>
-      <Title
-        level={3}
-        style={{
-          margin: `0 auto ${variables.spacingXxs} calc(4% + 1px)`,
-          width: "90vw",
-        }}
+      <CategoryButton
+        type="link"
+        size="large"
+        onClick={() => filterByCategory(category)}
       >
         {category.name}
-      </Title>
+      </CategoryButton>
       <StyledCarousel
         responsive={responsive}
         infinite={true}

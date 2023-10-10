@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Flexbox, ListLayout, StyledSearch } from "../shared/sharedLayouts";
-import { Form } from "antd";
+import { Button, Form } from "antd";
 import { variables } from "../../common/variables";
 import { categories, raoks } from "../../common/mockData";
 import InstallModal from "../shared/pwaCustomInstalls/installModal";
@@ -12,7 +12,10 @@ import ConfirmModal from "./modals/confirmModal";
 import CheersModal from "./modals/cheersModal";
 import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
-import { KindnessAction } from "../../common/interfaces";
+import { Category, KindnessAction } from "../../common/interfaces";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import CardContainer from "../shared/cardContainer";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const shuffleArray = (array: KindnessAction[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -31,6 +34,8 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+  let [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   let searchTimeout: NodeJS.Timeout | null = null;
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
@@ -63,7 +68,6 @@ const RandomActOfKindnessList: React.FC = () => {
       const description = item.description?.toLowerCase();
       return title.includes(searchTerm) || description?.includes(searchTerm);
     });
-
     setKindnessActions(filteredRaoks);
   };
 
@@ -79,6 +83,14 @@ const RandomActOfKindnessList: React.FC = () => {
     event.stopPropagation();
     // lets ask the user if this is today's challenge
     setIsConfirmModalOpen(true);
+  };
+
+  const filterByCategory = (category: Category) => {
+    const filteredRaoks = raoks.filter((item) => {
+      return item.category === category.name;
+    });
+    setKindnessActions(filteredRaoks);
+    setSearchParams({ category: category.name });
   };
 
   return (
@@ -98,9 +110,19 @@ const RandomActOfKindnessList: React.FC = () => {
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.given_name ?? undefined}
         />
-        <Flexbox style={{ margin: variables.spacingS, width: "95vw" }}>
+        <Flexbox
+          style={{
+            margin: variables.spacingS,
+            width: "95vw",
+            justifyContent: "space-between",
+          }}
+        >
+          <Button
+            icon={<ArrowLeftOutlined />}
+            shape="circle"
+            onClick={() => navigate(-1)}
+          />
           <UserProfileIcon user={user} />
-          <InstallModal />
         </Flexbox>
 
         <Form
@@ -120,17 +142,27 @@ const RandomActOfKindnessList: React.FC = () => {
             />
           </Form.Item>
         </Form>
-        {categories.map((category, index) => (
-          <HorizontalScrollContainers
-            category={category}
+        {searchParams.get("category") && (
+          <CardContainer
             onPick={onPick}
             isPickEnabled={isPickEnabled}
             kindnessActions={kindnessActions}
-            key={index}
           />
-        ))}
+        )}
+        {searchParams.size === 0 &&
+          categories.map((category, index) => (
+            <HorizontalScrollContainers
+              category={category}
+              onPick={onPick}
+              isPickEnabled={isPickEnabled}
+              kindnessActions={kindnessActions}
+              key={index}
+              filterByCategory={filterByCategory}
+            />
+          ))}
         <InstallButton />
         <InstallAlert />
+        <InstallModal />
       </ListLayout>
     </>
   );
