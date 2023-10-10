@@ -16,7 +16,7 @@ import { lgBreakPoint, mdBreakPoint } from "../../../common/mediaQueryHook";
 import axios from "axios";
 import { ArticleImage } from "../../randomactsofkindness/kindnessDetails";
 import ListItem from "./listItem";
-import Text from "./text";
+import ArticleText from "./articleText";
 import { Button } from "antd";
 
 interface Props {
@@ -65,13 +65,7 @@ const Article: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
         {article?.map((item, index) => (
           <Fragment key={index}>
             {item.type === ArticleElement.TEXT && (
-              <StyledText
-                color={variables.middleGray}
-                fontSize="14px"
-                style={{ marginBottom: variables.spacingXs }}
-              >
-                {item.text}
-              </StyledText>
+              <ArticleText text={item.text} />
             )}
             {item.type === ArticleElement.HEADER_LARGE && (
               <Title level={4}>{item.text}</Title>
@@ -105,13 +99,11 @@ const Article: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
           Pick
         </Button>
       </ArticleContainer>
-      <ArticleContainer
-        style={{ marginTop: variables.spacingL, display: "inline" }}
-      >
+      <ArticleContainer style={{ marginTop: variables.spacingL }}>
         {article?.map((item, index) => (
           <Fragment key={index}>
             {item.type === ArticleElement.FOOTNOTE && (
-              <Text fontSize="10px" text={item.text} />
+              <ArticleText fontSize="10px" text={item.text} isFootNote />
             )}
           </Fragment>
         ))}

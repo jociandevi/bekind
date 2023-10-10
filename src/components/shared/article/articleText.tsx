@@ -1,37 +1,37 @@
 import React from "react";
 import { variables } from "../../../common/variables";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Typography } from "antd";
+
+const { Text, Link } = Typography;
 
 interface Props {
   text: string;
   fontSize?: string;
+  isFootNote?: boolean;
 }
 
 const Sub = styled.span`
   color: ${variables.middleGray};
   font-size: 10px;
+  vertical-align: super;
 `;
 
 const BasicText = styled.span`
   color: ${variables.middleGray};
-  font-size: 10px;
 `;
 
-const LinkText = styled(Link)`
-  color: ${variables.pink6};
-  font-size: 10px;
-`;
-
-const Text: React.FC<Props> = ({ text, fontSize }) => {
+const ArticleText: React.FC<Props> = ({ text, fontSize, isFootNote }) => {
   const squareBracketDigitPattern = /(\[\d+\])/;
   const caretBracketPattern = /(\[\^\d+\^\])/;
   const linkPattern = /(\[[^\]]+\])/g;
+  const urlPattern = /(\(http[^)]+\))/g;
 
   const parts = text
     .split(squareBracketDigitPattern)
     .flatMap((part) => part.split(caretBracketPattern))
     .flatMap((part) => part.split(linkPattern))
+    .flatMap((part) => part.split(urlPattern))
     .filter(Boolean);
 
   const textItemList = parts.map((item) => {
@@ -39,38 +39,36 @@ const Text: React.FC<Props> = ({ text, fontSize }) => {
       item.match(squareBracketDigitPattern) ||
       item.match(caretBracketPattern)
     ) {
-      return { type: "sub", text: item };
+      return { type: "sub", text: item.slice(2, -2) };
     } else if (item.match(linkPattern)) {
-      return { type: "link", text: item };
+      return { type: "link", text: item.slice(1, -1) };
+    } else if (item.match(urlPattern)) {
+      return { type: "url", text: item };
     } else {
       return { type: "text", text: item };
     }
   });
 
-  const isUrl = (text: string) => {
-    return text.startsWith("(http://") || text.startsWith("(https://");
-  };
-
   return (
-    <p>
+    <Text style={{ marginBottom: isFootNote ? "inherit" : variables.spacingS }}>
       {textItemList.map((item, index) => (
-        <span key={index}>
-          {item.type === "text" && !isUrl(item.text) && (
-            <BasicText>{item.text}</BasicText>
-          )}
+        <span key={index} style={{ fontSize: fontSize ?? "14px" }}>
+          {item.type === "text" && <BasicText>{item.text}</BasicText>}
           {item.type === "link" && (
-            <LinkText
+            <Link
               target="_blank"
-              to={textItemList[index + 1].text.slice(1, -1)}
+              underline
+              href={textItemList[index + 1].text.slice(1, -1)}
+              style={{ color: variables.pink6, fontSize: fontSize ?? "14px" }}
             >
               {item.text}
-            </LinkText>
+            </Link>
           )}
-          {item.type === "sub" && <Sub>{item.text.slice(2, -2)}</Sub>}
+          {item.type === "sub" && <Sub>{item.text}</Sub>}
         </span>
       ))}
-    </p>
+    </Text>
   );
 };
 
-export default Text;
+export default ArticleText;
