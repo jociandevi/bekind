@@ -16,6 +16,7 @@ import { BarChartOutlined } from "@ant-design/icons";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import { KindnessAction } from "../../common/interfaces";
+import InstallButton from "../shared/installButton";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingS};
@@ -68,7 +69,6 @@ const Profile: React.FC = () => {
     event: React.MouseEvent<HTMLElement>,
     item: KindnessAction
   ) => {
-    console.log(item);
     event.stopPropagation();
     setIsConfirmModalOpen(true);
   };
@@ -191,6 +191,7 @@ const Profile: React.FC = () => {
         onChange={onChange}
         activeKey={activeKey}
       />
+      <InstallButton />
     </StyledGrid>
   );
 };

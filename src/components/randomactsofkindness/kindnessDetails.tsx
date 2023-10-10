@@ -22,6 +22,7 @@ import CustomizeOptions from "../shared/customizeOptions";
 import Article from "../shared/article/article";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
+import InstallButton from "../shared/installButton";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -61,12 +62,6 @@ const OverlayProfileContainer = styled.div`
 
 const HighlightedTitle = styled(Title)`
   color: ${variables.pink3};
-`;
-
-const InstallButton = styled(Button)`
-  position: fixed;
-  bottom: ${variables.spacingM};
-  right: ${variables.spacingM};
 `;
 
 export const ArticleImage = styled.img`
@@ -163,7 +158,7 @@ const KindnessDetails: React.FC = () => {
           isPickEnabled={isPickEnabled}
         />
       </MarginContainer>
-      <InstallButton>Get the app</InstallButton>
+      <InstallButton />
     </FlexboxCol>
   );
 };

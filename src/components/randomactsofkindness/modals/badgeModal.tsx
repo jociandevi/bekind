@@ -34,7 +34,7 @@ const BadgeModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen, item }) => {
   return (
     <AntdModal
       title={name}
-      modalHeight={298}
+      modalHeight={293}
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
       onOk={() => setIsModalOpen(false)}

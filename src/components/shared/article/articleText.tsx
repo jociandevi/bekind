@@ -69,7 +69,11 @@ const ArticleText: React.FC<Props> = ({
             <Link
               target="_blank"
               underline
-              href={textItemList[index + 1].text.slice(1, -1)}
+              href={
+                textItemList[index + 1]
+                  ? textItemList[index + 1].text.slice(1, -1)
+                  : undefined
+              }
               style={{ color: variables.pink6, fontSize: fontSize ?? "14px" }}
             >
               {item.text}

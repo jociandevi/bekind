@@ -90,7 +90,6 @@ const RandomActOfKindnessList: React.FC = () => {
         />
         <Flexbox style={{ margin: variables.spacingS, width: "95vw" }}>
           <UserProfileIcon user={user} />
-          <InstallButton />
           <InstallModal />
         </Flexbox>
 
@@ -120,6 +119,7 @@ const RandomActOfKindnessList: React.FC = () => {
             key={index}
           />
         ))}
+        <InstallButton />
       </ListLayout>
     </>
   );

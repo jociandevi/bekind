@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
+import styled from "styled-components";
+import { variables } from "../../common/variables";
+import { useMediaQueries } from "../../common/mediaQueryHook";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -11,10 +13,17 @@ interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
 }
 
+const StyledButton = styled(Button)`
+  position: fixed;
+  bottom: ${variables.spacingM};
+  right: ${variables.spacingM};
+`;
+
 const InstallButton: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const { md } = useMediaQueries();
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: BeforeInstallPromptEvent) => {
@@ -51,15 +60,11 @@ const InstallButton: React.FC = () => {
     setDeferredPrompt(null);
   };
 
-  if (!isVisible) {
+  if (!isVisible || !md) {
     return null;
   }
 
-  return (
-    <Button type="primary" icon={<DownloadOutlined />} onClick={onClick}>
-      Install
-    </Button>
-  );
+  return <StyledButton onClick={onClick}>Get the app</StyledButton>;
 };
 
 export default InstallButton;
