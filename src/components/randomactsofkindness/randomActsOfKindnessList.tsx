@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Flexbox, ListLayout, StyledSearch } from "../shared/sharedLayouts";
 import { Form } from "antd";
 import { variables } from "../../common/variables";
