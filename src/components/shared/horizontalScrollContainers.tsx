@@ -5,7 +5,6 @@ import { Category, KindnessAction } from "../../common/interfaces";
 import styled from "styled-components";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Button } from "antd";
 import { CategoryButton } from "./sharedLayouts";
 
 interface Props {
