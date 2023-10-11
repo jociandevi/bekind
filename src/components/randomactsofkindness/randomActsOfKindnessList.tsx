@@ -1,21 +1,22 @@
-import React, { useContext, useState } from "react";
-import { Flexbox, ListLayout, StyledSearch } from "../shared/sharedLayouts";
-import { Button, Form } from "antd";
+import React, { useContext, useEffect, useState } from "react";
+import { ListLayout, StyledSearch } from "../shared/sharedLayouts";
+import { Form } from "antd";
 import { variables } from "../../common/variables";
 import { categories, raoks } from "../../common/mockData";
 import InstallModal from "../shared/pwaCustomInstalls/installModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import { AuthContext } from "../../common/authProvider";
-import UserProfileIcon from "../shared/userProfileIcon";
 import FeedbackModal from "./modals/feedbackModal";
 import ConfirmModal from "./modals/confirmModal";
 import CheersModal from "./modals/cheersModal";
 import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
 import { Category, KindnessAction } from "../../common/interfaces";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import CardContainer from "../shared/cardContainer";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import Header from "../shared/header";
+import BackButton from "../shared/backButton";
+import UserProfileIcon from "../shared/userProfileIcon";
 
 const shuffleArray = (array: KindnessAction[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -35,8 +36,19 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
-  const navigate = useNavigate();
   let searchTimeout: NodeJS.Timeout | null = null;
+
+  useEffect(() => {
+    const category = searchParams.get("category");
+    if (category) {
+      const filteredRaoks = raoks.filter((item) => {
+        return item.category === category;
+      });
+      setKindnessActions(filteredRaoks);
+    } else if (searchParams.size === 0) {
+      setKindnessActions(shuffleArray(raoks));
+    }
+  }, [searchParams]);
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
@@ -86,10 +98,6 @@ const RandomActOfKindnessList: React.FC = () => {
   };
 
   const filterByCategory = (category: Category) => {
-    const filteredRaoks = raoks.filter((item) => {
-      return item.category === category.name;
-    });
-    setKindnessActions(filteredRaoks);
     setSearchParams({ category: category.name });
   };
 
@@ -110,25 +118,14 @@ const RandomActOfKindnessList: React.FC = () => {
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.given_name ?? undefined}
         />
-        <Flexbox
-          style={{
-            margin: variables.spacingS,
-            width: "95vw",
-            justifyContent: "space-between",
-          }}
-        >
-          <Button
-            icon={<ArrowLeftOutlined />}
-            shape="circle"
-            onClick={() => navigate(-1)}
-          />
-          <UserProfileIcon user={user} />
-        </Flexbox>
-
+        <Header
+          left={searchParams.size === 0 ? undefined : <BackButton />}
+          right={<UserProfileIcon user={user} />}
+        />
         <Form
           style={{
-            margin: `0 ${variables.spacingS} ${variables.spacingXs}`,
-            width: "95vw",
+            padding: variables.spacingXs,
+            width: "100vw",
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CircleImage, Flexbox, StyledGrid } from "../shared/sharedLayouts";
+import { CenterAlignedFlexboxCol, CircleImage } from "../shared/sharedLayouts";
 import { Button, Tabs } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
@@ -17,9 +17,15 @@ import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import { KindnessAction } from "../../common/interfaces";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
+import Header from "../shared/header";
+import BackButton from "../shared/backButton";
 
 const StyledTab = styled(Tabs)`
-  margin-top: ${variables.spacingS};
+  margin-top: ${variables.spacingXs};
+
+  & div.ant-tabs-nav-list {
+    margin-left: ${variables.spacingXs};
+  }
 
   & div.ant-tabs-tab.ant-tabs-tab-active {
     background-color: ${variables.pink3};
@@ -41,6 +47,7 @@ const StyledTab = styled(Tabs)`
 const ProfileImageContainer = styled.div<{ md?: boolean }>`
   position: relative;
   height: ${(props) => (props.md ? "15vw" : "30vw")};
+  width: ${(props) => (props.md ? "15vw" : "30vw")};
 `;
 
 const BadgeContainer = styled.div<{ md?: boolean }>`
@@ -151,7 +158,18 @@ const Profile: React.FC = () => {
   };
 
   return (
-    <StyledGrid>
+    <>
+      <Header
+        left={<BackButton />}
+        right={
+          <Button
+            icon={<BarChartOutlined />}
+            style={{ border: "none" }}
+            size="large"
+            onClick={() => navigate("/statistics")}
+          />
+        }
+      />
       <ConfirmModal
         isModalOpen={isConfirmModalOpen}
         setIsModalOpen={setIsConfirmModalOpen}
@@ -162,9 +180,8 @@ const Profile: React.FC = () => {
         setIsModalOpen={setIsFeedbackModalOpen}
         userName={googleUser?.given_name ?? undefined}
       />
-      <Flexbox
-        style={{ justifyContent: "space-between", alignItems: "flex-start" }}
-      >
+
+      <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
         <ProfileImageContainer md={md}>
           <CircleImage
             src={googleUser.picture}
@@ -174,17 +191,11 @@ const Profile: React.FC = () => {
           />
           {renderLatestAchievedBadge()}
         </ProfileImageContainer>
-        <Button
-          icon={<BarChartOutlined />}
-          style={{ border: "none" }}
-          size="large"
-          onClick={() => navigate("/statistics")}
-        />
-      </Flexbox>
+        <Title level={4} style={{ marginTop: variables.spacingS }}>
+          {googleUser.given_name} {googleUser.family_name}
+        </Title>
+      </CenterAlignedFlexboxCol>
 
-      <Title level={4}>
-        {googleUser.given_name} {googleUser.family_name}
-      </Title>
       <StyledTab
         defaultActiveKey="1"
         items={items}
@@ -192,7 +203,7 @@ const Profile: React.FC = () => {
         activeKey={activeKey}
       />
       <InstallButton />
-    </StyledGrid>
+    </>
   );
 };
 
