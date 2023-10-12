@@ -1,0 +1,73 @@
+[
+  {
+    "text": "Evaluating Your Day: The Not-So-Secret Recipe to a Better Tomorrow 🌟",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "The Art of the Daily (or Weekly) Review 📅",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Ever found yourself in a loop of Netflix binges, only to wonder where the hours went? Or maybe you've had those days where you felt like a productivity ninja, slicing through tasks like they were butter. Either way, there's a neat trick to make the most of your days: evaluating them.",
+    "type": "Text"
+  },
+  { "text": "What Went Well? 🌈", "type": "ListItem" },
+  {
+    "text": "Start with the positives. Maybe you finally nailed that presentation, or perhaps you just managed to drink eight glasses of water. Celebrate the wins, no matter how small.",
+    "type": "Text"
+  },
+  { "text": "Gratitude Check 🙏", "type": "ListItem" },
+  {
+    "text": "In a study, people who wrote down things they were grateful for felt more optimistic and even had fewer visits to the doctor.",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [The Science of Gratitude - Greater Good Magazine](https://greatergood.berkeley.edu/article/item/how_gratitude_changes_you_and_your_brain) ",
+    "type": "Footnote"
+  },
+  { "text": "Room for Improvement 🛠️", "type": "ListItem" },
+  {
+    "text": "Did you spend 40 minutes deciding what to wear? Or maybe you skipped breakfast again. Think about what you'd like to tweak.",
+    "type": "Text"
+  },
+  { "text": "Crafting Your Perfect Day ☀️", "type": "HeaderMedium" },
+  {
+    "text": "Close your eyes. Imagine a day where everything goes just right. Now, what's one tiny step you can take tomorrow to inch closer to that day? Maybe it's setting out your clothes the night before or prepping a quick breakfast.",
+    "type": "Text"
+  },
+  { "text": "The 80/20 Rule in Action 📊", "type": "HeaderMedium" },
+  {
+    "text": "Ah, the Pareto Principle. Roughly 80% of the effects come from 20% of the causes. So, what was the golden 20% of your day? That morning jog? The focused two hours of work? Identify it. Cherish it. Repeat it.",
+    "type": "Text"
+  },
+  {
+    "text": "And the other 80%? Maybe it's time to reconsider that third hour of social media scrolling.",
+    "type": "Text"
+  },
+  {
+    "text": "[^2^]: [Understanding the Pareto Principle (The 80/20 Rule) - Investopedia](https://www.investopedia.com/terms/p/paretoprinciple.asp)",
+    "type": "Footnote"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1491295314828-fb03946d9b52?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Daiga Ellaby"
+  },
+  { "text": "Family Bonding: The Sunday Review 🍿", "type": "HeaderMedium" },
+  {
+    "text": "Turn this into a cozy family tradition. Every Sunday evening, gather around with some snacks and chat:",
+    "type": "Text"
+  },
+  { "text": "What made everyone's heart sing this week?", "type": "ListItem" },
+  { "text": "Any fun family moments to cherish?", "type": "ListItem" },
+  { "text": "What can we do better as a team?", "type": "ListItem" },
+  { "text": "Your Metrics, Your Rules 📏", "type": "HeaderMedium" },
+  {
+    "text": "Remember, you're the boss of your day. If your metric is how many times you laughed or how long you meditated, that's perfect. It doesn't always have to be about ticking off tasks. It's about what makes you feel fulfilled.",
+    "type": "Text"
+  },
+  {
+    "text": "Life's too short to drift through days without reflection. By evaluating, you're not just looking back but also paving the way for a brighter, more intentional tomorrow. So, grab that journal, or just ponder as you sip your tea, and let's make every day count.",
+    "type": "Text"
+  }
+]

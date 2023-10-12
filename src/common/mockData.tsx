@@ -503,6 +503,26 @@ export const raoks: KindnessAction[] = [
       "https://images.unsplash.com/photo-1606363968796-14be04915c81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Nareeta Martin",
   },
+  {
+    id: 50,
+    title: "Set An Intention",
+    description: "Start your day with focusing your mind.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1592895792095-85fa785192a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Katerina May",
+    duration: 5,
+  },
+  {
+    id: 51,
+    title: "Evaluate Your Day",
+    description: "What went well and where can you improve?",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1521851562770-de70f34424b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Jeff Dunham",
+    duration: 10,
+  },
 ];
 
 export const user = {

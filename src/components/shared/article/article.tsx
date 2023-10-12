@@ -73,6 +73,15 @@ const Article: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
             {item.type === ArticleElement.HEADER_MEDIUM && (
               <Title level={5}>{item.text}</Title>
             )}
+            {item.type === ArticleElement.HEADER_SMALL && (
+              <StyledText
+                color={variables.darkGray}
+                fontSize="14px"
+                fontWeight="600"
+              >
+                {item.text}
+              </StyledText>
+            )}
             {item.type === ArticleElement.IMAGE && (
               <CenterAlignedFlexboxCol>
                 <ArticleImage
