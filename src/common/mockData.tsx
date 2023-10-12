@@ -523,6 +523,16 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - Jeff Dunham",
     duration: 10,
   },
+  {
+    id: 52,
+    title: "Practice Active Listening",
+    description: "Understand the world and others better.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1531537571171-a707bf2683da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Mimi Thian",
+    duration: 10,
+  },
 ];
 
 export const user = {

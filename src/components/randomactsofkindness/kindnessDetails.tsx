@@ -1,5 +1,9 @@
 import React, { useContext, useState } from "react";
-import { FlexboxCol, ImageContainer } from "../shared/sharedLayouts";
+import {
+  FlexboxCol,
+  ImageContainer,
+  StyledText,
+} from "../shared/sharedLayouts";
 import { Button } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
@@ -107,6 +111,7 @@ const KindnessDetails: React.FC = () => {
           src={kindness?.imageUrl}
           alt={`Image of ${kindness?.title}`}
         />
+
         <OverlayBackButton
           icon={<ArrowLeftOutlined />}
           shape="circle"
@@ -119,6 +124,13 @@ const KindnessDetails: React.FC = () => {
           </OverlayProfileContainer>
         )}
       </ImageContainer>
+      <StyledText
+        color={variables.middleGray}
+        fontSize="10px"
+        style={{ margin: "0 auto" }}
+      >
+        Image by {kindness?.credit}
+      </StyledText>
       <MarginContainer>
         <Tags item={kindness} />
         <Article
