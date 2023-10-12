@@ -1,28 +1,19 @@
 import React, { useContext, useState } from "react";
-import {
-  FlexboxCol,
-  ImageContainer,
-  StyledText,
-} from "../shared/sharedLayouts";
+import { FlexboxCol, ImageContainer } from "../shared/sharedLayouts";
 import { Button } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import Title from "antd/es/typography/Title";
 import { raoks } from "../../common/mockData";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  HeartFilled,
-  ArrowLeftOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { HeartFilled, ArrowLeftOutlined } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
-import CustomizeOptions from "../shared/customizeOptions";
 import Article from "../shared/article/article";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
+import Tags from "../shared/tags";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -60,10 +51,6 @@ const OverlayProfileContainer = styled.div`
   }
 `;
 
-const HighlightedTitle = styled(Title)`
-  color: ${variables.pink3};
-`;
-
 export const ArticleImage = styled.img`
   width: 100vw;
   @media only screen and ${mdBreakPoint} {
@@ -87,12 +74,7 @@ const KindnessDetails: React.FC = () => {
 
   // API: GET /kindness/:id >> get kindness with this id
 
-  // API: GET /kindnessHistory/:id/count >> get total number of times this kindness has been done
-  const totalTimesDone = 110;
-
   const kindness = raoks.find((item) => item.id.toString() === params.id)!;
-
-  const options = false;
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -138,20 +120,7 @@ const KindnessDetails: React.FC = () => {
         )}
       </ImageContainer>
       <MarginContainer>
-        <HighlightedTitle
-          style={{ margin: 0, color: variables.pink3 }}
-          level={2}
-        >
-          <UserOutlined />
-          {totalTimesDone}
-        </HighlightedTitle>
-        <Title style={{ margin: `0 0 0.5em` }} level={4}>
-          {kindness.title}
-        </Title>
-        {options && <CustomizeOptions />}
-        <StyledText color={variables.middleGray} fontSize="14px">
-          {kindness.description}
-        </StyledText>
+        <Tags item={kindness} />
         <Article
           item={kindness}
           onPick={onPick}

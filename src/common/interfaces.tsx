@@ -34,6 +34,7 @@ export interface KindnessAction {
   category: CategoryNames;
   imageUrl: string;
   credit?: string;
+  duration?: number;
 }
 
 export interface UserStats {
