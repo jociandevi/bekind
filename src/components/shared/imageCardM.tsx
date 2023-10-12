@@ -12,6 +12,7 @@ import { Button, Tooltip } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { KindnessAction } from "../../common/interfaces";
 import { useNavigate } from "react-router-dom";
+import { transformTitleToUrl } from "../../common/util";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -33,7 +34,8 @@ const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   const navigate = useNavigate();
 
   const cardAreaClicked = () => {
-    navigate(`/kindness/${item.id}`);
+    const url = transformTitleToUrl(item.title);
+    navigate(`/kindness/${url}`);
   };
 
   return (

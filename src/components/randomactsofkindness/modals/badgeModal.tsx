@@ -7,6 +7,7 @@ import { variables } from "../../../common/variables";
 import { CenterAlignedFlexbox } from "../../shared/sharedLayouts";
 import { useNavigate } from "react-router-dom";
 import { BadgeProps } from "../../../common/interfaces";
+import { transformTitleToUrl } from "../../../common/util";
 
 const { Text } = Typography;
 
@@ -31,6 +32,11 @@ const BadgeModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen, item }) => {
   const navigate = useNavigate();
   const { icon, name, description, necessaryActions } = item;
 
+  const navigateToKindnessDetails = (title: string) => {
+    const url = transformTitleToUrl(title);
+    navigate(`/kindness/${url}`);
+  };
+
   return (
     <AntdModal
       title={name}
@@ -50,7 +56,7 @@ const BadgeModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen, item }) => {
                 src={item.imageUrl}
                 alt={item.title}
                 md={md}
-                onClick={() => navigate(`/kindness/${item.id}`)}
+                onClick={() => navigateToKindnessDetails(item.title)}
               />
             </Tooltip>
           ))}

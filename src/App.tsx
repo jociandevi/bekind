@@ -35,7 +35,7 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path="kindness/:id"
+        path="kindness/:title"
         element={
           <Suspense fallback={<>...</>}>
             <KindnessDetails />

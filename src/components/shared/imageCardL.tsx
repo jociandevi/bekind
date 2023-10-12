@@ -16,6 +16,7 @@ import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
+import { transformTitleToUrl } from "../../common/util";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -66,7 +67,8 @@ const ImageCardL: React.FC<Props> = ({ item, isPickEnabled, onPick }) => {
   };
 
   const cardAreaClicked = () => {
-    navigate(`/kindness/${item.id}`);
+    const url = transformTitleToUrl(item.title);
+    navigate(`/kindness/${url}`);
   };
 
   return (

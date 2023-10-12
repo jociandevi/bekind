@@ -18,6 +18,7 @@ import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Tags from "../shared/tags";
+import { transformTitleToUrl } from "../../common/util";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -78,7 +79,9 @@ const KindnessDetails: React.FC = () => {
 
   // API: GET /kindness/:id >> get kindness with this id
 
-  const kindness = raoks.find((item) => item.id.toString() === params.id)!;
+  const kindness = raoks.find(
+    (item) => transformTitleToUrl(item.title) === params.title
+  )!;
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
