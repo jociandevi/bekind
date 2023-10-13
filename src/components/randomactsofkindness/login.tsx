@@ -15,7 +15,7 @@ import styled from "styled-components";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 
 const LoginContainer = styled(CenterAlignedFlexboxCol)`
-  height: 80vh;
+  height: 100vh;
   justify-content: space-evenly;
 `;
 
@@ -30,7 +30,7 @@ const ImageContainer = styled.div`
 
 const LoginContentContainer = styled.div`
   width: 50vw;
-  height: 120vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
