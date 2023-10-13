@@ -339,6 +339,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1504392022767-a8fc0771f239?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
     credit: "Unsplash - Aaron Burden",
+    duration: 30,
   },
   {
     id: 32,
@@ -348,6 +349,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     credit: "Unsplash - Maria Lin Kim",
+    duration: 20,
   },
   {
     id: 33,
@@ -357,6 +359,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1605367177286-f3d4789c47a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
     credit: "Unsplash - Dennis Siqueira",
+    duration: 5,
   },
   {
     id: 34,
@@ -367,6 +370,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1573612664822-d7d347da7b80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - S O C I A L . C U T",
+    duration: 10,
   },
   {
     id: 35,
@@ -376,6 +380,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1621272156568-7306716648df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     credit: "Unsplash - ",
+    duration: 10,
   },
   {
     id: 36,
@@ -385,6 +390,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1444459094717-a39f1e3e0903?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80",
     credit: "Unsplash - Will",
+    duration: 30,
   },
   {
     id: 37,
@@ -394,6 +400,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1637597384611-0c33cef6ec03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
     credit: "Unsplash - rc.xyz NFT gallery",
+    duration: 30,
   },
   {
     id: 38,
@@ -403,6 +410,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80",
     credit: "Unsplash - Elevate",
+    duration: 10,
   },
   {
     id: 39,
@@ -412,6 +420,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80",
     credit: "Unsplash - Tedd F",
+    duration: 5,
   },
   {
     id: 40,
@@ -421,6 +430,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1599733442143-127f1f5540f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Richa Sharma",
+    duration: 10,
   },
   {
     id: 41,
@@ -430,6 +440,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1501147830916-ce44a6359892?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Murillo de Paula",
+    duration: 30,
   },
   {
     id: 42,
@@ -439,6 +450,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1564860924912-f27764fd2ab6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     credit: "Unsplash - Richard Loader",
+    duration: 45,
   },
   {
     id: 43,
@@ -448,6 +460,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - freestocks",
+    duration: 30,
   },
   {
     id: 44,
@@ -457,6 +470,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1576695139696-e053aae84148?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
     credit: "Unsplash - Guido Coppa",
+    duration: 5,
   },
   {
     id: 45,
@@ -466,6 +480,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Brooke Lark",
+    duration: 20,
   },
   {
     id: 46,
@@ -475,6 +490,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - michelle henderson",
+    duration: 5,
   },
   {
     id: 47,
@@ -484,6 +500,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Cathryn Lavery",
+    duration: 20,
   },
   {
     id: 48,
@@ -493,6 +510,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     credit: "Unsplash - Alyssa Strohmann",
+    duration: 5,
   },
   {
     id: 49,
@@ -502,6 +520,7 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1606363968796-14be04915c81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Nareeta Martin",
+    duration: 20,
   },
   {
     id: 50,
@@ -529,8 +548,8 @@ export const raoks: KindnessAction[] = [
     description: "Understand the world and others better.",
     category: CategoryNames.SOCIAL,
     imageUrl:
-      "https://images.unsplash.com/photo-1531537571171-a707bf2683da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-    credit: "Unsplash - Mimi Thian",
+      "https://images.unsplash.com/photo-1592885066810-83740c1c7795?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+    credit: "Unsplash - Ricardas Brogys",
     duration: 10,
   },
   {
@@ -541,6 +560,16 @@ export const raoks: KindnessAction[] = [
     imageUrl:
       "https://images.unsplash.com/photo-1529079018732-bdb88456f8c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80",
     credit: "Unsplash - Vladislav Babienko",
+    duration: 10,
+  },
+  {
+    id: 54,
+    title: "Pick a Positive Affirmation",
+    description: "Check out our favorite ones.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1507835661088-ac1e84fe645f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1562&q=80",
+    credit: "Unsplash - ",
     duration: 10,
   },
 ];
