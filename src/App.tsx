@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { theme } from "./common/theme";
 import { AuthProvider } from "./common/authProvider";
+import ErrorPage404 from "./components/shared/errorPage404";
 
 const Login = lazy(() => import("./components/randomactsofkindness/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
@@ -25,7 +26,7 @@ const RandomActOfKindnessList = lazy(
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Outlet />}>
+    <Route path="/" element={<Outlet />} errorElement={<ErrorPage404 />}>
       <Route
         path="kindness"
         element={
