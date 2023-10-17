@@ -1,0 +1,91 @@
+[
+  { "text": "Why You Should Totally Exercise Today!", "type": "HeaderLarge" },
+  {
+    "text": "You know that feeling when you've just finished a workout, and you're sweaty, tired, but oddly... elated? That's not just your imagination. Exercise is like a magic potion for your brain, and here's why:",
+    "type": "Text"
+  },
+  { "text": "The Feel-Good Factors of Exercising", "type": "HeaderMedium" },
+  {
+    "text": "Bonding Time: Whether it's a group dance class or a team sport, exercising lets you bond with others, creating deeper connections.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Mental Health Boost: Exercise is a natural remedy for reducing anxiety and depression.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Confidence Galore: It's not just about the toned muscles or weight loss. Just the act of exercising can boost your confidence.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Nature's Therapy: Exercising outside gives your mind a state of open awareness, making you feel more connected to the world.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Cause and Effect: Here's a fun fact - exercise causes happiness, both in the short term and the long run.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Health Power-Up: From strengthening your heart to improving muscle tone, exercise is the gift that keeps on giving.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Dreamy Sleep: Tossing and turning at night? Exercise can help you sleep like a baby.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Immunity Boost: Regular exercise strengthens your immune system, so you can ward off illnesses better.",
+    "type": "ListItem"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1598975762861-28118e88154e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+    "type": "Image",
+    "credit": "Unsplash - Gianluca Carenza"
+  },
+  { "text": "Maximizing Joy from Your Workouts", "type": "HeaderMedium" },
+  {
+    "text": "Nature's Gym: If you can, try exercising outside. The fresh air, the scenery - it's a natural mood booster.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Hydration Station: Drink water before, during, and after your workout. It keeps you energized and helps with recovery.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Goal Getter: Set a realistic goal. Whether it's running a mile without stopping or mastering a yoga pose, having a target keeps you motivated.",
+    "type": "ListItem"
+  },
+  { "text": "The Happiest Workouts on Earth", "type": "HeaderMedium" },
+  {
+    "text": "Aerobic Exercise: Think running, biking, or swimming. It's all about getting that heart rate up.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Dance Like No One's Watching: Dancing isn't just fun; it's a full-body workout.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Yoga Zen: Yoga is a blend of physical postures, breathing exercises, and meditation. It's a trifecta of mind-body-spirit goodness.",
+    "type": "ListItem"
+  },
+  {
+    "text": "And if you're wondering where to start, I've got a treat for you! Dive into this fantastic yoga class for beginners by Kassandra, my favorite instructor. It's less than 30 minutes, and you don't need any fancy equipment. Ready to feel amazing? [Let's do this, sailor!](https://youtu.be/hHhxKkskHDg?si=hgjhU9E-yerYSo7M)",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [Need Motivation? 4 Unexpected Benefits for Your Happiness - CNET](https://www.cnet.com/health/mental/need-motivation-4-unexpected-benefits-for-your-happiness/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [Exercise Drives Happiness: Cool New Fitness Trends for Work-Life Joy - Forbes](https://www.forbes.com/sites/tracybrower/2021/12/12/exercise-drives-happiness-cool-new-fitness-trends-for-work-life-joy/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^3^]: [Even a Little Exercise Might Make Us Happier - The New York Times](https://www.nytimes.com/2018/05/02/well/move/even-a-little-exercise-might-make-us-happier.html)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^4^]: [12 Reasons Why Exercising Makes you Happier - Tracking Happiness](https://www.trackinghappiness.com/reasons-why-exercising-makes-you-happier/)",
+    "type": "Footnote"
+  }
+]
