@@ -602,6 +602,16 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - Anton Mislawsky",
     duration: 60,
   },
+  {
+    id: 58,
+    title: "Try a New Habit",
+    description: "And improve your lifestyle systems.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1525715843408-5c6ec44503b1?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1470",
+    credit: "Unsplash - Seven Shooter",
+    duration: 60,
+  },
 ];
 
 export const user = {
