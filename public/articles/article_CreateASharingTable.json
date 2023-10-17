@@ -1,0 +1,71 @@
+[
+  {
+    "text": "The Magic of Sharing Tables: A Simple Gesture with Big Impact 🌟",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "You know those moments when you stumble upon a simple idea and think, \"Why didn't I think of that?\" Well, nestled in the heart of Vienna, in my friend, Anna's apartment building, lies one such idea: a sharing table. 🏢🔄",
+    "type": "Text"
+  },
+  { "text": "What's a Sharing Table? 🤔", "type": "HeaderMedium" },
+  {
+    "text": "Imagine a table on the ground floor of an apartment building. It's not just any table. It's a table where residents can place items they no longer need. And here's the kicker: anyone can take anything they find useful. No price tags, no bartering—just pure, unadulterated sharing. It's like a mini, ever-changing thrift store right in your building. 🛍️",
+    "type": "Text"
+  },
+
+  { "text": "Why It's More Than Just a Table 🌱", "type": "HeaderMedium" },
+  {
+    "text": "Building Bonds: This isn't just about items; it's about fostering a sense of community. Every time you place or pick up an item, you're connecting with your neighbors in a unique way. It's like silently saying, \"Hey, I've got your back.\" 🤗",
+    "type": "ListItem"
+  },
+  {
+    "text": "Reuse and Recycle: In a world drowning in waste, reusing items is a small step towards a greener planet. Plus, there's something deeply satisfying about giving your old items a second life. 🌍♻️",
+    "type": "ListItem"
+  },
+  {
+    "text": "Convenience Galore: No more trips to the donation center or figuring out how to dispose of things. Just walk downstairs. Easy peasy! 🚶‍♂️",
+    "type": "ListItem"
+  },
+  {
+    "text": "Eco-Friendly: Less waste means a happier Earth. And who doesn't want to be a friend to the environment? 🌳",
+    "type": "ListItem"
+  },
+  {
+    "text": "Financial Balance: For those on a tight budget, the sharing table can be a lifesaver. Need a pot for that new plant? Or a book for the weekend? The table might just have what you're looking for. 💸",
+    "type": "ListItem"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1505819244306-ef53954f9648?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1299&q=80",
+    "type": "Image",
+    "credit": "Hugo Sousa"
+  },
+  { "text": "Setting Up Your Own Sharing Table 🛠️", "type": "HeaderMedium" },
+  {
+    "text": "Get the Green Light: Before anything else, chat with the residents. It's their space too, after all. 🗣️",
+    "type": "ListItem"
+  },
+  {
+    "text": "Location, Location, Location: Find a spot that's frequented by residents but isn't in anyone's way. Think of it as prime retail estate. 📍",
+    "type": "ListItem"
+  },
+  {
+    "text": "Signage: A friendly sign can work wonders. Something like, \"Sharing table - feel free to bring here any good but unused item of yours - and feel free to take anything you can use!\" 📜 [We even created a template for you - feel free to use it!](https://www.canva.com/design/DAFxgBWKitY/s6e-s5GdWgpBGoQ11gDbew/edit?utm_content=DAFxgBWKitY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)",
+    "type": "ListItem"
+  },
+  {
+    "text": "Kickstart the Process: Lead by example. Place an item or two to get the ball rolling. Maybe that book you've read thrice or the vase you no longer fancy. 📚🍶",
+    "type": "ListItem"
+  },
+  {
+    "text": "So, next time you're decluttering or just passing by that empty space in your building, think of the sharing table. It's a small gesture, but its ripples can be profound. And who knows, you might just find that board game you've been longing for or make someone's day with that old guitar. 🎸",
+    "type": "Text"
+  },
+  {
+    "text": "[^1^]: [The Importance of Community | Wellbeing People](https://www.wellbeingpeople.com/2020/07/23/the-importance-of-an-engaging-community/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[^2^]: [The Importance of Cultivating Community | Psychology Today](https://www.psychologytoday.com/us/blog/the-flourishing-family/202108/the-importance-cultivating-community)",
+    "type": "Footnote"
+  }
+]

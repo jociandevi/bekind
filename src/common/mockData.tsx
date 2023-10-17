@@ -572,6 +572,26 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - ",
     duration: 10,
   },
+  {
+    id: 55,
+    title: "Spend Money On An Experience",
+    description: "Instead of physical objects",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1506370785029-c6f41774f390?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+    credit: "Unsplash - Frantisek Duris",
+    duration: 25,
+  },
+  {
+    id: 56,
+    title: "Create a Sharing Table",
+    description: "In your apartment building",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1502791497946-19c03bc58e77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1419&q=80",
+    credit: "Unsplash - Nik",
+    duration: 60,
+  },
 ];
 
 export const user = {
