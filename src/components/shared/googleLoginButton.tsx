@@ -39,6 +39,10 @@ const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
     google.accounts.id.prompt();
   }, [setUser]);
 
+  if (!google || !google.accounts || !google.accounts.id) {
+    return null;
+  }
+
   return (
     <div
       id="signInDiv"
