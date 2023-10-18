@@ -10,6 +10,8 @@ import {
 import { theme } from "./common/theme";
 import { AuthProvider } from "./common/authProvider";
 import ErrorPage404 from "./components/shared/errorPage404";
+import PrivacyPolicy from "./components/shared/privacyPolicy";
+import TermsAndConditions from "./components/shared/termsAndConditions";
 
 const Login = lazy(() => import("./components/randomactsofkindness/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
@@ -64,6 +66,22 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<>...</>}>
             <AddNew />
+          </Suspense>
+        }
+      />
+      <Route
+        path="privacy-policy"
+        element={
+          <Suspense fallback={<>...</>}>
+            <PrivacyPolicy />
+          </Suspense>
+        }
+      />
+      <Route
+        path="terms-and-conditions"
+        element={
+          <Suspense fallback={<>...</>}>
+            <TermsAndConditions />
           </Suspense>
         }
       />

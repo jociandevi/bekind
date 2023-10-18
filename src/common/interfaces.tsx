@@ -37,6 +37,12 @@ export interface KindnessAction {
   duration?: number;
 }
 
+export interface LegalArticle {
+  title: string;
+  imageUrl: string;
+  credit?: string;
+}
+
 export interface UserStats {
   id: number;
   firstName: string;

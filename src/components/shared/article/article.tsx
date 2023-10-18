@@ -8,6 +8,7 @@ import {
   ArticleElement,
   ArticlePart,
   KindnessAction,
+  LegalArticle,
 } from "../../../common/interfaces";
 import { variables } from "../../../common/variables";
 import Title from "antd/es/typography/Title";
@@ -20,9 +21,10 @@ import ArticleText from "./articleText";
 import { Button } from "antd";
 
 interface Props {
-  item: KindnessAction;
-  onPick: (event: React.MouseEvent<HTMLElement>) => void;
-  isPickEnabled: boolean;
+  item: KindnessAction | LegalArticle;
+  onPick?: (event: React.MouseEvent<HTMLElement>) => void;
+  isPickEnabled?: boolean;
+  isPureText?: boolean;
 }
 
 export const ArticleContainer = styled(FlexboxCol)`
@@ -35,7 +37,12 @@ export const ArticleContainer = styled(FlexboxCol)`
   }
 `;
 
-const Article: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
+const Article: React.FC<Props> = ({
+  item,
+  onPick,
+  isPickEnabled,
+  isPureText = false,
+}) => {
   const [article, setArticle] = useState<ArticlePart[]>([]);
 
   useEffect(() => {
@@ -99,14 +106,16 @@ const Article: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
             )}
           </Fragment>
         ))}
-        <Button
-          type="primary"
-          style={{ marginTop: variables.spacingS }}
-          onClick={onPick}
-          disabled={!isPickEnabled}
-        >
-          Pick
-        </Button>
+        {!isPureText && (
+          <Button
+            type="primary"
+            style={{ marginTop: variables.spacingS }}
+            onClick={onPick}
+            disabled={!isPickEnabled}
+          >
+            Pick
+          </Button>
+        )}
       </ArticleContainer>
       <ArticleContainer style={{ marginTop: variables.spacingL }}>
         {article?.map((item, index) => (

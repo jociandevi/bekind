@@ -3,7 +3,11 @@ import jwt_decode from "jwt-decode";
 import { AuthContext } from "../../common/authProvider";
 import Cookies from "js-cookie";
 
-const GoogleLoginButton: React.FC = () => {
+interface Props {
+  isDisabled?: boolean;
+}
+
+const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
   const { setUser } = useContext(AuthContext);
 
   useEffect(() => {
@@ -35,7 +39,16 @@ const GoogleLoginButton: React.FC = () => {
     google.accounts.id.prompt();
   }, [setUser]);
 
-  return <div id="signInDiv" />;
+  return (
+    <div
+      id="signInDiv"
+      style={{
+        pointerEvents: isDisabled ? "none" : "auto",
+        opacity: isDisabled ? 0.5 : 1,
+      }}
+      aria-disabled={isDisabled}
+    />
+  );
 };
 
 export default GoogleLoginButton;

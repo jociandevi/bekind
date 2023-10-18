@@ -1,0 +1,204 @@
+[
+  {
+    "text": "Privacy Policy for BKind",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "Last updated: 18 October 2023",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Introduction",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Welcome to BKind. This Privacy Policy is designed to ensure you understand what information we collect about you, how we use it, when we share it, and the controls we provide you to manage the information you share with us.",
+    "type": "Text"
+  },
+  {
+    "text": "Information We Receive About You",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "We collect information that you provide directly to us and also through your use of our Services.",
+    "type": "Text"
+  },
+  {
+    "text": "Data You Provide to Us: This includes account creation data such as your phone number, name, date of birth, username, biography, email address, location, and profile picture. We also collect content data which includes profile photos, videos, captions, comments, messages, and geolocation. When you communicate with us, we may receive additional information necessary to support and improve our services.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Data We Collect When You Use Our Services: This encompasses connection and technical data like IP address, account creation date, last login, and device details. We also gather interaction data, which includes details about your friends, reactions, and comments. Usage data such as actions performed, content viewed, and application crashes are also collected. Additionally, we may access your device’s camera, photo library, and geolocation data based on your permissions.",
+    "type": "ListItem"
+  },
+  {
+    "text": "How We Use Information We Receive About You",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "We use your information to:",
+    "type": "Text"
+  },
+  {
+    "text": "Operate, Improve, and Provide Our Services: This includes creating an account, displaying content, ensuring our services operate as expected, and making improvements.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Safety and Security: We prioritize your safety and the security of our services. We use the data to ensure compliance with relevant laws and regulations.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Measurement and Analytics: We analyze the effectiveness of our services, application performance, and your usage patterns.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Communications: We communicate with you about our services and respond to your queries or reports.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Research: Occasionally, we conduct research and product testing, always ensuring you are informed and can choose to participate.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Personalized Marketing: We may  partner with third-party advertising companies to serve you personalized ads based on your usage of our app. These companies may use cookies and other tracking technologies to collect information about your activities on our app and other websites to provide you with targeted advertising.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Affiliate Links: Our app may contain links to third-party websites or services that are not owned or controlled by us. Some of these links may be affiliate links, which means we may earn a commission if you click on them and make a purchase. We do not have control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.",
+    "type": "ListItem"
+  },
+
+  {
+    "text": "When We Share Information About You",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "We only share your information when necessary to provide our services or when required by law:",
+    "type": "Text"
+  },
+  {
+    "text": "BeReal Employees: Authorized employees may access your information to provide our services or support.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Other Users: Content you share is available to other users based on your settings.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Service Providers: We collaborate with partners who assist us in various aspects, from technical support to content publishing. Your information may be shared with these partners to ensure seamless service delivery.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Legal and Statutory Purposes: We may be required to share data with authorities for legal reasons or to address security concerns.",
+    "type": "ListItem"
+  },
+
+  {
+    "text": "How Long We Keep Information About You",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "We retain your data only as long as necessary. Some data, like account creation data, is retained indefinitely as long as you have an active account. Content data is kept until you delete it or your account. Other data, like usage data, is retained for no longer than 24 months.",
+    "type": "Text"
+  },
+  {
+    "text": "Controls You Have Over Your Information",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Notifications: You can manage the notifications you receive.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Consent",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "At BKind, we prioritize your privacy and ensure that we obtain clear, affirmative consent before processing your data. When you first register with our services, we seek your explicit consent, especially for activities like personalized marketing and using affiliate links. By providing your consent, you allow us to use your data in ways that enhance your experience with our platform. You have the right to withdraw your consent at any time, and we provide easy mechanisms for you to do so.",
+    "type": "Text"
+  },
+  {
+    "text": "Data Storage",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "We store your data securely and take all necessary precautions to protect it. However, no method of transmission or storage is 100% secure, so we cannot guarantee its absolute security.",
+    "type": "Text"
+  },
+  {
+    "text": "At BKind, the security of your data is of paramount importance to us. In the unfortunate event of a data breach that compromises the security, confidentiality, or integrity of your personal data, we are committed to taking prompt action.",
+    "type": "Text"
+  },
+  {
+    "text": "In compliance with the General Data Protection Regulation (GDPR), should we become aware of any such breach, we will:",
+    "type": "Text"
+  },
+  {
+    "text": "Notify the Relevant Supervisory Authority: We will report the breach to the appropriate supervisory authority within 72 hours of becoming aware of it, unless the breach is unlikely to result in a risk to your rights and freedoms.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Inform Affected Individuals: If the breach poses a high risk to your rights and freedoms, we will also directly inform you without undue delay, providing details about the nature of the breach, the data involved, potential consequences, and the measures we are taking or recommend you take to address and mitigate the breach.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Document the Breach: We will maintain a record of all data breaches, including the facts surrounding the breach, its effects, and the remedial actions taken.",
+    "type": "ListItem"
+  },
+  {
+    "text": "We continuously work on enhancing our security measures to prevent data breaches, but in the event one occurs, we are committed to acting responsibly and transparently for the protection of our users.",
+    "type": "Text"
+  },
+  {
+    "text": "Data Subject Rights",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "In compliance with the General Data Protection Regulation (GDPR), we recognize and respect the following rights you have over your data:",
+    "type": "Text"
+  },
+  {
+    "text": "Right to Access: You have the right to request access to your personal data that we hold, allowing you to receive a copy of the personal data we process about you.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Right to Rectification: If you believe that any of the information we hold about you is inaccurate or incomplete, you have the right to request corrections or completions to such data.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Right to Erasure (Right to be Forgotten): Under certain circumstances, you have the right to request the deletion of your personal data from our records.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Right to Restrict Processing: You can ask us to temporarily halt the processing of your personal data, for example, if you want us to verify its accuracy or clarify the reason for processing it.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Right to Data Portability: You have the right to obtain a copy of your personal data in a structured, commonly used, and machine-readable format, and to transfer such data to another service provider, where technically feasible.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Right to Object: You have the right to object to the processing of your personal data for specific purposes, especially for direct marketing.",
+    "type": "ListItem"
+  },
+  {
+    "text": "We are committed to honoring these rights. If you wish to exercise any of the above rights, please contact us at [eva@bkind.com], and we will address your request in accordance with applicable laws.",
+    "type": "Text"
+  },
+  {
+    "text": "Changes to This Privacy Policy",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "We may update our Privacy Policy periodically. We will notify you of any changes by posting the new Privacy Policy on this page.",
+    "type": "Text"
+  },
+  {
+    "text": "Contact Us",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "For any questions about this Privacy Policy, please contact us at [eva@bkind.com].",
+    "type": "Text"
+  }
+]
