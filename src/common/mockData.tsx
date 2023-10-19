@@ -632,6 +632,16 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - Krzysztof Kowalik",
     duration: 20,
   },
+  {
+    id: 61,
+    title: "Start a New Tradition With a Loved One",
+    description: "Enjoy the bonding.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1677658288021-a0aec2c40deb?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Kristyna Squared.one",
+    duration: 20,
+  },
 ];
 
 export const user = {
