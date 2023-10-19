@@ -1,0 +1,46 @@
+[
+  {
+    "text": "Make Your Day With A Small Gesture To Someone",
+    "type": "HeaderLarge"
+  },
+  { "text": "The Faces We See Daily", "type": "HeaderMedium" },
+  {
+    "text": "Every day, as we go about our routines, there are faces we recognize but don't truly know. The cashier who rings up our groceries, the owner of the fruit shop on the corner who always gives an extra apple, the bus driver who nods as we board, and the receptionist who greets us each morning. These are the familiar strangers in our lives. We share moments, albeit brief, but rarely venture beyond the customary \"hello.\"",
+    "type": "Text"
+  },
+  { "text": "Beyond the Surface", "type": "HeaderMedium" },
+  {
+    "text": "While these interactions may seem inconsequential, there's a unique comfort in their predictability. There's a silent acknowledgment, a mutual understanding that says, \"I see you.\" But what if we took it a step further? What if we broke the cycle of mere acknowledgment and ventured into the realm of genuine connection?",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1530015315043-d61fa3520882?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "type": "Image",
+    "credit": "Unsplash - Mark Ivan"
+  },
+  { "text": "The Magic of Small Gestures", "type": "HeaderMedium" },
+  {
+    "text": "It doesn't take much. A simple \"How's your day going?\" or \"It's chilly today, isn't it?\" can bridge the gap between mere recognition and a meaningful interaction.",
+    "type": "Text"
+  },
+  { "text": "Dissolve the Awkwardness", "type": "HeaderSmall" },
+  {
+    "text": "We see them every day. Why let the silence linger? A friendly comment about the weather or a compliment about their new haircut can shatter the invisible barrier.",
+    "type": "ListItem"
+  },
+  { "text": "Elevate Mood", "type": "HeaderSmall" },
+  {
+    "text": "Positive interactions, even brief ones, can boost our mood and overall well-being[^1^]. Imagine the ripple effect when both parties walk away with a smile.",
+    "type": "ListItem"
+  },
+  { "text": "Forge Bonds", "type": "HeaderSmall" },
+  {
+    "text": "Over time, these tiny moments can accumulate, turning familiar strangers into friends. It's the foundation of a community, built one interaction at a time.",
+    "type": "ListItem"
+  },
+  { "text": "Taking the Initiative", "type": "HeaderMedium" },
+  {
+    "text": "So, the next time you're at the grocery store, waiting for the bus, or walking into your office, take a moment. Extend a compliment, ask about their day, or simply offer a genuine smile. It's a small gesture, but its impact can be profound. After all, in a world where we're increasingly disconnected, these moments of connection are a breath of fresh air.",
+    "type": "Text"
+  }
+]

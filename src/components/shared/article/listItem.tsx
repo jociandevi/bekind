@@ -15,10 +15,17 @@ const ListItemContainer = styled.div`
 const ListItem: React.FC<Props> = ({ text }) => {
   const cleanedText = text.replace(/^\s*-?\s*/, "");
 
-  const index = cleanedText.indexOf(":");
-  const title = cleanedText.substring(0, index).trim();
-  const description = cleanedText.substring(index + 1).trim();
+  let title = cleanedText;
+  let description = "";
 
+  // Find the position of the first colon that is not part of a URL and not inside a markdown link
+  const regex = /(?<!https?):(?![^[]*\])/;
+  const match = cleanedText.match(regex);
+  if (match) {
+    const index = match.index;
+    title = cleanedText.substring(0, index).trim();
+    description = index ? cleanedText.substring(index + 1).trim() : "";
+  }
   return (
     <ListItemContainer>
       <RightOutlined

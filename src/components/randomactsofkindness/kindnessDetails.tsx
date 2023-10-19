@@ -118,7 +118,7 @@ const KindnessDetails: React.FC = () => {
         <OverlayBackButton
           icon={<ArrowLeftOutlined />}
           shape="circle"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/kindness")}
         />
         <OverlayHeartButton icon={<HeartFilled />} shape="circle" />
         {user && (

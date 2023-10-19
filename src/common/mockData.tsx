@@ -612,6 +612,26 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - Seven Shooter",
     duration: 60,
   },
+  {
+    id: 59,
+    title: "Make a Small Gesture To Someone You Always See",
+    description: "But doesn't really know.",
+    category: CategoryNames.NEIGHBORHOOD,
+    imageUrl:
+      "https://images.unsplash.com/photo-1576495199011-eb94736d05d6?auto=format&fit=crop&q=80&w=1472&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Wonderlane",
+    duration: 5,
+  },
+  {
+    id: 60,
+    title: "Gift An Experience",
+    description: "Instead of objects.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1557151498-af2467d6f7f4?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Krzysztof Kowalik",
+    duration: 20,
+  },
 ];
 
 export const user = {

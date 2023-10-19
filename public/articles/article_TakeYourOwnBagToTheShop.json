@@ -12,25 +12,25 @@
     "text": "Plastic bags might seem harmless, but they're like that sneaky villain in movies that causes chaos behind the scenes. Here's the lowdown:",
     "type": "Text"
   },
-  { "text": "Decomposition Drama", "type": "HeaderSmall" },
+  { "text": "Decomposition Drama", "type": "ListItem" },
   {
     "text": "Plastic bags take years, sometimes centuries, to decompose. And when they do, they release toxic substances into the soil and air. Not the kind of legacy we want to leave behind, right?",
-    "type": "ListItem"
+    "type": "Text"
   },
   {
     "text": "https://images.unsplash.com/photo-1570913196444-6f013e478152?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     "type": "Image",
     "credit": "Unsplash - Priscilla Du Preez"
   },
-  { "text": "Wildlife Woes", "type": "HeaderSmall" },
+  { "text": "Wildlife Woes", "type": "ListItem" },
   {
     "text": "Animals often mistake plastic bags for food. Consuming them can block their digestive processes, leading to starvation, choking, and even death. Picture a majestic turtle suffocating because it swallowed a plastic bag thinking it was seaweed. Heartbreaking, isn't it?",
-    "type": "ListItem"
+    "type": "Text"
   },
-  { "text": "Marine Mayhem", "type": "HeaderSmall" },
+  { "text": "Marine Mayhem", "type": "ListItem" },
   {
     "text": "Plastics, including bags, are now omnipresent in marine environments. This not only harms marine life but also affects tourism and economic activities. Imagine a pristine beach littered with plastic bags. Not the ideal vacation spot, huh?",
-    "type": "ListItem"
+    "type": "Text"
   },
   {
     "text": "According to co2everything.com, by not buying a single plastic bag, you will save 1.58kg of CO2! An average person's daily CO2 consumption is 12.8 kg CO2. So, by this small act, you just reduced your daily carbon footprint by 12%! Amazing! 🌍✨",
