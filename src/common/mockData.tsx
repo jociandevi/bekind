@@ -642,6 +642,26 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - Kristyna Squared.one",
     duration: 20,
   },
+  {
+    id: 62,
+    title: "Say Yes To Your Child",
+    description: "Next time when they come up with an idea.",
+    category: CategoryNames.SOCIAL,
+    imageUrl:
+      "https://images.unsplash.com/photo-1591514604904-04365fdb799e?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Jo Jo",
+    duration: 20,
+  },
+  {
+    id: 63,
+    title: "Watch a Standup Comedy",
+    description: "And lift your mood instantly.",
+    category: CategoryNames.YOU,
+    imageUrl:
+      "https://images.unsplash.com/photo-1611956425642-d5a8169abd63?auto=format&fit=crop&q=80&w=1511&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Michel Grolet",
+    duration: 20,
+  },
 ];
 
 export const user = {

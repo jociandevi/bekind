@@ -1,0 +1,93 @@
+[
+  {
+    "text": "12 Ways a Standup Comedy Will Make You Healthier",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Ever had one of those days where everything seems to go wrong? Enter the world of stand-up comedy. A realm where comedians like Taylor Tomlinson and Daniel Sloss take the stage, share their quirky observations, and make you forget your worries, even if just for a moment.",
+    "type": "Text"
+  },
+
+  { "text": "The Science Behind Laughter 😄", "type": "HeaderMedium" },
+  {
+    "text": "Laughter isn't just a response to a funny joke; it's a complex physiological and psychological process. Here's what happens when you chuckle:",
+    "type": "Text"
+  },
+  {
+    "text": "Physiological Changes: Laughter increases heart and respiratory rates, as well as oxygen consumption. After the initial burst, you move into a state of relaxation. In fact, 10-15 minutes of laughter per day might burn 10-40 extra calories.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Heart Function: Laughter affects heart function by increasing stroke volume, cardiac output, and dilating blood vessels.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Stress Reduction: Laughter lowers levels of the stress hormone, cortisol.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Brain Chemistry: It activates the mesolimbic dopaminergic reward system in the brain.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Immunity Boost: Laughter increases serum immunoglobulins A and E, potentially increasing natural killer cell activity.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Feel-Good Chemicals: It raises levels of beta-endorphins and increases human growth hormone.",
+    "type": "ListItem"
+  },
+  { "text": "Laughter and Health Conditions 🏥", "type": "HeaderMedium" },
+  {
+    "text": "Laughter isn't just good for the soul; it's beneficial for the body too:",
+    "type": "Text"
+  },
+  {
+    "text": "Heart Health: There's an inverse association between coronary heart disease and propensity to laugh.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Diabetes: Watching a comedy show decreased the overall rise in glucose levels after eating.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Mood Boost in Cancer Patients: Laughter therapy improved self-esteem and mood in cancer patients.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Lung Health: Laughter reduced hyperinflation of the lungs in people with severe chronic obstructive pulmonary disease (COPD).",
+    "type": "ListItem"
+  },
+  {
+    "text": "Cognitive Function: Humor therapy led to improvements in cognitive function in older adults.",
+    "type": "ListItem"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1541863145320-15f769891592?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "type": "Image",
+    "credit": "Unsplash - Bagas Muhammad"
+  },
+
+  {
+    "text": "If you don't know hat to watch, check out these:",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "[Taylor Tomlinson](https://youtu.be/oagNYHB3Kzk?si=G0wSD5oxJN72iJWe)",
+    "type": "ListItem"
+  },
+  {
+    "text": "[Daniel Sloss](https://youtu.be/PZ5aILCKz8Y?si=bMOYElPmc6J1o05m)",
+    "type": "ListItem"
+  },
+
+  { "text": "Embracing Laughter in Our Lives ", "type": "HeaderMedium" },
+  {
+    "text": "Remember, it's not just about recommending laughter but intentionally bringing it into your daily life. Share a joke, watch a comedy show, or even try laughter yoga.",
+    "type": "Text"
+  },
+  {
+    "text": "[The Healing Benefits of Laughter](https://www.va.gov/WHOLEHEALTHLIBRARY/tools/healing-benefits-humor-laughter.asp)",
+    "type": "Footnote"
+  }
+]
