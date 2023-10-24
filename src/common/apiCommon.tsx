@@ -2,16 +2,13 @@ import axios from "axios";
 
 interface Params {
   baseUrl: string;
-  headers: any;
+  headers?: any;
   method: string;
   mode?: string;
 }
 
 const postConfig: Params = {
   baseUrl: "https://bekind-api.azurewebsites.net",
-  headers: {
-    Authorization: "",
-  },
   method: "post",
 };
 
@@ -29,11 +26,19 @@ const getConfig: Params = {
   mode: "no-cors",
 };
 
-export const postAPI = async (url: string, data: any): Promise<any> => {
+export const postAPI = async (
+  url: string,
+  data?: any,
+  authHeader?: string
+): Promise<any> => {
   return await axios({
     ...postConfig,
     url: `${postConfig.baseUrl}/${url}`,
     data,
+    headers: {
+      Authorization: `Bearer ${authHeader}`,
+      "Access-Control-Allow-Origin": "*",
+    },
   })
     .then((response) => {
       return {

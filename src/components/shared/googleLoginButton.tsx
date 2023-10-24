@@ -11,8 +11,8 @@ interface Props {
 
 const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
   const { setUser } = useContext(AuthContext);
-  const login = (payload: TokenPayload) =>
-    postAPI("/api/Auth/Login", { ...payload }).then((res) => {
+  const login = (payload: string) =>
+    postAPI("api/Auth/Login", undefined, payload).then((res) => {
       if (res.status === 200 || res.status === 201) {
         console.log(res);
         // get token
@@ -25,7 +25,7 @@ const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
   useEffect(() => {
     const handleCallbackResponse = (response: any) => {
       const userObject: TokenPayload = jwt_decode(response.credential);
-      login(userObject);
+      login(response.credential);
       setUser(userObject);
       const serializedData = JSON.stringify(userObject);
 
