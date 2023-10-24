@@ -17,6 +17,7 @@ import CardContainer from "../shared/cardContainer";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
+import { completeUserJourney, showUserJourney } from "../shared/userJourney";
 
 const shuffleArray = (array: KindnessAction[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -95,11 +96,14 @@ const RandomActOfKindnessList: React.FC = () => {
     event.stopPropagation();
     // lets ask the user if this is today's challenge
     setIsConfirmModalOpen(true);
+    completeUserJourney();
   };
 
   const filterByCategory = (category: Category) => {
     setSearchParams({ category: category.name });
   };
+
+  const displayTour = showUserJourney();
 
   return (
     <>
@@ -155,6 +159,7 @@ const RandomActOfKindnessList: React.FC = () => {
               kindnessActions={kindnessActions}
               key={index}
               filterByCategory={filterByCategory}
+              displayTour={displayTour}
             />
           ))}
         <InstallButton />

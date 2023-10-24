@@ -17,6 +17,7 @@ import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
 import { transformTitleToUrl } from "../../common/util";
+import { GlowingButton } from "./userJourney";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -56,9 +57,15 @@ interface Props {
   item: KindnessAction;
   isPickEnabled: boolean;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
+  isGlowing?: boolean;
 }
 
-const ImageCardL: React.FC<Props> = ({ item, isPickEnabled, onPick }) => {
+const ImageCardL: React.FC<Props> = ({
+  item,
+  isPickEnabled,
+  onPick,
+  isGlowing,
+}) => {
   const { md, lg } = useMediaQueries();
   const navigate = useNavigate();
 
@@ -96,9 +103,13 @@ const ImageCardL: React.FC<Props> = ({ item, isPickEnabled, onPick }) => {
       </PaddingContainer>
       <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
         {isPickEnabled ? (
-          <Button type="primary" onClick={(e) => onPick(e, item)}>
+          <GlowingButton
+            isGlowing={isGlowing}
+            type="primary"
+            onClick={(e) => onPick(e, item)}
+          >
             Pick
-          </Button>
+          </GlowingButton>
         ) : (
           <Tooltip
             title="You already did your part today in making the world better!"
