@@ -62,7 +62,7 @@ const Login: React.FC = () => {
         <CenterAlignedFlexboxCol>
           <Title level={3}>Welcome to BKind!</Title>
           <StyledText color={variables.middleGray} fontSize="14px">
-            Let's get happier together!
+            Improve your life a little bit every day.
           </StyledText>
         </CenterAlignedFlexboxCol>
         <CenterAlignedFlexboxCol>

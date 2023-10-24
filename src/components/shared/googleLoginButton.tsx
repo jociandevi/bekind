@@ -1,7 +1,9 @@
 import { useContext, useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { AuthContext } from "../../common/authProvider";
 import Cookies from "js-cookie";
+import { postAPI } from "../../common/apiCommon";
+import { TokenPayload } from "../../common/interfaces";
+import { AuthContext } from "../../common/authProvider";
 
 interface Props {
   isDisabled?: boolean;
@@ -9,10 +11,21 @@ interface Props {
 
 const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
   const { setUser } = useContext(AuthContext);
+  const login = (payload: TokenPayload) =>
+    postAPI("/api/Auth/Login", { ...payload }).then((res) => {
+      if (res.status === 200 || res.status === 201) {
+        console.log(res);
+        // get token
+        // include in the Authorization as Bearer
+      } else {
+        console.log(res);
+      }
+    });
 
   useEffect(() => {
     const handleCallbackResponse = (response: any) => {
-      const userObject = jwt_decode(response.credential);
+      const userObject: TokenPayload = jwt_decode(response.credential);
+      login(userObject);
       setUser(userObject);
       const serializedData = JSON.stringify(userObject);
 

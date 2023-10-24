@@ -8,7 +8,7 @@ interface Params {
 }
 
 const postConfig: Params = {
-  baseUrl: "https://pwatester.azurewebsites.net",
+  baseUrl: "https://bekind-api.azurewebsites.net",
   headers: {
     Authorization: "",
   },
@@ -16,7 +16,7 @@ const postConfig: Params = {
 };
 
 const getConfig: Params = {
-  baseUrl: "https://pwatester.azurewebsites.net",
+  baseUrl: "https://bekind-api.azurewebsites.net",
   headers: {
     // Authorization: "",
     "Access-Control-Allow-Origin": "*",

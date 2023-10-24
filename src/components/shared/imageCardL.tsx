@@ -17,7 +17,7 @@ import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
 import { transformTitleToUrl } from "../../common/util";
-import { GlowingButton } from "./userJourney";
+import { glowingStyle } from "./userJourney";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -30,8 +30,6 @@ const CardContainer = styled.div<{
   border-radius: ${variables.borderRadius}px;
   cursor: pointer;
   flex: 0 0 auto;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
 `;
 
 const PaddingContainer = styled.div<{
@@ -103,13 +101,13 @@ const ImageCardL: React.FC<Props> = ({
       </PaddingContainer>
       <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
         {isPickEnabled ? (
-          <GlowingButton
-            isGlowing={isGlowing}
+          <Button
+            style={{ boxShadow: isGlowing ? glowingStyle : undefined }}
             type="primary"
             onClick={(e) => onPick(e, item)}
           >
             Pick
-          </GlowingButton>
+          </Button>
         ) : (
           <Tooltip
             title="You already did your part today in making the world better!"
