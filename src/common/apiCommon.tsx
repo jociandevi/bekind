@@ -14,16 +14,7 @@ const postConfig: Params = {
 
 const getConfig: Params = {
   baseUrl: "https://bekind-api.azurewebsites.net",
-  headers: {
-    // Authorization: "",
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-    "Access-Control-Allow-Headers":
-      "X-Requested-With, content-type, Authorization",
-    "Access-Control-Allow-Credentials": true,
-  },
   method: "get",
-  mode: "no-cors",
 };
 
 export const postAPI = async (
@@ -37,7 +28,6 @@ export const postAPI = async (
     data,
     headers: {
       Authorization: `Bearer ${authHeader}`,
-      "Access-Control-Allow-Origin": "*",
     },
   })
     .then((response) => {
@@ -54,10 +44,16 @@ export const postAPI = async (
     });
 };
 
-export const getAPI = async (url: string): Promise<any> => {
+export const getAPI = async (
+  url: string,
+  authHeader?: string
+): Promise<any> => {
   return await axios({
     ...getConfig,
     url: `${getConfig.baseUrl}/${url}`,
+    headers: {
+      Authorization: `Bearer ${authHeader}`,
+    },
   })
     .then((response) => {
       return {
