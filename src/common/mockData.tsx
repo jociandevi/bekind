@@ -525,6 +525,27 @@ export const raoks: KindnessAction[] = [
     credit: "Unsplash - Michel Grolet",
     duration: 20,
   },
+  {
+    id: 64,
+    title: "Plant a Tree In The Rainforest",
+    description: "One of the best ways to spend a dollar.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1560851691-ebb64b584d3d?auto=format&fit=crop&q=80&w=1499&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Mandy Choi",
+    duration: 10,
+  },
+  {
+    id: 65,
+    title: "Shop with Zero Waste",
+    description:
+      "By bringing your own bag, saying no to plastic or eating leftovers from your fridge.",
+    category: CategoryNames.ENVIRONMENT,
+    imageUrl:
+      "https://images.unsplash.com/photo-1559837957-bab8edc53c85?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    credit: "Unsplash - Laura Mitulla",
+    duration: 10,
+  },
 ];
 
 export const user = {

@@ -1,0 +1,71 @@
+[
+  {
+    "text": "A Super Quick Action With An Everlasting Effect - For 1$",
+    "type": "HeaderLarge"
+  },
+  {
+    "text": "The Amazon Rainforest, often referred to as the \"lungs of the Earth,\" is a vast expanse of green that spans across nine countries. It's home to almost 30% of plant and animal species on Earth, covering a whopping 1.9 billion acres.",
+    "type": "Text"
+  },
+  {
+    "text": "Why Should You Care?",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Rainforests are like the Earth's air purifiers. They absorb greenhouse gases, regulate global temperatures, and stabilize ocean currents, wind, and rainfall patterns.",
+    "type": "Text"
+  },
+  {
+    "text": "The Power of a Single Tree",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Ever wondered about the superhero capabilities of a tree? Trees, through photosynthesis, absorb carbon dioxide and release oxygen. A single large tree can provide a day's supply of oxygen for up to four people. Moreover, in just one year, a mature tree can absorb more than 48 pounds or 22kg of carbon dioxide and give back oxygen in return. So, every time you take a deep breath, maybe send a little thank you to the trees. The average person has a [carbon footprint of 11kg per day](https://ourworldindata.org/grapher/co-emissions-per-capita?tab=table). So by just planting one tree, you are giving back the earth 50gramms of CO2 every day - a small amount, but not just today but forever!",
+    "type": "Text"
+  },
+  {
+    "text": "https://images.unsplash.com/photo-1592288801240-7b18bb06e94f?auto=format&fit=crop&q=80&w=1374&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "type": "Image",
+    "credit": "Unsplash - Justin Clark"
+  },
+  {
+    "text": "The Amazon's Role in the Bigger Picture",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "The Amazon Rainforest holds an estimated 90-140 billion metric tons of carbon, making it a critical player in the fight against climate change. But due to factors like logging, unsustainable agriculture, and forest fires, it's at risk. By supporting tree planting projects, we can protect the Amazon's biodiverse primary forests and restore degraded land.",
+    "type": "Text"
+  },
+  {
+    "text": "How Can You Help From Afar?",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "You might not be in the Amazon, but your actions can ripple across oceans. By supporting organizations that work on reforestation projects, you can help conserve habitats for iconic wildlife species and provide sustainable livelihoods to local people. You can support by just 1$:",
+    "type": "Text"
+  },
+  {
+    "text": "[One Tree Planted](https://onetreeplanted.org/products/amazon-rainforest)",
+    "type": "ListItem"
+  },
+  {
+    "text": "The Bigger Picture",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Rainforests, especially the Amazon, are more than just trees. They're a testament to the beauty and resilience of our planet. By understanding their importance and taking steps to protect them, we're not just saving trees; we're ensuring a brighter, greener future for generations to come.",
+    "type": "Text"
+  },
+  {
+    "text": "[Rainforest Facts Everyone Should Know - Rainforest Alliance](https://www.rainforest-alliance.org/everyday-actions/9-rainforest-facts-everyone-should-know/)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[The Power of One Tree - USDA](https://www.usda.gov/media/blog/2015/03/17/power-one-tree-very-air-we-breathe)",
+    "type": "Footnote"
+  },
+  {
+    "text": "[Plant Trees in the Amazon Rainforest - One Tree Planted](https://onetreeplanted.org/products/amazon-rainforest)",
+    "type": "Footnote"
+  }
+]

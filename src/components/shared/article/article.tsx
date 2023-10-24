@@ -19,6 +19,7 @@ import { ArticleImage } from "../../randomactsofkindness/kindnessDetails";
 import ListItem from "./listItem";
 import ArticleText from "./articleText";
 import { Button } from "antd";
+import GoogleMap from "./googleMap";
 
 interface Props {
   item: KindnessAction | LegalArticle;
@@ -103,6 +104,9 @@ const Article: React.FC<Props> = ({
             )}
             {item.type === ArticleElement.LIST_ITEM && (
               <ListItem text={item.text} />
+            )}
+            {item.type === ArticleElement.GOOGLE_MAP && (
+              <GoogleMap text={item.text} />
             )}
           </Fragment>
         ))}

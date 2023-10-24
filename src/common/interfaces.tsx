@@ -19,6 +19,7 @@ export enum ArticleElement {
   "HEADER_SMALL" = "HeaderSmall",
   "LIST_ITEM" = "ListItem",
   "FOOTNOTE" = "Footnote",
+  "GOOGLE_MAP" = "GoogleMap",
 }
 
 export interface ArticlePart {
