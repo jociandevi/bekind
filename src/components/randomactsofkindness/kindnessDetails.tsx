@@ -108,7 +108,7 @@ const KindnessDetails: React.FC = () => {
         <FeedbackModal
           isModalOpen={isFeedbackModalOpen}
           setIsModalOpen={setIsFeedbackModalOpen}
-          userName={user?.given_name ?? undefined}
+          userName={user?.firstName ?? undefined}
         />
         <ArticleImage
           src={kindness?.imageUrl}
@@ -118,7 +118,7 @@ const KindnessDetails: React.FC = () => {
         <OverlayBackButton
           icon={<ArrowLeftOutlined />}
           shape="circle"
-          onClick={() => navigate("/kindness")}
+          onClick={() => navigate("/")}
         />
         <OverlayHeartButton icon={<HeartFilled />} shape="circle" />
         {user && (

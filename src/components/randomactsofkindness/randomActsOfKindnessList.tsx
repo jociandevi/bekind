@@ -130,7 +130,7 @@ const RandomActOfKindnessList: React.FC = () => {
         <FeedbackModal
           isModalOpen={isFeedbackModalOpen}
           setIsModalOpen={setIsFeedbackModalOpen}
-          userName={user?.given_name ?? undefined}
+          userName={user?.firstName ?? undefined}
         />
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}

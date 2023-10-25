@@ -34,7 +34,7 @@ const BadgeModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen, item }) => {
 
   const navigateToKindnessDetails = (title: string) => {
     const url = transformTitleToUrl(title);
-    navigate(`/kindness/${url}`);
+    navigate(`/${url}`);
   };
 
   return (

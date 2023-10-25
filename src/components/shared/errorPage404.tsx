@@ -36,7 +36,7 @@ const ErrorPage404: React.FC = () => {
           <Button
             style={{ color: variables.white }}
             type="link"
-            onClick={() => navigate("/kindness")}
+            onClick={() => navigate("/")}
           >
             Home
           </Button>
@@ -72,7 +72,7 @@ const ErrorPage404: React.FC = () => {
           Hi!! I'm Eva. I'm the frontend lead / cofounder of BKind and if a link
           is missing, it's probably my bad. Sorry about that!
         </StyledText>
-        <Button type="primary" onClick={() => navigate("/kindness")}>
+        <Button type="primary" onClick={() => navigate("/")}>
           Go To Home
         </Button>
       </CenterAlignedFlexboxCol>

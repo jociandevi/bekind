@@ -12,7 +12,7 @@ const Statistics: React.FC = () => {
 
   useEffect(() => {
     if (!googleUser) {
-      navigate("/kindness");
+      navigate("/");
     }
   }, [navigate, googleUser]);
 
@@ -23,7 +23,7 @@ const Statistics: React.FC = () => {
   return (
     <StyledGrid>
       <Title level={4}>
-        {googleUser.given_name} {googleUser.family_name}
+        {googleUser.firstName} {googleUser.lastName}
       </Title>
       <GroupedBarChart />
       <ProfileStatistics />

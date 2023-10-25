@@ -73,7 +73,7 @@ const ImageCardL: React.FC<Props> = ({
 
   const cardAreaClicked = () => {
     const url = transformTitleToUrl(item.title);
-    navigate(`/kindness/${url}`);
+    navigate(`/${url}`);
   };
 
   return (

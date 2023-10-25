@@ -34,7 +34,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Outlet />} errorElement={<ErrorPage404 />}>
       <Route
-        path="kindness"
+        path=""
         element={
           <Suspense fallback={<Loading />}>
             <RandomActOfKindnessList />
@@ -42,7 +42,7 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path="kindness/:title"
+        path=":title"
         element={
           <Suspense fallback={<Loading />}>
             <KindnessDetails />
@@ -91,7 +91,7 @@ const router = createBrowserRouter(
       />
 
       <Route
-        path=""
+        path="/login"
         element={
           <Suspense fallback={<Loading />}>
             <Login />

@@ -46,7 +46,7 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/kindness");
+      navigate("/");
     }
   }, [user, navigate]);
 
@@ -90,7 +90,7 @@ const Login: React.FC = () => {
           </Checkbox>
         </CenterAlignedFlexboxCol>
 
-        <Button type="link" onClick={() => navigate("/kindness")}>
+        <Button type="link" onClick={() => navigate("/")}>
           ...or skip for now
         </Button>
       </CenterAlignedFlexboxCol>

@@ -124,7 +124,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     if (!googleUser) {
-      navigate("/kindness");
+      navigate("/");
     }
   }, [navigate, googleUser]);
 
@@ -178,7 +178,7 @@ const Profile: React.FC = () => {
       <FeedbackModal
         isModalOpen={isFeedbackModalOpen}
         setIsModalOpen={setIsFeedbackModalOpen}
-        userName={googleUser?.given_name ?? undefined}
+        userName={googleUser?.firstName ?? undefined}
       />
 
       <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
@@ -192,7 +192,7 @@ const Profile: React.FC = () => {
           {renderLatestAchievedBadge()}
         </ProfileImageContainer>
         <Title level={4} style={{ marginTop: variables.spacingS }}>
-          {googleUser.given_name} {googleUser.family_name}
+          {googleUser.firstName} {googleUser.lastName}
         </Title>
       </CenterAlignedFlexboxCol>
 
