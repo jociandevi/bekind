@@ -12,6 +12,10 @@ import { AuthProvider } from "./common/authProvider";
 import ErrorPage404 from "./components/shared/errorPage404";
 import PrivacyPolicy from "./components/shared/privacyPolicy";
 import TermsAndConditions from "./components/shared/termsAndConditions";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./common/store";
+import Loading from "./components/shared/loading";
 
 const Login = lazy(() => import("./components/randomactsofkindness/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
@@ -32,7 +36,7 @@ const router = createBrowserRouter(
       <Route
         path="kindness"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <RandomActOfKindnessList />
           </Suspense>
         }
@@ -40,7 +44,7 @@ const router = createBrowserRouter(
       <Route
         path="kindness/:title"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <KindnessDetails />
           </Suspense>
         }
@@ -48,7 +52,7 @@ const router = createBrowserRouter(
       <Route
         path="profile"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <Profile />
           </Suspense>
         }
@@ -56,7 +60,7 @@ const router = createBrowserRouter(
       <Route
         path="statistics"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <Statistics />
           </Suspense>
         }
@@ -64,7 +68,7 @@ const router = createBrowserRouter(
       <Route
         path="new"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <AddNew />
           </Suspense>
         }
@@ -72,7 +76,7 @@ const router = createBrowserRouter(
       <Route
         path="privacy-policy"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <PrivacyPolicy />
           </Suspense>
         }
@@ -80,7 +84,7 @@ const router = createBrowserRouter(
       <Route
         path="terms-and-conditions"
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <TermsAndConditions />
           </Suspense>
         }
@@ -89,7 +93,7 @@ const router = createBrowserRouter(
       <Route
         path=""
         element={
-          <Suspense fallback={<>...</>}>
+          <Suspense fallback={<Loading />}>
             <Login />
           </Suspense>
         }
@@ -100,11 +104,15 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <AuthProvider>
-      <ConfigProvider theme={{ ...theme }}>
-        <RouterProvider router={router} />
-      </ConfigProvider>
-    </AuthProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AuthProvider>
+          <ConfigProvider theme={{ ...theme }}>
+            <RouterProvider router={router} />
+          </ConfigProvider>
+        </AuthProvider>
+      </PersistGate>
+    </Provider>
   );
 }
 

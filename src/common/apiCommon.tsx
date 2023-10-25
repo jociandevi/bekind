@@ -1,4 +1,5 @@
 import axios from "axios";
+import { store } from "./store";
 
 interface Params {
   baseUrl: string;
@@ -6,6 +7,11 @@ interface Params {
   method: string;
   mode?: string;
 }
+
+const getTokenFromState = () => {
+  const state = store.getState();
+  return state.authReducer?.token;
+};
 
 const postConfig: Params = {
   baseUrl: "https://bekind-api.azurewebsites.net",
@@ -22,12 +28,17 @@ export const postAPI = async (
   data?: any,
   authHeader?: string
 ): Promise<any> => {
+  const token = getTokenFromState();
   return await axios({
     ...postConfig,
     url: `${postConfig.baseUrl}/${url}`,
     data,
     headers: {
-      Authorization: `Bearer ${authHeader}`,
+      Authorization: authHeader
+        ? `Bearer ${authHeader}`
+        : token
+        ? `Bearer ${token}`
+        : null,
     },
   })
     .then((response) => {
@@ -44,15 +55,13 @@ export const postAPI = async (
     });
 };
 
-export const getAPI = async (
-  url: string,
-  authHeader?: string
-): Promise<any> => {
+export const getAPI = async (url: string): Promise<any> => {
+  const token = getTokenFromState();
   return await axios({
     ...getConfig,
     url: `${getConfig.baseUrl}/${url}`,
     headers: {
-      Authorization: `Bearer ${authHeader}`,
+      Authorization: token ? `Bearer ${token}` : null,
     },
   })
     .then((response) => {

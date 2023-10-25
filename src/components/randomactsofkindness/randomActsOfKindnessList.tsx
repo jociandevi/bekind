@@ -18,6 +18,7 @@ import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
 import { completeUserJourney, showUserJourney } from "../shared/userJourney";
+import { getActions } from "../../common/apiCalls";
 
 const shuffleArray = (array: KindnessAction[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -38,6 +39,15 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
   let searchTimeout: NodeJS.Timeout | null = null;
+
+  // 1. move user to redux (with createslice)
+  // 2. add more specific cases for error handling
+  // 3. put together the api calls into one function
+  // 4. test the POST method
+
+  useEffect(() => {
+    getActions();
+  }, []);
 
   useEffect(() => {
     const category = searchParams.get("category");

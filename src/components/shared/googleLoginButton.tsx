@@ -1,32 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
-import { postAPI } from "../../common/apiCommon";
 import { TokenPayload } from "../../common/interfaces";
-import { AuthContext } from "../../common/authProvider";
+import { useLogin } from "../../common/apiCalls";
+import { Spin } from "antd";
 
 interface Props {
   isDisabled?: boolean;
 }
 
 const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
-  const { setUser } = useContext(AuthContext);
-  const login = (payload: string) =>
-    postAPI("api/Auth/Login", undefined, payload).then((res) => {
-      if (res.status === 200 || res.status === 201) {
-        console.log(res);
-        // get token
-        // include in the Authorization as Bearer
-      } else {
-        console.log(res);
-      }
-    });
+  const { login, loading, error } = useLogin();
 
   useEffect(() => {
     const handleCallbackResponse = (response: any) => {
       const userObject: TokenPayload = jwt_decode(response.credential);
       login(response.credential);
-      setUser(userObject);
       const serializedData = JSON.stringify(userObject);
 
       Cookies.set("googleResponseData", serializedData, {
@@ -50,10 +39,18 @@ const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
     });
 
     google.accounts.id.prompt();
-  }, [setUser]);
+  }, [login]);
 
   if (!google || !google.accounts || !google.accounts.id) {
     return null;
+  }
+
+  if (loading) {
+    return <Spin />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
   }
 
   return (
