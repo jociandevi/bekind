@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { ListLayout, StyledSearch } from "../shared/sharedLayouts";
 import { Form } from "antd";
 import { variables } from "../../common/variables";
-import { categories, raoks } from "../../common/mockData";
+import { categories } from "../../common/mockData";
 import InstallModal from "../shared/pwaCustomInstalls/installModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import { AuthContext } from "../../common/authProvider";
@@ -18,7 +18,7 @@ import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
 import { completeUserJourney, showUserJourney } from "../shared/userJourney";
-import { getActions } from "../../common/apiCalls";
+import { getApiCall } from "../../common/apiCalls";
 
 const shuffleArray = (array: KindnessAction[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -33,7 +33,9 @@ const RandomActOfKindnessList: React.FC = () => {
   // API call >> GET /kindnessHistory/user >> has the user done a kindness today already?
   const [isPickEnabled, setIsPickEnabled] = useState(true);
   const [form] = Form.useForm();
-  const [kindnessActions, setKindnessActions] = useState(shuffleArray(raoks));
+  const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
+    []
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
@@ -42,24 +44,27 @@ const RandomActOfKindnessList: React.FC = () => {
 
   // 1. move user to redux (with createslice)
   // 2. add more specific cases for error handling
-  // 3. put together the api calls into one function
-  // 4. test the POST method
 
   useEffect(() => {
-    getActions();
+    async function fetchData() {
+      const dailies = await getApiCall("api/Kindness");
+      setKindnessActions(dailies.data);
+    }
+    fetchData();
   }, []);
 
   useEffect(() => {
     const category = searchParams.get("category");
+    const categoryId = categories.find((item) => item.name === category)?.id;
     if (category) {
-      const filteredRaoks = raoks.filter((item) => {
-        return item.category === category;
+      const filteredRaoks = kindnessActions.filter((item) => {
+        return item.category === categoryId;
       });
       setKindnessActions(filteredRaoks);
     } else if (searchParams.size === 0) {
-      setKindnessActions(shuffleArray(raoks));
+      setKindnessActions(shuffleArray(kindnessActions));
     }
-  }, [searchParams]);
+  }, [searchParams, kindnessActions]);
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
@@ -86,7 +91,7 @@ const RandomActOfKindnessList: React.FC = () => {
     const searchValue = form.getFieldValue("search");
     const searchTerm = searchValue.toLowerCase();
 
-    const filteredRaoks = raoks.filter((item) => {
+    const filteredRaoks = kindnessActions.filter((item) => {
       const title = item.title.toLowerCase();
       const description = item.description?.toLowerCase();
       return title.includes(searchTerm) || description?.includes(searchTerm);

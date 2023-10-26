@@ -1,6 +1,8 @@
 export enum CategoryNames {
   "SOCIAL" = "Social",
   "YOU" = "You",
+  "RELATIONSHIPS" = "Relationships",
+  "PURPOSE" = "Purpose",
   "NEIGHBORHOOD" = "Neighborhood",
   "ENVIRONMENT" = "Environment",
 }
@@ -29,11 +31,12 @@ export interface ArticlePart {
 }
 
 export interface KindnessAction {
-  id: number;
+  id?: number;
   title: string;
   description?: string;
-  category: CategoryNames;
+  category: number | CategoryNames;
   imageUrl: string;
+  imageCredit?: string;
   credit?: string;
   duration?: number;
 }

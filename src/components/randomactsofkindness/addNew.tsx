@@ -4,16 +4,18 @@ import {
   StyledGrid,
   StyledInput,
 } from "../shared/sharedLayouts";
-import { Button, Form, Radio, Steps } from "antd";
+import { Button, Form, InputNumber, Radio, Steps } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { InputRef } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import UploadImage from "../shared/uploadImage";
 import Title from "antd/es/typography/Title";
-import { Category } from "../../common/interfaces";
+import { Category, KindnessAction } from "../../common/interfaces";
 import { categories } from "../../common/mockData";
+import { usePostApi } from "../../common/apiCalls";
+import Loading from "../shared/loading";
+import PageError from "../shared/pageError";
 
 const StyledRadioButton = styled(Button)`
   margin: ${variables.spacingXxs};
@@ -23,22 +25,37 @@ const AddNew: React.FC = () => {
   const [current, setCurrent] = useState(0);
   const input1Ref = useRef<InputRef>(null);
   const input2Ref = useRef<InputRef>(null);
+  const input3Ref = useRef<InputRef>(null);
+  const input4Ref = useRef<InputRef>(null);
+  const input5Ref = useRef<any>(null);
   const [category, setCategory] = useState<Category | undefined>(undefined);
   const [form] = Form.useForm();
+  const { callPostApi, loading, error } = usePostApi("api/Kindness");
 
   const navigate = useNavigate();
 
-  const onFinish = (values: any) => {
-    console.log(values);
-    // TODO: lets get response / data / url / whatever we need from response from UploadImage and use it here
-    // TODO: lets send this to the backend
+  const onFinish = (values: KindnessAction) => {
+    const { imageCredit } = values;
+    const credit = `Photo by Unsplash - ${imageCredit}`;
+    const now = new Date();
+    const result = {
+      ...values,
+      imageCredit: credit,
+      id: 1,
+      createdDate: now.toISOString(),
+    };
+    callPostApi(result).then((res) => {
+      if (res?.status === 201) {
+        form.resetFields();
+      }
+    });
   };
 
   const pressEnter = (
     _event: React.KeyboardEvent<HTMLInputElement>,
     nextRef?: React.RefObject<InputRef>
   ) => {
-    if (current <= 2) {
+    if (current <= 4) {
       const next = current + 1;
       setCurrent(next);
       if (nextRef) {
@@ -49,7 +66,7 @@ const AddNew: React.FC = () => {
 
   const pickCategory = (item: Category) => {
     setCategory(item);
-    form.setFieldValue("category", item);
+    form.setFieldValue("category", item.id);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -60,8 +77,15 @@ const AddNew: React.FC = () => {
     setCurrent(value);
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <StyledGrid>
+      {error && (
+        <PageError message="We couldn't add a new daily." description={error} />
+      )}
       <CenterAlignedFlexbox
         style={{
           justifyContent: "space-between",
@@ -106,7 +130,7 @@ const AddNew: React.FC = () => {
               title: "Add some more info",
               description: (
                 <Form.Item
-                  name="desciption"
+                  name="description"
                   rules={[
                     {
                       required: true,
@@ -114,7 +138,10 @@ const AddNew: React.FC = () => {
                     },
                   ]}
                 >
-                  <StyledInput onPressEnter={pressEnter} ref={input2Ref} />
+                  <StyledInput
+                    onPressEnter={(event) => pressEnter(event, input3Ref)}
+                    ref={input2Ref}
+                  />
                 </Form.Item>
               ),
             },
@@ -138,13 +165,67 @@ const AddNew: React.FC = () => {
               ),
             },
             {
-              title: "Add an image",
+              title: "Image url",
               description: (
-                <CenterAlignedFlexbox>
-                  <UploadImage />
-                </CenterAlignedFlexbox>
+                <Form.Item
+                  name="imageUrl"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please specify an image url!",
+                    },
+                  ]}
+                >
+                  <StyledInput
+                    onPressEnter={(event) => pressEnter(event, input4Ref)}
+                    ref={input3Ref}
+                  />
+                </Form.Item>
               ),
             },
+            {
+              title: "Image credit",
+              description: (
+                <Form.Item
+                  name="imageCredit"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Whose picture is it?",
+                    },
+                  ]}
+                >
+                  <StyledInput
+                    onPressEnter={(event) => pressEnter(event, input5Ref)}
+                    ref={input4Ref}
+                  />
+                </Form.Item>
+              ),
+            },
+            {
+              title: "Duration",
+              description: (
+                <Form.Item
+                  name="duration"
+                  rules={[
+                    {
+                      required: true,
+                      message: "How long does this action take?",
+                    },
+                  ]}
+                >
+                  <InputNumber ref={input5Ref} />
+                </Form.Item>
+              ),
+            },
+            // {
+            //   title: "Add an image",
+            //   description: (
+            //     <CenterAlignedFlexbox>
+            //       <UploadImage />
+            //     </CenterAlignedFlexbox>
+            //   ),
+            // },
           ]}
         />
         <Form.Item>

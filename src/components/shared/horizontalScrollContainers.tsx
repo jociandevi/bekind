@@ -38,7 +38,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
   displayTour,
 }) => {
   const filteredActions = kindnessActions.filter(
-    (item) => item.category === category.name
+    (item) => item.category === category.id
   );
   if (filteredActions.length === 0) {
     return null;

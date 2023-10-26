@@ -72,10 +72,10 @@ export const badges: BadgeProps[] = [
 ];
 
 export const categories: Category[] = [
-  { id: 100, name: CategoryNames.SOCIAL },
-  { id: 200, name: CategoryNames.YOU },
-  { id: 300, name: CategoryNames.ENVIRONMENT },
-  { id: 400, name: CategoryNames.NEIGHBORHOOD },
+  { id: 0, name: CategoryNames.YOU },
+  { id: 1, name: CategoryNames.RELATIONSHIPS },
+  { id: 2, name: CategoryNames.SOCIAL },
+  { id: 3, name: CategoryNames.PURPOSE },
 ];
 
 export const raoks: KindnessAction[] = [
@@ -83,7 +83,7 @@ export const raoks: KindnessAction[] = [
     id: 1,
     title: "Surprise Someone With a Coffee",
     description: "Or tea. Bring a cup of joy.",
-    category: CategoryNames.SOCIAL,
+    category: 1,
     imageUrl:
       "https://images.unsplash.com/photo-1518057111178-44a106bad636?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80",
   },
@@ -91,7 +91,7 @@ export const raoks: KindnessAction[] = [
     id: 19,
     title: "Walk In Nature",
     description: "And appreciate its beauty.",
-    category: CategoryNames.YOU,
+    category: 1,
     imageUrl:
       "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
   },
@@ -99,7 +99,7 @@ export const raoks: KindnessAction[] = [
     id: 20,
     title: "Smile At A Stranger",
     description: "Make their days and yours!",
-    category: CategoryNames.SOCIAL,
+    category: 1,
     imageUrl:
       "https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     credit: "Unsplash - Lesly Juarez",
@@ -108,7 +108,7 @@ export const raoks: KindnessAction[] = [
     id: 21,
     title: "Declutter",
     description: "Clear up your shelf, books or clothes.",
-    category: CategoryNames.ENVIRONMENT,
+    category: 1,
     imageUrl:
       "https://images.unsplash.com/photo-1529957018945-07aed3538ad5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
     credit: "Unsplash - Edgar Chaparro",
