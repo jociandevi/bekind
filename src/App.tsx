@@ -42,7 +42,7 @@ const router = createBrowserRouter(
         }
       />
       <Route
-        path=":title"
+        path=":id/:title"
         element={
           <Suspense fallback={<Loading />}>
             <KindnessDetails />

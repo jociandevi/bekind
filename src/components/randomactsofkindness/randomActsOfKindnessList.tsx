@@ -18,7 +18,9 @@ import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
 import { completeUserJourney, showUserJourney } from "../shared/userJourney";
-import { getApiCall } from "../../common/apiCalls";
+import { useGetApi } from "../../common/apiCalls";
+import PageError from "../shared/pageError";
+import Loading from "../shared/loading";
 
 const shuffleArray = (array: KindnessAction[]) => {
   for (let i = array.length - 1; i > 0; i--) {
@@ -41,19 +43,21 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
   let searchTimeout: NodeJS.Timeout | null = null;
+  const { callGetApi, loading, error } = useGetApi("api/Kindness");
 
   // 1. move user to redux (with createslice)
   // 2. add more specific cases for error handling
 
   useEffect(() => {
     async function fetchData() {
-      const dailies = await getApiCall("api/Kindness");
-      setKindnessActions(dailies.data);
+      const dailies = await callGetApi();
+      const shuffled = shuffleArray(dailies.data);
+      setKindnessActions(shuffled);
     }
     fetchData();
-  }, []);
+  }, [callGetApi]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const category = searchParams.get("category");
     const categoryId = categories.find((item) => item.name === category)?.id;
     if (category) {
@@ -64,7 +68,7 @@ const RandomActOfKindnessList: React.FC = () => {
     } else if (searchParams.size === 0) {
       setKindnessActions(shuffleArray(kindnessActions));
     }
-  }, [searchParams, kindnessActions]);
+  }, [searchParams, kindnessActions]); */
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
@@ -120,6 +124,10 @@ const RandomActOfKindnessList: React.FC = () => {
 
   const displayTour = showUserJourney();
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
       <ListLayout>
@@ -158,6 +166,7 @@ const RandomActOfKindnessList: React.FC = () => {
             />
           </Form.Item>
         </Form>
+        {error && <PageError message="An error happened, sorry!" />}
         {searchParams.get("category") && (
           <CardContainer
             onPick={onPick}

@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { getAPI, postAPI } from "./apiCommon";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { AuthContext } from "./authProvider";
 import { useDispatch } from "react-redux";
 import { removeToken, setToken } from "./auth.reducer";
@@ -100,4 +100,44 @@ export const usePostApi = (url: string) => {
   };
 
   return { callPostApi, loading, error };
+};
+
+export const useGetApi = (url: string) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleError = (response: any) => {
+    if (response.data.status === 401) {
+      setError("Looks like you are unauthorized.");
+      store.dispatch(removeToken());
+      localStorage.removeItem("user");
+    } else if (response.status === 400 || response.data.status === 400) {
+      const errorMessage = response?.data?.data?.errorMessages[0];
+      setError(errorMessage || "This seems like a bad request");
+    } else {
+      const errorMessage = response?.data?.data?.errorMessages[0];
+      setError(errorMessage || "Failed to make the POST request.");
+    }
+    setLoading(false);
+  };
+
+  const callGetApi = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await getAPI(url);
+      if (response.status === 200 || response.status === 201) {
+        setLoading(false);
+        return response;
+      } else {
+        handleError(response);
+      }
+    } catch (err) {
+      console.error(err);
+      setError("An error occurred during the GET request.");
+      setLoading(false);
+    }
+  }, [url]);
+  return { callGetApi, loading, error };
 };

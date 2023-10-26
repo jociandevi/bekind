@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   FlexboxCol,
   ImageContainer,
@@ -7,7 +7,6 @@ import {
 import { Button } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { raoks } from "../../common/mockData";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate, useParams } from "react-router-dom";
@@ -18,7 +17,10 @@ import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Tags from "../shared/tags";
-import { transformTitleToUrl } from "../../common/util";
+import { useGetApi } from "../../common/apiCalls";
+import { KindnessAction } from "../../common/interfaces";
+import Loading from "../shared/loading";
+import PageError from "../shared/pageError";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -76,12 +78,17 @@ const KindnessDetails: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const [kindness, setKindness] = useState<KindnessAction | undefined>();
+  const id = params.id;
+  const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
 
-  // API: GET /kindness/:id >> get kindness with this id
-
-  const kindness = raoks.find(
-    (item) => transformTitleToUrl(item.title) === params.title
-  )!;
+  useEffect(() => {
+    async function fetchData() {
+      const daily = await callGetApi();
+      setKindness(daily.data);
+    }
+    fetchData();
+  }, [callGetApi]);
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -96,6 +103,10 @@ const KindnessDetails: React.FC = () => {
     // lets ask the user if this is today's challenge
     setIsConfirmModalOpen(true);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <FlexboxCol>
@@ -132,16 +143,20 @@ const KindnessDetails: React.FC = () => {
         fontSize="10px"
         style={{ margin: "0 auto" }}
       >
-        Image by {kindness?.credit}
+        {kindness?.imageCredit}
       </StyledText>
+      {error && <PageError message="An error happened, sorry!" />}
       <MarginContainer>
-        <Tags item={kindness} />
-        <Article
-          item={kindness}
-          onPick={onPick}
-          isPickEnabled={isPickEnabled}
-        />
+        {kindness && <Tags item={kindness} />}
+        {kindness && (
+          <Article
+            item={kindness}
+            onPick={onPick}
+            isPickEnabled={isPickEnabled}
+          />
+        )}
       </MarginContainer>
+
       <InstallButton />
     </FlexboxCol>
   );
