@@ -7,7 +7,9 @@ interface Props {
 }
 
 const PageError: React.FC<Props> = ({ message, description }) => {
-  return <Alert type="error" message={message} description={description} />;
+  return (
+    <Alert type="error" message={message} description={description} closable />
+  );
 };
 
 export default PageError;

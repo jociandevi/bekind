@@ -181,6 +181,7 @@ const RandomActOfKindnessList: React.FC = () => {
               placeholder="Search"
               onChange={onChange}
               onPressEnter={onSearch}
+              allowClear
             />
           </Form.Item>
         </Form>
