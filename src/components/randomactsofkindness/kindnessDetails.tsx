@@ -85,7 +85,7 @@ const KindnessDetails: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       const daily = await callGetApi();
-      setKindness(daily.data);
+      setKindness(daily?.data);
     }
     fetchData();
   }, [callGetApi]);

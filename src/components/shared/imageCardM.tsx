@@ -35,7 +35,7 @@ const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
 
   const cardAreaClicked = () => {
     const url = transformTitleToUrl(item.title);
-    navigate(`/${url}`);
+    navigate(`/${item.id}/${url}`);
   };
 
   return (

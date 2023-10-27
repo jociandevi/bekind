@@ -1,14 +1,17 @@
 import React from "react";
-import { Alert } from "antd";
+import { Alert, AlertProps } from "antd";
 
-interface Props {
-  message: string;
-  description?: string;
-}
+interface Props extends AlertProps {}
 
-const PageError: React.FC<Props> = ({ message, description }) => {
+const PageError: React.FC<Props> = ({ ...props }) => {
   return (
-    <Alert type="error" message={message} description={description} closable />
+    <Alert
+      type="error"
+      message={props.message}
+      description={props.description}
+      closable
+      {...props}
+    />
   );
 };
 

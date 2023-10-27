@@ -18,7 +18,7 @@ import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
 import { completeUserJourney, showUserJourney } from "../shared/userJourney";
-import { useGetApi } from "../../common/apiCalls";
+import { useGetApi, usePostApi } from "../../common/apiCalls";
 import PageError from "../shared/pageError";
 import Loading from "../shared/loading";
 
@@ -32,8 +32,8 @@ const shuffleArray = (array: KindnessAction[]) => {
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
-  // API call >> GET /kindnessHistory/user >> has the user done a kindness today already?
   const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const [daily, setDaily] = useState<KindnessAction | undefined>();
   const [form] = Form.useForm();
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
@@ -47,6 +47,12 @@ const RandomActOfKindnessList: React.FC = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const searchTimeout = useRef<NodeJS.Timeout | null>(null);
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
+  const { callGetApi: getHistory } = useGetApi(`api/KindnessHistory`);
+  const {
+    callPostApi: callPostKindnessHistory,
+    loading: loadingPostKindnessHistory,
+    error: errorPostKindnessHistory,
+  } = usePostApi("api/KindnessHistory");
 
   // 1. move user to redux (with createslice)
 
@@ -59,6 +65,19 @@ const RandomActOfKindnessList: React.FC = () => {
     }
     fetchData();
   }, [callGetApi]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const history = await getHistory();
+      const latestDaily = history?.data?.at(-1);
+      const dateOfLatest = new Date(latestDaily?.createdDate);
+      const today = new Date();
+      if (dateOfLatest.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
+        setIsPickEnabled(false);
+      }
+    }
+    fetchData();
+  }, [getHistory]);
 
   useEffect(() => {
     const category = searchParams.get("category");
@@ -124,14 +143,26 @@ const RandomActOfKindnessList: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    // API call: lets make a backend call to add this to user's profile
+    const now = new Date();
+    const result = {
+      id: 0,
+      memberId: user.id,
+      kindnessId: daily?.id,
+      createdDate: now.toISOString(),
+    };
+    callPostKindnessHistory(result).then((res: any) => {
+      console.log(res);
+    });
     setIsFeedbackModalOpen(true);
     setIsPickEnabled(false);
   };
 
-  const onPick = (event: React.MouseEvent<HTMLElement>) => {
+  const onPick = (
+    event: React.MouseEvent<HTMLElement>,
+    item: KindnessAction
+  ) => {
     event.stopPropagation();
-    // lets ask the user if this is today's challenge
+    setDaily(item);
     setIsConfirmModalOpen(true);
     completeUserJourney();
   };
@@ -142,7 +173,7 @@ const RandomActOfKindnessList: React.FC = () => {
 
   const displayTour = showUserJourney();
 
-  if (loading) {
+  if (loading || loadingPostKindnessHistory) {
     return <Loading />;
   }
 
@@ -185,7 +216,12 @@ const RandomActOfKindnessList: React.FC = () => {
             />
           </Form.Item>
         </Form>
-        {error && <PageError message="An error happened, sorry!" />}
+        {(error || errorPostKindnessHistory) && (
+          <PageError
+            message="An error happened, sorry!"
+            style={{ margin: variables.spacingXs }}
+          />
+        )}
         {searchParams.get("category") && (
           <CardContainer
             onPick={onPick}

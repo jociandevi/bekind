@@ -118,18 +118,21 @@ export const useGetApi = (url: string) => {
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
         return response;
-      }
-      if (response?.data?.status === 401) {
+      } else if (response.status === undefined) {
+        // this happens when the backend is unreachable.
+        // lets not show an error
+        return;
+      } else if (response?.data?.status === 401) {
         setError("Looks like you are unauthorized.");
         store.dispatch(removeToken());
         localStorage.removeItem("user");
         setUser(null);
         navigate("/login");
       } else if (response?.status === 400 || response?.data?.status === 400) {
-        const errorMessage = response?.data?.data?.errorMessages[0];
+        const errorMessage = response?.data?.data?.errorMessages?.[0];
         setError(errorMessage || "This seems like a bad request");
       } else {
-        const errorMessage = response?.data?.data?.errorMessages[0];
+        const errorMessage = response?.data?.data?.errorMessages?.[0];
         setError(errorMessage || "Failed to make the POST request.");
       }
       setLoading(false);
