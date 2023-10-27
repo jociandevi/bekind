@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { ListLayout, StyledSearch } from "../shared/sharedLayouts";
 import { Form } from "antd";
 import { variables } from "../../common/variables";
@@ -23,7 +23,7 @@ import PageError from "../shared/pageError";
 import Loading from "../shared/loading";
 
 const shuffleArray = (array: KindnessAction[]) => {
-  for (let i = array.length - 1; i > 0; i--) {
+  for (let i = array?.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
@@ -38,37 +38,49 @@ const RandomActOfKindnessList: React.FC = () => {
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
   );
+  const [filteredActions, setFilteredActions] = useState<KindnessAction[] | []>(
+    []
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
-  let searchTimeout: NodeJS.Timeout | null = null;
+  const searchTimeout = useRef<NodeJS.Timeout | null>(null);
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
 
   // 1. move user to redux (with createslice)
-  // 2. add more specific cases for error handling
 
   useEffect(() => {
     async function fetchData() {
       const dailies = await callGetApi();
-      const shuffled = shuffleArray(dailies.data);
+      const shuffled = shuffleArray(dailies?.data);
       setKindnessActions(shuffled);
+      setFilteredActions(shuffled);
     }
     fetchData();
   }, [callGetApi]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const category = searchParams.get("category");
     const categoryId = categories.find((item) => item.name === category)?.id;
+
     if (category) {
       const filteredRaoks = kindnessActions.filter((item) => {
         return item.category === categoryId;
       });
-      setKindnessActions(filteredRaoks);
+      setFilteredActions(filteredRaoks);
     } else if (searchParams.size === 0) {
-      setKindnessActions(shuffleArray(kindnessActions));
+      setFilteredActions(kindnessActions);
     }
-  }, [searchParams, kindnessActions]); */
+  }, [searchParams, kindnessActions]);
+
+  useEffect(() => {
+    return () => {
+      if (searchTimeout.current) {
+        clearTimeout(searchTimeout.current);
+      }
+    };
+  }, []);
 
   // user reached a goal - appears by backend API call trigger instantly after logged in
 
@@ -81,12 +93,12 @@ const RandomActOfKindnessList: React.FC = () => {
   };
 
   const onChange = (_e?: React.ChangeEvent<HTMLInputElement>) => {
-    if (searchTimeout) {
-      clearTimeout(searchTimeout);
+    if (searchTimeout.current) {
+      clearTimeout(searchTimeout.current);
     }
 
     // Search after 0.7 seconds
-    searchTimeout = setTimeout(() => {
+    searchTimeout.current = setTimeout(() => {
       onSearch();
     }, 700);
   };
@@ -95,12 +107,18 @@ const RandomActOfKindnessList: React.FC = () => {
     const searchValue = form.getFieldValue("search");
     const searchTerm = searchValue.toLowerCase();
 
-    const filteredRaoks = kindnessActions.filter((item) => {
-      const title = item.title.toLowerCase();
-      const description = item.description?.toLowerCase();
-      return title.includes(searchTerm) || description?.includes(searchTerm);
-    });
-    setKindnessActions(filteredRaoks);
+    if (!searchTerm) {
+      setFilteredActions(kindnessActions);
+      return;
+    } else {
+      const filteredRaoks = kindnessActions.filter((item) => {
+        const title = item.title.toLowerCase();
+        const description = item.description?.toLowerCase();
+        return title.includes(searchTerm) || description?.includes(searchTerm);
+      });
+
+      setFilteredActions(filteredRaoks);
+    }
   };
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
@@ -171,7 +189,7 @@ const RandomActOfKindnessList: React.FC = () => {
           <CardContainer
             onPick={onPick}
             isPickEnabled={isPickEnabled}
-            kindnessActions={kindnessActions}
+            kindnessActions={filteredActions}
           />
         )}
         {searchParams.size === 0 &&
@@ -180,7 +198,7 @@ const RandomActOfKindnessList: React.FC = () => {
               category={category}
               onPick={onPick}
               isPickEnabled={isPickEnabled}
-              kindnessActions={kindnessActions}
+              kindnessActions={filteredActions}
               key={index}
               filterByCategory={filterByCategory}
               displayTour={displayTour}

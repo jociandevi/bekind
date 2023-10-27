@@ -37,10 +37,10 @@ const HorizontalScrollContainers: React.FC<Props> = ({
   filterByCategory,
   displayTour,
 }) => {
-  const filteredActions = kindnessActions.filter(
+  const filteredActions = kindnessActions?.filter(
     (item) => item.category === category.id
   );
-  if (filteredActions.length === 0) {
+  if (filteredActions?.length === 0) {
     return null;
   }
 
@@ -72,27 +72,29 @@ const HorizontalScrollContainers: React.FC<Props> = ({
       >
         {category.name}
       </CategoryButton>
-      <StyledCarousel
-        responsive={responsive}
-        infinite={true}
-        ssr={true}
-        customTransition="all .5"
-        transitionDuration={100}
-      >
-        {filteredActions.map((item) => (
-          <ImageCardL
-            item={item}
-            key={item.id}
-            isPickEnabled={isPickEnabled}
-            onPick={onPick}
-            isGlowing={
-              item === filteredActions[0] &&
-              category.name === CategoryNames.SOCIAL &&
-              displayTour
-            }
-          />
-        ))}
-      </StyledCarousel>
+      {filteredActions && (
+        <StyledCarousel
+          responsive={responsive}
+          infinite={true}
+          ssr={true}
+          customTransition="all .5"
+          transitionDuration={100}
+        >
+          {filteredActions?.map((item) => (
+            <ImageCardL
+              item={item}
+              key={item.id}
+              isPickEnabled={isPickEnabled}
+              onPick={onPick}
+              isGlowing={
+                item === filteredActions[0] &&
+                category.name === CategoryNames.SOCIAL &&
+                displayTour
+              }
+            />
+          ))}
+        </StyledCarousel>
+      )}
     </Fragment>
   );
 };

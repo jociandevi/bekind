@@ -27,11 +27,7 @@ const CardContainer: React.FC<Props> = ({
 }) => {
   let [searchParams] = useSearchParams();
   const category = searchParams.get("category");
-
-  const filteredActions = kindnessActions.filter(
-    (item) => item.category === category
-  );
-  if (filteredActions.length === 0) {
+  if (kindnessActions.length === 0) {
     return null;
   }
 
@@ -41,7 +37,7 @@ const CardContainer: React.FC<Props> = ({
         {category ?? ""}
       </CategoryButton>
       <StyledContainer>
-        {filteredActions.map((item) => (
+        {kindnessActions.map((item) => (
           <ImageCardL
             item={item}
             key={item.id}
