@@ -115,8 +115,25 @@ self.addEventListener("activate", (event: any) => {
 //listen for requests
 self.addEventListener("fetch", (event: any) => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    caches
+      .match(event.request)
+      .then((response) => {
+        // If there's a cached response, return it.
+        if (response) {
+          return response;
+        }
+
+        // If the user is offline and the response isn't cached, return the offline page.
+        if (!navigator.onLine) {
+          return caches.match("offline.html");
+        }
+
+        // Otherwise, fetch the request from the network.
+        return fetch(event.request);
+      })
+      .catch(() => {
+        // If the fetch also fails, return the offline page.
+        return caches.match("offline.html");
+      })
   );
 });
