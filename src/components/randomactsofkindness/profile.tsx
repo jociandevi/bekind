@@ -22,7 +22,7 @@ import { KindnessAction, KindnessHistory } from "../../common/interfaces";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
-import { usePostApi } from "../../common/apiCalls";
+import { useGetApi, usePostApi } from "../../common/apiCalls";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
@@ -88,12 +88,20 @@ const Profile: React.FC = () => {
     setIsPickEnabled,
     googleUser
   );
+  const { callGetApi: getLiked } = useGetApi(`api/LikedKindness`);
 
-  const [dailies, setDailies] = useState<KindnessHistory[] | []>([]);
+  const [pastActions, setPastActions] = useState<KindnessHistory[] | []>([]);
+  const [likedActions, setLikedActions] = useState<KindnessAction[] | []>([]);
 
   useEffect(() => {
-    setDailies(history);
+    setPastActions(history);
   }, [history]);
+
+  useEffect(() => {
+    getLiked().then((res: any) => {
+      setLikedActions(res?.data);
+    });
+  }, [getLiked]);
 
   const onPick = (
     event: React.MouseEvent<HTMLElement>,
@@ -115,14 +123,14 @@ const Profile: React.FC = () => {
       label: `Likes`,
       children: (
         <>
-          {/* {user.liked.map((item) => (
+          {likedActions.map((item) => (
             <ImageCardM
               item={item}
               key={item.id}
               onPick={onPick}
               isPickEnabled={isPickEnabled}
             />
-          ))} */}
+          ))}
         </>
       ),
     },
@@ -131,7 +139,7 @@ const Profile: React.FC = () => {
       label: `History`,
       children: (
         <>
-          {dailies.map((item) => (
+          {pastActions.map((item) => (
             <Fragment key={item.id}>
               <StyledText
                 color={variables.middleGray}

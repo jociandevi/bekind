@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
 import { transformTitleToUrl } from "../../common/util";
 import { glowingStyle } from "./userJourney";
+import { usePostApi } from "../../common/apiCalls";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -66,9 +67,14 @@ const ImageCardL: React.FC<Props> = ({
 }) => {
   const { md, lg } = useMediaQueries();
   const navigate = useNavigate();
+  const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
 
   const onLike = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
+    console.log("lets do like", item);
+    callPostApi().then((res: any) => {
+      console.log(res);
+    });
   };
 
   const cardAreaClicked = () => {

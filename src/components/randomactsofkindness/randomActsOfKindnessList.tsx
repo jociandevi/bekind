@@ -109,8 +109,6 @@ const RandomActOfKindnessList: React.FC = () => {
     return <Loading />;
   }
 
-  console.log(error);
-
   return (
     <>
       <ListLayout>

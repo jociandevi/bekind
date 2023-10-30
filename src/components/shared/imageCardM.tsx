@@ -26,15 +26,29 @@ const CardContainer = styled.div`
 `;
 
 interface Props {
-  item?: KindnessHistory;
+  item?: KindnessHistory | KindnessAction;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled: boolean;
 }
 
-const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
+const isKindnessHistory = (
+  item: KindnessHistory | KindnessAction
+): item is KindnessHistory => {
+  return (item as KindnessHistory).kindnessId !== undefined;
+};
+
+const ImageCardM: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   const { md } = useMediaQueries();
   const navigate = useNavigate();
-  const { callGetApi, loading } = useGetApi(`api/Kindness/${item?.kindnessId}`);
+  let id;
+  if (item) {
+    if (isKindnessHistory(item)) {
+      id = item.kindnessId;
+    } else {
+      id = item?.id;
+    }
+  }
+  const { callGetApi, loading } = useGetApi(`api/Kindness/${id}`);
   const [kindness, setKindness] = useState<KindnessAction | undefined>();
 
   useEffect(() => {
@@ -89,4 +103,4 @@ const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   );
 };
 
-export default ImageCardL;
+export default ImageCardM;

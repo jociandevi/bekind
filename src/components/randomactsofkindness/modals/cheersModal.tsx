@@ -1,6 +1,5 @@
 import React from "react";
 import AntdModal from "../../shared/modal";
-import { userToPraise } from "../../../common/mockData";
 
 interface Props {
   isModalOpen: boolean;
@@ -23,7 +22,7 @@ const CheersModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen }) => {
       setIsModalOpen={setIsModalOpen}
       onOk={onOk}
       description="Sean just bought a coffee for the person next in line! Want to high five him?"
-      imageUrl={userToPraise.photoUrl}
+      imageUrl={""}
       isProfileImage
       okText="Sure!"
       cancelText="Not today"
