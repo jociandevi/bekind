@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AntdModal from "../modal";
-import BeKindLogo from "../../../android-chrome-192x192.png";
+import BeKindLogo from "../../../logoOutbreak_v1.png";
 import { useMediaQueries } from "../../../common/mediaQueryHook";
 import { Button } from "antd";
 import { CenterAlignedFlexboxCol } from "../sharedLayouts";
