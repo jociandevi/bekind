@@ -1,11 +1,11 @@
 {
-  "short_name": "Be Kind",
+  "short_name": "Outbreak",
   "id": "/",
-  "name": "Be Kind - Making the world better together",
+  "name": "Outbreak | Building an awesome life, together",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "48x48",
+      "sizes": "64x64",
       "type": "image/x-icon",
       "purpose": "any"
     },
