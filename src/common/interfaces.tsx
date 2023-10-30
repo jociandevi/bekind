@@ -41,6 +41,13 @@ export interface KindnessAction {
   duration?: number;
 }
 
+export interface KindnessHistory {
+  id?: number;
+  createdDate: string;
+  kindnessId: number;
+  memberId: string;
+}
+
 export interface LegalArticle {
   title: string;
   imageUrl: string;

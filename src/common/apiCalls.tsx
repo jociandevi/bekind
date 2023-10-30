@@ -5,7 +5,6 @@ import { AuthContext } from "./authProvider";
 import { useDispatch } from "react-redux";
 import { removeToken, setToken } from "./auth.reducer";
 import { store } from "./store";
-import { useNavigate } from "react-router-dom";
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -70,35 +69,37 @@ export const usePostApi = (url: string) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const callPostApi = async (data?: any) => {
-    setLoading(true);
-    setError(null);
+  const callPostApi = useCallback(
+    async (data?: any) => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      const response = await postAPI(url, data);
-
-      if (response.status === 200 || response.status === 201) {
-        setLoading(false);
-        return response;
-      } else if (response.data.status === 401) {
-        setError("Looks like you are unautorized.");
-        store.dispatch(removeToken());
-        localStorage.removeItem("user");
-      } else if (response.status === 400 || response.data.status === 400) {
-        const errorMessage = response?.data?.data?.errorMessages[0];
-        setError(errorMessage || "This seems like a bad request");
-        setLoading(false);
-      } else {
-        const errorMessage = response?.data?.data?.errorMessages[0];
-        setError(errorMessage || "Failed to make the POST request.");
+      try {
+        const response = await postAPI(url, data);
+        if (response.status === 200 || response.status === 201) {
+          setLoading(false);
+          return response;
+        } else if (response.data.status === 401) {
+          setError("Looks like you are unautorized.");
+          store.dispatch(removeToken());
+          localStorage.removeItem("user");
+        } else if (response.status === 400 || response.data.status === 400) {
+          const errorMessage = response?.data?.data?.errorMessages[0];
+          setError(errorMessage || "This seems like a bad request");
+          setLoading(false);
+        } else {
+          const errorMessage = response?.data?.data?.errorMessages[0];
+          setError(errorMessage || "Failed to make the POST request.");
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error(err);
+        setError("An error occurred during the POST request.");
         setLoading(false);
       }
-    } catch (err) {
-      console.error(err);
-      setError("An error occurred during the POST request.");
-      setLoading(false);
-    }
-  };
+    },
+    [url]
+  );
 
   return { callPostApi, loading, error };
 };
@@ -107,7 +108,6 @@ export const useGetApi = (url: string) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { setUser } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const callGetApi = useCallback(async () => {
     setLoading(true);
@@ -118,16 +118,11 @@ export const useGetApi = (url: string) => {
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
         return response;
-      } else if (response.status === undefined) {
-        // this happens when the backend is unreachable.
-        // lets not show an error
-        return;
       } else if (response?.data?.status === 401) {
         setError("Looks like you are unauthorized.");
         store.dispatch(removeToken());
         localStorage.removeItem("user");
         setUser(null);
-        navigate("/login");
       } else if (response?.status === 400 || response?.data?.status === 400) {
         const errorMessage = response?.data?.data?.errorMessages?.[0];
         setError(errorMessage || "This seems like a bad request");
@@ -141,6 +136,6 @@ export const useGetApi = (url: string) => {
       setError("An error occurred during the GET request.");
       setLoading(false);
     }
-  }, [url, setUser, navigate]);
+  }, [url, setUser]);
   return { callGetApi, loading, error };
 };

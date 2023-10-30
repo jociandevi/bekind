@@ -8,12 +8,14 @@ interface Props {
   userName?: string;
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
+  userStreak?: number;
 }
 
 const FeedbackModal: React.FC<Props> = ({
   userName,
   isModalOpen,
   setIsModalOpen,
+  userStreak,
 }) => {
   const onCheers = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -27,7 +29,7 @@ const FeedbackModal: React.FC<Props> = ({
       modalHeight={292}
       title={
         userName
-          ? `Nice job, ${userName}! That's a 5-day Streak!`
+          ? `Nice job, ${userName}! That's a ${userStreak}-day Streak!`
           : "Nice job! Login to keep track of your streak!"
       }
       description="Thank you for making the world a better place!"

@@ -22,8 +22,8 @@ import { Button } from "antd";
 import GoogleMap from "./googleMap";
 
 interface Props {
-  item: KindnessAction | LegalArticle;
-  onPick?: (event: React.MouseEvent<HTMLElement>) => void;
+  kindness: KindnessAction | LegalArticle;
+  onPick?: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled?: boolean;
   isPureText?: boolean;
 }
@@ -39,7 +39,7 @@ export const ArticleContainer = styled(FlexboxCol)`
 `;
 
 const Article: React.FC<Props> = ({
-  item,
+  kindness,
   onPick,
   isPickEnabled,
   isPureText = false,
@@ -48,7 +48,7 @@ const Article: React.FC<Props> = ({
 
   useEffect(() => {
     const convertItemTitleToJsonName = () => {
-      const title = item.title;
+      const title = kindness.title;
       return title
         .replace(/'/g, "")
         .split(" ")
@@ -65,7 +65,7 @@ const Article: React.FC<Props> = ({
       .catch((error) => {
         console.error("Error fetching the article data:", error);
       });
-  }, [item.title]);
+  }, [kindness.title]);
 
   return (
     <>
@@ -114,7 +114,7 @@ const Article: React.FC<Props> = ({
           <Button
             type="primary"
             style={{ marginTop: variables.spacingS }}
-            onClick={onPick}
+            onClick={(e) => onPick!(e, kindness as KindnessAction)}
             disabled={!isPickEnabled}
           >
             Pick

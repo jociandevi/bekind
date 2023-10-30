@@ -67,7 +67,7 @@ const TermsAndConditions: React.FC = () => {
         Image by {item?.credit}
       </StyledText>
       <MarginContainer>
-        <Article item={item} isPureText />
+        <Article kindness={item} isPureText />
       </MarginContainer>
       <InstallButton />
     </FlexboxCol>

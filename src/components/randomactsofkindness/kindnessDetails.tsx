@@ -17,10 +17,11 @@ import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Tags from "../shared/tags";
-import { useGetApi } from "../../common/apiCalls";
+import { useGetApi, usePostApi } from "../../common/apiCalls";
 import { KindnessAction } from "../../common/interfaces";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
+import useKindnessHistory from "../../hooks/useKindnessHistory";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -81,6 +82,15 @@ const KindnessDetails: React.FC = () => {
   const [kindness, setKindness] = useState<KindnessAction | undefined>();
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
+  const [daily, setDaily] = useState<KindnessAction | undefined>();
+  const { callPostApi: callPostKindnessHistory } = usePostApi(
+    `api/KindnessHistory/${daily?.id}`
+  );
+  const { userStreak } = useKindnessHistory(
+    callPostKindnessHistory,
+    isPickEnabled,
+    setIsPickEnabled
+  );
 
   useEffect(() => {
     async function fetchData() {
@@ -93,14 +103,19 @@ const KindnessDetails: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    // API call: lets make a backend call to add this to user's profile
+    callPostKindnessHistory().then((res: any) => {
+      console.log(res);
+    });
     setIsFeedbackModalOpen(true);
     setIsPickEnabled(false);
   };
 
-  const onPick = (event: React.MouseEvent<HTMLElement>) => {
+  const onPick = (
+    event: React.MouseEvent<HTMLElement>,
+    item: KindnessAction
+  ) => {
     event.stopPropagation();
-    // lets ask the user if this is today's challenge
+    setDaily(item);
     setIsConfirmModalOpen(true);
   };
 
@@ -120,6 +135,7 @@ const KindnessDetails: React.FC = () => {
           isModalOpen={isFeedbackModalOpen}
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.firstName ?? undefined}
+          userStreak={userStreak}
         />
         <ArticleImage
           src={kindness?.imageUrl}
@@ -150,7 +166,7 @@ const KindnessDetails: React.FC = () => {
         {kindness && <Tags item={kindness} />}
         {kindness && (
           <Article
-            item={kindness}
+            kindness={kindness}
             onPick={onPick}
             isPickEnabled={isPickEnabled}
           />

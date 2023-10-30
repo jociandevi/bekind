@@ -1,5 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { CenterAlignedFlexboxCol, CircleImage } from "../shared/sharedLayouts";
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import {
+  CenterAlignedFlexboxCol,
+  CircleImage,
+  StyledText,
+} from "../shared/sharedLayouts";
 import { Button, Tabs } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
@@ -7,7 +11,6 @@ import type { TabsProps } from "antd";
 import ImageCardM from "../shared/imageCardM";
 import Title from "antd/es/typography/Title";
 import BadgeList from "./badgeList";
-import { user } from "../../common/mockData";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
@@ -15,10 +18,14 @@ import { ReactComponent as Pants } from "../../img/badges/pants.svg";
 import { BarChartOutlined } from "@ant-design/icons";
 import ConfirmModal from "./modals/confirmModal";
 import FeedbackModal from "./modals/feedbackModal";
-import { KindnessAction } from "../../common/interfaces";
+import { KindnessAction, KindnessHistory } from "../../common/interfaces";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
+import { usePostApi } from "../../common/apiCalls";
+import Loading from "../shared/loading";
+import PageError from "../shared/pageError";
+import useKindnessHistory from "../../hooks/useKindnessHistory";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingXs};
@@ -71,13 +78,34 @@ const Profile: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const [daily, setDaily] = useState<KindnessAction | undefined>();
+  const { callPostApi: callPostKindnessHistory } = usePostApi(
+    `api/KindnessHistory/${daily?.id}`
+  );
+  const { userStreak, loading, error, history } = useKindnessHistory(
+    callPostKindnessHistory,
+    isPickEnabled,
+    setIsPickEnabled
+  );
+
+  const [dailies, setDailies] = useState<KindnessHistory[] | []>([]);
+
+  useEffect(() => {
+    setDailies(history);
+  }, [history]);
 
   const onPick = (
     event: React.MouseEvent<HTMLElement>,
     item: KindnessAction
   ) => {
     event.stopPropagation();
+    setDaily(item);
     setIsConfirmModalOpen(true);
+  };
+
+  const getDate = (date: string) => {
+    const formattedDate = new Date(date);
+    return formattedDate.toLocaleDateString();
   };
 
   const items: TabsProps["items"] = [
@@ -86,14 +114,14 @@ const Profile: React.FC = () => {
       label: `Likes`,
       children: (
         <>
-          {user.liked.map((item) => (
+          {/* {user.liked.map((item) => (
             <ImageCardM
               item={item}
               key={item.id}
               onPick={onPick}
               isPickEnabled={isPickEnabled}
             />
-          ))}
+          ))} */}
         </>
       ),
     },
@@ -102,13 +130,22 @@ const Profile: React.FC = () => {
       label: `History`,
       children: (
         <>
-          {user.history.map((item) => (
-            <ImageCardM
-              item={item}
-              key={item.id}
-              onPick={onPick}
-              isPickEnabled={isPickEnabled}
-            />
+          {dailies.map((item) => (
+            <Fragment key={item.id}>
+              <StyledText
+                color={variables.middleGray}
+                fontSize="12px"
+                style={{ marginLeft: variables.spacingXs }}
+              >
+                {getDate(item.createdDate)}
+              </StyledText>
+
+              <ImageCardM
+                item={item}
+                onPick={onPick}
+                isPickEnabled={isPickEnabled}
+              />
+            </Fragment>
           ))}
         </>
       ),
@@ -152,10 +189,16 @@ const Profile: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    // API call: lets make a backend call to add this to user's profile
+    callPostKindnessHistory().then((res: any) => {
+      console.log(res);
+    });
     setIsFeedbackModalOpen(true);
     setIsPickEnabled(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
@@ -179,6 +222,7 @@ const Profile: React.FC = () => {
         isModalOpen={isFeedbackModalOpen}
         setIsModalOpen={setIsFeedbackModalOpen}
         userName={googleUser?.firstName ?? undefined}
+        userStreak={userStreak}
       />
 
       <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
@@ -202,6 +246,12 @@ const Profile: React.FC = () => {
         onChange={onChange}
         activeKey={activeKey}
       />
+      {error && (
+        <PageError
+          message="An error happened, sorry!"
+          style={{ margin: variables.spacingXs }}
+        />
+      )}
       <InstallButton />
     </>
   );

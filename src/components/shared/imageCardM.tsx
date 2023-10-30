@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   CenterAlignedFlexbox,
   FlexboxCol,
@@ -10,9 +10,11 @@ import styled from "styled-components";
 import Title from "antd/es/typography/Title";
 import { Button, Tooltip } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
-import { KindnessAction } from "../../common/interfaces";
+import { KindnessAction, KindnessHistory } from "../../common/interfaces";
 import { useNavigate } from "react-router-dom";
 import { transformTitleToUrl } from "../../common/util";
+import { useGetApi } from "../../common/apiCalls";
+import Loading from "./loading";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -24,7 +26,7 @@ const CardContainer = styled.div`
 `;
 
 interface Props {
-  item: KindnessAction;
+  item?: KindnessHistory;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled: boolean;
 }
@@ -32,28 +34,46 @@ interface Props {
 const ImageCardL: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
   const { md } = useMediaQueries();
   const navigate = useNavigate();
+  const { callGetApi, loading } = useGetApi(`api/Kindness/${item?.kindnessId}`);
+  const [kindness, setKindness] = useState<KindnessAction | undefined>();
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await callGetApi();
+      setKindness(response?.data);
+    }
+    fetchData();
+  }, [callGetApi]);
 
   const cardAreaClicked = () => {
-    const url = transformTitleToUrl(item.title);
-    navigate(`/${item.id}/${url}`);
+    const url = transformTitleToUrl(kindness!.title);
+    navigate(`/${kindness?.id}/${url}`);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <CardContainer onClick={cardAreaClicked}>
-      <ResponsiveImageMedium src={item.imageUrl} alt={item.title} md={md} />
+      <ResponsiveImageMedium
+        src={kindness?.imageUrl}
+        alt={kindness?.title}
+        md={md}
+      />
       <FlexboxCol style={{ width: "30vw", padding: "15px" }}>
         <Title level={5} style={{ fontSize: "14px", margin: 0 }}>
-          {item.title}
+          {kindness?.title}
         </Title>
         {md && (
           <StyledText color={variables.middleGray} fontSize="12px">
-            {item.description}
+            {kindness?.description}
           </StyledText>
         )}
       </FlexboxCol>
       <CenterAlignedFlexbox style={{ paddingRight: variables.spacingXs }}>
         {isPickEnabled ? (
-          <Button onClick={(e) => onPick(e, item)}>Pick</Button>
+          <Button onClick={(e) => onPick(e, kindness!)}>Pick</Button>
         ) : (
           <Tooltip
             title="You already did your part today in making the world better!"

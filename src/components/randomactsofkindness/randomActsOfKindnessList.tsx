@@ -21,14 +21,8 @@ import { completeUserJourney, showUserJourney } from "../shared/userJourney";
 import { useGetApi, usePostApi } from "../../common/apiCalls";
 import PageError from "../shared/pageError";
 import Loading from "../shared/loading";
-
-const shuffleArray = (array: KindnessAction[]) => {
-  for (let i = array?.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-};
+import { shuffleArray } from "../../common/util";
+import useKindnessHistory from "../../hooks/useKindnessHistory";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -47,12 +41,16 @@ const RandomActOfKindnessList: React.FC = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const searchTimeout = useRef<NodeJS.Timeout | null>(null);
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
-  const { callGetApi: getHistory } = useGetApi(`api/KindnessHistory`);
   const {
     callPostApi: callPostKindnessHistory,
     loading: loadingPostKindnessHistory,
     error: errorPostKindnessHistory,
-  } = usePostApi("api/KindnessHistory");
+  } = usePostApi(`api/KindnessHistory/${daily?.id}`);
+  const { userStreak } = useKindnessHistory(
+    callPostKindnessHistory,
+    isPickEnabled,
+    setIsPickEnabled
+  );
 
   // 1. move user to redux (with createslice)
 
@@ -65,19 +63,6 @@ const RandomActOfKindnessList: React.FC = () => {
     }
     fetchData();
   }, [callGetApi]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const history = await getHistory();
-      const latestDaily = history?.data?.at(-1);
-      const dateOfLatest = new Date(latestDaily?.createdDate);
-      const today = new Date();
-      if (dateOfLatest.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
-        setIsPickEnabled(false);
-      }
-    }
-    fetchData();
-  }, [getHistory]);
 
   useEffect(() => {
     const category = searchParams.get("category");
@@ -143,14 +128,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    const now = new Date();
-    const result = {
-      id: 0,
-      memberId: user.id,
-      kindnessId: daily?.id,
-      createdDate: now.toISOString(),
-    };
-    callPostKindnessHistory(result).then((res: any) => {
+    callPostKindnessHistory().then((res: any) => {
       console.log(res);
     });
     setIsFeedbackModalOpen(true);
@@ -193,6 +171,7 @@ const RandomActOfKindnessList: React.FC = () => {
           isModalOpen={isFeedbackModalOpen}
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.firstName ?? undefined}
+          userStreak={userStreak}
         />
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}
