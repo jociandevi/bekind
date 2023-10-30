@@ -12,44 +12,47 @@ export const useLogin = () => {
   const { setUser } = useContext(AuthContext);
   const dispatch = useDispatch();
 
-  const login = async (payload: string) => {
-    setLoading(true);
-    setError(null);
+  const login = useCallback(
+    async (payload: string) => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      const response = await postAPI("api/Auth/Login", undefined, payload);
+      try {
+        const response = await postAPI("api/Auth/Login", undefined, payload);
 
-      if (response.status === 200 || response.status === 201) {
-        const backendToken = response.data;
-        dispatch(setToken(backendToken));
-        Cookies.set("backendToken", response.data, {
-          expires: 1,
-          secure: true,
-          httpOnly: true,
-        });
+        if (response.status === 200 || response.status === 201) {
+          const backendToken = response.data;
+          dispatch(setToken(backendToken));
+          Cookies.set("backendToken", response.data, {
+            expires: 1,
+            secure: true,
+            httpOnly: true,
+          });
 
-        const userResponse = await getApiCall("/api/Member/Me");
-        const userData = userResponse.data;
+          const userResponse = await getApiCall("/api/Member/Me");
+          const userData = userResponse.data;
 
-        // Store the user data in Redux
-        setUser(userData);
+          // Store the user data in Redux
+          setUser(userData);
 
-        // Store the user data in localStorage
-        localStorage.setItem("user", JSON.stringify(userData));
+          // Store the user data in localStorage
+          localStorage.setItem("user", JSON.stringify(userData));
 
-        setLoading(false);
-        return userData;
-      } else {
-        console.log(response);
-        setError("Failed to login.");
+          setLoading(false);
+          return userData;
+        } else {
+          console.log(response);
+          setError("Failed to login.");
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error(err);
+        setError("An error occurred during login.");
         setLoading(false);
       }
-    } catch (err) {
-      console.error(err);
-      setError("An error occurred during login.");
-      setLoading(false);
-    }
-  };
+    },
+    [setUser, dispatch]
+  );
 
   return { login, loading, error };
 };

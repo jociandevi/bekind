@@ -85,7 +85,8 @@ const Profile: React.FC = () => {
   const { userStreak, loading, error, history } = useKindnessHistory(
     callPostKindnessHistory,
     isPickEnabled,
-    setIsPickEnabled
+    setIsPickEnabled,
+    googleUser
   );
 
   const [dailies, setDailies] = useState<KindnessHistory[] | []>([]);

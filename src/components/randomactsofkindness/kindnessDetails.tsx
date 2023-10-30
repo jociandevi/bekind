@@ -89,7 +89,8 @@ const KindnessDetails: React.FC = () => {
   const { userStreak } = useKindnessHistory(
     callPostKindnessHistory,
     isPickEnabled,
-    setIsPickEnabled
+    setIsPickEnabled,
+    user
   );
 
   useEffect(() => {

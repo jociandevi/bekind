@@ -6,7 +6,8 @@ import { KindnessHistory } from "../common/interfaces";
 function useKindnessHistory(
   callPostKindnessHistory: (data?: any) => Promise<any>,
   isPickEnabled: boolean,
-  setIsPickEnabled: (isPickEnabled: boolean) => void
+  setIsPickEnabled: (isPickEnabled: boolean) => void,
+  user: any
 ) {
   const {
     callGetApi: getHistory,
@@ -27,7 +28,7 @@ function useKindnessHistory(
       setUserStreak(userStreak);
     }
     fetchData();
-  }, [getHistory, callPostKindnessHistory, setIsPickEnabled]);
+  }, [getHistory, callPostKindnessHistory, setIsPickEnabled, user]);
 
   return { isPickEnabled, userStreak, loading, error, history };
 }

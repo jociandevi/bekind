@@ -65,13 +65,16 @@ const HorizontalScrollContainers: React.FC<Props> = ({
 
   return (
     <Fragment key={category.id}>
-      <CategoryButton
-        type="link"
-        size="large"
-        onClick={() => filterByCategory(category)}
-      >
-        {category.name}
-      </CategoryButton>
+      {filteredActions && filteredActions.length > 0 && (
+        <CategoryButton
+          type="link"
+          size="large"
+          onClick={() => filterByCategory(category)}
+        >
+          {category.name}
+        </CategoryButton>
+      )}
+
       {filteredActions && (
         <StyledCarousel
           responsive={responsive}

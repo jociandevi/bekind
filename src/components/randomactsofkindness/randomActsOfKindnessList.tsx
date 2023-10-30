@@ -47,7 +47,8 @@ const RandomActOfKindnessList: React.FC = () => {
   const { userStreak } = useKindnessHistory(
     callPostKindnessHistory,
     isPickEnabled,
-    setIsPickEnabled
+    setIsPickEnabled,
+    user
   );
 
   // 1. move user to redux (with createslice)
@@ -107,6 +108,8 @@ const RandomActOfKindnessList: React.FC = () => {
   if (loading || loadingPostKindnessHistory) {
     return <Loading />;
   }
+
+  console.log(error);
 
   return (
     <>
