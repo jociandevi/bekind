@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { ListLayout, StyledSearch } from "../shared/sharedLayouts";
-import { Form } from "antd";
+import React, { useContext, useEffect, useState } from "react";
+import { ListLayout } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
 import InstallModal from "../shared/pwaCustomInstalls/installModal";
@@ -23,12 +22,12 @@ import PageError from "../shared/pageError";
 import Loading from "../shared/loading";
 import { shuffleArray } from "../../common/util";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
+import Search from "../shared/search";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
   const [isPickEnabled, setIsPickEnabled] = useState(true);
   const [daily, setDaily] = useState<KindnessAction | undefined>();
-  const [form] = Form.useForm();
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
   );
@@ -39,7 +38,6 @@ const RandomActOfKindnessList: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
-  const searchTimeout = useRef<NodeJS.Timeout | null>(null);
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
   const {
     callPostApi: callPostKindnessHistory,
@@ -78,52 +76,7 @@ const RandomActOfKindnessList: React.FC = () => {
     }
   }, [searchParams, kindnessActions]);
 
-  useEffect(() => {
-    return () => {
-      if (searchTimeout.current) {
-        clearTimeout(searchTimeout.current);
-      }
-    };
-  }, []);
-
   // user reached a goal - appears by backend API call trigger instantly after logged in
-
-  const onFinish = (values: any) => {
-    onSearch(values.search);
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const onChange = (_e?: React.ChangeEvent<HTMLInputElement>) => {
-    if (searchTimeout.current) {
-      clearTimeout(searchTimeout.current);
-    }
-
-    // Search after 0.7 seconds
-    searchTimeout.current = setTimeout(() => {
-      onSearch();
-    }, 700);
-  };
-
-  const onSearch = (_e?: React.KeyboardEvent<HTMLInputElement>) => {
-    const searchValue = form.getFieldValue("search");
-    const searchTerm = searchValue.toLowerCase();
-
-    if (!searchTerm) {
-      setFilteredActions(kindnessActions);
-      return;
-    } else {
-      const filteredRaoks = kindnessActions.filter((item) => {
-        const title = item.title.toLowerCase();
-        const description = item.description?.toLowerCase();
-        return title.includes(searchTerm) || description?.includes(searchTerm);
-      });
-
-      setFilteredActions(filteredRaoks);
-    }
-  };
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -177,24 +130,10 @@ const RandomActOfKindnessList: React.FC = () => {
           left={searchParams.size === 0 ? undefined : <BackButton />}
           right={<UserProfileIcon user={user} />}
         />
-        <Form
-          style={{
-            padding: variables.spacingXs,
-            width: "100vw",
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          form={form}
-        >
-          <Form.Item name="search">
-            <StyledSearch
-              placeholder="Search"
-              onChange={onChange}
-              onPressEnter={onSearch}
-              allowClear
-            />
-          </Form.Item>
-        </Form>
+        <Search
+          actions={kindnessActions}
+          setFilteredActions={setFilteredActions}
+        />
         {(error || errorPostKindnessHistory) && (
           <PageError
             message="An error happened, sorry!"
