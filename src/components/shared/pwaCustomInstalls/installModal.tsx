@@ -78,7 +78,7 @@ const InstallModal: React.FC = () => {
       footer={
         <CenterAlignedFlexboxCol style={{ gap: "2px" }}>
           <StyledButton type="primary" onClick={handleOk}>
-            Open BeKind
+            Open Outbreak
           </StyledButton>
           <StyledButton onClick={() => setIsModalOpen(false)}>
             Not Today

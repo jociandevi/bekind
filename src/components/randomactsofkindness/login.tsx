@@ -60,7 +60,7 @@ const Login: React.FC = () => {
         style={{ justifyContent: "space-between", height: "70vh" }}
       >
         <CenterAlignedFlexboxCol>
-          <Title level={3}>Welcome to BKind!</Title>
+          <Title level={3}>Welcome to Outbreak!</Title>
           <StyledText color={variables.middleGray} fontSize="14px">
             Improve your life a little bit every day.
           </StyledText>

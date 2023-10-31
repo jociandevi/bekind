@@ -69,8 +69,8 @@ const ErrorPage404: React.FC = () => {
             margin: `${variables.spacingS} ${variables.spacingL}`,
           }}
         >
-          Hi!! I'm Eva. I'm the frontend lead / cofounder of BKind and if a link
-          is missing, it's probably my bad. Sorry about that!
+          Hi!! I'm Eva. I'm the frontend lead / cofounder of Outbreak and if a
+          link is missing, it's probably my bad. Sorry about that!
         </StyledText>
         <Button type="primary" onClick={() => navigate("/")}>
           Go To Home
