@@ -26,13 +26,13 @@ const CardContainer = styled.div`
 `;
 
 interface Props {
-  item?: KindnessHistory | KindnessAction;
+  item?: KindnessHistory | number;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled: boolean;
 }
 
 const isKindnessHistory = (
-  item: KindnessHistory | KindnessAction
+  item: KindnessHistory | number
 ): item is KindnessHistory => {
   return (item as KindnessHistory).kindnessId !== undefined;
 };
@@ -45,7 +45,7 @@ const ImageCardM: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
     if (isKindnessHistory(item)) {
       id = item.kindnessId;
     } else {
-      id = item?.id;
+      id = item;
     }
   }
   const { callGetApi, loading } = useGetApi(`api/Kindness/${id}`);

@@ -10,6 +10,7 @@ interface Props {
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isPickEnabled: boolean;
   kindnessActions: KindnessAction[];
+  likedActions: number[];
 }
 
 const StyledContainer = styled(Flexbox)`
@@ -24,6 +25,7 @@ const CardContainer: React.FC<Props> = ({
   onPick,
   isPickEnabled,
   kindnessActions,
+  likedActions,
 }) => {
   let [searchParams] = useSearchParams();
   const category = searchParams.get("category");
@@ -43,6 +45,7 @@ const CardContainer: React.FC<Props> = ({
             key={item.id}
             isPickEnabled={isPickEnabled}
             onPick={onPick}
+            isLiked={likedActions?.includes(item?.id!)}
           />
         ))}
       </StyledContainer>

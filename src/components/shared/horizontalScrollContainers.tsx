@@ -1,11 +1,7 @@
 import React, { Fragment } from "react";
 import ImageCardL from "./imageCardL";
 import { variables } from "../../common/variables";
-import {
-  Category,
-  CategoryNames,
-  KindnessAction,
-} from "../../common/interfaces";
+import { Category, KindnessAction } from "../../common/interfaces";
 import styled from "styled-components";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -18,6 +14,7 @@ interface Props {
   kindnessActions: KindnessAction[];
   filterByCategory: (category: Category) => void;
   displayTour?: boolean;
+  likedActions: number[];
 }
 
 const StyledCarousel = styled(Carousel)`
@@ -35,7 +32,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
   isPickEnabled,
   kindnessActions,
   filterByCategory,
-  displayTour,
+  likedActions,
 }) => {
   const filteredActions = kindnessActions?.filter(
     (item) => item.category === category.id
@@ -89,11 +86,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
               key={item.id}
               isPickEnabled={isPickEnabled}
               onPick={onPick}
-              isGlowing={
-                item === filteredActions[0] &&
-                category.name === CategoryNames.SOCIAL &&
-                displayTour
-              }
+              isLiked={likedActions?.includes(item?.id!)}
             />
           ))}
         </StyledCarousel>

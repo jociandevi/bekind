@@ -91,7 +91,7 @@ const Profile: React.FC = () => {
   const { callGetApi: getLiked } = useGetApi(`api/LikedKindness`);
 
   const [pastActions, setPastActions] = useState<KindnessHistory[] | []>([]);
-  const [likedActions, setLikedActions] = useState<KindnessAction[] | []>([]);
+  const [likedActions, setLikedActions] = useState<number[] | []>([]);
 
   useEffect(() => {
     setPastActions(history);
@@ -123,10 +123,10 @@ const Profile: React.FC = () => {
       label: `Likes`,
       children: (
         <>
-          {likedActions.map((item) => (
+          {likedActions.map((actionId, index) => (
             <ImageCardM
-              item={item}
-              key={item.id}
+              item={actionId}
+              key={index}
               onPick={onPick}
               isPickEnabled={isPickEnabled}
             />

@@ -31,6 +31,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
   );
+  const [likedActions, setLikedActions] = useState<number[] | []>([]);
   const [filteredActions, setFilteredActions] = useState<KindnessAction[] | []>(
     []
   );
@@ -50,6 +51,7 @@ const RandomActOfKindnessList: React.FC = () => {
     setIsPickEnabled,
     user
   );
+  const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
 
   // 1. move user to redux (with createslice)
 
@@ -62,6 +64,14 @@ const RandomActOfKindnessList: React.FC = () => {
     }
     fetchData();
   }, [callGetApi]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const actions = await getLikedActions();
+      setLikedActions(actions?.data);
+    }
+    fetchData();
+  }, [getLikedActions]);
 
   useEffect(() => {
     const category = searchParams.get("category");
@@ -146,6 +156,7 @@ const RandomActOfKindnessList: React.FC = () => {
             onPick={onPick}
             isPickEnabled={isPickEnabled}
             kindnessActions={filteredActions}
+            likedActions={likedActions}
           />
         )}
         {searchParams.size === 0 &&
@@ -158,6 +169,7 @@ const RandomActOfKindnessList: React.FC = () => {
               key={index}
               filterByCategory={filterByCategory}
               displayTour={displayTour}
+              likedActions={likedActions}
             />
           ))}
         <InstallButton />

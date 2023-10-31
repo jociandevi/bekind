@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flexbox,
   ImageContainer,
@@ -18,6 +18,7 @@ import { KindnessAction } from "../../common/interfaces";
 import { transformTitleToUrl } from "../../common/util";
 import { glowingStyle } from "./userJourney";
 import { usePostApi } from "../../common/apiCalls";
+import { useDelete } from "../../hooks/useDelete";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -47,8 +48,14 @@ const OverlayIconButton = styled(Button)`
   position: absolute;
   top: 15px;
   right: 15px;
-  color: ${variables.white};
   background-color: #1816188c;
+`;
+
+const DisabledButton = styled(Button)`
+  color: ${variables.middleGray};
+  background-color: ${variables.lightGray};
+  box-shadow: none;
+  opacity: 0.5;
 `;
 
 interface Props {
@@ -56,6 +63,7 @@ interface Props {
   isPickEnabled: boolean;
   onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isGlowing?: boolean;
+  isLiked?: boolean;
 }
 
 const ImageCardL: React.FC<Props> = ({
@@ -63,17 +71,26 @@ const ImageCardL: React.FC<Props> = ({
   isPickEnabled,
   onPick,
   isGlowing,
+  isLiked,
 }) => {
   const { md, lg } = useMediaQueries();
   const navigate = useNavigate();
   const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
+  const { callDelete } = useDelete(`api/LikedKindness/${item.id}`);
+  const [isItLiked, setIsItLiked] = useState(isLiked);
 
   const onLike = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
-    console.log("lets do like", item);
-    callPostApi().then((res: any) => {
-      console.log(res);
-    });
+    if (isItLiked) {
+      callDelete();
+    } else {
+      callPostApi();
+    }
+    setIsItLiked(!isItLiked);
+  };
+
+  const onDisabledPick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
   };
 
   const cardAreaClicked = () => {
@@ -94,6 +111,10 @@ const ImageCardL: React.FC<Props> = ({
           icon={<HeartFilled />}
           shape="circle"
           onClick={onLike}
+          style={{
+            color: isItLiked ? variables.pink3 : variables.white,
+            borderColor: isItLiked ? variables.pink3 : variables.white,
+          }}
         />
       </ImageContainer>
       <PaddingContainer md={md} lg={lg}>
@@ -115,9 +136,7 @@ const ImageCardL: React.FC<Props> = ({
             title="You already did your part today in making the world better!"
             trigger={"hover"}
           >
-            <Button type="primary" disabled>
-              Pick
-            </Button>
+            <DisabledButton onClick={onDisabledPick}>Pick</DisabledButton>
           </Tooltip>
         )}
       </Flexbox>
