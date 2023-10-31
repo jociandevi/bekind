@@ -3,7 +3,6 @@ import {
   Flexbox,
   ImageContainer,
   ResponsiveImageLarge,
-  StyledText,
   laptopCardWidth,
   phoneCardWidth,
   tabletCardWidth,
@@ -38,7 +37,7 @@ const PaddingContainer = styled.div<{
   lg?: boolean;
 }>`
   padding: 0 ${variables.spacingXs} ${variables.spacingXs};
-  height: ${(props) => (props.lg ? "15vw" : props.md ? "30vw" : "32vw")};
+  height: ${(props) => (props.lg ? "5vw" : props.md ? "7vw" : "18vw")};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -101,9 +100,6 @@ const ImageCardL: React.FC<Props> = ({
         <Title level={5} style={{ margin: "15px 0 0" }}>
           {item.title}
         </Title>
-        <StyledText color={variables.middleGray} fontSize="14px">
-          {item.description}
-        </StyledText>
       </PaddingContainer>
       <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
         {isPickEnabled ? (

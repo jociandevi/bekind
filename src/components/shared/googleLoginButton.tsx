@@ -5,11 +5,7 @@ import { TokenPayload } from "../../common/interfaces";
 import { useLogin } from "../../common/apiCalls";
 import { Spin } from "antd";
 
-interface Props {
-  isDisabled?: boolean;
-}
-
-const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
+const GoogleLoginButton: React.FC = () => {
   const { login, loading, error } = useLogin();
 
   useEffect(() => {
@@ -28,6 +24,7 @@ const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
     google.accounts.id.initialize({
       client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID || "",
       callback: handleCallbackResponse,
+      auto_select: true,
     });
 
     google.accounts.id.renderButton(document.getElementById("signInDiv")!, {
@@ -53,16 +50,7 @@ const GoogleLoginButton: React.FC<Props> = ({ isDisabled }) => {
     return <div>{error}</div>;
   }
 
-  return (
-    <div
-      id="signInDiv"
-      style={{
-        pointerEvents: isDisabled ? "none" : "auto",
-        opacity: isDisabled ? 0.5 : 1,
-      }}
-      aria-disabled={isDisabled}
-    />
-  );
+  return <div id="signInDiv" />;
 };
 
 export default GoogleLoginButton;

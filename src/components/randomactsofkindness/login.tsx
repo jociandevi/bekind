@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import GoogleLoginButton from "../shared/googleLoginButton";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +9,10 @@ import {
 } from "../shared/sharedLayouts";
 import Title from "antd/es/typography/Title";
 import { variables } from "../../common/variables";
-import { Button, Checkbox } from "antd";
+import { Button } from "antd";
 import SunriseImage from "../shared/sunriseImage";
 import styled from "styled-components";
 import { useMediaQueries } from "../../common/mediaQueryHook";
-import type { CheckboxChangeEvent } from "antd/es/checkbox";
 
 const LoginContainer = styled(CenterAlignedFlexboxCol)`
   height: 100vh;
@@ -41,18 +40,12 @@ const Login: React.FC = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { md } = useMediaQueries();
-  const [isDisabled, setIsDisabled] = useState(true);
-  const [isTermAccepted, setIsTermAccepted] = useState(false);
 
   useEffect(() => {
     if (user) {
       navigate("/");
     }
   }, [user, navigate]);
-
-  useEffect(() => {
-    setIsDisabled(!isTermAccepted);
-  }, [isTermAccepted]);
 
   const LoginContent = () => {
     return (
@@ -66,28 +59,7 @@ const Login: React.FC = () => {
           </StyledText>
         </CenterAlignedFlexboxCol>
         <CenterAlignedFlexboxCol>
-          <GoogleLoginButton isDisabled={isDisabled} />
-          {isDisabled && (
-            <StyledText
-              color={variables.pink3}
-              fontSize="10px"
-              style={{ marginTop: variables.spacingXxs }}
-            >
-              Please accept Terms & Conditions to login.
-            </StyledText>
-          )}
-          <Checkbox
-            onChange={(e: CheckboxChangeEvent) =>
-              setIsTermAccepted(e.target.checked)
-            }
-            checked={isTermAccepted}
-          >
-            <StyledText color={variables.middleGray} fontSize="10px">
-              I accept the{" "}
-              <a href="/terms-and-conditions">Terms & Conditions</a> and{" "}
-              <a href="/privacy-policy">Privacy policy</a>.
-            </StyledText>
-          </Checkbox>
+          <GoogleLoginButton />
         </CenterAlignedFlexboxCol>
 
         <Button type="link" onClick={() => navigate("/")}>
