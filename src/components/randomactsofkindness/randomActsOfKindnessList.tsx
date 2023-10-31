@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ListLayout } from "../shared/sharedLayouts";
+import { ListLayout, CenterAlignedFlexbox } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
 import InstallModal from "../shared/pwaCustomInstalls/installModal";
@@ -11,7 +11,7 @@ import CheersModal from "./modals/cheersModal";
 import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
 import { Category, KindnessAction } from "../../common/interfaces";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import CardContainer from "../shared/cardContainer";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
@@ -23,6 +23,8 @@ import Loading from "../shared/loading";
 import { shuffleArray } from "../../common/util";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
 import Search from "../shared/search";
+import { RedoOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -52,6 +54,7 @@ const RandomActOfKindnessList: React.FC = () => {
     user
   );
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
+  const navigate = useNavigate();
 
   // 1. move user to redux (with createslice)
 
@@ -92,11 +95,11 @@ const RandomActOfKindnessList: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    callPostKindnessHistory().then((res: any) => {
-      console.log(res);
-    });
-    setIsFeedbackModalOpen(true);
-    setIsPickEnabled(false);
+    callPostKindnessHistory();
+    if (!errorPostKindnessHistory) {
+      setIsFeedbackModalOpen(true);
+      setIsPickEnabled(false);
+    }
   };
 
   const onPick = (
@@ -145,9 +148,20 @@ const RandomActOfKindnessList: React.FC = () => {
           actions={kindnessActions}
           setFilteredActions={setFilteredActions}
         />
-        {(error || errorPostKindnessHistory) && (
+        {error && (
           <PageError
             message="An error happened, sorry!"
+            description={
+              <CenterAlignedFlexbox>
+                <Button
+                  type="primary"
+                  icon={<RedoOutlined />}
+                  onClick={() => navigate(0)}
+                >
+                  Let's try again
+                </Button>
+              </CenterAlignedFlexbox>
+            }
             style={{ margin: variables.spacingXs }}
           />
         )}
