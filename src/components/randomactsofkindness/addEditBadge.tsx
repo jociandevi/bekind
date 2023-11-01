@@ -75,12 +75,10 @@ const AddEditBadge: React.FC = () => {
 
   const onFinish = (values: BadgeProps) => {
     const now = new Date();
-    const kindnessIds = values.kindnessIds?.map((item) => parseInt(item));
     const result = {
       ...values,
       id: 1,
       createdDate: now.toISOString(),
-      kindnessIds,
       isOwnedByMember: false,
     };
     callPostApi(result).then((res) => {

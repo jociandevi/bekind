@@ -76,7 +76,7 @@ export interface BadgeProps {
   necessaryActions: KindnessAction[];
   description?: string;
   tooltip?: string;
-  kindnessIds?: string[];
+  kindnessIds?: number[];
   isOwnedByMember?: boolean;
 }
 

@@ -16,6 +16,8 @@ export const variables = {
   green5: "#305226",
   green4: "#4e8c35",
   green3: "#5E9647",
+  lightBrown: "#B79383",
+  middleBrown: "#965047",
   spacingXxs: "8px",
   spacingXs: "12px",
   spacingS: "24px",

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { BadgeProps } from "../../common/interfaces";
 import { Tooltip } from "antd";
 import BadgeModal from "../randomactsofkindness/modals/badgeModal";
+import { badgeIcons } from "../../common/mockData";
 
 const DisabledBadge = styled.div`
   && .inside {
@@ -16,8 +17,9 @@ const DisabledBadge = styled.div`
 `;
 
 const Badge: React.FC<BadgeProps> = ({ ...item }) => {
-  const { enabled, icon, name, tooltip } = item;
+  const { isOwnedByMember, name, tooltip, id } = item;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const icon = badgeIcons.find((item) => item.id === id)?.icon;
 
   return (
     <>
@@ -27,7 +29,7 @@ const Badge: React.FC<BadgeProps> = ({ ...item }) => {
         item={item}
       />
       <CenterAlignedFlexboxCol>
-        {enabled ? (
+        {isOwnedByMember ? (
           <div onClick={() => setIsModalOpen(true)}>{icon}</div>
         ) : (
           <Tooltip title={tooltip}>
