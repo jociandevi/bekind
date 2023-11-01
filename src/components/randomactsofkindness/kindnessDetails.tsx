@@ -79,7 +79,7 @@ const KindnessDetails: React.FC = () => {
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   const [isPickEnabled, setIsPickEnabled] = useState(true);
-  const [kindness, setKindness] = useState<KindnessAction | undefined>();
+  const [action, setAction] = useState<KindnessAction | undefined>();
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
   const [daily, setDaily] = useState<KindnessAction | undefined>();
@@ -96,7 +96,7 @@ const KindnessDetails: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       const daily = await callGetApi();
-      setKindness(daily?.data);
+      setAction(daily?.data);
     }
     fetchData();
   }, [callGetApi]);
@@ -139,8 +139,8 @@ const KindnessDetails: React.FC = () => {
           userStreak={userStreak}
         />
         <ArticleImage
-          src={kindness?.imageUrl}
-          alt={`Image of ${kindness?.title}`}
+          src={action?.imageUrl}
+          alt={`Image of ${action?.title}`}
         />
 
         <OverlayBackButton
@@ -160,14 +160,14 @@ const KindnessDetails: React.FC = () => {
         fontSize="10px"
         style={{ margin: "0 auto" }}
       >
-        {kindness?.imageCredit}
+        {action?.imageCredit}
       </StyledText>
       {error && <PageError message="An error happened, sorry!" />}
       <MarginContainer>
-        {kindness && <Tags item={kindness} />}
-        {kindness && (
+        {action && <Tags item={action} />}
+        {action && (
           <Article
-            kindness={kindness}
+            kindness={action}
             onPick={onPick}
             isPickEnabled={isPickEnabled}
           />

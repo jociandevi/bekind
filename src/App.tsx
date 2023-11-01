@@ -23,6 +23,9 @@ const Statistics = lazy(
   () => import("./components/randomactsofkindness/statistics")
 );
 const AddNew = lazy(() => import("./components/randomactsofkindness/addNew"));
+const AddEditBadge = lazy(
+  () => import("./components/randomactsofkindness/addEditBadge")
+);
 const KindnessDetails = lazy(
   () => import("./components/randomactsofkindness/kindnessDetails")
 );
@@ -78,6 +81,22 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<Loading />}>
             <AddNew />
+          </Suspense>
+        }
+      />
+      <Route
+        path="new-badge"
+        element={
+          <Suspense fallback={<Loading />}>
+            <AddEditBadge />
+          </Suspense>
+        }
+      />
+      <Route
+        path="edit-badge/:id"
+        element={
+          <Suspense fallback={<Loading />}>
+            <AddEditBadge />
           </Suspense>
         }
       />

@@ -76,6 +76,8 @@ export interface BadgeProps {
   necessaryActions: KindnessAction[];
   description?: string;
   tooltip?: string;
+  kindnessIds?: string[];
+  isOwnedByMember?: boolean;
 }
 
 // copied from https://googleapis.dev/nodejs/google-auth-library/5.8.0/interfaces/TokenPayload.html#source
