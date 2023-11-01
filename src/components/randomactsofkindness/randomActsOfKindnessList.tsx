@@ -55,15 +55,20 @@ const RandomActOfKindnessList: React.FC = () => {
   );
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
   const navigate = useNavigate();
+  // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
+  const [apiSuccess, setApiSuccess] = useState(false);
 
   // 1. move user to redux (with createslice)
 
   useEffect(() => {
     async function fetchData() {
-      const dailies = await callGetApi();
-      const shuffled = shuffleArray(dailies?.data);
+      const actions = await callGetApi();
+      const shuffled = shuffleArray(actions?.data);
       setKindnessActions(shuffled);
       setFilteredActions(shuffled);
+      if (actions.status === 200) {
+        setApiSuccess(true);
+      }
     }
     fetchData();
   }, [callGetApi]);
@@ -148,7 +153,7 @@ const RandomActOfKindnessList: React.FC = () => {
           actions={kindnessActions}
           setFilteredActions={setFilteredActions}
         />
-        {error && (
+        {error && !apiSuccess && (
           <PageError
             message="An error happened, sorry!"
             description={
