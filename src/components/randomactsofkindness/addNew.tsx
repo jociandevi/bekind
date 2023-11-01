@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   CenterAlignedFlexbox,
   StyledGrid,
@@ -9,13 +9,14 @@ import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { InputRef } from "antd";
 import { UserOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Title from "antd/es/typography/Title";
 import { Category, KindnessAction } from "../../common/interfaces";
 import { categories } from "../../common/mockData";
-import { usePostApi } from "../../common/apiCalls";
+import { useGetApi, usePostApi } from "../../common/apiCalls";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
+import { usePut } from "../../hooks/usePut";
 
 const StyledRadioButton = styled(Button)`
   margin: ${variables.spacingXxs};
@@ -29,10 +30,34 @@ const AddNew: React.FC = () => {
   const input4Ref = useRef<InputRef>(null);
   const input5Ref = useRef<any>(null);
   const [category, setCategory] = useState<Category | undefined>(undefined);
-  const [form] = Form.useForm();
   const { callPostApi, loading, error } = usePostApi("api/Kindness");
-
+  const params = useParams();
   const navigate = useNavigate();
+  const { callGetApi } = useGetApi(`api/Kindness/${params.id}`);
+  const [action, setAction] = useState<KindnessAction | undefined>(undefined);
+  const [form] = Form.useForm();
+  const { callPut } = usePut(`api/Kindness/${params.id}`);
+
+  useEffect(() => {
+    async function fetchData() {
+      if (params.id) {
+        const response = await callGetApi();
+        setAction(response?.data);
+      }
+    }
+    fetchData();
+  }, [callGetApi, params.id]);
+
+  useEffect(() => {
+    form.setFieldsValue({
+      title: action?.title,
+      description: action?.description,
+      imageUrl: action?.imageUrl,
+      imageCredit: action?.imageCredit,
+      duration: action?.duration,
+    });
+    setCategory(categories.find((item) => item.id === action?.category));
+  }, [action, form]);
 
   const onFinish = (values: KindnessAction) => {
     const { imageCredit } = values;
@@ -48,6 +73,16 @@ const AddNew: React.FC = () => {
       if (res?.status === 201) {
         form.resetFields();
       }
+    });
+  };
+
+  const onEdit = (values: KindnessAction) => {
+    const result = {
+      ...values,
+      id: action?.id,
+    };
+    callPut(result).then((res) => {
+      console.log(res);
     });
   };
 
@@ -92,7 +127,7 @@ const AddNew: React.FC = () => {
           marginBottom: variables.spacingS,
         }}
       >
-        <Title level={3}>Add New</Title>
+        <Title level={3}>{params.id ? "Edit Action" : "Add New"}</Title>
         <Button
           style={{ border: "none" }}
           icon={<UserOutlined />}
@@ -100,7 +135,11 @@ const AddNew: React.FC = () => {
         />
       </CenterAlignedFlexbox>
 
-      <Form onFinish={onFinish} onFinishFailed={onFinishFailed} form={form}>
+      <Form
+        onFinish={params.id ? onEdit : onFinish}
+        onFinishFailed={onFinishFailed}
+        form={form}
+      >
         <Steps
           direction="vertical"
           current={current}
@@ -122,6 +161,26 @@ const AddNew: React.FC = () => {
                     placeholder="E.g. do this"
                     onPressEnter={(event) => pressEnter(event, input2Ref)}
                     ref={input1Ref}
+                  />
+                </Form.Item>
+              ),
+            },
+            {
+              title: "Cheer text",
+              description: (
+                <Form.Item
+                  name="cheerText"
+                  rules={[
+                    {
+                      required: false,
+                      message:
+                        "What is the action to be cheered (probably title in past tense?)",
+                    },
+                  ]}
+                >
+                  <StyledInput
+                    placeholder="E.g. 'supported a charity'"
+                    onPressEnter={(event) => pressEnter(event, input2Ref)}
                   />
                 </Form.Item>
               ),
@@ -218,14 +277,6 @@ const AddNew: React.FC = () => {
                 </Form.Item>
               ),
             },
-            // {
-            //   title: "Add an image",
-            //   description: (
-            //     <CenterAlignedFlexbox>
-            //       <UploadImage />
-            //     </CenterAlignedFlexbox>
-            //   ),
-            // },
           ]}
         />
         <Form.Item>

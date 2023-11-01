@@ -74,6 +74,14 @@ const router = createBrowserRouter(
         }
       />
       <Route
+        path="edit/:id"
+        element={
+          <Suspense fallback={<Loading />}>
+            <AddNew />
+          </Suspense>
+        }
+      />
+      <Route
         path="privacy-policy"
         element={
           <Suspense fallback={<Loading />}>

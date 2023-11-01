@@ -28,6 +28,11 @@ const deleteConfig: Params = {
   method: "delete",
 };
 
+const putConfig: Params = {
+  baseUrl: "https://bekind-api.azurewebsites.net",
+  method: "put",
+};
+
 export const postAPI = async (
   url: string,
   data?: any,
@@ -91,6 +96,38 @@ export const deleteAPI = async (
   return await axios({
     ...deleteConfig,
     url: `${deleteConfig.baseUrl}/${url}`,
+    headers: {
+      Authorization: authHeader
+        ? `Bearer ${authHeader}`
+        : token
+        ? `Bearer ${token}`
+        : null,
+    },
+  })
+    .then((response) => {
+      return {
+        status: response.status,
+        data: response.data,
+      };
+    })
+    .catch((error) => {
+      return {
+        status: error.status,
+        data: error.response,
+      };
+    });
+};
+
+export const putApi = async (
+  url: string,
+  data?: any,
+  authHeader?: string
+): Promise<any> => {
+  const token = getTokenFromState();
+  return await axios({
+    ...putConfig,
+    url: `${putConfig.baseUrl}/${url}`,
+    data,
     headers: {
       Authorization: authHeader
         ? `Bearer ${authHeader}`

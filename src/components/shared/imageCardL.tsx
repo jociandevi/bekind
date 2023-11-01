@@ -123,6 +123,13 @@ const ImageCardL: React.FC<Props> = ({
         </Title>
       </PaddingContainer>
       <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
+        {/* <Button
+          icon={<EditOutlined />}
+          onClick={(event) => {
+            event.stopPropagation();
+            navigate(`/edit/${item.id}`);
+          }}
+        /> */}
         {isPickEnabled ? (
           <Button
             style={{ boxShadow: isGlowing ? glowingStyle : undefined }}
