@@ -47,7 +47,7 @@ const RandomActOfKindnessList: React.FC = () => {
     loading: loadingPostKindnessHistory,
     error: errorPostKindnessHistory,
   } = usePostApi(`api/KindnessHistory/${daily?.id}`);
-  const { userStreak } = useKindnessHistory(
+  const { userStreak, loading: streakIsLoading } = useKindnessHistory(
     callPostKindnessHistory,
     isPickEnabled,
     setIsPickEnabled,
@@ -144,6 +144,7 @@ const RandomActOfKindnessList: React.FC = () => {
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.firstName ?? undefined}
           userStreak={userStreak}
+          loading={streakIsLoading}
         />
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}

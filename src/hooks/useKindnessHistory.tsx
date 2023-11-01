@@ -21,7 +21,7 @@ function useKindnessHistory(
     async function fetchData() {
       const history = await getHistory();
       setHistory(history?.data);
-      const latestDaily = history?.data?.at(0);
+      const latestDaily = history?.data?.[0];
       const dailyIsDone = getIsPickEnabled(latestDaily);
       setIsPickEnabled(dailyIsDone);
       const userStreak = calculateStreak(history?.data);

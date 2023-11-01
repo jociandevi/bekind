@@ -3,12 +3,14 @@ import { Button } from "antd";
 import AntdModal from "../../shared/modal";
 import FireImg from "../../../img/fire.png";
 import { variables } from "../../../common/variables";
+import Loading from "../../shared/loading";
 
 interface Props {
   userName?: string;
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
   userStreak?: number;
+  loading?: boolean;
 }
 
 const FeedbackModal: React.FC<Props> = ({
@@ -16,11 +18,16 @@ const FeedbackModal: React.FC<Props> = ({
   isModalOpen,
   setIsModalOpen,
   userStreak,
+  loading,
 }) => {
   const onCheers = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsModalOpen(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <AntdModal
