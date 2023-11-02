@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  CenterAlignedFlexbox,
-  FlexboxCol,
-  ResponsiveImageMedium,
-  StyledText,
-} from "./sharedLayouts";
+import { CenterAlignedFlexbox, FlexboxCol, StyledText } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
@@ -15,6 +10,7 @@ import { transformTitleToUrl } from "../../common/util";
 import { useGetApi } from "../../common/apiCalls";
 import Loading from "./loading";
 import PickButton from "./pickButton";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -68,11 +64,17 @@ const ImageCardM: React.FC<Props> = ({ item }) => {
 
   return (
     <CardContainer onClick={cardAreaClicked}>
-      <ResponsiveImageMedium
-        src={kindness?.imageUrl}
+      <LazyLoadImage
         alt={kindness?.title}
-        md={md}
+        src={kindness?.imageUrl}
+        style={{
+          objectFit: "cover",
+          borderRadius: `${variables.borderRadius}px`,
+          height: md ? "20vw" : "30vw",
+          width: md ? "20vw" : "30vw",
+        }}
       />
+
       <FlexboxCol style={{ width: "30vw", padding: "15px" }}>
         <Title level={5} style={{ fontSize: "14px", margin: 0 }}>
           {kindness?.title}

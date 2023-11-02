@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Flexbox,
   ImageContainer,
-  ResponsiveImageLarge,
   laptopCardWidth,
   phoneCardWidth,
   tabletCardWidth,
@@ -19,6 +18,7 @@ import { transformTitleToUrl } from "../../common/util";
 import { usePostApi } from "../../common/apiCalls";
 import { useDelete } from "../../hooks/useDelete";
 import PickButton from "./pickButton";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -82,12 +82,21 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
   return (
     <CardContainer md={md} lg={lg} onClick={cardAreaClicked}>
       <ImageContainer>
-        <ResponsiveImageLarge
-          src={item.imageUrl}
+        <LazyLoadImage
           alt={item.title}
-          md={md}
-          lg={lg}
+          src={item.imageUrl}
+          style={{
+            objectFit: "cover",
+            borderRadius: `${variables.borderRadius}px`,
+            height: lg
+              ? laptopCardWidth
+              : md
+              ? tabletCardWidth
+              : phoneCardWidth,
+            width: lg ? laptopCardWidth : md ? tabletCardWidth : phoneCardWidth,
+          }}
         />
+
         <OverlayIconButton
           icon={<HeartFilled />}
           shape="circle"

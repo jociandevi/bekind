@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { variables } from "../../common/variables";
 
 interface Props {
-  kindnessActions: KindnessAction[];
+  actions: KindnessAction[];
   likedActions: number[];
 }
 
@@ -19,10 +19,10 @@ const StyledContainer = styled(Flexbox)`
   width: 100vw;
 `;
 
-const CardContainer: React.FC<Props> = ({ kindnessActions, likedActions }) => {
+const CardContainer: React.FC<Props> = ({ actions, likedActions }) => {
   let [searchParams] = useSearchParams();
   const category = searchParams.get("category");
-  if (kindnessActions.length === 0) {
+  if (actions.length === 0) {
     return null;
   }
 
@@ -32,7 +32,7 @@ const CardContainer: React.FC<Props> = ({ kindnessActions, likedActions }) => {
         {category ?? ""}
       </CategoryButton>
       <StyledContainer>
-        {kindnessActions.map((item) => (
+        {actions.map((item) => (
           <ImageCardL
             item={item}
             key={item.id}

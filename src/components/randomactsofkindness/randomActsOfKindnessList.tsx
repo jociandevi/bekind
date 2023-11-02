@@ -147,7 +147,7 @@ const RandomActOfKindnessList: React.FC = () => {
         )}
         {searchParams.get("category") && (
           <CardContainer
-            kindnessActions={filteredActions}
+            actions={filteredActions}
             likedActions={likedActions}
           />
         )}
