@@ -26,10 +26,15 @@ import Search from "../shared/search";
 import { RedoOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import useSignalR from "../../hooks/useSignalR";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
+import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
-  const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const dailyIsDone = useSelector(selectDailyIsDone);
+  const userStreak = useSelector(selectUserStreak);
+
   const [daily, setDaily] = useState<KindnessAction | undefined>();
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
@@ -48,12 +53,7 @@ const RandomActOfKindnessList: React.FC = () => {
     loading: loadingPostKindnessHistory,
     error: errorPostKindnessHistory,
   } = usePostApi(`api/KindnessHistory/${daily?.id}`);
-  const { userStreak, loading: streakIsLoading } = useKindnessHistory(
-    callPostKindnessHistory,
-    isPickEnabled,
-    setIsPickEnabled,
-    user
-  );
+  const { getHistory } = useKindnessHistory();
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
   const navigate = useNavigate();
   // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
@@ -61,6 +61,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const hubConnection = useSignalR(
     "https://bekind-api.azurewebsites.net/notificationhub"
   );
+  const dispatch = useDispatch();
 
   // 1. move user to redux (with createslice)
 
@@ -76,6 +77,10 @@ const RandomActOfKindnessList: React.FC = () => {
     }
     fetchData();
   }, [callGetApi]);
+
+  useEffect(() => {
+    getHistory();
+  }, [getHistory]);
 
   useEffect(() => {
     async function fetchData() {
@@ -104,7 +109,8 @@ const RandomActOfKindnessList: React.FC = () => {
     if (hubConnection) {
       hubConnection.on("ReceiveNotification", (message: string) => {
         console.log("Notification received: ", message);
-        // congratulation for the badge
+        // congratulation modal for the badge
+        // Update this MemberBadge with a PUT to enable it for user
       });
     }
 
@@ -121,7 +127,9 @@ const RandomActOfKindnessList: React.FC = () => {
     callPostKindnessHistory();
     if (!errorPostKindnessHistory) {
       setIsFeedbackModalOpen(true);
-      setIsPickEnabled(false);
+      dispatch(setDailyDone(true));
+      const newStreak = userStreak + 1;
+      dispatch(setUserStreak(newStreak));
     }
   };
 
@@ -161,8 +169,6 @@ const RandomActOfKindnessList: React.FC = () => {
           isModalOpen={isFeedbackModalOpen}
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.firstName ?? undefined}
-          userStreak={userStreak}
-          loading={streakIsLoading}
         />
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}
@@ -192,7 +198,7 @@ const RandomActOfKindnessList: React.FC = () => {
         {searchParams.get("category") && (
           <CardContainer
             onPick={onPick}
-            isPickEnabled={isPickEnabled}
+            isPickEnabled={!dailyIsDone}
             kindnessActions={filteredActions}
             likedActions={likedActions}
           />
@@ -202,7 +208,7 @@ const RandomActOfKindnessList: React.FC = () => {
             <HorizontalScrollContainers
               category={category}
               onPick={onPick}
-              isPickEnabled={isPickEnabled}
+              isPickEnabled={!dailyIsDone}
               kindnessActions={filteredActions}
               key={index}
               filterByCategory={filterByCategory}

@@ -26,6 +26,9 @@ import { useGetApi, usePostApi } from "../../common/apiCalls";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
+import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingXs};
@@ -77,25 +80,27 @@ const Profile: React.FC = () => {
   const navigate = useNavigate();
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-  const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const dailyIsDone = useSelector(selectDailyIsDone);
+
   const [daily, setDaily] = useState<KindnessAction | undefined>();
-  const { callPostApi: callPostKindnessHistory } = usePostApi(
-    `api/KindnessHistory/${daily?.id}`
-  );
-  const { userStreak, loading, error, history } = useKindnessHistory(
-    callPostKindnessHistory,
-    isPickEnabled,
-    setIsPickEnabled,
-    googleUser
-  );
+  const {
+    callPostApi: callPostKindnessHistory,
+    error: errorPostKindnessHistory,
+  } = usePostApi(`api/KindnessHistory/${daily?.id}`);
+  const { getHistory, loading, error } = useKindnessHistory();
+
   const { callGetApi: getLiked } = useGetApi(`api/LikedKindness`);
 
   const [pastActions, setPastActions] = useState<KindnessHistory[] | []>([]);
   const [likedActions, setLikedActions] = useState<number[] | []>([]);
+  const dispatch = useDispatch();
+  const userStreak = useSelector(selectUserStreak);
 
   useEffect(() => {
-    setPastActions(history);
-  }, [history]);
+    getHistory().then((res) => {
+      setPastActions(res.data);
+    });
+  }, [getHistory]);
 
   useEffect(() => {
     getLiked().then((res: any) => {
@@ -128,7 +133,7 @@ const Profile: React.FC = () => {
               item={actionId}
               key={index}
               onPick={onPick}
-              isPickEnabled={isPickEnabled}
+              isPickEnabled={!dailyIsDone}
             />
           ))}
         </>
@@ -152,7 +157,7 @@ const Profile: React.FC = () => {
               <ImageCardM
                 item={item}
                 onPick={onPick}
-                isPickEnabled={isPickEnabled}
+                isPickEnabled={!dailyIsDone}
               />
             </Fragment>
           ))}
@@ -198,11 +203,13 @@ const Profile: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    callPostKindnessHistory().then((res: any) => {
-      console.log(res);
-    });
-    setIsFeedbackModalOpen(true);
-    setIsPickEnabled(false);
+    callPostKindnessHistory();
+    if (!errorPostKindnessHistory) {
+      setIsFeedbackModalOpen(true);
+      dispatch(setDailyDone(true));
+      const newStreak = userStreak + 1;
+      dispatch(setUserStreak(newStreak));
+    }
   };
 
   if (loading) {
@@ -231,7 +238,6 @@ const Profile: React.FC = () => {
         isModalOpen={isFeedbackModalOpen}
         setIsModalOpen={setIsFeedbackModalOpen}
         userName={googleUser?.firstName ?? undefined}
-        userStreak={userStreak}
       />
 
       <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>

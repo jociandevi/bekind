@@ -1,36 +1,30 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useGetApi } from "../common/apiCalls";
-import { calculateStreak, getIsPickEnabled } from "../common/util";
-import { KindnessHistory } from "../common/interfaces";
+import { calculateStreak, isDailyDone } from "../common/util";
+import { useDispatch } from "react-redux";
+import { setDailyDone, setUserStreak } from "../common/auth.reducer";
 
-function useKindnessHistory(
-  callPostKindnessHistory: (data?: any) => Promise<any>,
-  isPickEnabled: boolean,
-  setIsPickEnabled: (isPickEnabled: boolean) => void,
-  user: any
-) {
+function useKindnessHistory() {
   const {
     callGetApi: getHistory,
     loading,
     error,
   } = useGetApi(`api/KindnessHistory`);
-  const [userStreak, setUserStreak] = useState<number | undefined>();
-  const [history, setHistory] = useState<KindnessHistory[] | []>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchData() {
       const history = await getHistory();
-      setHistory(history?.data);
       const latestDaily = history?.data?.[0];
-      const dailyIsDone = getIsPickEnabled(latestDaily);
-      setIsPickEnabled(dailyIsDone);
+      const dailyIsDone = isDailyDone(latestDaily);
+      dispatch(setDailyDone(dailyIsDone));
       const userStreak = calculateStreak(history?.data);
-      setUserStreak(userStreak);
+      dispatch(setUserStreak(userStreak));
     }
     fetchData();
-  }, [getHistory, callPostKindnessHistory, setIsPickEnabled, user]);
+  }, [getHistory, dispatch]);
 
-  return { isPickEnabled, userStreak, loading, error, history };
+  return { loading, error, getHistory };
 }
 
 export default useKindnessHistory;

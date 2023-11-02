@@ -8,7 +8,7 @@ const useSignalR = (hubUrl: string) => {
     // Create and start the connection
     const connect = new signalR.HubConnectionBuilder()
       .withUrl(hubUrl)
-      .configureLogging(signalR.LogLevel.Debug)
+      // .configureLogging(signalR.LogLevel.Debug)
       .withAutomaticReconnect()
       .build();
 

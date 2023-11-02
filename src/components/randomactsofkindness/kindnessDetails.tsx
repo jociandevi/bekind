@@ -21,7 +21,9 @@ import { useGetApi, usePostApi } from "../../common/apiCalls";
 import { KindnessAction } from "../../common/interfaces";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
-import useKindnessHistory from "../../hooks/useKindnessHistory";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
+import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -78,20 +80,18 @@ const KindnessDetails: React.FC = () => {
   const navigate = useNavigate();
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-  const [isPickEnabled, setIsPickEnabled] = useState(true);
+  const dailyIsDone = useSelector(selectDailyIsDone);
+
   const [action, setAction] = useState<KindnessAction | undefined>();
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
   const [daily, setDaily] = useState<KindnessAction | undefined>();
-  const { callPostApi: callPostKindnessHistory } = usePostApi(
-    `api/KindnessHistory/${daily?.id}`
-  );
-  const { userStreak } = useKindnessHistory(
-    callPostKindnessHistory,
-    isPickEnabled,
-    setIsPickEnabled,
-    user
-  );
+  const {
+    callPostApi: callPostKindnessHistory,
+    error: errorPostKindnessHistory,
+  } = usePostApi(`api/KindnessHistory/${daily?.id}`);
+  const dispatch = useDispatch();
+  const userStreak = useSelector(selectUserStreak);
 
   useEffect(() => {
     async function fetchData() {
@@ -104,11 +104,13 @@ const KindnessDetails: React.FC = () => {
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(false);
-    callPostKindnessHistory().then((res: any) => {
-      console.log(res);
-    });
-    setIsFeedbackModalOpen(true);
-    setIsPickEnabled(false);
+    callPostKindnessHistory();
+    if (!errorPostKindnessHistory) {
+      setIsFeedbackModalOpen(true);
+      dispatch(setDailyDone(true));
+      const newStreak = userStreak + 1;
+      dispatch(setUserStreak(newStreak));
+    }
   };
 
   const onPick = (
@@ -136,7 +138,6 @@ const KindnessDetails: React.FC = () => {
           isModalOpen={isFeedbackModalOpen}
           setIsModalOpen={setIsFeedbackModalOpen}
           userName={user?.firstName ?? undefined}
-          userStreak={userStreak}
         />
         <ArticleImage
           src={action?.imageUrl}
@@ -169,7 +170,7 @@ const KindnessDetails: React.FC = () => {
           <Article
             kindness={action}
             onPick={onPick}
-            isPickEnabled={isPickEnabled}
+            isPickEnabled={!dailyIsDone}
           />
         )}
       </MarginContainer>

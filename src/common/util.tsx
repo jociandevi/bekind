@@ -13,7 +13,7 @@ export const calculateStreak = (history: KindnessHistory[]) => {
   let currentDate = new Date();
 
   if (history === undefined) {
-    return;
+    return 0;
   }
 
   for (let i = 0; i < history.length; i++) {
@@ -36,13 +36,13 @@ export const calculateStreak = (history: KindnessHistory[]) => {
   return streak;
 };
 
-export const getIsPickEnabled = (lastAction: KindnessHistory) => {
+export const isDailyDone = (lastAction: KindnessHistory) => {
   const dateOfLatest = new Date(lastAction?.createdDate);
   const today = new Date();
   if (dateOfLatest.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0)) {
-    return false;
-  } else {
     return true;
+  } else {
+    return false;
   }
 };
 
