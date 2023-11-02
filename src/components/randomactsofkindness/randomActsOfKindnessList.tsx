@@ -25,6 +25,7 @@ import useKindnessHistory from "../../hooks/useKindnessHistory";
 import Search from "../shared/search";
 import { RedoOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import useSignalR from "../../hooks/useSignalR";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const RandomActOfKindnessList: React.FC = () => {
   const navigate = useNavigate();
   // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
   const [apiSuccess, setApiSuccess] = useState(false);
+  const hubConnection = useSignalR(
+    "https://bekind-api.azurewebsites.net/notificationhub"
+  );
 
   // 1. move user to redux (with createslice)
 
@@ -66,7 +70,7 @@ const RandomActOfKindnessList: React.FC = () => {
       const shuffled = shuffleArray(actions?.data);
       setKindnessActions(shuffled);
       setFilteredActions(shuffled);
-      if (actions.status === 200) {
+      if (actions?.status === 200) {
         setApiSuccess(true);
       }
     }
@@ -95,7 +99,21 @@ const RandomActOfKindnessList: React.FC = () => {
     }
   }, [searchParams, kindnessActions]);
 
-  // user reached a goal - appears by backend API call trigger instantly after logged in
+  // listen to backend if a badge is reached
+  useEffect(() => {
+    if (hubConnection) {
+      hubConnection.on("ReceiveNotification", (message: string) => {
+        console.log("Notification received: ", message);
+        // congratulation for the badge
+      });
+    }
+
+    return () => {
+      if (hubConnection) {
+        hubConnection.off("ReceiveNotification");
+      }
+    };
+  }, [hubConnection]);
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
