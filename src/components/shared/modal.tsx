@@ -10,6 +10,7 @@ const { Text } = Typography;
 
 const StyledModal = styled(Modal)`
   margin: 0;
+
   @media only screen and (min-width: 600px) {
     margin: auto;
   }
@@ -99,6 +100,7 @@ const AntdModal: React.FC<Props> = ({
         {...props}
         title=""
         style={md ? {} : { top: `calc(100vh - ${modalHeight}px)` }}
+        zIndex={2147483641}
       >
         <ModalContent imageBackgroundColor={imageBackgroundColor}>
           {imageUrl && <img src={imageUrl} alt={imageUrl} />}
