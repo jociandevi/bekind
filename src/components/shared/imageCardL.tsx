@@ -9,16 +9,16 @@ import {
 } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Button, Tooltip } from "antd";
+import { Button } from "antd";
 import { HeartFilled } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
 import { transformTitleToUrl } from "../../common/util";
-import { glowingStyle } from "./userJourney";
 import { usePostApi } from "../../common/apiCalls";
 import { useDelete } from "../../hooks/useDelete";
+import PickButton from "./pickButton";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -51,28 +51,13 @@ const OverlayIconButton = styled(Button)`
   background-color: #1816188c;
 `;
 
-const DisabledButton = styled(Button)`
-  color: ${variables.middleGray};
-  background-color: ${variables.lightGray};
-  box-shadow: none;
-  opacity: 0.5;
-`;
-
 interface Props {
   item: KindnessAction;
-  isPickEnabled: boolean;
-  onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
   isGlowing?: boolean;
   isLiked?: boolean;
 }
 
-const ImageCardL: React.FC<Props> = ({
-  item,
-  isPickEnabled,
-  onPick,
-  isGlowing,
-  isLiked,
-}) => {
+const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
   const { md, lg } = useMediaQueries();
   const navigate = useNavigate();
   const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
@@ -87,10 +72,6 @@ const ImageCardL: React.FC<Props> = ({
       callPostApi();
     }
     setIsItLiked(!isItLiked);
-  };
-
-  const onDisabledPick = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
   };
 
   const cardAreaClicked = () => {
@@ -123,29 +104,7 @@ const ImageCardL: React.FC<Props> = ({
         </Title>
       </PaddingContainer>
       <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
-        {/* <Button
-          icon={<EditOutlined />}
-          onClick={(event) => {
-            event.stopPropagation();
-            navigate(`/edit/${item.id}`);
-          }}
-        /> */}
-        {isPickEnabled ? (
-          <Button
-            style={{ boxShadow: isGlowing ? glowingStyle : undefined }}
-            type="primary"
-            onClick={(e) => onPick(e, item)}
-          >
-            Pick
-          </Button>
-        ) : (
-          <Tooltip
-            title="You already did your part today in making the world better!"
-            trigger={"hover"}
-          >
-            <DisabledButton onClick={onDisabledPick}>Pick</DisabledButton>
-          </Tooltip>
-        )}
+        <PickButton item={item} />
       </Flexbox>
     </CardContainer>
   );

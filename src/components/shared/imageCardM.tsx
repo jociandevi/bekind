@@ -8,13 +8,13 @@ import {
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
-import { Button, Tooltip } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { KindnessAction, KindnessHistory } from "../../common/interfaces";
 import { useNavigate } from "react-router-dom";
 import { transformTitleToUrl } from "../../common/util";
 import { useGetApi } from "../../common/apiCalls";
 import Loading from "./loading";
+import PickButton from "./pickButton";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -27,8 +27,6 @@ const CardContainer = styled.div`
 
 interface Props {
   item?: KindnessHistory | number;
-  onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
-  isPickEnabled: boolean;
 }
 
 const isKindnessHistory = (
@@ -37,7 +35,7 @@ const isKindnessHistory = (
   return (item as KindnessHistory).kindnessId !== undefined;
 };
 
-const ImageCardM: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
+const ImageCardM: React.FC<Props> = ({ item }) => {
   const { md } = useMediaQueries();
   const navigate = useNavigate();
   let id;
@@ -86,18 +84,7 @@ const ImageCardM: React.FC<Props> = ({ item, onPick, isPickEnabled }) => {
         )}
       </FlexboxCol>
       <CenterAlignedFlexbox style={{ paddingRight: variables.spacingXs }}>
-        {isPickEnabled ? (
-          <Button onClick={(e) => onPick(e, kindness!)}>Pick</Button>
-        ) : (
-          <Tooltip
-            title="You already did your part today in making the world better!"
-            trigger={"hover"}
-          >
-            <Button type="primary" disabled>
-              Pick
-            </Button>
-          </Tooltip>
-        )}
+        {kindness && <PickButton item={kindness} />}
       </CenterAlignedFlexbox>
     </CardContainer>
   );

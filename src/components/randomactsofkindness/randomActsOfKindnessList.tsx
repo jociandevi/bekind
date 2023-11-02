@@ -5,8 +5,6 @@ import { categories } from "../../common/mockData";
 import InstallModal from "../shared/pwaCustomInstalls/installModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import { AuthContext } from "../../common/authProvider";
-import FeedbackModal from "./modals/feedbackModal";
-import ConfirmModal from "./modals/confirmModal";
 import CheersModal from "./modals/cheersModal";
 import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
@@ -16,8 +14,8 @@ import CardContainer from "../shared/cardContainer";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
-import { completeUserJourney, showUserJourney } from "../shared/userJourney";
-import { useGetApi, usePostApi } from "../../common/apiCalls";
+import { showUserJourney } from "../shared/userJourney";
+import { useGetApi } from "../../common/apiCalls";
 import PageError from "../shared/pageError";
 import Loading from "../shared/loading";
 import { shuffleArray } from "../../common/util";
@@ -26,16 +24,9 @@ import Search from "../shared/search";
 import { RedoOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import useSignalR from "../../hooks/useSignalR";
-import { useDispatch, useSelector } from "react-redux";
-import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
-import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
-  const dailyIsDone = useSelector(selectDailyIsDone);
-  const userStreak = useSelector(selectUserStreak);
-
-  const [daily, setDaily] = useState<KindnessAction | undefined>();
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
   );
@@ -44,15 +35,8 @@ const RandomActOfKindnessList: React.FC = () => {
     []
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
-  const {
-    callPostApi: callPostKindnessHistory,
-    loading: loadingPostKindnessHistory,
-    error: errorPostKindnessHistory,
-  } = usePostApi(`api/KindnessHistory/${daily?.id}`);
   const { getHistory } = useKindnessHistory();
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
   const navigate = useNavigate();
@@ -61,8 +45,6 @@ const RandomActOfKindnessList: React.FC = () => {
   const hubConnection = useSignalR(
     "https://bekind-api.azurewebsites.net/notificationhub"
   );
-  const dispatch = useDispatch();
-
   // 1. move user to redux (with createslice)
 
   useEffect(() => {
@@ -121,35 +103,13 @@ const RandomActOfKindnessList: React.FC = () => {
     };
   }, [hubConnection]);
 
-  const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    setIsConfirmModalOpen(false);
-    callPostKindnessHistory();
-    if (!errorPostKindnessHistory) {
-      setIsFeedbackModalOpen(true);
-      dispatch(setDailyDone(true));
-      const newStreak = userStreak + 1;
-      dispatch(setUserStreak(newStreak));
-    }
-  };
-
-  const onPick = (
-    event: React.MouseEvent<HTMLElement>,
-    item: KindnessAction
-  ) => {
-    event.stopPropagation();
-    setDaily(item);
-    setIsConfirmModalOpen(true);
-    completeUserJourney();
-  };
-
   const filterByCategory = (category: Category) => {
     setSearchParams({ category: category.name });
   };
 
   const displayTour = showUserJourney();
 
-  if (loading || loadingPostKindnessHistory) {
+  if (loading) {
     return <Loading />;
   }
 
@@ -159,16 +119,6 @@ const RandomActOfKindnessList: React.FC = () => {
         <CheersModal
           isModalOpen={isModalOpen}
           setIsModalOpen={setIsModalOpen}
-        />
-        <ConfirmModal
-          isModalOpen={isConfirmModalOpen}
-          setIsModalOpen={setIsConfirmModalOpen}
-          onOk={onConfirmOk}
-        />
-        <FeedbackModal
-          isModalOpen={isFeedbackModalOpen}
-          setIsModalOpen={setIsFeedbackModalOpen}
-          userName={user?.firstName ?? undefined}
         />
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}
@@ -197,8 +147,6 @@ const RandomActOfKindnessList: React.FC = () => {
         )}
         {searchParams.get("category") && (
           <CardContainer
-            onPick={onPick}
-            isPickEnabled={!dailyIsDone}
             kindnessActions={filteredActions}
             likedActions={likedActions}
           />
@@ -207,8 +155,6 @@ const RandomActOfKindnessList: React.FC = () => {
           categories.map((category, index) => (
             <HorizontalScrollContainers
               category={category}
-              onPick={onPick}
-              isPickEnabled={!dailyIsDone}
               kindnessActions={filteredActions}
               key={index}
               filterByCategory={filterByCategory}

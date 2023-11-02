@@ -7,8 +7,6 @@ import styled from "styled-components";
 import { variables } from "../../common/variables";
 
 interface Props {
-  onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
-  isPickEnabled: boolean;
   kindnessActions: KindnessAction[];
   likedActions: number[];
 }
@@ -21,12 +19,7 @@ const StyledContainer = styled(Flexbox)`
   width: 100vw;
 `;
 
-const CardContainer: React.FC<Props> = ({
-  onPick,
-  isPickEnabled,
-  kindnessActions,
-  likedActions,
-}) => {
+const CardContainer: React.FC<Props> = ({ kindnessActions, likedActions }) => {
   let [searchParams] = useSearchParams();
   const category = searchParams.get("category");
   if (kindnessActions.length === 0) {
@@ -43,8 +36,6 @@ const CardContainer: React.FC<Props> = ({
           <ImageCardL
             item={item}
             key={item.id}
-            isPickEnabled={isPickEnabled}
-            onPick={onPick}
             isLiked={likedActions?.includes(item?.id!)}
           />
         ))}

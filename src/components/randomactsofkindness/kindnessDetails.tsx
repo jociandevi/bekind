@@ -13,17 +13,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { HeartFilled, ArrowLeftOutlined } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
 import Article from "../shared/article/article";
-import ConfirmModal from "./modals/confirmModal";
-import FeedbackModal from "./modals/feedbackModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Tags from "../shared/tags";
-import { useGetApi, usePostApi } from "../../common/apiCalls";
+import { useGetApi } from "../../common/apiCalls";
 import { KindnessAction } from "../../common/interfaces";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
-import { useDispatch, useSelector } from "react-redux";
-import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
-import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -78,20 +73,9 @@ const KindnessDetails: React.FC = () => {
   const params = useParams();
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-  const dailyIsDone = useSelector(selectDailyIsDone);
-
   const [action, setAction] = useState<KindnessAction | undefined>();
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
-  const [daily, setDaily] = useState<KindnessAction | undefined>();
-  const {
-    callPostApi: callPostKindnessHistory,
-    error: errorPostKindnessHistory,
-  } = usePostApi(`api/KindnessHistory/${daily?.id}`);
-  const dispatch = useDispatch();
-  const userStreak = useSelector(selectUserStreak);
 
   useEffect(() => {
     async function fetchData() {
@@ -101,27 +85,6 @@ const KindnessDetails: React.FC = () => {
     fetchData();
   }, [callGetApi]);
 
-  const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    setIsConfirmModalOpen(false);
-    callPostKindnessHistory();
-    if (!errorPostKindnessHistory) {
-      setIsFeedbackModalOpen(true);
-      dispatch(setDailyDone(true));
-      const newStreak = userStreak + 1;
-      dispatch(setUserStreak(newStreak));
-    }
-  };
-
-  const onPick = (
-    event: React.MouseEvent<HTMLElement>,
-    item: KindnessAction
-  ) => {
-    event.stopPropagation();
-    setDaily(item);
-    setIsConfirmModalOpen(true);
-  };
-
   if (loading) {
     return <Loading />;
   }
@@ -129,16 +92,6 @@ const KindnessDetails: React.FC = () => {
   return (
     <FlexboxCol>
       <ImageContainer style={{ margin: "0 auto" }}>
-        <ConfirmModal
-          isModalOpen={isConfirmModalOpen}
-          setIsModalOpen={setIsConfirmModalOpen}
-          onOk={onConfirmOk}
-        />
-        <FeedbackModal
-          isModalOpen={isFeedbackModalOpen}
-          setIsModalOpen={setIsFeedbackModalOpen}
-          userName={user?.firstName ?? undefined}
-        />
         <ArticleImage
           src={action?.imageUrl}
           alt={`Image of ${action?.title}`}
@@ -166,15 +119,8 @@ const KindnessDetails: React.FC = () => {
       {error && <PageError message="An error happened, sorry!" />}
       <MarginContainer>
         {action && <Tags item={action} />}
-        {action && (
-          <Article
-            kindness={action}
-            onPick={onPick}
-            isPickEnabled={!dailyIsDone}
-          />
-        )}
+        {action && <Article kindness={action} />}
       </MarginContainer>
-
       <InstallButton />
     </FlexboxCol>
   );

@@ -16,19 +16,14 @@ import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Pants } from "../../img/badges/pants.svg";
 import { BarChartOutlined } from "@ant-design/icons";
-import ConfirmModal from "./modals/confirmModal";
-import FeedbackModal from "./modals/feedbackModal";
-import { KindnessAction, KindnessHistory } from "../../common/interfaces";
+import { KindnessHistory } from "../../common/interfaces";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
-import { useGetApi, usePostApi } from "../../common/apiCalls";
+import { useGetApi } from "../../common/apiCalls";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
-import { useDispatch, useSelector } from "react-redux";
-import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
-import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingXs};
@@ -78,23 +73,10 @@ const Profile: React.FC = () => {
   const { md } = useMediaQueries();
   const { user: googleUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
-  const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
-  const dailyIsDone = useSelector(selectDailyIsDone);
-
-  const [daily, setDaily] = useState<KindnessAction | undefined>();
-  const {
-    callPostApi: callPostKindnessHistory,
-    error: errorPostKindnessHistory,
-  } = usePostApi(`api/KindnessHistory/${daily?.id}`);
   const { getHistory, loading, error } = useKindnessHistory();
-
   const { callGetApi: getLiked } = useGetApi(`api/LikedKindness`);
-
   const [pastActions, setPastActions] = useState<KindnessHistory[] | []>([]);
   const [likedActions, setLikedActions] = useState<number[] | []>([]);
-  const dispatch = useDispatch();
-  const userStreak = useSelector(selectUserStreak);
 
   useEffect(() => {
     getHistory().then((res) => {
@@ -108,15 +90,6 @@ const Profile: React.FC = () => {
     });
   }, [getLiked]);
 
-  const onPick = (
-    event: React.MouseEvent<HTMLElement>,
-    item: KindnessAction
-  ) => {
-    event.stopPropagation();
-    setDaily(item);
-    setIsConfirmModalOpen(true);
-  };
-
   const getDate = (date: string) => {
     const formattedDate = new Date(date);
     return formattedDate.toLocaleDateString();
@@ -129,12 +102,7 @@ const Profile: React.FC = () => {
       children: (
         <>
           {likedActions.map((actionId, index) => (
-            <ImageCardM
-              item={actionId}
-              key={index}
-              onPick={onPick}
-              isPickEnabled={!dailyIsDone}
-            />
+            <ImageCardM item={actionId} key={index} />
           ))}
         </>
       ),
@@ -154,11 +122,7 @@ const Profile: React.FC = () => {
                 {getDate(item.createdDate)}
               </StyledText>
 
-              <ImageCardM
-                item={item}
-                onPick={onPick}
-                isPickEnabled={!dailyIsDone}
-              />
+              <ImageCardM item={item} />
             </Fragment>
           ))}
         </>
@@ -200,18 +164,6 @@ const Profile: React.FC = () => {
     );
   };
 
-  const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    setIsConfirmModalOpen(false);
-    callPostKindnessHistory();
-    if (!errorPostKindnessHistory) {
-      setIsFeedbackModalOpen(true);
-      dispatch(setDailyDone(true));
-      const newStreak = userStreak + 1;
-      dispatch(setUserStreak(newStreak));
-    }
-  };
-
   if (loading) {
     return <Loading />;
   }
@@ -229,17 +181,6 @@ const Profile: React.FC = () => {
           />
         }
       />
-      <ConfirmModal
-        isModalOpen={isConfirmModalOpen}
-        setIsModalOpen={setIsConfirmModalOpen}
-        onOk={onConfirmOk}
-      />
-      <FeedbackModal
-        isModalOpen={isFeedbackModalOpen}
-        setIsModalOpen={setIsFeedbackModalOpen}
-        userName={googleUser?.firstName ?? undefined}
-      />
-
       <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
         <ProfileImageContainer md={md}>
           <CircleImage

@@ -18,13 +18,11 @@ import axios from "axios";
 import { ArticleImage } from "../../randomactsofkindness/kindnessDetails";
 import ListItem from "./listItem";
 import ArticleText from "./articleText";
-import { Button } from "antd";
 import GoogleMap from "./googleMap";
+import PickButton from "../pickButton";
 
 interface Props {
   kindness: KindnessAction | LegalArticle;
-  onPick?: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
-  isPickEnabled?: boolean;
   isPureText?: boolean;
 }
 
@@ -38,12 +36,7 @@ export const ArticleContainer = styled(FlexboxCol)`
   }
 `;
 
-const Article: React.FC<Props> = ({
-  kindness,
-  onPick,
-  isPickEnabled,
-  isPureText = false,
-}) => {
+const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
   const [article, setArticle] = useState<ArticlePart[]>([]);
 
   useEffect(() => {
@@ -110,16 +103,7 @@ const Article: React.FC<Props> = ({
             )}
           </Fragment>
         ))}
-        {!isPureText && (
-          <Button
-            type="primary"
-            style={{ marginTop: variables.spacingS }}
-            onClick={(e) => onPick!(e, kindness as KindnessAction)}
-            disabled={!isPickEnabled}
-          >
-            Pick
-          </Button>
-        )}
+        {!isPureText && <PickButton item={kindness as KindnessAction} />}
       </ArticleContainer>
       <ArticleContainer style={{ marginTop: variables.spacingL }}>
         {article?.map((item, index) => (

@@ -9,8 +9,6 @@ import { CategoryButton } from "./sharedLayouts";
 
 interface Props {
   category: Category;
-  onPick: (event: React.MouseEvent<HTMLElement>, item: KindnessAction) => void;
-  isPickEnabled: boolean;
   kindnessActions: KindnessAction[];
   filterByCategory: (category: Category) => void;
   displayTour?: boolean;
@@ -28,8 +26,6 @@ const StyledCarousel = styled(Carousel)`
 
 const HorizontalScrollContainers: React.FC<Props> = ({
   category,
-  onPick,
-  isPickEnabled,
   kindnessActions,
   filterByCategory,
   likedActions,
@@ -84,8 +80,6 @@ const HorizontalScrollContainers: React.FC<Props> = ({
             <ImageCardL
               item={item}
               key={item.id}
-              isPickEnabled={isPickEnabled}
-              onPick={onPick}
               isLiked={likedActions?.includes(item?.id!)}
             />
           ))}
