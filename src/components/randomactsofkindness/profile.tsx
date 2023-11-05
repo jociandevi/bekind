@@ -4,7 +4,7 @@ import {
   CircleImage,
   StyledText,
 } from "../shared/sharedLayouts";
-import { Button, Tabs } from "antd";
+import { Tabs } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
@@ -15,7 +15,6 @@ import { useMediaQueries } from "../../common/mediaQueryHook";
 import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Pants } from "../../img/badges/pants.svg";
-import { BarChartOutlined } from "@ant-design/icons";
 import { KindnessHistory } from "../../common/interfaces";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Header from "../shared/header";
@@ -24,6 +23,7 @@ import { useGetApi } from "../../common/apiCalls";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
+import Statistics from "./statistics";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingXs};
@@ -133,6 +133,11 @@ const Profile: React.FC = () => {
       label: `Badges`,
       children: <BadgeList />,
     },
+    {
+      key: "4",
+      label: `Statistics`,
+      children: <Statistics />,
+    },
   ];
 
   const [activeKey, setActiveKey] = useState(items[0].key);
@@ -170,17 +175,7 @@ const Profile: React.FC = () => {
 
   return (
     <>
-      <Header
-        left={<BackButton />}
-        right={
-          <Button
-            icon={<BarChartOutlined />}
-            style={{ border: "none" }}
-            size="large"
-            onClick={() => navigate("/statistics")}
-          />
-        }
-      />
+      <Header left={<BackButton />} />
       <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
         <ProfileImageContainer md={md}>
           <CircleImage

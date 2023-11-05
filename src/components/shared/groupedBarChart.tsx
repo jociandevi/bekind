@@ -2,8 +2,8 @@ import React from "react";
 import { Flexbox, FlexboxCol, StyledText } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { userStats } from "../../common/mockData";
 import SingleBarChart from "./singleBarChart";
+import { MemberStatistics } from "../../common/interfaces";
 
 const LegendContainer = styled.div`
   position: absolute;
@@ -23,8 +23,59 @@ const ColorAndTextContainer = styled(Flexbox)`
   align-items: center;
 `;
 
-const GroupedBarChart: React.FC = () => {
-  const { historicalData } = userStats;
+interface Props {
+  myStats?: MemberStatistics;
+  avgStats?: number;
+}
+
+type DataObject = {
+  month: string;
+  label: string;
+  value: number;
+};
+
+const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
+  const mapLastSixMonthsToValues = (values: number[]): DataObject[] => {
+    while (values.length < 6) {
+      values.unshift(0);
+    }
+    const lastSixValues = values.slice(-6);
+
+    const months: string[] = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const currentMonth = new Date().getMonth();
+    const startMonthIndex = (currentMonth - 5 + 12) % 12; // Ensure positive index
+
+    const result: DataObject[] = lastSixValues.map((value, index) => {
+      const monthIndex = (startMonthIndex + index) % 12;
+      const monthName = months[monthIndex];
+
+      return {
+        month: monthName,
+        label: "You",
+        value: value,
+      };
+    });
+
+    return result;
+  };
+
+  const historicalData = mapLastSixMonthsToValues(
+    myStats?.kindnessForTheLast180DaysCount ?? []
+  );
 
   const uniqueLabels = new Set<string>();
   const uniqueMonths = new Set<string>();
@@ -54,7 +105,7 @@ const GroupedBarChart: React.FC = () => {
     <Flexbox
       style={{
         justifyContent: "space-between",
-        margin: `${variables.spacingS} 0`,
+        margin: variables.spacingS,
         position: "relative",
       }}
     >

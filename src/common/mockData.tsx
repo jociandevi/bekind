@@ -3,7 +3,7 @@ import { ReactComponent as Pants } from "../img/badges/pants.svg";
 import { ReactComponent as Hotel } from "../img/badges/hotel.svg";
 import { ReactComponent as DivingGoggles } from "../img/badges/diving-goggles.svg";
 import { ReactComponent as Tree } from "../img/badges/tree.svg";
-import { Category, CategoryNames, UserStats } from "./interfaces";
+import { Category, CategoryNames } from "./interfaces";
 
 export const badgeIcons: { id: number; icon: React.ReactNode }[] = [
   {
@@ -30,53 +30,3 @@ export const categories: Category[] = [
   { id: 2, name: CategoryNames.SOCIAL },
   { id: 3, name: CategoryNames.PURPOSE },
 ];
-
-export const userStats: UserStats = {
-  id: 1,
-  firstName: "Liza",
-  lastName: "Bailey",
-  historicalData: [
-    {
-      month: "June",
-      label: "You",
-      value: 3,
-    },
-    {
-      month: "June",
-      label: "Average",
-      value: 5,
-    },
-    {
-      month: "July",
-      label: "You",
-      value: 12,
-    },
-    {
-      month: "July",
-      label: "Average",
-      value: 12,
-    },
-    {
-      month: "August",
-      label: "You",
-      value: 9,
-    },
-    {
-      month: "August",
-      label: "Average",
-      value: 18,
-    },
-    {
-      month: "September",
-      label: "You",
-      value: 10,
-    },
-    {
-      month: "September",
-      label: "Average",
-      value: 11,
-    },
-  ],
-  totalNumberOfKindnesses: 53,
-  topCategory: CategoryNames.NEIGHBORHOOD,
-};

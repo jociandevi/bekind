@@ -54,17 +54,12 @@ export interface LegalArticle {
   credit?: string;
 }
 
-export interface UserStats {
-  id: number;
-  firstName: string;
-  lastName: string;
-  historicalData: {
-    month: string;
-    label: string;
-    value: number;
-  }[];
-  totalNumberOfKindnesses: number;
-  topCategory: CategoryNames;
+export interface MemberStatistics {
+  memberId?: number;
+  kindnessLifetimeCount?: number;
+  kindnessForTheLast30DaysCount?: number;
+  kindnessForTheLast180DaysCount?: number[];
+  topCategory?: number;
 }
 
 export interface BadgeProps {
