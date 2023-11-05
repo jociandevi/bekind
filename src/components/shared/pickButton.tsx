@@ -34,7 +34,6 @@ const PickButton: React.FC<Props> = ({ item }) => {
     error: errorPostKindnessHistory,
   } = usePostApi(`api/KindnessHistory/${item?.id}`);
   const dispatch = useDispatch();
-
   const isGlowing = false;
 
   const onDisabledPick = (event: React.MouseEvent<HTMLElement>) => {

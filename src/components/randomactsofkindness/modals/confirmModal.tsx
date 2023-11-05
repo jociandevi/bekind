@@ -25,6 +25,7 @@ const ConfirmModal: React.FC<Props> = ({
       okText="Yes, let's go!"
       imageBackgroundColor={variables.green1}
       modalHeight={260}
+      onCancel={() => setIsModalOpen(false)}
     />
   );
 };

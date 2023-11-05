@@ -11,25 +11,25 @@ export const transformTitleToUrl = (title: string) => {
 export const calculateStreak = (history: KindnessHistory[]) => {
   let streak = 0;
   let currentDate = new Date();
+  currentDate.setUTCHours(0, 0, 0, 0); // Normalize current date to the beginning of the day
 
-  if (history === undefined) {
+  if (!history || history.length === 0) {
     return 0;
   }
 
+  currentDate.setDate(currentDate.getDate() - 1);
+
   for (let i = 0; i < history.length; i++) {
     const taskDate = new Date(history[i].createdDate);
+    taskDate.setUTCHours(0, 0, 0, 0);
 
-    // Check if the taskDate is the same as currentDate or one day before
-    if (
-      taskDate.getUTCFullYear() === currentDate.getUTCFullYear() &&
-      taskDate.getUTCMonth() === currentDate.getUTCMonth() &&
-      taskDate.getUTCDate() === currentDate.getUTCDate()
-    ) {
+    if (taskDate.getTime() === currentDate.getTime()) {
       streak++;
-      // Subtract one day from currentDate
       currentDate.setDate(currentDate.getDate() - 1);
+    } else if (taskDate > currentDate) {
+      continue;
     } else {
-      break; // If there's a gap in dates, break out of the loop
+      break;
     }
   }
 
