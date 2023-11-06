@@ -19,6 +19,7 @@ import { useGetApi } from "../../common/apiCalls";
 import { KindnessAction } from "../../common/interfaces";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
+import ProgressBar from "../shared/progressBar";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -91,6 +92,7 @@ const KindnessDetails: React.FC = () => {
 
   return (
     <FlexboxCol>
+      <ProgressBar />
       <ImageContainer style={{ margin: "0 auto" }}>
         <ArticleImage
           src={action?.imageUrl}
