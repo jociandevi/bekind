@@ -1,14 +1,17 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ImageCardL from "./imageCardL";
-import { KindnessAction } from "../../common/interfaces";
+import { Category, KindnessAction } from "../../common/interfaces";
 import { useSearchParams } from "react-router-dom";
-import { CategoryButton, Flexbox } from "./sharedLayouts";
+import { Flexbox, TagButton } from "./sharedLayouts";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
+import { categories } from "../../common/mockData";
+import { Button } from "antd";
 
 interface Props {
   actions: KindnessAction[];
   likedActions: number[];
+  filterByCategory: (category: Category) => void;
 }
 
 const StyledContainer = styled(Flexbox)`
@@ -19,18 +22,54 @@ const StyledContainer = styled(Flexbox)`
   width: 100vw;
 `;
 
-const CardContainer: React.FC<Props> = ({ actions, likedActions }) => {
+const ActiveTagButton = styled(Button)`
+  background-color: ${variables.pink3};
+  color: ${variables.white};
+  border: none;
+  box-shadow: ${variables.shadow1};
+`;
+
+const CardContainer: React.FC<Props> = ({
+  actions,
+  likedActions,
+  filterByCategory,
+}) => {
   let [searchParams] = useSearchParams();
-  const category = searchParams.get("category");
+  const activeCategoryName = searchParams.get("category") || "All";
   if (actions.length === 0) {
     return null;
   }
 
+  const categoriesAndAll = [{ id: 4, name: "All" }, ...categories];
+
   return (
     <>
-      <CategoryButton type="link" size="large">
-        {category ?? ""}
-      </CategoryButton>
+      <Flexbox
+        style={{
+          marginBottom: variables.spacingS,
+          marginLeft: variables.spacingXs,
+          gap: variables.spacingXs,
+          justifyContent: "flex-start",
+        }}
+      >
+        {categoriesAndAll.map((item, index) => (
+          <Fragment key={index}>
+            {item.name === activeCategoryName ? (
+              <ActiveTagButton size="small" style={{ borderRadius: "15px" }}>
+                {item.name}
+              </ActiveTagButton>
+            ) : (
+              <TagButton
+                size="small"
+                style={{ borderRadius: "15px" }}
+                onClick={() => filterByCategory(item)}
+              >
+                {item.name}
+              </TagButton>
+            )}
+          </Fragment>
+        ))}
+      </Flexbox>
       <StyledContainer>
         {actions.map((item) => (
           <ImageCardL

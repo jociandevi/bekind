@@ -6,7 +6,6 @@ import InstallModal from "../shared/pwaCustomInstalls/installModal";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import { AuthContext } from "../../common/authProvider";
 import CheersModal from "./modals/cheersModal";
-import HorizontalScrollContainers from "../shared/horizontalScrollContainers";
 import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
 import { Category, KindnessAction } from "../../common/interfaces";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -14,7 +13,6 @@ import CardContainer from "../shared/cardContainer";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
-import { showUserJourney } from "../shared/userJourney";
 import { useGetApi } from "../../common/apiCalls";
 import PageError from "../shared/pageError";
 import Loading from "../shared/loading";
@@ -104,10 +102,13 @@ const RandomActOfKindnessList: React.FC = () => {
   }, [hubConnection]);
 
   const filterByCategory = (category: Category) => {
-    setSearchParams({ category: category.name });
+    if (category.name === "All") {
+      searchParams.delete("category");
+      setSearchParams(searchParams);
+    } else {
+      setSearchParams({ category: category.name });
+    }
   };
-
-  const displayTour = showUserJourney();
 
   if (loading) {
     return <Loading />;
@@ -145,23 +146,11 @@ const RandomActOfKindnessList: React.FC = () => {
             style={{ margin: variables.spacingXs }}
           />
         )}
-        {searchParams.get("category") && (
-          <CardContainer
-            actions={filteredActions}
-            likedActions={likedActions}
-          />
-        )}
-        {searchParams.size === 0 &&
-          categories.map((category, index) => (
-            <HorizontalScrollContainers
-              category={category}
-              kindnessActions={filteredActions}
-              key={index}
-              filterByCategory={filterByCategory}
-              displayTour={displayTour}
-              likedActions={likedActions}
-            />
-          ))}
+        <CardContainer
+          actions={filteredActions}
+          likedActions={likedActions}
+          filterByCategory={filterByCategory}
+        />
         <InstallButton />
         <InstallAlert />
         <InstallModal />

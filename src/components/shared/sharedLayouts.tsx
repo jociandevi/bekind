@@ -124,3 +124,9 @@ export const CategoryButton = styled(Button)`
   margin-left: ${variables.spacingXs};
   font-weight: 600;
 `;
+
+export const TagButton = styled(Button)`
+  border: none;
+  background-color: ${variables.veryLightGray};
+  color: ${variables.middleGray};
+`;

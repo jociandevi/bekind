@@ -1,5 +1,5 @@
 import React from "react";
-import { Flexbox } from "./sharedLayouts";
+import { Flexbox, TagButton } from "./sharedLayouts";
 import { Button, Tooltip } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
@@ -10,12 +10,6 @@ import { KindnessAction } from "../../common/interfaces";
 const TagContainer = styled(Flexbox)`
   gap: ${variables.spacingXs};
   justify-content: flex-start;
-`;
-
-const TagButton = styled(Button)`
-  border: none;
-  background-color: ${variables.veryLightGray};
-  color: ${variables.middleGray};
 `;
 
 const StyledButtonText = styled.span`
