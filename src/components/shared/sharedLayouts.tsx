@@ -6,6 +6,7 @@ import { variables } from "../../common/variables";
 export const phoneCardWidth = "45vw";
 export const tabletCardWidth = "30vw";
 export const laptopCardWidth = "22vw";
+export const monitorCardWidth = "15vw";
 
 export const StyledGrid = styled.div`
   display: grid;

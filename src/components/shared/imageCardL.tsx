@@ -3,6 +3,7 @@ import {
   Flexbox,
   ImageContainer,
   laptopCardWidth,
+  monitorCardWidth,
   phoneCardWidth,
   tabletCardWidth,
 } from "./sharedLayouts";
@@ -23,10 +24,17 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 const CardContainer = styled.div<{
   md?: boolean;
   lg?: boolean;
+  xl?: boolean;
 }>`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   width: ${(props) =>
-    props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
+    props.lg
+      ? props.xl
+        ? monitorCardWidth
+        : laptopCardWidth
+      : props.md
+      ? tabletCardWidth
+      : phoneCardWidth};
   flex-shrink: 0;
   border-radius: ${variables.borderRadius}px;
   cursor: pointer;
@@ -58,7 +66,7 @@ interface Props {
 }
 
 const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
-  const { md, lg } = useMediaQueries();
+  const { md, lg, xl } = useMediaQueries();
   const navigate = useNavigate();
   const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
   const { callDelete } = useDelete(`api/LikedKindness/${item.id}`);
@@ -80,7 +88,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
   };
 
   return (
-    <CardContainer md={md} lg={lg} onClick={cardAreaClicked}>
+    <CardContainer md={md} lg={lg} xl={xl} onClick={cardAreaClicked}>
       <ImageContainer>
         <LazyLoadImage
           alt={item.title}
@@ -89,11 +97,19 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
             objectFit: "cover",
             borderRadius: `${variables.borderRadius}px`,
             height: lg
-              ? laptopCardWidth
+              ? xl
+                ? monitorCardWidth
+                : laptopCardWidth
               : md
               ? tabletCardWidth
               : phoneCardWidth,
-            width: lg ? laptopCardWidth : md ? tabletCardWidth : phoneCardWidth,
+            width: lg
+              ? xl
+                ? monitorCardWidth
+                : laptopCardWidth
+              : md
+              ? tabletCardWidth
+              : phoneCardWidth,
           }}
         />
 

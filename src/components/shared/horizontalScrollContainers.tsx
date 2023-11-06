@@ -40,7 +40,7 @@ const HorizontalScrollContainers: React.FC<Props> = ({
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1600 },
-      items: 5,
+      items: 6,
     },
     desktop: {
       breakpoint: { max: 1600, min: 900 },
