@@ -19,9 +19,6 @@ import Loading from "./components/shared/loading";
 
 const Login = lazy(() => import("./components/randomactsofkindness/login"));
 const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
-const Statistics = lazy(
-  () => import("./components/randomactsofkindness/statistics")
-);
 const AddNew = lazy(() => import("./components/randomactsofkindness/addNew"));
 const AddEditBadge = lazy(
   () => import("./components/randomactsofkindness/addEditBadge")
@@ -57,14 +54,6 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<Loading />}>
             <Profile />
-          </Suspense>
-        }
-      />
-      <Route
-        path="statistics"
-        element={
-          <Suspense fallback={<Loading />}>
-            <Statistics />
           </Suspense>
         }
       />
