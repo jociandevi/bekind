@@ -32,6 +32,7 @@ jobs:
           output_location: "build" # Built app content directory - optional
         env:
           REACT_APP_GOOGLE_CLIENT_ID: ${{ secrets.REACT_APP_GOOGLE_CLIENT_ID }}
+          REACT_APP_GOOGLE_MAPS_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAPS_API_KEY }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
