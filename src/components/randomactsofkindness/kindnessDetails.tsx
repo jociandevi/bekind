@@ -15,11 +15,12 @@ import UserProfileIcon from "../shared/userProfileIcon";
 import Article from "../shared/article/article";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Tags from "../shared/tags";
-import { useGetApi } from "../../common/apiCalls";
+import { useGetApi, usePostApi } from "../../common/apiCalls";
 import { KindnessAction } from "../../common/interfaces";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import ProgressBar from "../shared/progressBar";
+import { useDelete } from "../../hooks/useDelete";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -77,6 +78,17 @@ const KindnessDetails: React.FC = () => {
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
+  const { callPostApi } = usePostApi(`api/LikedKindness/${id}`);
+  const { callDelete } = useDelete(`api/LikedKindness/${id}`);
+
+  const onLike = () => {
+    if (isLiked) {
+      callDelete();
+    } else {
+      callPostApi();
+    }
+    setIsLiked(!isLiked);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -89,7 +101,7 @@ const KindnessDetails: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       const response = await getLikedActions();
-      const liked = response.data.includes(id ? parseInt(id) : 0);
+      const liked = response.data?.includes(id ? parseInt(id) : 0);
       setIsLiked(liked);
     }
     fetchData();
@@ -116,6 +128,7 @@ const KindnessDetails: React.FC = () => {
         <OverlayHeartButton
           icon={<HeartFilled />}
           shape="circle"
+          onClick={onLike}
           style={{
             borderColor: isLiked ? variables.pink3 : variables.white,
             color: isLiked ? variables.pink3 : variables.white,
