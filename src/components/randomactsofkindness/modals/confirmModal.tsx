@@ -7,12 +7,14 @@ interface Props {
   isModalOpen: boolean;
   setIsModalOpen: (value: boolean) => void;
   onOk: (event: React.MouseEvent<HTMLElement>) => void;
+  onCancel: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const ConfirmModal: React.FC<Props> = ({
   isModalOpen,
   setIsModalOpen,
   onOk,
+  onCancel,
 }) => {
   return (
     <AntdModal
@@ -25,7 +27,7 @@ const ConfirmModal: React.FC<Props> = ({
       okText="Yes, let's go!"
       imageBackgroundColor={variables.green1}
       modalHeight={260}
-      onCancel={() => setIsModalOpen(false)}
+      onCancel={onCancel}
     />
   );
 };

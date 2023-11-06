@@ -58,6 +58,11 @@ const PickButton: React.FC<Props> = ({ item }) => {
     }
   };
 
+  const onCancel = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setIsConfirmModalOpen(false);
+  };
+
   return (
     <>
       {!dailyIsDone ? (
@@ -80,6 +85,7 @@ const PickButton: React.FC<Props> = ({ item }) => {
         isModalOpen={isConfirmModalOpen}
         setIsModalOpen={setIsConfirmModalOpen}
         onOk={onConfirmOk}
+        onCancel={onCancel}
       />
       <FeedbackModal
         isModalOpen={isFeedbackModalOpen}
