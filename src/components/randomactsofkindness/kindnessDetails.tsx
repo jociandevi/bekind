@@ -41,8 +41,6 @@ const OverlayHeartButton = styled(Button)`
   position: absolute;
   bottom: -${variables.spacingXs};
   right: ${variables.spacingM};
-  color: ${variables.pink3};
-  background-color: ${variables.white};
   box-shadow: ${variables.shadow1};
 `;
 
@@ -75,8 +73,10 @@ const KindnessDetails: React.FC = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [action, setAction] = useState<KindnessAction | undefined>();
+  const [isLiked, setIsLiked] = useState<boolean>(false);
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
+  const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
 
   useEffect(() => {
     async function fetchData() {
@@ -85,6 +85,15 @@ const KindnessDetails: React.FC = () => {
     }
     fetchData();
   }, [callGetApi]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getLikedActions();
+      const liked = response.data.includes(id ? parseInt(id) : 0);
+      setIsLiked(liked);
+    }
+    fetchData();
+  }, [getLikedActions, id]);
 
   if (loading) {
     return <Loading />;
@@ -104,7 +113,15 @@ const KindnessDetails: React.FC = () => {
           shape="circle"
           onClick={() => navigate("/")}
         />
-        <OverlayHeartButton icon={<HeartFilled />} shape="circle" />
+        <OverlayHeartButton
+          icon={<HeartFilled />}
+          shape="circle"
+          style={{
+            borderColor: isLiked ? variables.pink3 : variables.white,
+            color: isLiked ? variables.pink3 : variables.white,
+            backgroundColor: isLiked ? variables.white : variables.lightGray,
+          }}
+        />
         {user && (
           <OverlayProfileContainer>
             <UserProfileIcon user={user} />
