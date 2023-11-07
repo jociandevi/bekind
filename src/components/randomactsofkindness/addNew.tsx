@@ -166,20 +166,18 @@ const AddNew: React.FC = () => {
               ),
             },
             {
-              title: "Cheer text",
+              title: "Title first word",
               description: (
                 <Form.Item
-                  name="cheerText"
+                  name="titleFirstWord"
                   rules={[
                     {
                       required: false,
-                      message:
-                        "What is the action to be cheered (probably title in past tense?)",
+                      message: "The title's first word in past tense.",
                     },
                   ]}
                 >
                   <StyledInput
-                    placeholder="E.g. 'supported a charity'"
                     onPressEnter={(event) => pressEnter(event, input2Ref)}
                   />
                 </Form.Item>

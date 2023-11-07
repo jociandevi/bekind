@@ -28,5 +28,5 @@ export const categories: Category[] = [
   { id: 0, name: CategoryNames.YOU },
   { id: 1, name: CategoryNames.RELATIONSHIPS },
   { id: 2, name: CategoryNames.SOCIAL },
-  { id: 3, name: CategoryNames.PURPOSE },
+  { id: 3, name: CategoryNames.ENVIRONMENT },
 ];
