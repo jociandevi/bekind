@@ -58,13 +58,15 @@ const OverlayProfileContainer = styled.div`
 
 export const ArticleImage = styled.img`
   width: 100vw;
+  height: ${100 / 1.618}vw;
   @media only screen and ${mdBreakPoint} {
     width: 75vw;
+    height: ${75 / 1.618}vw;
   }
   @media only screen and ${lgBreakPoint} {
     width: 50vw;
+    height: ${50 / 1.618}vw;
   }
-  height: ${50 / 1.618}vw;
   border-radius: 0;
   object-fit: cover;
 `;
