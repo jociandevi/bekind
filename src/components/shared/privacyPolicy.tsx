@@ -3,11 +3,12 @@ import { FlexboxCol, ImageContainer, StyledText } from "./sharedLayouts";
 import { Button } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
+import { mdBreakPoint } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import Article from "./article/article";
 import InstallButton from "./pwaCustomInstalls/installButton";
+import { ArticleImage } from "../randomactsofkindness/kindnessDetails";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -25,19 +26,6 @@ const OverlayBackButton = styled(Button)`
   background-color: #1816188c;
 `;
 
-export const ArticleImage = styled.img`
-  width: 100vw;
-  @media only screen and ${mdBreakPoint} {
-    width: 75vw;
-  }
-  @media only screen and ${lgBreakPoint} {
-    width: 50vw;
-  }
-  height: ${50 / 1.618}vw;
-  border-radius: 0;
-  object-fit: cover;
-`;
-
 const PrivacyPolicy: React.FC = () => {
   const navigate = useNavigate();
 
@@ -52,7 +40,6 @@ const PrivacyPolicy: React.FC = () => {
     <FlexboxCol>
       <ImageContainer style={{ margin: "0 auto" }}>
         <ArticleImage src={item?.imageUrl} alt={`Image of ${item?.title}`} />
-
         <OverlayBackButton
           icon={<ArrowLeftOutlined />}
           shape="circle"

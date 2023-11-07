@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Flexbox, TagButton } from "./sharedLayouts";
 import { Button, Tooltip } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { UserOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import { KindnessAction } from "../../common/interfaces";
+import { useGetApi } from "../../common/apiCalls";
 
 const TagContainer = styled(Flexbox)`
   gap: ${variables.spacingXs};
@@ -19,26 +19,23 @@ const StyledButtonText = styled.span`
   text-overflow: ellipsis;
 `;
 
-export const ArticleImage = styled.img`
-  width: 100vw;
-  @media only screen and ${mdBreakPoint} {
-    width: 75vw;
-  }
-  @media only screen and ${lgBreakPoint} {
-    width: 50vw;
-  }
-  height: ${50 / 1.618}vw;
-  border-radius: 0;
-  object-fit: cover;
-`;
-
 interface Props {
   item: KindnessAction;
 }
 
 const Tags: React.FC<Props> = ({ item }) => {
-  // API: GET /kindnessHistory/:id/count >> get total number of times this kindness has been done
-  const totalTimesDone = 110;
+  const [actionCount, setActionCount] = useState<number | undefined>();
+  const { callGetApi: getActionCount } = useGetApi(
+    `api/Kindness/KindnessHistoryCount/${item.id}`
+  );
+
+  useEffect(() => {
+    async function fetchData() {
+      const daily = await getActionCount();
+      setActionCount(daily?.data);
+    }
+    fetchData();
+  }, [getActionCount]);
 
   return (
     <TagContainer>
@@ -59,7 +56,7 @@ const Tags: React.FC<Props> = ({ item }) => {
         icon={<UserOutlined />}
         style={{ borderRadius: "15px" }}
       >
-        {totalTimesDone}
+        {actionCount}
       </TagButton>
       <TagButton
         size="small"
