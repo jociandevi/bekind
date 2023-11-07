@@ -22,6 +22,7 @@ export enum ArticleElement {
   "LIST_ITEM" = "ListItem",
   "FOOTNOTE" = "Footnote",
   "GOOGLE_MAP" = "GoogleMap",
+  "YOUTUBE" = "Youtube",
 }
 
 export interface ArticlePart {

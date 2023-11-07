@@ -20,6 +20,7 @@ import ListItem from "./listItem";
 import ArticleText from "./articleText";
 import GoogleMap from "./googleMap";
 import PickButton from "../pickButton";
+import Youtube from "./youtube";
 
 interface Props {
   kindness: KindnessAction | LegalArticle;
@@ -100,6 +101,9 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
             )}
             {item.type === ArticleElement.GOOGLE_MAP && (
               <GoogleMap text={item.text} />
+            )}
+            {item.type === ArticleElement.YOUTUBE && (
+              <Youtube src={item.text} />
             )}
           </Fragment>
         ))}
