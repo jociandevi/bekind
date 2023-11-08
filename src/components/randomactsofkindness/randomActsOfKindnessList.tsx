@@ -42,7 +42,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const [filteredActions, setFilteredActions] = useState<KindnessAction[] | []>(
     []
   );
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
   const { getHistory } = useKindnessHistory();
