@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Button } from "antd";
 import GoogleLoginButton from "./googleLoginButton";
 import { useNavigate } from "react-router-dom";
+import { Member } from "../../common/interfaces";
 
 export const ProfileImageSm = styled.img`
   width: 40px;
@@ -12,7 +13,7 @@ export const ProfileImageSm = styled.img`
 `;
 
 interface Props {
-  user?: any;
+  user?: Member;
 }
 
 const UserProfileIcon: React.FC<Props> = ({ user }) => {
@@ -22,8 +23,14 @@ const UserProfileIcon: React.FC<Props> = ({ user }) => {
       {user ? (
         <Button
           style={{ border: "none" }}
-          icon={<ProfileImageSm src={user.picture} />}
+          icon={
+            <ProfileImageSm
+              src={user.picture}
+              alt={`Profile picture of ${user.firstName}`}
+            />
+          }
           onClick={() => navigate("/profile")}
+          aria-label="User profile picture"
         />
       ) : (
         <GoogleLoginButton />

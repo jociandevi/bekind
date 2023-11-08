@@ -76,6 +76,18 @@ export interface BadgeProps {
   isOwnedByMember?: boolean;
 }
 
+export interface Member {
+  id: string;
+  firstName: string;
+  lastName: string;
+  isActive?: boolean;
+  registeredDate: string;
+  lastLoginDate?: string;
+  picture: string;
+  userName?: string;
+  email: string;
+}
+
 // copied from https://googleapis.dev/nodejs/google-auth-library/5.8.0/interfaces/TokenPayload.html#source
 export interface TokenPayload {
   /**

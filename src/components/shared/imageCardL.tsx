@@ -87,29 +87,45 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
     navigate(`/${item.id}/${url}`);
   };
 
+  const getSize = () => {
+    if (xl) {
+      return monitorCardWidth;
+    }
+
+    if (lg) {
+      return laptopCardWidth;
+    }
+
+    if (md) {
+      return tabletCardWidth;
+    }
+
+    return phoneCardWidth;
+  };
+
+  const generateSrcSet = (src: string) => {
+    const sizes = [320, 480, 640, 960, 1280, 1600, 1920];
+    return sizes.map((size) => `${src}&w=${size} ${size}w`).join(", ");
+  };
+
   return (
     <CardContainer md={md} lg={lg} xl={xl} onClick={cardAreaClicked}>
       <ImageContainer>
         <LazyLoadImage
           alt={item.title}
-          src={item.imageUrl}
+          srcSet={generateSrcSet(item.imageUrl)}
+          sizes="(max-width: 320px) 160px,
+             (max-width: 480px) 240px,
+             (max-width: 640px) 320px,
+             (max-width: 960px) 320px,
+             (max-width: 1280px) 320px,
+             (max-width: 1600px) 400px,
+             1000px"
           style={{
             objectFit: "cover",
             borderRadius: `${variables.borderRadius}px`,
-            height: lg
-              ? xl
-                ? monitorCardWidth
-                : laptopCardWidth
-              : md
-              ? tabletCardWidth
-              : phoneCardWidth,
-            width: lg
-              ? xl
-                ? monitorCardWidth
-                : laptopCardWidth
-              : md
-              ? tabletCardWidth
-              : phoneCardWidth,
+            height: getSize(),
+            width: getSize(),
           }}
         />
 
