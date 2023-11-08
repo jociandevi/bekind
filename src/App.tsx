@@ -16,17 +16,41 @@ import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./common/store";
 import Loading from "./components/shared/loading";
 
-const Login = lazy(() => import("./components/randomactsofkindness/login"));
-const Profile = lazy(() => import("./components/randomactsofkindness/profile"));
-const AddNew = lazy(() => import("./components/randomactsofkindness/addNew"));
+const Login = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "login" */ "./components/randomactsofkindness/login"
+    )
+);
+const Profile = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "profile" */ "./components/randomactsofkindness/profile"
+    )
+);
+const AddNew = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "add-action" */ "./components/randomactsofkindness/addNew"
+    )
+);
 const AddEditBadge = lazy(
-  () => import("./components/randomactsofkindness/addEditBadge")
+  () =>
+    import(
+      /* webpackChunkName: "add-badge" */ "./components/randomactsofkindness/addEditBadge"
+    )
 );
 const KindnessDetails = lazy(
-  () => import("./components/randomactsofkindness/kindnessDetails")
+  () =>
+    import(
+      /* webpackChunkName: "action-details" */ "./components/randomactsofkindness/kindnessDetails"
+    )
 );
 const RandomActOfKindnessList = lazy(
-  () => import("./components/randomactsofkindness/randomActsOfKindnessList")
+  () =>
+    import(
+      /* webpackChunkName: "main-list-page" */ "./components/randomactsofkindness/randomActsOfKindnessList"
+    )
 );
 
 const router = createBrowserRouter(

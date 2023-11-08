@@ -14,7 +14,6 @@ import Loading from "../shared/loading";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
-import Search from "../shared/search";
 import CardContainer from "../shared/cardContainer";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
@@ -30,6 +29,7 @@ const InstallAlert = React.lazy(
   () => import("../shared/pwaCustomInstalls/installAlert")
 );
 const PageError = React.lazy(() => import("../shared/pageError"));
+const Search = React.lazy(() => import("../shared/search"));
 
 const RandomActOfKindnessList: React.FC = () => {
   const user = useSelector(selectUser);
@@ -124,20 +124,16 @@ const RandomActOfKindnessList: React.FC = () => {
   return (
     <>
       <ListLayout>
-        <Suspense fallback={<Loading />}>
-          <CheersModal
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-          />
-        </Suspense>
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}
           right={<UserProfileIcon user={user} />}
         />
-        <Search
-          actions={kindnessActions}
-          setFilteredActions={setFilteredActions}
-        />
+        <Suspense fallback={<></>}>
+          <Search
+            actions={kindnessActions}
+            setFilteredActions={setFilteredActions}
+          />
+        </Suspense>
         {error && !apiSuccess && (
           <Suspense fallback={<Loading />}>
             <PageError
@@ -172,6 +168,12 @@ const RandomActOfKindnessList: React.FC = () => {
         </Suspense>
         <Suspense fallback={<></>}>
           <InstallModal />
+        </Suspense>
+        <Suspense fallback={<Loading />}>
+          <CheersModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
         </Suspense>
       </ListLayout>
     </>
