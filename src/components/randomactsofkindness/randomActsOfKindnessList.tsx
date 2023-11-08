@@ -10,6 +10,13 @@ import { shuffleArray } from "../../common/util";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
 import { RedoOutlined } from "@ant-design/icons";
 import useSignalR from "../../hooks/useSignalR";
+import { Button } from "antd";
+import Loading from "../shared/loading";
+import Header from "../shared/header";
+import BackButton from "../shared/backButton";
+import UserProfileIcon from "../shared/userProfileIcon";
+import Search from "../shared/search";
+import CardContainer from "../shared/cardContainer";
 
 const InstallModal = React.lazy(
   () => import("../shared/pwaCustomInstalls/installModal")
@@ -21,17 +28,7 @@ const CheersModal = React.lazy(() => import("./modals/cheersModal"));
 const InstallAlert = React.lazy(
   () => import("../shared/pwaCustomInstalls/installAlert")
 );
-const CardContainer = React.lazy(() => import("../shared/cardContainer"));
-const Header = React.lazy(() => import("../shared/header"));
-const BackButton = React.lazy(() => import("../shared/backButton"));
-const UserProfileIcon = React.lazy(() => import("../shared/userProfileIcon"));
 const PageError = React.lazy(() => import("../shared/pageError"));
-const Loading = React.lazy(() => import("../shared/loading"));
-const Search = React.lazy(() => import("../shared/search"));
-
-const Button = React.lazy(() =>
-  import("antd").then((module) => ({ default: module.Button }))
-);
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -133,18 +130,14 @@ const RandomActOfKindnessList: React.FC = () => {
             setIsModalOpen={setIsModalOpen}
           />
         </Suspense>
-        <Suspense fallback={<></>}>
-          <Header
-            left={searchParams.size === 0 ? undefined : <BackButton />}
-            right={<UserProfileIcon user={user} />}
-          />
-        </Suspense>
-        <Suspense fallback={<></>}>
-          <Search
-            actions={kindnessActions}
-            setFilteredActions={setFilteredActions}
-          />
-        </Suspense>
+        <Header
+          left={searchParams.size === 0 ? undefined : <BackButton />}
+          right={<UserProfileIcon user={user} />}
+        />
+        <Search
+          actions={kindnessActions}
+          setFilteredActions={setFilteredActions}
+        />
         {error && !apiSuccess && (
           <Suspense fallback={<Loading />}>
             <PageError
@@ -166,13 +159,11 @@ const RandomActOfKindnessList: React.FC = () => {
             />
           </Suspense>
         )}
-        <Suspense fallback={<></>}>
-          <CardContainer
-            actions={filteredActions}
-            likedActions={likedActions}
-            filterByCategory={filterByCategory}
-          />
-        </Suspense>
+        <CardContainer
+          actions={filteredActions}
+          likedActions={likedActions}
+          filterByCategory={filterByCategory}
+        />
         <Suspense fallback={<></>}>
           <InstallButton />
         </Suspense>

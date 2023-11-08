@@ -2,15 +2,16 @@ import React, { ReactNode, Suspense } from "react";
 import { FlexboxCol } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { ModalProps } from "antd";
+import { ModalProps, Typography } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import Loading from "./loading";
+import Title from "antd/es/typography/Title";
 
 const Modal = React.lazy(() =>
   import("antd").then((module) => ({ default: module.Modal }))
 );
-const Title = React.lazy(() => import("antd/es/typography/Title"));
-const Text = React.lazy(() => import("antd/es/typography/Text"));
+
+const { Text } = Typography;
 
 const StyledModal = styled(Modal)`
   margin: 0;
