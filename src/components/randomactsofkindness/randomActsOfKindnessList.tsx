@@ -8,7 +8,6 @@ import { useGetApi } from "../../common/apiCalls";
 import { shuffleArray } from "../../common/util";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
 import { RedoOutlined } from "@ant-design/icons";
-import useSignalR from "../../hooks/useSignalR";
 import { Button } from "antd";
 import Loading from "../shared/loading";
 import Header from "../shared/header";
@@ -30,6 +29,7 @@ const InstallAlert = React.lazy(
 );
 const PageError = React.lazy(() => import("../shared/pageError"));
 const Search = React.lazy(() => import("../shared/search"));
+const SignalRConnector = React.lazy(() => import("../shared/signalRConnector"));
 
 const RandomActOfKindnessList: React.FC = () => {
   const user = useSelector(selectUser);
@@ -48,9 +48,6 @@ const RandomActOfKindnessList: React.FC = () => {
   const navigate = useNavigate();
   // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
   const [apiSuccess, setApiSuccess] = useState(false);
-  const hubConnection = useSignalR(
-    "https://bekind-api.azurewebsites.net/notificationhub"
-  );
 
   useEffect(() => {
     async function fetchData() {
@@ -90,23 +87,6 @@ const RandomActOfKindnessList: React.FC = () => {
       setFilteredActions(kindnessActions);
     }
   }, [searchParams, kindnessActions]);
-
-  // listen to backend if a badge is reached
-  useEffect(() => {
-    if (hubConnection) {
-      hubConnection.on("ReceiveNotification", (message: string) => {
-        console.log("Notification received: ", message);
-        // congratulation modal for the badge
-        // Update this MemberBadge with a PUT to enable it for user
-      });
-    }
-
-    return () => {
-      if (hubConnection) {
-        hubConnection.off("ReceiveNotification");
-      }
-    };
-  }, [hubConnection]);
 
   const filterByCategory = (category: Category) => {
     if (category.name === "All") {
@@ -174,6 +154,9 @@ const RandomActOfKindnessList: React.FC = () => {
             isModalOpen={isModalOpen}
             setIsModalOpen={setIsModalOpen}
           />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <SignalRConnector />
         </Suspense>
       </ListLayout>
     </>
