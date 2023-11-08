@@ -71,11 +71,12 @@ const CardContainer: React.FC<Props> = ({
         ))}
       </Flexbox>
       <StyledContainer>
-        {actions.map((item) => (
+        {actions.map((item, index) => (
           <ImageCardL
             item={item}
             key={item.id}
             isLiked={likedActions?.includes(item?.id!)}
+            shouldPreload={index < 1}
           />
         ))}
       </StyledContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flexbox,
   ImageContainer,
@@ -63,14 +63,43 @@ interface Props {
   item: KindnessAction;
   isGlowing?: boolean;
   isLiked?: boolean;
+  shouldPreload?: boolean;
 }
 
-const ImageCardL: React.FC<Props> = ({ item, isLiked }) => {
+const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
   const { md, lg, xl } = useMediaQueries();
   const navigate = useNavigate();
   const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
   const { callDelete } = useDelete(`api/LikedKindness/${item.id}`);
   const [isItLiked, setIsItLiked] = useState(isLiked);
+
+  useEffect(() => {
+    if (shouldPreload) {
+      const viewportWidth = window.innerWidth;
+      const sizes = [320, 480, 640, 960, 1280, 1600, 1920];
+      // Find the best size to preload
+      const preloadSize = sizes.reduce((closest, size) => {
+        if (
+          closest === 0 ||
+          Math.abs(size - viewportWidth) < Math.abs(closest - viewportWidth)
+        ) {
+          return size;
+        }
+        return closest;
+      }, 0);
+
+      const preloadSrc = `${item.imageUrl}&w=${preloadSize}`;
+      const preloadLink = document.createElement("link");
+      preloadLink.href = preloadSrc;
+      preloadLink.rel = "preload";
+      preloadLink.as = "image";
+      document.head.appendChild(preloadLink);
+
+      return () => {
+        document.head.removeChild(preloadLink);
+      };
+    }
+  }, [item.imageUrl, shouldPreload]);
 
   const onLike = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
