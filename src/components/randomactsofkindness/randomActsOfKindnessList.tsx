@@ -1,8 +1,7 @@
-import React, { Suspense, useContext, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { ListLayout, CenterAlignedFlexbox } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
-import { AuthContext } from "../../common/authProvider";
 import { Category, KindnessAction } from "../../common/interfaces";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useGetApi } from "../../common/apiCalls";
@@ -17,6 +16,8 @@ import BackButton from "../shared/backButton";
 import UserProfileIcon from "../shared/userProfileIcon";
 import Search from "../shared/search";
 import CardContainer from "../shared/cardContainer";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/selectors";
 
 const InstallModal = React.lazy(
   () => import("../shared/pwaCustomInstalls/installModal")
@@ -31,7 +32,7 @@ const InstallAlert = React.lazy(
 const PageError = React.lazy(() => import("../shared/pageError"));
 
 const RandomActOfKindnessList: React.FC = () => {
-  const { user } = useContext(AuthContext);
+  const user = useSelector(selectUser);
   const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
     []
   );
@@ -50,7 +51,6 @@ const RandomActOfKindnessList: React.FC = () => {
   const hubConnection = useSignalR(
     "https://bekind-api.azurewebsites.net/notificationhub"
   );
-  // 1. move user to redux (with createslice)
 
   useEffect(() => {
     async function fetchData() {

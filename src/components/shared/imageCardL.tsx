@@ -72,6 +72,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
   const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
   const { callDelete } = useDelete(`api/LikedKindness/${item.id}`);
   const [isItLiked, setIsItLiked] = useState(isLiked);
+  const [preloadedSrc, setPreloadedSrc] = useState<string>("");
 
   useEffect(() => {
     if (shouldPreload) {
@@ -94,6 +95,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
       preloadLink.rel = "preload";
       preloadLink.as = "image";
       document.head.appendChild(preloadLink);
+      setPreloadedSrc(preloadSrc);
 
       return () => {
         document.head.removeChild(preloadLink);
@@ -140,23 +142,36 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
   return (
     <CardContainer md={md} lg={lg} xl={xl} onClick={cardAreaClicked}>
       <ImageContainer>
-        <LazyLoadImage
-          alt={item.title}
-          srcSet={generateSrcSet(item.imageUrl)}
-          sizes="(max-width: 320px) 160px,
-             (max-width: 480px) 240px,
-             (max-width: 640px) 320px,
-             (max-width: 960px) 320px,
-             (max-width: 1280px) 320px,
-             (max-width: 1600px) 400px,
-             1000px"
-          style={{
-            objectFit: "cover",
-            borderRadius: `${variables.borderRadius}px`,
-            height: getSize(),
-            width: getSize(),
-          }}
-        />
+        {shouldPreload ? (
+          <img
+            alt={item.title}
+            srcSet={preloadedSrc}
+            style={{
+              objectFit: "cover",
+              borderRadius: `${variables.borderRadius}px`,
+              height: getSize(),
+              width: getSize(),
+            }}
+          />
+        ) : (
+          <LazyLoadImage
+            alt={item.title}
+            srcSet={generateSrcSet(item.imageUrl)}
+            sizes="(max-width: 320px) 160px,
+           (max-width: 480px) 240px,
+           (max-width: 640px) 320px,
+           (max-width: 960px) 320px,
+           (max-width: 1280px) 320px,
+           (max-width: 1600px) 400px,
+           1000px"
+            style={{
+              objectFit: "cover",
+              borderRadius: `${variables.borderRadius}px`,
+              height: getSize(),
+              width: getSize(),
+            }}
+          />
+        )}
 
         <OverlayIconButton
           icon={<HeartFilled />}

@@ -13,7 +13,7 @@ export const ProfileImageSm = styled.img`
 `;
 
 interface Props {
-  user?: Member;
+  user: Member | null;
 }
 
 const UserProfileIcon: React.FC<Props> = ({ user }) => {

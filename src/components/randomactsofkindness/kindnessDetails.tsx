@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FlexboxCol,
   ImageContainer,
@@ -8,7 +8,6 @@ import { Button } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
-import { AuthContext } from "../../common/authProvider";
 import { useNavigate, useParams } from "react-router-dom";
 import { HeartFilled, ArrowLeftOutlined } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
@@ -21,6 +20,8 @@ import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import ProgressBar from "../shared/progressBar";
 import { useDelete } from "../../hooks/useDelete";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/selectors";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;
@@ -73,7 +74,7 @@ export const ArticleImage = styled.img`
 
 const KindnessDetails: React.FC = () => {
   const params = useParams();
-  const { user } = useContext(AuthContext);
+  const user = useSelector(selectUser);
   const navigate = useNavigate();
   const [action, setAction] = useState<KindnessAction | undefined>();
   const [isLiked, setIsLiked] = useState<boolean>(false);

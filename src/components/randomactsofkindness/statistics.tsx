@@ -1,16 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ListLayout } from "../shared/sharedLayouts";
 import GroupedBarChart from "../shared/groupedBarChart";
-import { AuthContext } from "../../common/authProvider";
-import { useNavigate } from "react-router-dom";
 import ProfileStatistics from "./profileStatistics";
 import { useGetApi } from "../../common/apiCalls";
 import { MemberStatistics } from "../../common/interfaces";
 import Loading from "../shared/loading";
 
 const Statistics: React.FC = () => {
-  const { user: googleUser } = useContext(AuthContext);
-  const navigate = useNavigate();
   const { callGetApi: getMyStats, loading } = useGetApi(
     `api/Member/MemberStatistics`
   );
@@ -33,16 +29,6 @@ const Statistics: React.FC = () => {
       setAvgStats(res?.data);
     });
   }, [getAverageStats]);
-
-  useEffect(() => {
-    if (!googleUser) {
-      navigate("/");
-    }
-  }, [navigate, googleUser]);
-
-  if (!googleUser) {
-    return null;
-  }
 
   if (loading || avgDataLoading) {
     return <Loading />;

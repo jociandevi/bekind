@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { Button, Tooltip } from "antd";
@@ -9,8 +9,11 @@ import ConfirmModal from "../randomactsofkindness/modals/confirmModal";
 import FeedbackModal from "../randomactsofkindness/modals/feedbackModal";
 import { useDispatch, useSelector } from "react-redux";
 import { setDailyDone, setUserStreak } from "../../common/auth.reducer";
-import { selectDailyIsDone, selectUserStreak } from "../../redux/selectors";
-import { AuthContext } from "../../common/authProvider";
+import {
+  selectDailyIsDone,
+  selectUser,
+  selectUserStreak,
+} from "../../redux/selectors";
 
 const DisabledButton = styled(Button)`
   color: ${variables.middleGray};
@@ -24,7 +27,7 @@ interface Props {
 }
 
 const PickButton: React.FC<Props> = ({ item }) => {
-  const { user } = useContext(AuthContext);
+  const user = useSelector(selectUser);
   const dailyIsDone = useSelector(selectDailyIsDone);
   const userStreak = useSelector(selectUserStreak);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);

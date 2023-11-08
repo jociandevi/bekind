@@ -8,7 +8,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { theme } from "./common/theme";
-import { AuthProvider } from "./common/authProvider";
 import ErrorPage404 from "./components/shared/errorPage404";
 import PrivacyPolicy from "./components/shared/privacyPolicy";
 import TermsAndConditions from "./components/shared/termsAndConditions";
@@ -122,11 +121,9 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <AuthProvider>
-          <ConfigProvider theme={{ ...theme }}>
-            <RouterProvider router={router} />
-          </ConfigProvider>
-        </AuthProvider>
+        <ConfigProvider theme={{ ...theme }}>
+          <RouterProvider router={router} />
+        </ConfigProvider>
       </PersistGate>
     </Provider>
   );

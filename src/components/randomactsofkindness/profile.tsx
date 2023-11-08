@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   CenterAlignedFlexboxCol,
   CircleImage,
@@ -12,7 +12,6 @@ import ImageCardM from "../shared/imageCardM";
 import Title from "antd/es/typography/Title";
 import BadgeList from "./badgeList";
 import { useMediaQueries } from "../../common/mediaQueryHook";
-import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Pants } from "../../img/badges/pants.svg";
 import { KindnessHistory } from "../../common/interfaces";
@@ -24,6 +23,8 @@ import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
 import Statistics from "./statistics";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/selectors";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${variables.spacingXs};
@@ -71,7 +72,8 @@ const BadgeContainer = styled.div<{ md?: boolean }>`
 
 const Profile: React.FC = () => {
   const { md } = useMediaQueries();
-  const { user: googleUser } = useContext(AuthContext);
+  const user = useSelector(selectUser);
+
   const navigate = useNavigate();
   const { getHistory, loading, error } = useKindnessHistory();
   const { callGetApi: getLiked } = useGetApi(`api/LikedKindness`);
@@ -143,12 +145,12 @@ const Profile: React.FC = () => {
   const [activeKey, setActiveKey] = useState(items[0].key);
 
   useEffect(() => {
-    if (!googleUser) {
+    if (!user) {
       navigate("/");
     }
-  }, [navigate, googleUser]);
+  }, [navigate, user]);
 
-  if (!googleUser) {
+  if (!user) {
     return null;
   }
 
@@ -179,15 +181,15 @@ const Profile: React.FC = () => {
       <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
         <ProfileImageContainer md={md}>
           <CircleImage
-            src={googleUser.picture}
-            alt={`Profile picture of ${googleUser.name}`}
+            src={user.picture}
+            alt={`Profile picture of ${user.firstName}`}
             md={md}
             style={{ position: "absolute", top: "0", left: "0" }}
           />
           {renderLatestAchievedBadge()}
         </ProfileImageContainer>
         <Title level={4} style={{ marginTop: variables.spacingS }}>
-          {googleUser.firstName} {googleUser.lastName}
+          {user.firstName} {user.lastName}
         </Title>
       </CenterAlignedFlexboxCol>
 

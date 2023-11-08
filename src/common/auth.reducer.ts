@@ -1,17 +1,19 @@
 // auth.reducer.ts
 
+import { Member } from "./interfaces";
+
 export type AuthState = {
   token: string | null;
   userStreak: number;
   dailyIsDone: boolean;
-  // ... other state properties
+  user: Member | null;
 };
 
 const initialState = {
   token: null,
   userStreak: 0,
   dailyIsDone: false,
-  // ... other state properties
+  user: null,
 };
 
 function authReducer(state = initialState, action: any) {
@@ -36,7 +38,16 @@ function authReducer(state = initialState, action: any) {
         ...state,
         dailyIsDone: action.payload,
       };
-    // ... other cases
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case "CLEAR_USER":
+      return {
+        ...state,
+        user: null,
+      };
     default:
       return state;
   }
@@ -59,6 +70,14 @@ export const setUserStreak = (streak: number) => ({
 export const setDailyDone = (isDone: boolean) => ({
   type: "SET_DAILY_DONE",
   payload: isDone,
+});
+export const setUser = (user: Member) => ({
+  type: "SET_USER",
+  payload: user,
+});
+
+export const clearUser = () => ({
+  type: "CLEAR_USER",
 });
 
 export default authReducer;

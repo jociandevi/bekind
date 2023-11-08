@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import GoogleLoginButton from "../shared/googleLoginButton";
-import { AuthContext } from "../../common/authProvider";
 import { useNavigate } from "react-router-dom";
 import {
   CenterAlignedFlexbox,
@@ -13,6 +12,8 @@ import { Button } from "antd";
 import SunriseImage from "../shared/sunriseImage";
 import styled from "styled-components";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/selectors";
 
 const LoginContainer = styled(CenterAlignedFlexboxCol)`
   height: 100vh;
@@ -37,7 +38,7 @@ const LoginContentContainer = styled.div`
 `;
 
 const Login: React.FC = () => {
-  const { user } = useContext(AuthContext);
+  const user = useSelector(selectUser);
   const navigate = useNavigate();
   const { md } = useMediaQueries();
 

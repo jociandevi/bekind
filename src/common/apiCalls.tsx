@@ -1,15 +1,13 @@
 import Cookies from "js-cookie";
 import { getAPI, postAPI } from "./apiCommon";
-import { useCallback, useContext, useState } from "react";
-import { AuthContext } from "./authProvider";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeToken, setToken } from "./auth.reducer";
+import { clearUser, removeToken, setToken, setUser } from "./auth.reducer";
 import { store } from "./store";
 
 export const useLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { setUser } = useContext(AuthContext);
   const dispatch = useDispatch();
 
   const login = useCallback(
@@ -29,14 +27,12 @@ export const useLogin = () => {
             httpOnly: true,
           });
 
-          const userResponse = await getApiCall("/api/Member/Me");
+          const userResponse = await getApiCall("api/Member/Me");
           const userData = userResponse.data;
 
-          // Store the user data in Redux
-          setUser(userData);
+          dispatch(setUser(userData));
 
-          // Store the user data in localStorage
-          localStorage.setItem("user", JSON.stringify(userData));
+          // localStorage.setItem("user", JSON.stringify(userData));
 
           setLoading(false);
           return userData;
@@ -51,7 +47,7 @@ export const useLogin = () => {
         setLoading(false);
       }
     },
-    [setUser, dispatch]
+    [dispatch]
   );
 
   return { login, loading, error };
@@ -64,7 +60,8 @@ export const getApiCall = (url: string) =>
     } else if (res.data?.status === 401) {
       console.log("User seems to be unauthenticated.");
       store.dispatch(removeToken());
-      localStorage.removeItem("user");
+      store.dispatch(clearUser());
+      // localStorage.removeItem("user");
     }
   });
 
@@ -110,7 +107,7 @@ export const usePostApi = (url: string) => {
 export const useGetApi = (url: string) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { setUser } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const callGetApi = useCallback(async () => {
     setLoading(true);
@@ -124,8 +121,7 @@ export const useGetApi = (url: string) => {
       } else if (response?.data?.status === 401) {
         setError("Looks like you are unauthorized.");
         store.dispatch(removeToken());
-        localStorage.removeItem("user");
-        setUser(null);
+        dispatch(clearUser());
       } else if (response?.status === 400 || response?.data?.status === 400) {
         const errorMessage = response?.data?.data?.errorMessages?.[0];
         setError(errorMessage || "This seems like a bad request");
@@ -139,6 +135,6 @@ export const useGetApi = (url: string) => {
       setError("An error occurred during the GET request.");
       setLoading(false);
     }
-  }, [url, setUser]);
+  }, [url, dispatch]);
   return { callGetApi, loading, error };
 };
