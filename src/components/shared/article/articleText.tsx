@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { variables } from "../../../common/variables";
 import styled from "styled-components";
-import { Typography } from "antd";
+import Loading from "../loading";
 
-const { Text, Link } = Typography;
+const Link = React.lazy(() => import("antd/es/typography/Link"));
+const Text = React.lazy(() => import("antd/es/typography/Text"));
 
 interface Props {
   text: string;
@@ -56,34 +57,36 @@ const ArticleText: React.FC<Props> = ({
   });
 
   return (
-    <Text
-      style={{
-        marginBottom: isFootNote ? "inherit" : variables.spacingS,
-        fontWeight: fontWeight ?? "inherit",
-        lineHeight: isFootNote ? 1 : 2,
-      }}
-    >
-      {textItemList.map((item, index) => (
-        <span key={index} style={{ fontSize: fontSize ?? "14px" }}>
-          {item.type === "text" && <BasicText>{item.text}</BasicText>}
-          {item.type === "link" && (
-            <Link
-              target="_blank"
-              underline
-              href={
-                textItemList[index + 1]
-                  ? textItemList[index + 1].text.slice(1, -1)
-                  : undefined
-              }
-              style={{ color: variables.pink6, fontSize: fontSize ?? "14px" }}
-            >
-              {item.text}
-            </Link>
-          )}
-          {item.type === "sub" && <Sub>{item.text}</Sub>}
-        </span>
-      ))}
-    </Text>
+    <Suspense fallback={<Loading />}>
+      <Text
+        style={{
+          marginBottom: isFootNote ? "inherit" : variables.spacingS,
+          fontWeight: fontWeight ?? "inherit",
+          lineHeight: isFootNote ? 1 : 2,
+        }}
+      >
+        {textItemList.map((item, index) => (
+          <span key={index} style={{ fontSize: fontSize ?? "14px" }}>
+            {item.type === "text" && <BasicText>{item.text}</BasicText>}
+            {item.type === "link" && (
+              <Link
+                target="_blank"
+                underline
+                href={
+                  textItemList[index + 1]
+                    ? textItemList[index + 1].text.slice(1, -1)
+                    : undefined
+                }
+                style={{ color: variables.pink6, fontSize: fontSize ?? "14px" }}
+              >
+                {item.text}
+              </Link>
+            )}
+            {item.type === "sub" && <Sub>{item.text}</Sub>}
+          </span>
+        ))}
+      </Text>
+    </Suspense>
   );
 };
 

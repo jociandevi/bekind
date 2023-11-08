@@ -1,12 +1,16 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 import { FlexboxCol } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Modal, ModalProps, Typography } from "antd";
-import Title from "antd/es/typography/Title";
+import { ModalProps } from "antd";
 import { useMediaQueries } from "../../common/mediaQueryHook";
+import Loading from "./loading";
 
-const { Text } = Typography;
+const Modal = React.lazy(() =>
+  import("antd").then((module) => ({ default: module.Modal }))
+);
+const Title = React.lazy(() => import("antd/es/typography/Title"));
+const Text = React.lazy(() => import("antd/es/typography/Text"));
 
 const StyledModal = styled(Modal)`
   margin: 0;
@@ -92,7 +96,7 @@ const AntdModal: React.FC<Props> = ({
   };
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <StyledModal
         open={isModalOpen}
         onCancel={handleCancel}
@@ -105,11 +109,15 @@ const AntdModal: React.FC<Props> = ({
         <ModalContent imageBackgroundColor={imageBackgroundColor}>
           {imageUrl && <img src={imageUrl} alt={imageUrl} />}
           {image && image}
-          <Title level={3}>{props.title}</Title>
-          <Text>{description}</Text>
+          <Suspense fallback={<></>}>
+            <Title level={3}>{props.title}</Title>
+          </Suspense>
+          <Suspense fallback={<></>}>
+            <Text>{description}</Text>
+          </Suspense>
         </ModalContent>
       </StyledModal>
-    </>
+    </Suspense>
   );
 };
 

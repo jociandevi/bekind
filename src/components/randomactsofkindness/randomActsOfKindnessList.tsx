@@ -1,27 +1,37 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import { ListLayout, CenterAlignedFlexbox } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
-import InstallModal from "../shared/pwaCustomInstalls/installModal";
-import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import { AuthContext } from "../../common/authProvider";
-import CheersModal from "./modals/cheersModal";
-import InstallAlert from "../shared/pwaCustomInstalls/installAlert";
 import { Category, KindnessAction } from "../../common/interfaces";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import CardContainer from "../shared/cardContainer";
-import Header from "../shared/header";
-import BackButton from "../shared/backButton";
-import UserProfileIcon from "../shared/userProfileIcon";
 import { useGetApi } from "../../common/apiCalls";
-import PageError from "../shared/pageError";
-import Loading from "../shared/loading";
 import { shuffleArray } from "../../common/util";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
-import Search from "../shared/search";
 import { RedoOutlined } from "@ant-design/icons";
-import { Button } from "antd";
 import useSignalR from "../../hooks/useSignalR";
+
+const InstallModal = React.lazy(
+  () => import("../shared/pwaCustomInstalls/installModal")
+);
+const InstallButton = React.lazy(
+  () => import("../shared/pwaCustomInstalls/installButton")
+);
+const CheersModal = React.lazy(() => import("./modals/cheersModal"));
+const InstallAlert = React.lazy(
+  () => import("../shared/pwaCustomInstalls/installAlert")
+);
+const CardContainer = React.lazy(() => import("../shared/cardContainer"));
+const Header = React.lazy(() => import("../shared/header"));
+const BackButton = React.lazy(() => import("../shared/backButton"));
+const UserProfileIcon = React.lazy(() => import("../shared/userProfileIcon"));
+const PageError = React.lazy(() => import("../shared/pageError"));
+const Loading = React.lazy(() => import("../shared/loading"));
+const Search = React.lazy(() => import("../shared/search"));
+
+const Button = React.lazy(() =>
+  import("antd").then((module) => ({ default: module.Button }))
+);
 
 const RandomActOfKindnessList: React.FC = () => {
   const { user } = useContext(AuthContext);
@@ -32,7 +42,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const [filteredActions, setFilteredActions] = useState<KindnessAction[] | []>(
     []
   );
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   let [searchParams, setSearchParams] = useSearchParams();
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
   const { getHistory } = useKindnessHistory();
@@ -117,43 +127,61 @@ const RandomActOfKindnessList: React.FC = () => {
   return (
     <>
       <ListLayout>
-        <CheersModal
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-        <Header
-          left={searchParams.size === 0 ? undefined : <BackButton />}
-          right={<UserProfileIcon user={user} />}
-        />
-        <Search
-          actions={kindnessActions}
-          setFilteredActions={setFilteredActions}
-        />
-        {error && !apiSuccess && (
-          <PageError
-            message="An error happened, sorry!"
-            description={
-              <CenterAlignedFlexbox>
-                <Button
-                  type="primary"
-                  icon={<RedoOutlined />}
-                  onClick={() => navigate(0)}
-                >
-                  Let's try again
-                </Button>
-              </CenterAlignedFlexbox>
-            }
-            style={{ margin: variables.spacingXs }}
+        <Suspense fallback={<Loading />}>
+          <CheersModal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
           />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <Header
+            left={searchParams.size === 0 ? undefined : <BackButton />}
+            right={<UserProfileIcon user={user} />}
+          />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <Search
+            actions={kindnessActions}
+            setFilteredActions={setFilteredActions}
+          />
+        </Suspense>
+        {error && !apiSuccess && (
+          <Suspense fallback={<Loading />}>
+            <PageError
+              message="An error happened, sorry!"
+              description={
+                <CenterAlignedFlexbox>
+                  <Suspense fallback={<></>}>
+                    <Button
+                      type="primary"
+                      icon={<RedoOutlined />}
+                      onClick={() => navigate(0)}
+                    >
+                      Let's try again
+                    </Button>
+                  </Suspense>
+                </CenterAlignedFlexbox>
+              }
+              style={{ margin: variables.spacingXs }}
+            />
+          </Suspense>
         )}
-        <CardContainer
-          actions={filteredActions}
-          likedActions={likedActions}
-          filterByCategory={filterByCategory}
-        />
-        <InstallButton />
-        <InstallAlert />
-        <InstallModal />
+        <Suspense fallback={<></>}>
+          <CardContainer
+            actions={filteredActions}
+            likedActions={likedActions}
+            filterByCategory={filterByCategory}
+          />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <InstallButton />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <InstallAlert />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <InstallModal />
+        </Suspense>
       </ListLayout>
     </>
   );
