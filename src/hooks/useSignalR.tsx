@@ -23,11 +23,28 @@ const useSignalR = (hubUrl: string) => {
       }
     };
 
+    const stopConnection = async () => {
+      try {
+        await connect.stop();
+        console.log("Disconnected from SignalR hub");
+      } catch (err) {
+        console.error("Error while disconnecting", err);
+      }
+    };
+
     startConnection();
 
-    // Clean up on dismount
+    const handlePageHide = () => stopConnection();
+    const handlePageShow = () => startConnection();
+
+    window.addEventListener("pagehide", handlePageHide);
+    window.addEventListener("pageshow", handlePageShow);
+
+    // Clean up on component dismount and pagehide/pageshow events
     return () => {
-      connect.stop();
+      stopConnection();
+      window.removeEventListener("pagehide", handlePageHide);
+      window.removeEventListener("pageshow", handlePageShow);
     };
   }, [hubUrl]);
 
