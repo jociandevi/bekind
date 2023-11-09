@@ -2,6 +2,7 @@ import { variables } from "./variables";
 import { ReactComponent as Pants } from "../img/badges/pants.svg";
 import { ReactComponent as Hotel } from "../img/badges/hotel.svg";
 import { ReactComponent as DivingGoggles } from "../img/badges/diving-goggles.svg";
+import { ReactComponent as Food } from "../img/badges/food.svg";
 import { ReactComponent as Tree } from "../img/badges/tree.svg";
 import { Category, CategoryNames } from "./interfaces";
 
@@ -21,6 +22,10 @@ export const badgeIcons: { id: number; icon: React.ReactNode }[] = [
   {
     id: 4,
     icon: <Tree width={80} height={80} />,
+  },
+  {
+    id: 5,
+    icon: <Food width={80} height={80} />,
   },
 ];
 

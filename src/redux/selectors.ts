@@ -5,3 +5,4 @@ export const selectUserStreak = (state: RootState) =>
 export const selectDailyIsDone = (state: RootState) =>
   state.authReducer.dailyIsDone;
 export const selectUser = (state: RootState) => state.authReducer.user;
+export const selectToken = (state: RootState) => state.authReducer.token;

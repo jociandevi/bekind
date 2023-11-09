@@ -1,8 +1,23 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import * as signalR from "@microsoft/signalr";
 
-const useSignalR = (hubUrl: string) => {
+const useSignalR = (hubUrl: string, onConnected?: () => void) => {
   const [connection, setConnection] = useState<signalR.HubConnection>();
+
+  // Function to send initial message
+  const sendInitialMessage = useCallback(
+    async (conn: signalR.HubConnection) => {
+      const initialMessage = { protocol: "json", version: 1 }; // Your initial message object
+      const messageString = JSON.stringify(initialMessage) + "\u001E"; // Append 0x1E at the end of the message
+      try {
+        await conn.send(messageString);
+        console.log("Initial message sent to the SignalR hub");
+      } catch (err) {
+        console.error("Error sending initial message", err);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     // Create and start the connection
@@ -18,6 +33,13 @@ const useSignalR = (hubUrl: string) => {
       try {
         await connect.start();
         console.log("Connected to SignalR hub");
+
+        if (onConnected) {
+          onConnected();
+        }
+
+        // Send initial message after establishing connection
+        await sendInitialMessage(connect);
       } catch (err) {
         console.error("Error while establishing connection", err);
       }
@@ -46,7 +68,7 @@ const useSignalR = (hubUrl: string) => {
       window.removeEventListener("pagehide", handlePageHide);
       window.removeEventListener("pageshow", handlePageShow);
     };
-  }, [hubUrl]);
+  }, [hubUrl, onConnected, sendInitialMessage]);
 
   return connection;
 };
