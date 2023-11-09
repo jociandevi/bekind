@@ -58,8 +58,11 @@ const RandomActOfKindnessList: React.FC = () => {
   }, [callGetApi]);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     getHistory();
-  }, [getHistory]);
+  }, [getHistory, user]);
 
   useEffect(() => {
     if (!user) {
@@ -138,9 +141,11 @@ const RandomActOfKindnessList: React.FC = () => {
             setIsModalOpen={setIsModalOpen}
           />
         </Suspense>
-        <Suspense fallback={<></>}>
-          <SignalRConnector />
-        </Suspense>
+        {user && (
+          <Suspense fallback={<></>}>
+            <SignalRConnector />
+          </Suspense>
+        )}
       </ListLayout>
     </>
   );
