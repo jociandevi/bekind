@@ -1,9 +1,10 @@
 import React from "react";
 import { Flexbox } from "./sharedLayouts";
-import { Button, Tooltip } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
+import Button from "antd/es/button";
+import Tooltip from "antd/es/tooltip";
 
 const OptionButton = styled(Button)<{ color: string }>`
   border: none;

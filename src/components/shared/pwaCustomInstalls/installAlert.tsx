@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Button } from "antd";
+import { Alert } from "antd";
+import Button from "antd/es/button";
 import styled from "styled-components";
 import { variables } from "../../../common/variables";
 import { useMediaQueries } from "../../../common/mediaQueryHook";

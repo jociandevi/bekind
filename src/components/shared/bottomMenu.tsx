@@ -1,6 +1,6 @@
 import React from "react";
 import { CenterAlignedFlexbox, FlexboxCol, StyledText } from "./sharedLayouts";
-import { Button } from "antd";
+import Button from "antd/es/button";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Button, Tooltip } from "antd";
+import Button from "antd/es/button";
+import Tooltip from "antd/es/tooltip";
 import { KindnessAction } from "../../common/interfaces";
 import { glowingStyle } from "./userJourney";
 import { usePostApi } from "../../common/apiCalls";

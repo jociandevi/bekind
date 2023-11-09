@@ -2,7 +2,7 @@ import React from "react";
 import { Flexbox } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Tooltip } from "antd";
+import Tooltip from "antd/es/tooltip";
 
 const BarChart = styled.div<{
   color?: string;

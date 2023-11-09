@@ -4,7 +4,7 @@ import {
   CircleImage,
   StyledText,
 } from "../shared/sharedLayouts";
-import { Tabs } from "antd";
+import Tabs from "antd/es/tabs";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";

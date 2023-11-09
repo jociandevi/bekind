@@ -6,7 +6,7 @@ import { Flexbox, TagButton } from "./sharedLayouts";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
-import { Button } from "antd";
+import Button from "antd/es/button";
 
 interface Props {
   actions: KindnessAction[];

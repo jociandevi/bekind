@@ -4,7 +4,6 @@ import {
   StyledGrid,
   StyledInput,
 } from "../shared/sharedLayouts";
-import { Button, Form, InputNumber, Radio, Steps } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { InputRef } from "antd";
@@ -17,6 +16,11 @@ import { useGetApi, usePostApi } from "../../common/apiCalls";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import { usePut } from "../../hooks/usePut";
+import Button from "antd/es/button";
+import Form from "antd/es/form";
+import InputNumber from "antd/es/input-number";
+import Steps from "antd/es/steps";
+import Radio from "antd/es/radio";
 
 const StyledRadioButton = styled(Button)`
   margin: ${variables.spacingXxs};

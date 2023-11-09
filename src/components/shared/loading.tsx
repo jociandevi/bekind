@@ -1,7 +1,7 @@
 import React from "react";
 import { Flexbox } from "./sharedLayouts";
 import styled from "styled-components";
-import { Spin } from "antd";
+import Spin from "antd/es/spin";
 
 interface Props {
   left?: React.ReactNode;

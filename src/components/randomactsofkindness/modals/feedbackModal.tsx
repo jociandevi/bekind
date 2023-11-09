@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "antd";
+import Button from "antd/es/button";
 import AntdModal from "../../shared/modal";
 import FireImg from "../../../img/fire.png";
 import { variables } from "../../../common/variables";

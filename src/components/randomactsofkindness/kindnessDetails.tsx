@@ -4,7 +4,6 @@ import {
   ImageContainer,
   StyledText,
 } from "../shared/sharedLayouts";
-import { Button } from "antd";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
@@ -22,6 +21,7 @@ import ProgressBar from "../shared/progressBar";
 import { useDelete } from "../../hooks/useDelete";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
+import Button from "antd/es/button";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${variables.spacingM} auto;

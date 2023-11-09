@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { StyledSearch } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import { KindnessAction } from "../../common/interfaces";
-import { Form } from "antd";
+import Form from "antd/es/form";
 
 interface Props {
   setFilteredActions: (

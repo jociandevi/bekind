@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AntdModal from "../modal";
 import BeKindLogo from "../../../logoOutbreak_v1.png";
 import { useMediaQueries } from "../../../common/mediaQueryHook";
-import { Button } from "antd";
+import Button from "antd/es/button";
 import { CenterAlignedFlexboxCol } from "../sharedLayouts";
 import styled from "styled-components";
 

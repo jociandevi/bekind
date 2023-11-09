@@ -1,12 +1,10 @@
 import React from "react";
-import { Typography } from "antd";
+import Text from "antd/es/typography/Text";
 import AntdModal from "../../shared/modal";
 import { variables } from "../../../common/variables";
 import { CenterAlignedFlexbox } from "../../shared/sharedLayouts";
 import { BadgeProps } from "../../../common/interfaces";
 import NecessaryAction from "./necessaryAction";
-
-const { Text } = Typography;
 
 interface Props {
   item: BadgeProps;

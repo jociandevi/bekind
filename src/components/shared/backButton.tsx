@@ -1,7 +1,8 @@
 import React from "react";
-import { Button, ButtonProps } from "antd";
+import { ButtonProps } from "antd";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import Button from "antd/es/button";
 
 interface Props extends ButtonProps {}
 

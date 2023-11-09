@@ -6,7 +6,7 @@ import {
 } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Button } from "antd";
+import Button from "antd/es/button";
 import Header from "./header";
 import { useNavigate } from "react-router-dom";
 import BackButton from "./backButton";

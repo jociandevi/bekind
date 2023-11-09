@@ -3,7 +3,7 @@ import { CenterAlignedFlexboxCol, TextDisplayS } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { BadgeProps } from "../../common/interfaces";
-import { Tooltip } from "antd";
+import Tooltip from "antd/es/tooltip";
 import BadgeModal from "../randomactsofkindness/modals/badgeModal";
 import { badgeIcons } from "../../common/mockData";
 

@@ -9,7 +9,7 @@ import {
 } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { Button } from "antd";
+import Button from "antd/es/button";
 import { HeartFilled } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";

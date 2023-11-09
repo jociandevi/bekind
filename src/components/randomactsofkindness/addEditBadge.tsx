@@ -4,7 +4,6 @@ import {
   StyledGrid,
   StyledInput,
 } from "../shared/sharedLayouts";
-import { Button, Form, Select, Steps } from "antd";
 import { variables } from "../../common/variables";
 import type { InputRef } from "antd";
 import { useParams } from "react-router-dom";
@@ -15,6 +14,10 @@ import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import { usePut } from "../../hooks/usePut";
 import type { SelectProps } from "antd";
+import Button from "antd/es/button";
+import Form from "antd/es/form";
+import Select from "antd/es/select";
+import Steps from "antd/es/steps";
 
 const AddEditBadge: React.FC = () => {
   const [current, setCurrent] = useState(0);

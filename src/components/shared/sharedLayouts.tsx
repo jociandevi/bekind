@@ -1,4 +1,7 @@
-import { Alert, Button, Input } from "antd";
+import Button from "antd/es/button";
+import Alert from "antd/es/alert";
+import Input from "antd/es/input";
+
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "../../common/variables";

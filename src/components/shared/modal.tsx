@@ -2,16 +2,11 @@ import React, { ReactNode, Suspense } from "react";
 import { FlexboxCol } from "./sharedLayouts";
 import { variables } from "../../common/variables";
 import styled from "styled-components";
-import { ModalProps, Typography } from "antd";
+import type { ModalProps } from "antd";
+import Modal from "antd/es/modal";
 import { useMediaQueries } from "../../common/mediaQueryHook";
-import Loading from "./loading";
 import Title from "antd/es/typography/Title";
-
-const Modal = React.lazy(() =>
-  import("antd").then((module) => ({ default: module.Modal }))
-);
-
-const { Text } = Typography;
+import Text from "antd/es/typography/Text";
 
 const StyledModal = styled(Modal)`
   margin: 0;
@@ -97,28 +92,26 @@ const AntdModal: React.FC<Props> = ({
   };
 
   return (
-    <Suspense fallback={<Loading />}>
-      <StyledModal
-        open={isModalOpen}
-        onCancel={handleCancel}
-        onOk={handleOk}
-        {...props}
-        title=""
-        style={md ? {} : { top: `calc(100vh - ${modalHeight}px)` }}
-        zIndex={2147483641}
-      >
-        <ModalContent imageBackgroundColor={imageBackgroundColor}>
-          {imageUrl && <img src={imageUrl} alt={imageUrl} />}
-          {image && image}
-          <Suspense fallback={<></>}>
-            <Title level={3}>{props.title}</Title>
-          </Suspense>
-          <Suspense fallback={<></>}>
-            <Text>{description}</Text>
-          </Suspense>
-        </ModalContent>
-      </StyledModal>
-    </Suspense>
+    <StyledModal
+      open={isModalOpen}
+      onCancel={handleCancel}
+      onOk={handleOk}
+      {...props}
+      title=""
+      style={md ? {} : { top: `calc(100vh - ${modalHeight}px)` }}
+      zIndex={2147483641}
+    >
+      <ModalContent imageBackgroundColor={imageBackgroundColor}>
+        {imageUrl && <img src={imageUrl} alt={imageUrl} />}
+        {image && image}
+        <Suspense fallback={<></>}>
+          <Title level={3}>{props.title}</Title>
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <Text>{description}</Text>
+        </Suspense>
+      </ModalContent>
+    </StyledModal>
   );
 };
 

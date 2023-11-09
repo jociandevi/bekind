@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Tooltip } from "antd";
+import Tooltip from "antd/es/tooltip";
 import styled from "styled-components";
 import { useMediaQueries } from "../../../common/mediaQueryHook";
 import { variables } from "../../../common/variables";

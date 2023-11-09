@@ -8,12 +8,12 @@ import {
 } from "../shared/sharedLayouts";
 import Title from "antd/es/typography/Title";
 import { variables } from "../../common/variables";
-import { Button } from "antd";
 import SunriseImage from "../shared/sunriseImage";
 import styled from "styled-components";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
+import Button from "antd/es/button";
 
 const LoginContainer = styled(CenterAlignedFlexboxCol)`
   height: 100vh;

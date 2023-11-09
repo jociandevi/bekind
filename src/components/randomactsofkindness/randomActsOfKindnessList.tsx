@@ -58,6 +58,7 @@ const RandomActOfKindnessList: React.FC = () => {
   }, [callGetApi]);
 
   useEffect(() => {
+    console.log("user", user);
     if (!user) {
       return;
     }
