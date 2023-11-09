@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useGetApi } from "../common/apiCalls";
 import { calculateStreak, isDailyDone } from "../common/util";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setDailyDone, setUserStreak } from "../common/auth.reducer";
+import { selectUser } from "../redux/selectors";
 
 function useKindnessHistory() {
   const {
@@ -10,9 +11,13 @@ function useKindnessHistory() {
     loading,
     error,
   } = useGetApi(`api/KindnessHistory`);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     async function fetchData() {
       const history = await getHistory();
       const latestDaily = history?.data?.[0];
@@ -22,7 +27,7 @@ function useKindnessHistory() {
       dispatch(setUserStreak(userStreak));
     }
     fetchData();
-  }, [getHistory, dispatch]);
+  }, [getHistory, dispatch, user]);
 
   return { loading, error, getHistory };
 }

@@ -58,11 +58,13 @@ const RandomActOfKindnessList: React.FC = () => {
   }, [callGetApi]);
 
   useEffect(() => {
-    console.log("user", user);
     if (!user) {
       return;
     }
-    getHistory();
+    async function fetchData() {
+      await getHistory();
+    }
+    fetchData();
   }, [getHistory, user]);
 
   useEffect(() => {
