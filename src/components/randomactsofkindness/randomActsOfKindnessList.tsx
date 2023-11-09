@@ -1,14 +1,12 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { ListLayout, CenterAlignedFlexbox } from "../shared/sharedLayouts";
+import { ListLayout } from "../shared/sharedLayouts";
 import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
 import { Category, KindnessAction } from "../../common/interfaces";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useGetApi } from "../../common/apiCalls";
 import { shuffleArray } from "../../common/util";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
-import { RedoOutlined } from "@ant-design/icons";
-import { Button } from "antd";
 import Loading from "../shared/loading";
 import Header from "../shared/header";
 import BackButton from "../shared/backButton";
@@ -33,9 +31,7 @@ const SignalRConnector = React.lazy(() => import("../shared/signalRConnector"));
 
 const RandomActOfKindnessList: React.FC = () => {
   const user = useSelector(selectUser);
-  const [kindnessActions, setKindnessActions] = useState<KindnessAction[] | []>(
-    []
-  );
+  const [actions, setActions] = useState<KindnessAction[] | []>([]);
   const [likedActions, setLikedActions] = useState<number[] | []>([]);
   const [filteredActions, setFilteredActions] = useState<KindnessAction[] | []>(
     []
@@ -45,7 +41,6 @@ const RandomActOfKindnessList: React.FC = () => {
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
   const { getHistory } = useKindnessHistory();
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
-  const navigate = useNavigate();
   // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
   const [apiSuccess, setApiSuccess] = useState(false);
 
@@ -53,7 +48,7 @@ const RandomActOfKindnessList: React.FC = () => {
     async function fetchData() {
       const actions = await callGetApi();
       const shuffled = shuffleArray(actions?.data);
-      setKindnessActions(shuffled);
+      setActions(shuffled);
       setFilteredActions(shuffled);
       if (actions?.status === 200) {
         setApiSuccess(true);
@@ -67,26 +62,29 @@ const RandomActOfKindnessList: React.FC = () => {
   }, [getHistory]);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     async function fetchData() {
       const actions = await getLikedActions();
       setLikedActions(actions?.data);
     }
     fetchData();
-  }, [getLikedActions]);
+  }, [getLikedActions, user]);
 
   useEffect(() => {
     const category = searchParams.get("category");
     const categoryId = categories.find((item) => item.name === category)?.id;
 
     if (category) {
-      const filteredRaoks = kindnessActions.filter((item) => {
+      const filteredRaoks = actions.filter((item) => {
         return item.category === categoryId;
       });
       setFilteredActions(filteredRaoks);
     } else if (searchParams.size === 0) {
-      setFilteredActions(kindnessActions);
+      setFilteredActions(actions);
     }
-  }, [searchParams, kindnessActions]);
+  }, [searchParams, actions]);
 
   const filterByCategory = (category: Category) => {
     if (category.name === "All") {
@@ -109,28 +107,13 @@ const RandomActOfKindnessList: React.FC = () => {
           right={<UserProfileIcon user={user} />}
         />
         <Suspense fallback={<></>}>
-          <Search
-            actions={kindnessActions}
-            setFilteredActions={setFilteredActions}
-          />
+          <Search actions={actions} setFilteredActions={setFilteredActions} />
         </Suspense>
         {error && !apiSuccess && (
           <Suspense fallback={<Loading />}>
             <PageError
               message="An error happened, sorry!"
-              description={
-                <CenterAlignedFlexbox>
-                  <Suspense fallback={<></>}>
-                    <Button
-                      type="primary"
-                      icon={<RedoOutlined />}
-                      onClick={() => navigate(0)}
-                    >
-                      Let's try again
-                    </Button>
-                  </Suspense>
-                </CenterAlignedFlexbox>
-              }
+              tryAgain
               style={{ margin: variables.spacingXs }}
             />
           </Suspense>
