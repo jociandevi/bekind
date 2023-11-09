@@ -29,6 +29,7 @@ export interface ArticlePart {
   credit?: string;
   text: string;
   type: ArticleElement;
+  objectFit?: "contain" | "cover";
 }
 
 export interface KindnessAction {

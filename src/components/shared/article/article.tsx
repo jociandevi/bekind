@@ -87,7 +87,10 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
             {item.type === ArticleElement.IMAGE && (
               <CenterAlignedFlexboxCol>
                 <ArticleImage
-                  style={{ margin: `${variables.spacingS} 0 0` }}
+                  style={{
+                    margin: `${variables.spacingS} 0 0`,
+                    objectFit: item.objectFit ?? "cover",
+                  }}
                   src={item.text}
                   alt="Image related to subheader"
                 />
