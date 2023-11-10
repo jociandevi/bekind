@@ -10,6 +10,7 @@ interface Props {
 
 const ListItemContainer = styled.div`
   margin-bottom: ${variables.spacingXs};
+  margin-left: ${variables.spacingXs};
 `;
 
 const ListItem: React.FC<Props> = ({ text }) => {
@@ -32,7 +33,7 @@ const ListItem: React.FC<Props> = ({ text }) => {
         style={{
           fontSize: "12px",
           color: variables.pink3,
-          margin: `auto ${variables.spacingXs}`,
+          margin: `auto ${variables.spacingXs} 0 0`,
         }}
       />
       <ArticleText text={title} fontWeight={800} />
