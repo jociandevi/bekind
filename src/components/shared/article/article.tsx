@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, Suspense, useEffect, useState } from "react";
 import {
   CenterAlignedFlexboxCol,
   FlexboxCol,
@@ -20,7 +20,10 @@ import ListItem from "./listItem";
 import ArticleText from "./articleText";
 import GoogleMap from "./googleMap";
 import PickButton from "../pickButton";
-import Youtube from "./youtube";
+import Loading from "../loading";
+
+const Youtube = React.lazy(() => import("./youtube"));
+const Canva = React.lazy(() => import("./canva"));
 
 interface Props {
   kindness: KindnessAction | LegalArticle;
@@ -102,11 +105,18 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
             {item.type === ArticleElement.LIST_ITEM && (
               <ListItem text={item.text} />
             )}
+            {item.type === ArticleElement.CANVA && (
+              <Suspense fallback={<Loading />}>
+                <Canva canvaId={item.text} />
+              </Suspense>
+            )}
             {item.type === ArticleElement.GOOGLE_MAP && (
               <GoogleMap text={item.text} />
             )}
             {item.type === ArticleElement.YOUTUBE && (
-              <Youtube src={item.text} />
+              <Suspense fallback={<Loading />}>
+                <Youtube src={item.text} />
+              </Suspense>
             )}
           </Fragment>
         ))}

@@ -23,6 +23,7 @@ export enum ArticleElement {
   "FOOTNOTE" = "Footnote",
   "GOOGLE_MAP" = "GoogleMap",
   "YOUTUBE" = "Youtube",
+  "CANVA" = "Canva",
 }
 
 export interface ArticlePart {
