@@ -46,7 +46,11 @@ const Canva: React.FC<Props> = ({ canvaId }) => {
       </div>
       <Link
         href={canvaLink}
-        style={{ color: variables.pink6, fontSize: "14px" }}
+        style={{
+          color: variables.pink6,
+          fontSize: "14px",
+          marginBottom: variables.spacingS,
+        }}
         target="_blank"
       >
         Designed for you by Eva in Canva
