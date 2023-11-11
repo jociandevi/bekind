@@ -20,6 +20,7 @@ const StyledContainer = styled(Flexbox)`
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100vw;
+  padding-bottom: ${variables.spacingM};
 `;
 
 const ActiveTagButton = styled(Button)`

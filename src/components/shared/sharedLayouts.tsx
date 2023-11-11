@@ -1,7 +1,6 @@
 import Button from "antd/es/button";
 import Alert from "antd/es/alert";
 import Input from "antd/es/input";
-
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
 import { variables } from "../../common/variables";
@@ -53,6 +52,8 @@ export const StyledSearch = styled(Input)`
   border: none;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   padding: 12px;
+  margin: ${variables.spacingXs};
+  width: auto;
 `;
 
 export const StyledNotification = styled(Alert)`
