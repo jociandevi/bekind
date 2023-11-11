@@ -77,7 +77,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
   useEffect(() => {
     if (shouldPreload) {
       const viewportWidth = window.innerWidth;
-      const sizes = [320, 480, 640, 960, 1280, 1600, 1920];
+      const sizes = [320, 400, 480, 640, 960, 1280, 1600, 1920];
       // Find the best size to preload
       const preloadSize = sizes.reduce((closest, size) => {
         if (
@@ -135,7 +135,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
   };
 
   const generateSrcSet = (src: string) => {
-    const sizes = [320, 480, 640, 960, 1280, 1600, 1920];
+    const sizes = [320, 400, 480, 640, 960, 1280, 1600, 1920];
     return sizes.map((size) => `${src}&w=${size} ${size}w`).join(", ");
   };
 
@@ -158,6 +158,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
             alt={item.title}
             srcSet={generateSrcSet(item.imageUrl)}
             sizes="(max-width: 320px) 160px,
+           (max-width: 400px) 200px,
            (max-width: 480px) 240px,
            (max-width: 640px) 320px,
            (max-width: 960px) 320px,
