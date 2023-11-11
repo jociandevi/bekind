@@ -60,7 +60,9 @@ const router = createBrowserRouter(
         path=""
         element={
           <Suspense fallback={<Loading />}>
-            <RandomActOfKindnessList />
+            <ConfigProvider theme={{ ...theme }}>
+              <RandomActOfKindnessList />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -68,7 +70,9 @@ const router = createBrowserRouter(
         path=":id/:title"
         element={
           <Suspense fallback={<Loading />}>
-            <KindnessDetails />
+            <ConfigProvider theme={{ ...theme }}>
+              <KindnessDetails />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -76,7 +80,9 @@ const router = createBrowserRouter(
         path="profile"
         element={
           <Suspense fallback={<Loading />}>
-            <Profile />
+            <ConfigProvider theme={{ ...theme }}>
+              <Profile />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -84,7 +90,9 @@ const router = createBrowserRouter(
         path="new"
         element={
           <Suspense fallback={<Loading />}>
-            <AddNew />
+            <ConfigProvider theme={{ ...theme }}>
+              <AddNew />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -92,7 +100,9 @@ const router = createBrowserRouter(
         path="edit/:id"
         element={
           <Suspense fallback={<Loading />}>
-            <AddNew />
+            <ConfigProvider theme={{ ...theme }}>
+              <AddNew />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -100,7 +110,9 @@ const router = createBrowserRouter(
         path="new-badge"
         element={
           <Suspense fallback={<Loading />}>
-            <AddEditBadge />
+            <ConfigProvider theme={{ ...theme }}>
+              <AddEditBadge />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -108,7 +120,9 @@ const router = createBrowserRouter(
         path="edit-badge/:id"
         element={
           <Suspense fallback={<Loading />}>
-            <AddEditBadge />
+            <ConfigProvider theme={{ ...theme }}>
+              <AddEditBadge />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -116,7 +130,9 @@ const router = createBrowserRouter(
         path="privacy-policy"
         element={
           <Suspense fallback={<Loading />}>
-            <PrivacyPolicy />
+            <ConfigProvider theme={{ ...theme }}>
+              <PrivacyPolicy />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -124,7 +140,9 @@ const router = createBrowserRouter(
         path="terms-and-conditions"
         element={
           <Suspense fallback={<Loading />}>
-            <TermsAndConditions />
+            <ConfigProvider theme={{ ...theme }}>
+              <TermsAndConditions />
+            </ConfigProvider>
           </Suspense>
         }
       />
@@ -145,9 +163,9 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ConfigProvider theme={{ ...theme }}>
-          <RouterProvider router={router} />
-        </ConfigProvider>
+        {/* <ConfigProvider theme={{ ...theme }}> */}
+        <RouterProvider router={router} />
+        {/* </ConfigProvider> */}
       </PersistGate>
     </Provider>
   );

@@ -1,57 +1,8 @@
-import Cookies from "js-cookie";
 import { getAPI, postAPI } from "./apiCommon";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { clearUser, removeToken, setToken, setUser } from "./auth.reducer";
+import { clearUser, removeToken } from "./auth.reducer";
 import { store } from "./store";
-
-export const useLogin = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const dispatch = useDispatch();
-
-  const login = useCallback(
-    async (payload: string) => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        const response = await postAPI("api/Auth/Login", undefined, payload);
-
-        if (response.status === 200 || response.status === 201) {
-          const backendToken = response.data;
-          dispatch(setToken(backendToken));
-          Cookies.set("backendToken", response.data, {
-            expires: 1,
-            secure: true,
-            httpOnly: true,
-          });
-
-          const userResponse = await getApiCall("api/Member/Me");
-          const userData = userResponse.data;
-
-          dispatch(setUser(userData));
-
-          // localStorage.setItem("user", JSON.stringify(userData));
-
-          setLoading(false);
-          return userData;
-        } else {
-          console.log(response);
-          setError("Failed to login.");
-          setLoading(false);
-        }
-      } catch (err) {
-        console.error(err);
-        setError("An error occurred during login.");
-        setLoading(false);
-      }
-    },
-    [dispatch]
-  );
-
-  return { login, loading, error };
-};
 
 export const getApiCall = (url: string) =>
   getAPI(url).then((res) => {
@@ -61,7 +12,6 @@ export const getApiCall = (url: string) =>
       console.log("User seems to be unauthenticated.");
       store.dispatch(removeToken());
       store.dispatch(clearUser());
-      // localStorage.removeItem("user");
     }
   });
 

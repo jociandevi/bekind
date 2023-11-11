@@ -1,7 +1,43 @@
 import { useCallback, useState } from "react";
-import { deleteAPI } from "../common/apiCommon";
 import { store } from "../common/store";
 import { removeToken } from "../common/auth.reducer";
+import axios from "axios";
+import { Params, getTokenFromState } from "../common/apiCommon";
+
+const deleteConfig: Params = {
+  baseUrl: "https://bekind-api.azurewebsites.net",
+  method: "delete",
+};
+
+export const deleteAPI = async (
+  url: string,
+  authHeader?: string
+): Promise<any> => {
+  const token = getTokenFromState();
+  return await axios({
+    ...deleteConfig,
+    url: `${deleteConfig.baseUrl}/${url}`,
+    headers: {
+      Authorization: authHeader
+        ? `Bearer ${authHeader}`
+        : token
+        ? `Bearer ${token}`
+        : null,
+    },
+  })
+    .then((response) => {
+      return {
+        status: response.status,
+        data: response.data,
+      };
+    })
+    .catch((error) => {
+      return {
+        status: error.status,
+        data: error.response,
+      };
+    });
+};
 
 export const useDelete = (url: string) => {
   const [loading, setLoading] = useState(false);

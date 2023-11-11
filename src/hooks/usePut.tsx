@@ -1,7 +1,45 @@
 import { useCallback, useState } from "react";
-import { putApi } from "../common/apiCommon";
 import { store } from "../common/store";
 import { removeToken } from "../common/auth.reducer";
+import { Params, getTokenFromState } from "../common/apiCommon";
+import axios from "axios";
+
+const putConfig: Params = {
+  baseUrl: "https://bekind-api.azurewebsites.net",
+  method: "put",
+};
+
+export const putApi = async (
+  url: string,
+  data?: any,
+  authHeader?: string
+): Promise<any> => {
+  const token = getTokenFromState();
+  return await axios({
+    ...putConfig,
+    url: `${putConfig.baseUrl}/${url}`,
+    data,
+    headers: {
+      Authorization: authHeader
+        ? `Bearer ${authHeader}`
+        : token
+        ? `Bearer ${token}`
+        : null,
+    },
+  })
+    .then((response) => {
+      return {
+        status: response.status,
+        data: response.data,
+      };
+    })
+    .catch((error) => {
+      return {
+        status: error.status,
+        data: error.response,
+      };
+    });
+};
 
 export const usePut = (url: string) => {
   const [loading, setLoading] = useState(false);

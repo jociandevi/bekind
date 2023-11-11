@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
 import { TokenPayload } from "../../common/interfaces";
-import { useLogin } from "../../common/apiCalls";
 import Spin from "antd/es/spin";
+import { useLogin } from "../../hooks/useLogin";
 
 const GoogleLoginButton: React.FC = () => {
   const { login, loading, error } = useLogin();
