@@ -3,7 +3,15 @@ import Alert from "antd/es/alert";
 import Input from "antd/es/input";
 import Text from "antd/es/typography/Text";
 import styled from "styled-components";
-import { variables } from "../../common/variables";
+import {
+  black,
+  borderRadius,
+  borderRadiusPercent,
+  lightGray,
+  middleGray,
+  spacingXs,
+  veryLightGray,
+} from "../../common/variables";
 
 export const phoneCardWidth = "45vw";
 export const tabletCardWidth = "30vw";
@@ -44,7 +52,7 @@ export const CenterAlignedFlexboxCol = styled(FlexboxCol)`
 
 export const StyledInput = styled(Input)`
   border: none;
-  border-bottom: 1px solid ${variables.lightGray};
+  border-bottom: 1px solid ${lightGray};
   border-radius: unset;
 `;
 
@@ -52,7 +60,7 @@ export const StyledSearch = styled(Input)`
   border: none;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   padding: 12px;
-  margin: ${variables.spacingXs};
+  margin: ${spacingXs};
   width: auto;
 `;
 
@@ -77,7 +85,7 @@ export const StyledText = styled(Text)<{
 
 export const TextDisplayS = styled.div<{ color?: string }>`
   font-size: 10px;
-  color: ${(props) => props.color ?? variables.black}};
+  color: ${(props) => props.color ?? black}};
 `;
 
 export const ResponsiveImageLarge = styled.img<{
@@ -90,7 +98,7 @@ export const ResponsiveImageLarge = styled.img<{
     props.lg ? laptopCardWidth : props.md ? tabletCardWidth : phoneCardWidth};
 
   object-fit: cover;
-  border-radius: ${variables.borderRadius}px;
+  border-radius: ${borderRadius}px;
 `;
 
 export const ResponsiveImageMedium = styled.img<{
@@ -100,7 +108,7 @@ export const ResponsiveImageMedium = styled.img<{
   width: ${(props) => (props.md ? "20vw" : "30vw")};
   height: ${(props) => (props.md ? "20vw" : "30vw")};
   object-fit: cover;
-  border-radius: ${variables.borderRadius}px;
+  border-radius: ${borderRadius}px;
 `;
 
 export const ImageSizeL = styled.img<{
@@ -109,7 +117,7 @@ export const ImageSizeL = styled.img<{
   width: ${(props) => (props.md ? "40vw" : "100vw")};
   height: ${(props) => (props.md ? "40vw" : "100vw")};
   object-fit: cover;
-  border-radius: 0 0 0 ${variables.borderRadiusPercent}%;
+  border-radius: 0 0 0 ${borderRadiusPercent}%;
 `;
 
 export const CircleImage = styled.img<{ md?: boolean }>`
@@ -125,12 +133,12 @@ export const ImageContainer = styled.div`
 
 export const CategoryButton = styled(Button)`
   width: fit-content;
-  margin-left: ${variables.spacingXs};
+  margin-left: ${spacingXs};
   font-weight: 600;
 `;
 
 export const TagButton = styled(Button)`
   border: none;
-  background-color: ${variables.veryLightGray};
-  color: ${variables.middleGray};
+  background-color: ${veryLightGray};
+  color: ${middleGray};
 `;

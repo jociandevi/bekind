@@ -4,7 +4,7 @@ import {
   StyledGrid,
   StyledInput,
 } from "../shared/sharedLayouts";
-import { variables } from "../../common/variables";
+import { spacingS } from "../../common/variables";
 import type { InputRef } from "antd";
 import { useParams } from "react-router-dom";
 import Title from "antd/es/typography/Title";
@@ -140,7 +140,7 @@ const AddEditBadge: React.FC = () => {
       <CenterAlignedFlexbox
         style={{
           justifyContent: "space-between",
-          marginBottom: variables.spacingS,
+          marginBottom: spacingS,
         }}
       >
         <Title level={3}>
@@ -238,7 +238,7 @@ const AddEditBadge: React.FC = () => {
           <Button
             type="primary"
             htmlType="submit"
-            style={{ marginTop: variables.spacingS }}
+            style={{ marginTop: spacingS }}
           >
             Save
           </Button>

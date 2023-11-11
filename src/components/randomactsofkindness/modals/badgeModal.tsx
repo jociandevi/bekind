@@ -1,10 +1,10 @@
 import React from "react";
 import Text from "antd/es/typography/Text";
 import AntdModal from "../../shared/modal";
-import { variables } from "../../../common/variables";
 import { CenterAlignedFlexbox } from "../../shared/sharedLayouts";
 import { BadgeProps } from "../../../common/interfaces";
 import NecessaryAction from "./necessaryAction";
+import { lightGray } from "../../../common/variables";
 
 interface Props {
   item: BadgeProps;
@@ -23,7 +23,7 @@ const BadgeModal: React.FC<Props> = ({ isModalOpen, setIsModalOpen, item }) => {
       setIsModalOpen={setIsModalOpen}
       onOk={() => setIsModalOpen(false)}
       description={description}
-      imageBackgroundColor={variables.lightGray}
+      imageBackgroundColor={lightGray}
       image={icon}
       footer={
         <CenterAlignedFlexbox>

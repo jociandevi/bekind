@@ -4,7 +4,7 @@ import {
   StyledGrid,
   StyledInput,
 } from "../shared/sharedLayouts";
-import { variables } from "../../common/variables";
+import { spacingS, spacingXxs } from "../../common/variables";
 import styled from "styled-components";
 import type { InputRef } from "antd";
 import { UserOutlined } from "@ant-design/icons";
@@ -23,7 +23,7 @@ import Steps from "antd/es/steps";
 import Radio from "antd/es/radio";
 
 const StyledRadioButton = styled(Button)`
-  margin: ${variables.spacingXxs};
+  margin: ${spacingXxs};
 `;
 
 const AddNew: React.FC = () => {
@@ -128,7 +128,7 @@ const AddNew: React.FC = () => {
       <CenterAlignedFlexbox
         style={{
           justifyContent: "space-between",
-          marginBottom: variables.spacingS,
+          marginBottom: spacingS,
         }}
       >
         <Title level={3}>
@@ -287,7 +287,7 @@ const AddNew: React.FC = () => {
           <Button
             type="primary"
             htmlType="submit"
-            style={{ marginTop: variables.spacingS }}
+            style={{ marginTop: spacingS }}
           >
             Save
           </Button>

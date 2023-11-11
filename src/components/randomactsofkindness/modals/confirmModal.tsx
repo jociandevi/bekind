@@ -1,7 +1,7 @@
 import React from "react";
 import AntdModal from "../../shared/modal";
 import GrowthImage from "../../../img/growth.png";
-import { variables } from "../../../common/variables";
+import { green1 } from "../../../common/variables";
 
 interface Props {
   isModalOpen: boolean;
@@ -25,7 +25,7 @@ const ConfirmModal: React.FC<Props> = ({
       description="Are you picking this kindness for today?"
       imageUrl={GrowthImage}
       okText="Yes, let's go!"
-      imageBackgroundColor={variables.green1}
+      imageBackgroundColor={green1}
       modalHeight={260}
       onCancel={onCancel}
     />

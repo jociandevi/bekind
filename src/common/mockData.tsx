@@ -1,15 +1,15 @@
-import { variables } from "./variables";
 import { ReactComponent as Pants } from "../img/badges/pants.svg";
 import { ReactComponent as Hotel } from "../img/badges/hotel.svg";
 import { ReactComponent as DivingGoggles } from "../img/badges/diving-goggles.svg";
 import { ReactComponent as Food } from "../img/badges/food.svg";
 import { ReactComponent as Tree } from "../img/badges/tree.svg";
 import { Category, CategoryNames } from "./interfaces";
+import { darkGray } from "./variables";
 
 export const badgeIcons: { id: number; icon: React.ReactNode }[] = [
   {
     id: 1,
-    icon: <Pants width={80} height={80} stroke={variables.darkGray} />,
+    icon: <Pants width={80} height={80} stroke={darkGray} />,
   },
   {
     id: 2,

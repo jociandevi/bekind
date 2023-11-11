@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
+import { pink3, spacingXxxs } from "../../common/variables";
 
 const Container = styled.div`
   width: 100vw;
-  height: ${variables.spacingXxxs};
+  height: ${spacingXxxs};
   position: fixed;
   top: 0;
   z-index: 100;
@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const Progress = styled.div`
   height: 100%;
-  background-color: ${variables.pink3};
+  background-color: ${pink3};
   transition: width 0.25s ease-out;
 `;
 

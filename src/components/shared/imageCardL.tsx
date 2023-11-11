@@ -7,7 +7,6 @@ import {
   phoneCardWidth,
   tabletCardWidth,
 } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Button from "antd/es/button";
 import { HeartFilled } from "@ant-design/icons";
@@ -20,6 +19,13 @@ import { usePostApi } from "../../common/apiCalls";
 import { useDelete } from "../../hooks/useDelete";
 import PickButton from "./pickButton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {
+  borderRadius,
+  pink3,
+  spacingXs,
+  spacingXxs,
+  white,
+} from "../../common/variables";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -36,7 +42,7 @@ const CardContainer = styled.div<{
       ? tabletCardWidth
       : phoneCardWidth};
   flex-shrink: 0;
-  border-radius: ${variables.borderRadius}px;
+  border-radius: ${borderRadius}px;
   cursor: pointer;
   flex: 0 0 auto;
 `;
@@ -45,7 +51,7 @@ const PaddingContainer = styled.div<{
   md?: boolean;
   lg?: boolean;
 }>`
-  padding: 0 ${variables.spacingXs} ${variables.spacingXs};
+  padding: 0 ${spacingXs} ${spacingXs};
   height: ${(props) => (props.lg ? "5vw" : props.md ? "7vw" : "18vw")};
   display: flex;
   flex-direction: column;
@@ -148,7 +154,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
             srcSet={preloadedSrc}
             style={{
               objectFit: "cover",
-              borderRadius: `${variables.borderRadius}px`,
+              borderRadius: `${borderRadius}px`,
               height: getSize(),
               width: getSize(),
             }}
@@ -167,7 +173,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
            1000px"
             style={{
               objectFit: "cover",
-              borderRadius: `${variables.borderRadius}px`,
+              borderRadius: `${borderRadius}px`,
               height: getSize(),
               width: getSize(),
             }}
@@ -179,8 +185,8 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
           shape="circle"
           onClick={onLike}
           style={{
-            color: isItLiked ? variables.pink3 : variables.white,
-            borderColor: isItLiked ? variables.pink3 : variables.white,
+            color: isItLiked ? pink3 : white,
+            borderColor: isItLiked ? pink3 : white,
           }}
         />
       </ImageContainer>
@@ -189,7 +195,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
           {item.title}
         </Title>
       </PaddingContainer>
-      <Flexbox style={{ padding: `${variables.spacingXxs}` }}>
+      <Flexbox style={{ padding: `${spacingXxs}` }}>
         <PickButton item={item} />
       </Flexbox>
     </CardContainer>

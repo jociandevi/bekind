@@ -1,10 +1,17 @@
 import React from "react";
 import { Flexbox } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
 import Button from "antd/es/button";
 import Tooltip from "antd/es/tooltip";
+import {
+  black,
+  middleGray,
+  pink2,
+  spacingM,
+  spacingXs,
+  spacingXxs,
+} from "../../common/variables";
 
 const OptionButton = styled(Button)<{ color: string }>`
   border: none;
@@ -14,34 +21,34 @@ const OptionButton = styled(Button)<{ color: string }>`
 `;
 
 const OptionsContainer = styled.div`
-  margin: 0 0 ${variables.spacingM};
+  margin: 0 0 ${spacingM};
 `;
 
 const CustomizeOptions: React.FC = () => {
   const options = [
     {
-      color: variables.pink2,
+      color: pink2,
       name: "Option 1",
     },
     {
-      color: variables.middleGray,
+      color: middleGray,
       name: "Option 2",
     },
     {
-      color: variables.black,
+      color: black,
       name: "Option 3",
     },
   ];
 
   return (
     <OptionsContainer>
-      <Title style={{ margin: `0 0 ${variables.spacingXs}` }} level={5}>
+      <Title style={{ margin: `0 0 ${spacingXs}` }} level={5}>
         Customize Options
       </Title>
       <Flexbox
         style={{
           justifyContent: "flex-start",
-          gap: variables.spacingXxs,
+          gap: spacingXxs,
         }}
       >
         {options.map((item, index) => (

@@ -1,12 +1,12 @@
 import React, { ReactNode, Suspense } from "react";
 import { FlexboxCol } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { ModalProps } from "antd";
 import Modal from "antd/es/modal";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import Title from "antd/es/typography/Title";
 import Text from "antd/es/typography/Text";
+import { lightGray, spacingS, spacingXxs } from "../../common/variables";
 
 const StyledModal = styled(Modal)`
   margin: 0;
@@ -25,7 +25,7 @@ const StyledModal = styled(Modal)`
   }
 
   .ant-modal-close-x {
-    background-color: ${variables.lightGray};
+    background-color: ${lightGray};
     height: 30px;
     width: 30px;
     display: flex;
@@ -36,8 +36,8 @@ const StyledModal = styled(Modal)`
 
 const ModalContent = styled(FlexboxCol)<{ imageBackgroundColor?: string }>`
   align-items: center;
-  gap: ${variables.spacingXxs};
-  padding: ${variables.spacingS} ${variables.spacingXxs};
+  gap: ${spacingXxs};
+  padding: ${spacingS} ${spacingXxs};
   text-align: center;
 
   & img,

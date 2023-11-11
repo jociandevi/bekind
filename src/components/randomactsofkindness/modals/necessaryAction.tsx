@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Tooltip from "antd/es/tooltip";
 import styled from "styled-components";
 import { useMediaQueries } from "../../../common/mediaQueryHook";
-import { variables } from "../../../common/variables";
 import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../../common/interfaces";
 import { transformTitleToUrl } from "../../../common/util";
 import { useGetApi } from "../../../common/apiCalls";
 import Loading from "../../shared/loading";
+import { spacingXs } from "../../../common/variables";
 
 interface Props {
   actionId: number;
@@ -20,7 +20,7 @@ const Image = styled.img<{
   height: ${(props) => (props.md ? "6vw" : "12vw")};
   object-fit: cover;
   border-radius: 50%;
-  margin-left: ${variables.spacingXs};
+  margin-left: ${spacingXs};
 `;
 
 const NecessaryAction: React.FC<Props> = ({ actionId }) => {

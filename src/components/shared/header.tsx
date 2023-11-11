@@ -1,7 +1,7 @@
 import React from "react";
 import { Flexbox } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
+import { spacingXs } from "../../common/variables";
 
 interface Props {
   left?: React.ReactNode;
@@ -14,15 +14,15 @@ const StyledHeader = styled(Flexbox)`
 
   > button,
   > div {
-    margin: ${variables.spacingXs};
+    margin: ${spacingXs};
   }
 `;
 
 const Header: React.FC<Props> = ({ left, right }) => {
   return (
     <StyledHeader>
-      {left ?? <div style={{ width: variables.spacingXs }} />}
-      {right ?? <div style={{ width: variables.spacingXs }} />}
+      {left ?? <div style={{ width: spacingXs }} />}
+      {right ?? <div style={{ width: spacingXs }} />}
     </StyledHeader>
   );
 };

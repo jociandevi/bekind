@@ -2,10 +2,10 @@ import React from "react";
 import Button from "antd/es/button";
 import AntdModal from "../../shared/modal";
 import FireImg from "../../../img/fire.png";
-import { variables } from "../../../common/variables";
 import Loading from "../../shared/loading";
 import { useSelector } from "react-redux";
 import { selectUserStreak } from "../../../redux/selectors";
+import { pink1 } from "../../../common/variables";
 
 interface Props {
   userName?: string;
@@ -42,7 +42,7 @@ const FeedbackModal: React.FC<Props> = ({
       }
       description="Thank you for making the world a better place!"
       imageUrl={FireImg}
-      imageBackgroundColor={variables.pink1}
+      imageBackgroundColor={pink1}
       footer={
         <Button type="primary" onClick={onCheers}>
           Cheers!

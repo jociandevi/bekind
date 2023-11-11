@@ -1,9 +1,15 @@
 import React from "react";
 import { Flexbox, FlexboxCol, StyledText } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import SingleBarChart from "./singleBarChart";
 import { MemberStatistics } from "../../common/interfaces";
+import {
+  lightGray,
+  middleGray,
+  pink2,
+  spacingS,
+  spacingXxs,
+} from "../../common/variables";
 
 const LegendContainer = styled.div`
   position: absolute;
@@ -13,9 +19,9 @@ const LegendContainer = styled.div`
 const ColorIndicator = styled.div<{ color?: string }>`
   height: 10px;
   width: 10px;
-  background-color: ${(props) => props.color ?? variables.pink2};
+  background-color: ${(props) => props.color ?? pink2};
   border-radius: 3px;
-  margin-right: ${variables.spacingXxs};
+  margin-right: ${spacingXxs};
 `;
 
 const ColorAndTextContainer = styled(Flexbox)`
@@ -87,7 +93,7 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
 
   const labels = Array.from(uniqueLabels);
   const months = Array.from(uniqueMonths);
-  const colors = [variables.pink2, variables.lightGray];
+  const colors = [pink2, lightGray];
 
   const getColor = (label: string) => {
     const index = labels.findIndex((item) => item === label);
@@ -105,7 +111,7 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
     <Flexbox
       style={{
         justifyContent: "space-between",
-        margin: variables.spacingS,
+        margin: spacingS,
         position: "relative",
       }}
     >
@@ -113,7 +119,7 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
         {labels.map((item, index) => (
           <ColorAndTextContainer key={index}>
             <ColorIndicator color={colors[index]} />
-            <StyledText color={variables.middleGray} fontSize="12px">
+            <StyledText color={middleGray} fontSize="12px">
               {item}
             </StyledText>
           </ColorAndTextContainer>
@@ -130,7 +136,7 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
               />
             ))}
           </Flexbox>
-          <StyledText color={variables.middleGray} fontSize="12px">
+          <StyledText color={middleGray} fontSize="12px">
             {month}
           </StyledText>
         </FlexboxCol>

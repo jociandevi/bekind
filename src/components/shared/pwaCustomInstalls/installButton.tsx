@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Button from "antd/es/button";
 import styled from "styled-components";
-import { variables } from "../../../common/variables";
 import { useMediaQueries } from "../../../common/mediaQueryHook";
+import { spacingM } from "../../../common/variables";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -15,8 +15,8 @@ interface BeforeInstallPromptEvent extends Event {
 
 const StyledButton = styled(Button)`
   position: fixed;
-  bottom: ${variables.spacingM};
-  right: ${variables.spacingM};
+  bottom: ${spacingM};
+  right: ${spacingM};
 `;
 
 const InstallButton: React.FC = () => {

@@ -1,6 +1,6 @@
 import Link from "antd/es/typography/Link";
 import React from "react";
-import { variables } from "../../../common/variables";
+import { pink6, spacingS } from "../../../common/variables";
 
 interface Props {
   canvaId: string;
@@ -47,9 +47,9 @@ const Canva: React.FC<Props> = ({ canvaId }) => {
       <Link
         href={canvaLink}
         style={{
-          color: variables.pink6,
+          color: pink6,
           fontSize: "14px",
-          marginBottom: variables.spacingS,
+          marginBottom: spacingS,
         }}
         target="_blank"
       >

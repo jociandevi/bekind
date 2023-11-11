@@ -1,13 +1,19 @@
 import React from "react";
 import { CenterAlignedFlexbox, FlexboxCol, StyledText } from "./sharedLayouts";
 import Button from "antd/es/button";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
+import {
+  white,
+  lightGray,
+  pink3,
+  darkGray,
+  middleGray,
+} from "../../common/variables";
 
 const StyledBottomMenu = styled.div`
   width: 100vw;
   height: 70px;
-  background-color: ${variables.white};
+  background-color: ${white};
   position: fixed;
   bottom: 0;
 
@@ -15,7 +21,7 @@ const StyledBottomMenu = styled.div`
     content: "";
     width: 90vw;
     height: 1px;
-    background: ${variables.lightGray};
+    background: ${lightGray};
     position: absolute;
     margin-right: 5vw;
     margin-left: 5vw;
@@ -23,14 +29,14 @@ const StyledBottomMenu = styled.div`
 `;
 
 const MenuButton = styled(Button)<{ color?: string }>`
-  color: ${variables.darkGray};
+  color: ${darkGray};
 
   &:hover,
   &:focus,
   &:active {
-    color: ${variables.white} !important;
-    background-color: ${(props) => props.color ?? variables.pink3};
-    border-color: ${(props) => props.color ?? variables.pink3} !important;
+    color: ${white} !important;
+    background-color: ${(props) => props.color ?? pink3};
+    border-color: ${(props) => props.color ?? pink3} !important;
   }
 `;
 
@@ -58,7 +64,7 @@ const BottomMenu: React.FC<Props> = ({ activeButtonColor, buttons }) => {
               onClick={button.onClick}
               color={activeButtonColor}
             />
-            <StyledText color={variables.middleGray} fontSize="12px">
+            <StyledText color={middleGray} fontSize="12px">
               {button.text}
             </StyledText>
           </FlexboxCol>

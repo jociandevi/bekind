@@ -1,17 +1,24 @@
 import { ThemeConfig } from "antd/es/config-provider";
-import { variables } from "./variables";
+import {
+  black,
+  borderRadius,
+  darkGray,
+  middleGray,
+  pink2,
+  pink3,
+} from "./variables";
 
 export const theme: ThemeConfig = {
   token: {
-    colorPrimary: variables.pink3,
-    colorError: variables.pink2,
-    colorInfo: variables.middleGray,
-    colorLink: variables.darkGray,
-    colorTextBase: variables.black,
+    colorPrimary: pink3,
+    colorError: pink2,
+    colorInfo: middleGray,
+    colorLink: darkGray,
+    colorTextBase: black,
     controlHeight: 40,
     boxShadow: "rgba(0, 0, 0, 0.25) 0px 5px 15px;",
     boxShadowSecondary: "rgba(0, 0, 0, 0.25) 0px 5px 15px;",
-    borderRadius: variables.borderRadius,
+    borderRadius: borderRadius,
     lineHeight: 2,
   },
 };

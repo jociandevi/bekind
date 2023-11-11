@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Button from "antd/es/button";
 import Tooltip from "antd/es/tooltip";
@@ -15,10 +14,11 @@ import {
   selectUser,
   selectUserStreak,
 } from "../../redux/selectors";
+import { lightGray, middleGray } from "../../common/variables";
 
 const DisabledButton = styled(Button)`
-  color: ${variables.middleGray};
-  background-color: ${variables.lightGray};
+  color: ${middleGray};
+  background-color: ${lightGray};
   box-shadow: none;
   opacity: 0.5;
 `;

@@ -1,7 +1,6 @@
 import React from "react";
 import { FlexboxCol, ImageContainer, StyledText } from "./sharedLayouts";
 import Button from "antd/es/button";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { mdBreakPoint } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +8,10 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import Article from "./article/article";
 import InstallButton from "./pwaCustomInstalls/installButton";
 import { ArticleImage } from "../randomactsofkindness/kindnessDetails";
+import { middleGray, spacingL, spacingM, white } from "../../common/variables";
 
 const MarginContainer = styled(FlexboxCol)`
-  margin: ${variables.spacingM} auto;
+  margin: ${spacingM} auto;
   width: 90vw;
   @media only screen and ${mdBreakPoint} {
     width: inherit;
@@ -20,9 +20,9 @@ const MarginContainer = styled(FlexboxCol)`
 
 const OverlayBackButton = styled(Button)`
   position: absolute;
-  top: ${variables.spacingL};
-  left: ${variables.spacingM};
-  color: ${variables.white};
+  top: ${spacingL};
+  left: ${spacingM};
+  color: ${white};
   background-color: #1816188c;
 `;
 
@@ -47,7 +47,7 @@ const TermsAndConditions: React.FC = () => {
         />
       </ImageContainer>
       <StyledText
-        color={variables.middleGray}
+        color={middleGray}
         fontSize="10px"
         style={{ margin: "0 auto" }}
       >

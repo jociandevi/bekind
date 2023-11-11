@@ -4,7 +4,6 @@ import {
   CircleImage,
   StyledText,
 } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Button from "antd/es/button";
 import Header from "./header";
@@ -13,6 +12,7 @@ import BackButton from "./backButton";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import image from "../../img/eva.jpg";
+import { spacingL, spacingS, white } from "../../common/variables";
 
 const PageContainer = styled.div`
   width: 100vw;
@@ -28,13 +28,11 @@ const ErrorPage404: React.FC = () => {
     <PageContainer>
       <Header
         left={
-          <BackButton
-            style={{ color: variables.white, backgroundColor: "#1816188c" }}
-          />
+          <BackButton style={{ color: white, backgroundColor: "#1816188c" }} />
         }
         right={
           <Button
-            style={{ color: variables.white }}
+            style={{ color: white }}
             type="link"
             onClick={() => navigate("/")}
           >
@@ -46,8 +44,8 @@ const ErrorPage404: React.FC = () => {
         <Title
           level={1}
           style={{
-            margin: `${variables.spacingS} ${variables.spacingL}`,
-            color: variables.white,
+            margin: `${spacingS} ${spacingL}`,
+            color: white,
           }}
         >
           404
@@ -55,18 +53,18 @@ const ErrorPage404: React.FC = () => {
         <Title
           level={3}
           style={{
-            margin: `${variables.spacingS} ${variables.spacingL}`,
-            color: variables.white,
+            margin: `${spacingS} ${spacingL}`,
+            color: white,
           }}
         >
           Oops, there is nothing here.
         </Title>
         <CircleImage src={image} alt="Profile picture of Eva" md={md} />
         <StyledText
-          color={variables.white}
+          color={white}
           fontSize="14px"
           style={{
-            margin: `${variables.spacingS} ${variables.spacingL}`,
+            margin: `${spacingS} ${spacingL}`,
           }}
         >
           Hi!! I'm Eva. I'm the frontend lead / cofounder of Outbreak and if a

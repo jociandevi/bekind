@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Flexbox, TagButton } from "./sharedLayouts";
 import Button from "antd/es/button";
 import Tooltip from "antd/es/tooltip";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { UserOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import { KindnessAction } from "../../common/interfaces";
 import { useGetApi } from "../../common/apiCalls";
+import { spacingXs } from "../../common/variables";
 
 const TagContainer = styled(Flexbox)`
-  gap: ${variables.spacingXs};
+  gap: ${spacingXs};
   justify-content: flex-start;
 `;
 

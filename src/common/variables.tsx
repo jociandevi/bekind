@@ -1,31 +1,29 @@
-export const variables = {
-  darkGray: "#878a99",
-  middleGray: "#989aa7",
-  lightGray: "#d9d9d9",
-  veryLightGray: "#f2f2f2",
-  blue1: "#1c1ffc",
-  green1: "#32c698",
-  black: "#181618",
-  pink1: "#F2E3E5",
-  pink2: "#DA959C",
-  pink3: "#ff5464",
-  pink4: "#E34D5B",
-  pink5: "#C64551",
-  pink6: "#8C353E",
-  green6: "#36473a",
-  green5: "#305226",
-  green4: "#4e8c35",
-  green3: "#5E9647",
-  lightBrown: "#B79383",
-  middleBrown: "#965047",
-  spacingXxxs: "4px",
-  spacingXxs: "8px",
-  spacingXs: "12px",
-  spacingS: "24px",
-  spacingM: "32px",
-  spacingL: "40px",
-  borderRadius: 15,
-  borderRadiusPercent: 15,
-  white: "#fff",
-  shadow1: "rgba(99, 99, 99, 0.2) 0px 2px 8px",
-};
+export const darkGray = "#878a99";
+export const middleGray = "#989aa7";
+export const lightGray = "#d9d9d9";
+export const veryLightGray = "#f2f2f2";
+export const blue1 = "#1c1ffc";
+export const green1 = "#32c698";
+export const black = "#181618";
+export const pink1 = "#F2E3E5";
+export const pink2 = "#DA959C";
+export const pink3 = "#ff5464";
+export const pink4 = "#E34D5B";
+export const pink5 = "#C64551";
+export const pink6 = "#8C353E";
+export const green6 = "#36473a";
+export const green5 = "#305226";
+export const green4 = "#4e8c35";
+export const green3 = "#5E9647";
+export const lightBrown = "#B79383";
+export const middleBrown = "#965047";
+export const spacingXxxs = "4px";
+export const spacingXxs = "8px";
+export const spacingXs = "12px";
+export const spacingS = "24px";
+export const spacingM = "32px";
+export const spacingL = "40px";
+export const borderRadius = 15;
+export const borderRadiusPercent = 15;
+export const white = "#fff";
+export const shadow1 = "rgba(99, 99, 99, 0.2) 0px 2px 8px";

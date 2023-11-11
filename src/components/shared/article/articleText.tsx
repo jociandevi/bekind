@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
-import { variables } from "../../../common/variables";
 import styled from "styled-components";
 import Loading from "../loading";
+import { spacingS, middleGray, pink6 } from "../../../common/variables";
 
 const Link = React.lazy(() => import("antd/es/typography/Link"));
 const Text = React.lazy(() => import("antd/es/typography/Text"));
@@ -14,13 +14,13 @@ interface Props {
 }
 
 const Sub = styled.span`
-  color: ${variables.middleGray};
+  color: ${middleGray};
   font-size: 10px;
   vertical-align: super;
 `;
 
 const BasicText = styled.span`
-  color: ${variables.middleGray};
+  color: ${middleGray};
 `;
 
 const ArticleText: React.FC<Props> = ({
@@ -60,7 +60,7 @@ const ArticleText: React.FC<Props> = ({
     <Suspense fallback={<Loading />}>
       <Text
         style={{
-          marginBottom: isFootNote ? "inherit" : variables.spacingS,
+          marginBottom: isFootNote ? "inherit" : spacingS,
           fontWeight: fontWeight ?? "inherit",
           lineHeight: isFootNote ? 1 : 2,
         }}
@@ -77,7 +77,7 @@ const ArticleText: React.FC<Props> = ({
                     ? textItemList[index + 1].text.slice(1, -1)
                     : undefined
                 }
-                style={{ color: variables.pink6, fontSize: fontSize ?? "14px" }}
+                style={{ color: pink6, fontSize: fontSize ?? "14px" }}
               >
                 {item.text}
               </Link>

@@ -7,13 +7,13 @@ import {
   StyledText,
 } from "../shared/sharedLayouts";
 import Title from "antd/es/typography/Title";
-import { variables } from "../../common/variables";
 import SunriseImage from "../shared/sunriseImage";
 import styled from "styled-components";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import Button from "antd/es/button";
+import { middleGray, veryLightGray } from "../../common/variables";
 
 const LoginContainer = styled(CenterAlignedFlexboxCol)`
   height: 100vh;
@@ -23,7 +23,7 @@ const LoginContainer = styled(CenterAlignedFlexboxCol)`
 const ImageContainer = styled.div`
   width: 50vw;
   height: 120vh;
-  background-color: ${variables.veryLightGray};
+  background-color: ${veryLightGray};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@ const Login: React.FC = () => {
       >
         <CenterAlignedFlexboxCol>
           <Title level={3}>Welcome to Outbreak!</Title>
-          <StyledText color={variables.middleGray} fontSize="14px">
+          <StyledText color={middleGray} fontSize="14px">
             Improve your life a little bit every day.
           </StyledText>
         </CenterAlignedFlexboxCol>

@@ -10,7 +10,6 @@ import {
   KindnessAction,
   LegalArticle,
 } from "../../../common/interfaces";
-import { variables } from "../../../common/variables";
 import Title from "antd/es/typography/Title";
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../../common/mediaQueryHook";
@@ -21,6 +20,12 @@ import ArticleText from "./articleText";
 import GoogleMap from "./googleMap";
 import PickButton from "../pickButton";
 import Loading from "../loading";
+import {
+  darkGray,
+  middleGray,
+  spacingL,
+  spacingS,
+} from "../../../common/variables";
 
 const Youtube = React.lazy(() => import("./youtube"));
 const Canva = React.lazy(() => import("./canva"));
@@ -79,11 +84,7 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
               <Title level={5}>{item.text}</Title>
             )}
             {item.type === ArticleElement.HEADER_SMALL && (
-              <StyledText
-                color={variables.darkGray}
-                fontSize="14px"
-                fontWeight="600"
-              >
+              <StyledText color={darkGray} fontSize="14px" fontWeight="600">
                 {item.text}
               </StyledText>
             )}
@@ -91,13 +92,13 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
               <CenterAlignedFlexboxCol>
                 <ArticleImage
                   style={{
-                    margin: `${variables.spacingS} 0 0`,
+                    margin: `${spacingS} 0 0`,
                     objectFit: item.objectFit ?? "cover",
                   }}
                   src={item.text}
                   alt="Image related to subheader"
                 />
-                <StyledText color={variables.middleGray} fontSize="10px">
+                <StyledText color={middleGray} fontSize="10px">
                   {item.credit}
                 </StyledText>
               </CenterAlignedFlexboxCol>
@@ -122,7 +123,7 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
         ))}
         {!isPureText && <PickButton item={kindness as KindnessAction} />}
       </ArticleContainer>
-      <ArticleContainer style={{ marginTop: variables.spacingL }}>
+      <ArticleContainer style={{ marginTop: spacingL }}>
         {article?.map((item, index) => (
           <Fragment key={index}>
             {item.type === ArticleElement.FOOTNOTE && (

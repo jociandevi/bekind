@@ -5,7 +5,6 @@ import {
   StyledText,
 } from "../shared/sharedLayouts";
 import Tabs from "antd/es/tabs";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import type { TabsProps } from "antd";
 import ImageCardM from "../shared/imageCardM";
@@ -25,21 +24,29 @@ import useKindnessHistory from "../../hooks/useKindnessHistory";
 import Statistics from "./statistics";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
+import {
+  darkGray,
+  middleGray,
+  pink1,
+  pink3,
+  spacingS,
+  spacingXs,
+} from "../../common/variables";
 
 const StyledTab = styled(Tabs)`
-  margin-top: ${variables.spacingXs};
+  margin-top: ${spacingXs};
 
   & div.ant-tabs-nav-list {
-    margin-left: ${variables.spacingXs};
+    margin-left: ${spacingXs};
   }
 
   & div.ant-tabs-tab.ant-tabs-tab-active {
-    background-color: ${variables.pink3};
+    background-color: ${pink3};
     border-radius: 15px;
 
     & .ant-tabs-tab-btn {
       color: white;
-      padding: 0 ${variables.spacingXs};
+      padding: 0 ${spacingXs};
     }
   }
 
@@ -60,7 +67,7 @@ const BadgeContainer = styled.div<{ md?: boolean }>`
   position: absolute;
   bottom: 2vw;
   border-radius: 50%;
-  background-color: ${variables.pink1};
+  background-color: ${pink1};
   height: ${(props) => (props.md ? "5vw" : "10vw")};
   width: ${(props) => (props.md ? "5vw" : "10vw")};
   left: ${(props) => (props.md ? "13vw" : "25vw")};
@@ -117,9 +124,9 @@ const Profile: React.FC = () => {
           {pastActions.map((item) => (
             <Fragment key={item.id}>
               <StyledText
-                color={variables.middleGray}
+                color={middleGray}
                 fontSize="12px"
-                style={{ marginLeft: variables.spacingXs }}
+                style={{ marginLeft: spacingXs }}
               >
                 {getDate(item.createdDate)}
               </StyledText>
@@ -162,11 +169,7 @@ const Profile: React.FC = () => {
     // API: get from last achieved badge from backend and show that
     return (
       <BadgeContainer md={md} onClick={() => setActiveKey("3")}>
-        <Pants
-          width={md ? 50 : 25}
-          height={md ? 50 : 25}
-          stroke={variables.darkGray}
-        />
+        <Pants width={md ? 50 : 25} height={md ? 50 : 25} stroke={darkGray} />
       </BadgeContainer>
     );
   };
@@ -178,7 +181,7 @@ const Profile: React.FC = () => {
   return (
     <>
       <Header left={<BackButton />} />
-      <CenterAlignedFlexboxCol style={{ marginTop: `-${variables.spacingS}` }}>
+      <CenterAlignedFlexboxCol style={{ marginTop: `-${spacingS}` }}>
         <ProfileImageContainer md={md}>
           <CircleImage
             src={user.picture}
@@ -188,7 +191,7 @@ const Profile: React.FC = () => {
           />
           {renderLatestAchievedBadge()}
         </ProfileImageContainer>
-        <Title level={4} style={{ marginTop: variables.spacingS }}>
+        <Title level={4} style={{ marginTop: spacingS }}>
           {user.firstName} {user.lastName}
         </Title>
       </CenterAlignedFlexboxCol>
@@ -202,7 +205,7 @@ const Profile: React.FC = () => {
       {error && (
         <PageError
           message="An error happened, sorry!"
-          style={{ margin: variables.spacingXs }}
+          style={{ margin: spacingXs }}
         />
       )}
       <InstallButton />

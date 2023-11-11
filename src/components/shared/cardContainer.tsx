@@ -4,9 +4,16 @@ import { Category, KindnessAction } from "../../common/interfaces";
 import { useSearchParams } from "react-router-dom";
 import { Flexbox, TagButton } from "./sharedLayouts";
 import styled from "styled-components";
-import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
 import Button from "antd/es/button";
+import {
+  pink3,
+  shadow1,
+  spacingM,
+  spacingS,
+  spacingXs,
+  white,
+} from "../../common/variables";
 
 interface Props {
   actions: KindnessAction[];
@@ -16,18 +23,18 @@ interface Props {
 
 const StyledContainer = styled(Flexbox)`
   display: flex;
-  gap: ${variables.spacingS};
+  gap: ${spacingS};
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100vw;
-  padding-bottom: ${variables.spacingM};
+  padding-bottom: ${spacingM};
 `;
 
 const ActiveTagButton = styled(Button)`
-  background-color: ${variables.pink3};
-  color: ${variables.white};
+  background-color: ${pink3};
+  color: ${white};
   border: none;
-  box-shadow: ${variables.shadow1};
+  box-shadow: ${shadow1};
 `;
 
 const CardContainer: React.FC<Props> = ({
@@ -47,9 +54,9 @@ const CardContainer: React.FC<Props> = ({
     <>
       <Flexbox
         style={{
-          marginBottom: variables.spacingS,
-          marginLeft: variables.spacingXs,
-          gap: variables.spacingXs,
+          marginBottom: spacingS,
+          marginLeft: spacingXs,
+          gap: spacingXs,
           justifyContent: "flex-start",
         }}
       >

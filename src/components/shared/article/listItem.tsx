@@ -1,16 +1,16 @@
 import React from "react";
-import { variables } from "../../../common/variables";
 import styled from "styled-components";
 import { RightOutlined } from "@ant-design/icons";
 import ArticleText from "./articleText";
+import { spacingXs, pink3 } from "../../../common/variables";
 
 interface Props {
   text: string;
 }
 
 const ListItemContainer = styled.div`
-  margin-bottom: ${variables.spacingXs};
-  margin-left: ${variables.spacingXs};
+  margin-bottom: ${spacingXs};
+  margin-left: ${spacingXs};
 `;
 
 const ListItem: React.FC<Props> = ({ text }) => {
@@ -32,8 +32,8 @@ const ListItem: React.FC<Props> = ({ text }) => {
       <RightOutlined
         style={{
           fontSize: "12px",
-          color: variables.pink3,
-          margin: `auto ${variables.spacingXs} 0 0`,
+          color: pink3,
+          margin: `auto ${spacingXs} 0 0`,
         }}
       />
       <ArticleText text={title} fontWeight={800} />

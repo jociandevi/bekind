@@ -1,8 +1,8 @@
 import React from "react";
 import { FlexboxCol, TextDisplayS } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { ReactComponent as Arrow } from "../../img/arrow-up-svgrepo-com.svg";
+import { black, borderRadius, spacingXxs } from "../../common/variables";
 
 const CardContainer = styled.div<{
   backgroundColor?: string;
@@ -11,8 +11,8 @@ const CardContainer = styled.div<{
 }>`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   flex-shrink: 0;
-  border-radius: ${variables.borderRadius}px;
-  padding: ${variables.spacingXxs};
+  border-radius: ${borderRadius}px;
+  padding: ${spacingXxs};
   padding-bottom: ${(props) => (props.icon ? 0 : "15px")}};
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ const NumberTextContainer = styled(FlexboxCol)`
 
 const NumberDisplay = styled.div<{ color?: string }>`
   font-size: 20px;
-  color: ${(props) => props.color ?? variables.black}};
+  color: ${(props) => props.color ?? black}};
   display: flex;
   align-items: center;
 `;

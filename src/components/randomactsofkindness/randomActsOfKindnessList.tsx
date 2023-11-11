@@ -1,6 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { ListLayout } from "../shared/sharedLayouts";
-import { variables } from "../../common/variables";
 import { categories } from "../../common/mockData";
 import { Category, KindnessAction } from "../../common/interfaces";
 import { useSearchParams } from "react-router-dom";
@@ -14,6 +13,7 @@ import UserProfileIcon from "../shared/userProfileIcon";
 import CardContainer from "../shared/cardContainer";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
+import { spacingXs } from "../../common/variables";
 
 const InstallModal = React.lazy(
   () => import("../shared/pwaCustomInstalls/installModal")
@@ -120,7 +120,7 @@ const RandomActOfKindnessList: React.FC = () => {
             <PageError
               message="An error happened, sorry!"
               tryAgain
-              style={{ margin: variables.spacingXs }}
+              style={{ margin: spacingXs }}
             />
           </Suspense>
         )}

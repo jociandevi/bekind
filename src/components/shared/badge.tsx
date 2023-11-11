@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { CenterAlignedFlexboxCol, TextDisplayS } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import { BadgeProps } from "../../common/interfaces";
 import Tooltip from "antd/es/tooltip";
 import BadgeModal from "../randomactsofkindness/modals/badgeModal";
 import { badgeIcons } from "../../common/mockData";
+import { lightGray } from "../../common/variables";
 
 const DisabledBadge = styled.div`
   && .inside {
     path {
-      fill: ${variables.lightGray};
-      stroke: ${variables.lightGray};
+      fill: ${lightGray};
+      stroke: ${lightGray};
     }
   }
 `;

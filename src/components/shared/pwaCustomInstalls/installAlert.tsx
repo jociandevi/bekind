@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Alert } from "antd";
 import Button from "antd/es/button";
 import styled from "styled-components";
-import { variables } from "../../../common/variables";
 import { useMediaQueries } from "../../../common/mediaQueryHook";
+import { spacingXs, black, white } from "../../../common/variables";
 
 interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[];
@@ -21,11 +21,11 @@ const StyledAlert = styled(Alert)`
   border: none;
   border-radius: 0;
   width: 100vw;
-  background-color: ${variables.black};
-  color: ${variables.white};
+  background-color: ${black};
+  color: ${white};
 
   & svg {
-    color: ${variables.white};
+    color: ${white};
   }
 `;
 
@@ -83,7 +83,7 @@ const InstallAlert: React.FC = () => {
           type="primary"
           size="small"
           onClick={onClick}
-          style={{ marginRight: variables.spacingXs }}
+          style={{ marginRight: spacingXs }}
         >
           Open
         </Button>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { CenterAlignedFlexbox, FlexboxCol, StyledText } from "./sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
@@ -11,13 +10,19 @@ import { useGetApi } from "../../common/apiCalls";
 import Loading from "./loading";
 import PickButton from "./pickButton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {
+  borderRadius,
+  middleGray,
+  spacingS,
+  spacingXs,
+} from "../../common/variables";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
   flex-shrink: 0;
-  border-radius: ${variables.borderRadius}px;
+  border-radius: ${borderRadius}px;
   display: flex;
-  margin-bottom: ${variables.spacingS};
+  margin-bottom: ${spacingS};
   max-height: 30vw;
 `;
 
@@ -69,7 +74,7 @@ const ImageCardM: React.FC<Props> = ({ item }) => {
         src={kindness?.imageUrl}
         style={{
           objectFit: "cover",
-          borderRadius: `${variables.borderRadius}px`,
+          borderRadius: `${borderRadius}px`,
           height: md ? "20vw" : "30vw",
           width: md ? "20vw" : "30vw",
         }}
@@ -80,12 +85,12 @@ const ImageCardM: React.FC<Props> = ({ item }) => {
           {kindness?.title}
         </Title>
         {md && (
-          <StyledText color={variables.middleGray} fontSize="12px">
+          <StyledText color={middleGray} fontSize="12px">
             {kindness?.description}
           </StyledText>
         )}
       </FlexboxCol>
-      <CenterAlignedFlexbox style={{ paddingRight: variables.spacingXs }}>
+      <CenterAlignedFlexbox style={{ paddingRight: spacingXs }}>
         {kindness && <PickButton item={kindness} />}
       </CenterAlignedFlexbox>
     </CardContainer>

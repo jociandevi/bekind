@@ -4,7 +4,16 @@ import {
   ImageContainer,
   StyledText,
 } from "../shared/sharedLayouts";
-import { variables } from "../../common/variables";
+import {
+  lightGray,
+  middleGray,
+  pink3,
+  shadow1,
+  spacingL,
+  spacingM,
+  spacingXs,
+  white,
+} from "../../common/variables";
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { useNavigate, useParams } from "react-router-dom";
@@ -24,7 +33,7 @@ import { selectUser } from "../../redux/selectors";
 import Button from "antd/es/button";
 
 const MarginContainer = styled(FlexboxCol)`
-  margin: ${variables.spacingM} auto;
+  margin: ${spacingM} auto;
   width: 90vw;
   @media only screen and ${mdBreakPoint} {
     width: inherit;
@@ -33,23 +42,23 @@ const MarginContainer = styled(FlexboxCol)`
 
 const OverlayBackButton = styled(Button)`
   position: absolute;
-  top: ${variables.spacingL};
-  left: ${variables.spacingM};
-  color: ${variables.white};
+  top: ${spacingL};
+  left: ${spacingM};
+  color: ${white};
   background-color: #1816188c;
 `;
 
 const OverlayHeartButton = styled(Button)`
   position: absolute;
-  bottom: -${variables.spacingXs};
-  right: ${variables.spacingM};
-  box-shadow: ${variables.shadow1};
+  bottom: -${spacingXs};
+  right: ${spacingM};
+  box-shadow: ${shadow1};
 `;
 
 const OverlayProfileContainer = styled.div`
   position: absolute;
-  top: ${variables.spacingL};
-  right: ${variables.spacingM};
+  top: ${spacingL};
+  right: ${spacingM};
 
   & button {
     padding: 0;
@@ -133,9 +142,9 @@ const KindnessDetails: React.FC = () => {
           shape="circle"
           onClick={onLike}
           style={{
-            borderColor: isLiked ? variables.pink3 : variables.white,
-            color: isLiked ? variables.pink3 : variables.white,
-            backgroundColor: isLiked ? variables.white : variables.lightGray,
+            borderColor: isLiked ? pink3 : white,
+            color: isLiked ? pink3 : white,
+            backgroundColor: isLiked ? white : lightGray,
           }}
         />
         {user && (
@@ -145,7 +154,7 @@ const KindnessDetails: React.FC = () => {
         )}
       </ImageContainer>
       <StyledText
-        color={variables.middleGray}
+        color={middleGray}
         fontSize="10px"
         style={{ margin: "0 auto" }}
       >

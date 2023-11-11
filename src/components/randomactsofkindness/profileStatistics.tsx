@@ -1,11 +1,11 @@
 import React from "react";
 import { FlexboxCol } from "../shared/sharedLayouts";
-import { variables } from "../../common/variables";
 import styled from "styled-components";
 import StatsCard from "../shared/statscard";
 import { ReactComponent as LogoSvg } from "../../img/line-chart-svgrepo-com.svg";
 import { ReactComponent as HeartSvg } from "../../img/heart-svgrepo-com.svg";
 import { MemberStatistics } from "../../common/interfaces";
+import { black, darkGray, pink6, veryLightGray } from "../../common/variables";
 
 const Flexbox = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const ProfileStatistics: React.FC<Props> = ({ myStats, avgStats }) => {
       <FlexboxCol>
         <Flexbox>
           <StatsCard
-            backgroundColor={variables.pink6}
+            backgroundColor={pink6}
             number={myStats?.kindnessForTheLast30DaysCount ?? 0}
             text="Last 30 Days"
             color="white"
@@ -49,17 +49,17 @@ const ProfileStatistics: React.FC<Props> = ({ myStats, avgStats }) => {
             width={35}
           />
           <StatsCard
-            backgroundColor={variables.veryLightGray}
+            backgroundColor={veryLightGray}
             number={comparedToOthers}
             text={`${comparedToOthersText} than others`}
             compareChange
             width={35}
-            color={variables.black}
-            secondaryColor={variables.darkGray}
+            color={black}
+            secondaryColor={darkGray}
           />
         </Flexbox>
         <StatsCard
-          backgroundColor={variables.darkGray}
+          backgroundColor={darkGray}
           color="white"
           secondaryColor="white"
           number={comparedToYourself}
@@ -69,11 +69,11 @@ const ProfileStatistics: React.FC<Props> = ({ myStats, avgStats }) => {
         />
       </FlexboxCol>
       <StatsCard
-        backgroundColor={variables.veryLightGray}
+        backgroundColor={veryLightGray}
         number={myStats?.kindnessLifetimeCount ?? 0}
         text="Total number of kindnesses"
         width={25}
-        secondaryColor={variables.darkGray}
+        secondaryColor={darkGray}
         icon={<HeartSvg width={30} height={30} />}
         iconToTop
       />
