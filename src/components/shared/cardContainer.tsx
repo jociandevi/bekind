@@ -77,7 +77,7 @@ const CardContainer: React.FC<Props> = ({
             item={item}
             key={item.id}
             isLiked={likedActions?.includes(item?.id!)}
-            shouldPreload={index < 1}
+            shouldPreload={index < 2}
           />
         ))}
       </StyledContainer>
