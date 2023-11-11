@@ -27,6 +27,10 @@ export const badgeIcons: { id: number; icon: React.ReactNode }[] = [
     id: 5,
     icon: <Food width={80} height={80} />,
   },
+  {
+    id: 6,
+    icon: <Food width={80} height={80} />,
+  },
 ];
 
 export const categories: Category[] = [

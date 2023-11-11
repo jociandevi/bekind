@@ -22,24 +22,19 @@ const Login = lazy(
       /* webpackChunkName: "login" */ "./components/randomactsofkindness/login"
     )
 );
+const AddEditPages = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "add-edit-pages" */ "./components/randomactsofkindness/addEditPages"
+    )
+);
 const Profile = lazy(
   () =>
     import(
       /* webpackChunkName: "profile" */ "./components/randomactsofkindness/profile"
     )
 );
-const AddNew = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "add-action" */ "./components/randomactsofkindness/addNew"
-    )
-);
-const AddEditBadge = lazy(
-  () =>
-    import(
-      /* webpackChunkName: "add-badge" */ "./components/randomactsofkindness/addEditBadge"
-    )
-);
+
 const KindnessDetails = lazy(
   () =>
     import(
@@ -60,9 +55,7 @@ const router = createBrowserRouter(
         path=""
         element={
           <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <RandomActOfKindnessList />
-            </ConfigProvider>
+            <RandomActOfKindnessList />
           </Suspense>
         }
       />
@@ -70,9 +63,7 @@ const router = createBrowserRouter(
         path=":id/:title"
         element={
           <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <KindnessDetails />
-            </ConfigProvider>
+            <KindnessDetails />
           </Suspense>
         }
       />
@@ -80,49 +71,15 @@ const router = createBrowserRouter(
         path="profile"
         element={
           <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <Profile />
-            </ConfigProvider>
+            <Profile />
           </Suspense>
         }
       />
       <Route
-        path="new"
+        path="edit/:type/:id"
         element={
           <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <AddNew />
-            </ConfigProvider>
-          </Suspense>
-        }
-      />
-      <Route
-        path="edit/:id"
-        element={
-          <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <AddNew />
-            </ConfigProvider>
-          </Suspense>
-        }
-      />
-      <Route
-        path="new-badge"
-        element={
-          <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <AddEditBadge />
-            </ConfigProvider>
-          </Suspense>
-        }
-      />
-      <Route
-        path="edit-badge/:id"
-        element={
-          <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <AddEditBadge />
-            </ConfigProvider>
+            <AddEditPages />
           </Suspense>
         }
       />
@@ -130,9 +87,7 @@ const router = createBrowserRouter(
         path="privacy-policy"
         element={
           <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <PrivacyPolicy />
-            </ConfigProvider>
+            <PrivacyPolicy />
           </Suspense>
         }
       />
@@ -140,9 +95,7 @@ const router = createBrowserRouter(
         path="terms-and-conditions"
         element={
           <Suspense fallback={<Loading />}>
-            <ConfigProvider theme={{ ...theme }}>
-              <TermsAndConditions />
-            </ConfigProvider>
+            <TermsAndConditions />
           </Suspense>
         }
       />
@@ -163,9 +116,9 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        {/* <ConfigProvider theme={{ ...theme }}> */}
-        <RouterProvider router={router} />
-        {/* </ConfigProvider> */}
+        <ConfigProvider theme={{ ...theme }}>
+          <RouterProvider router={router} />
+        </ConfigProvider>
       </PersistGate>
     </Provider>
   );

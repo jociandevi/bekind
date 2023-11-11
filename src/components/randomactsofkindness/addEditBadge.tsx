@@ -29,6 +29,8 @@ const AddEditBadge: React.FC = () => {
   const { callGetApi: getActions } = useGetApi(`api/Kindness`);
 
   const params = useParams();
+  console.log(params.id);
+
   const { callGetApi } = useGetApi(`api/Badge/${params.id}`);
   const [badge, setBadge] = useState<BadgeProps | undefined>(undefined);
   const [actions, setActions] = useState<KindnessAction[] | []>([]);
@@ -39,7 +41,7 @@ const AddEditBadge: React.FC = () => {
   // get badge if we are editing
   useEffect(() => {
     async function fetchData() {
-      if (params.id) {
+      if (params.id !== "new") {
         const response = await callGetApi();
         setBadge(response?.data);
       }
@@ -141,11 +143,13 @@ const AddEditBadge: React.FC = () => {
           marginBottom: variables.spacingS,
         }}
       >
-        <Title level={3}>{params.id ? "Edit Badge" : "Add New Badge"}</Title>
+        <Title level={3}>
+          {params.id === "new" ? "Add New Badge" : "Edit Badge"}
+        </Title>
       </CenterAlignedFlexbox>
 
       <Form
-        onFinish={params.id ? onEdit : onFinish}
+        onFinish={params.id === "new" ? onFinish : onEdit}
         onFinishFailed={onFinishFailed}
         form={form}
       >

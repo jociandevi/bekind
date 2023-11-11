@@ -44,7 +44,7 @@ const AddNew: React.FC = () => {
 
   useEffect(() => {
     async function fetchData() {
-      if (params.id) {
+      if (params.id !== "new") {
         const response = await callGetApi();
         setAction(response?.data);
       }
@@ -131,7 +131,9 @@ const AddNew: React.FC = () => {
           marginBottom: variables.spacingS,
         }}
       >
-        <Title level={3}>{params.id ? "Edit Action" : "Add New"}</Title>
+        <Title level={3}>
+          {params.id === "new" ? "New Action" : "Edit Action"}
+        </Title>
         <Button
           style={{ border: "none" }}
           icon={<UserOutlined />}
@@ -140,7 +142,7 @@ const AddNew: React.FC = () => {
       </CenterAlignedFlexbox>
 
       <Form
-        onFinish={params.id ? onEdit : onFinish}
+        onFinish={params.id === "new" ? onFinish : onEdit}
         onFinishFailed={onFinishFailed}
         form={form}
       >
