@@ -32,7 +32,6 @@ const SignalRConnector: React.FC = () => {
             setIsCheersModalOpen(true);
             break;
         }
-        // Update this MemberBadge with a PUT to enable it for user
       });
     }
 
