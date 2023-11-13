@@ -29,7 +29,6 @@ const AddEditBadge: React.FC = () => {
   const { callGetApi: getActions } = useGetApi(`api/Kindness`);
 
   const params = useParams();
-  console.log(params.id);
 
   const { callGetApi } = useGetApi(`api/Badge/${params.id}`);
   const [badge, setBadge] = useState<BadgeProps | undefined>(undefined);

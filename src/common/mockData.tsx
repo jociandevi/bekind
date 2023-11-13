@@ -3,6 +3,7 @@ import { ReactComponent as Hotel } from "../img/badges/hotel.svg";
 import { ReactComponent as DivingGoggles } from "../img/badges/diving-goggles.svg";
 import { ReactComponent as Food } from "../img/badges/food.svg";
 import { ReactComponent as Tree } from "../img/badges/tree.svg";
+import { ReactComponent as Balloon } from "../img/badges/hot-air-balloon.svg";
 import { Category, CategoryNames } from "./interfaces";
 import { darkGray } from "./variables";
 
@@ -29,7 +30,7 @@ export const badgeIcons: { id: number; icon: React.ReactNode }[] = [
   },
   {
     id: 6,
-    icon: <Food width={80} height={80} />,
+    icon: <Balloon width={80} height={80} />,
   },
 ];
 

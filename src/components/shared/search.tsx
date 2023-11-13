@@ -11,7 +11,6 @@ interface Props {
 
 const Search: React.FC<Props> = ({ setFilteredActions, actions }) => {
   const searchTimeout = useRef<NodeJS.Timeout | null>(null);
-  const [searchTerm, setSearchTerm] = React.useState("");
 
   useEffect(() => {
     return () => {
@@ -28,8 +27,6 @@ const Search: React.FC<Props> = ({ setFilteredActions, actions }) => {
 
     // Search after 0.7 seconds
     searchTimeout.current = setTimeout(() => {
-      setSearchTerm(e?.target.value!);
-      console.log(e?.target.value, searchTerm);
       onSearch(e?.target.value!);
     }, 700);
   };

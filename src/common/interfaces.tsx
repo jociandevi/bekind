@@ -90,6 +90,25 @@ export interface Member {
   email: string;
 }
 
+export interface Notification {
+  badgeId?: number;
+  createdDate: string;
+  id: number;
+  isReceived: boolean;
+  notificationType: number;
+  receiver?: {
+    id: string;
+    kindnessHistories?: any;
+    likedKindnesses?: any;
+    memberBadges?: any;
+    notifications?: any;
+    receivedHighFives?: any;
+  };
+  receiverId?: string;
+  title?: string;
+  userImageUrl?: string;
+}
+
 // copied from https://googleapis.dev/nodejs/google-auth-library/5.8.0/interfaces/TokenPayload.html#source
 export interface TokenPayload {
   /**

@@ -21,7 +21,6 @@ const InstallModal = React.lazy(
 const InstallButton = React.lazy(
   () => import("../shared/pwaCustomInstalls/installButton")
 );
-const CheersModal = React.lazy(() => import("./modals/cheersModal"));
 const InstallAlert = React.lazy(
   () => import("../shared/pwaCustomInstalls/installAlert")
 );
@@ -36,7 +35,6 @@ const RandomActOfKindnessList: React.FC = () => {
   const [filteredActions, setFilteredActions] = useState<KindnessAction[] | []>(
     []
   );
-  const [isModalOpen, setIsModalOpen] = useState(false);
   let [searchParams, setSearchParams] = useSearchParams();
   const { callGetApi, loading, error } = useGetApi("api/Kindness");
   const { getHistory } = useKindnessHistory();
@@ -137,12 +135,6 @@ const RandomActOfKindnessList: React.FC = () => {
         </Suspense>
         <Suspense fallback={<></>}>
           <InstallModal />
-        </Suspense>
-        <Suspense fallback={<Loading />}>
-          <CheersModal
-            isModalOpen={isModalOpen}
-            setIsModalOpen={setIsModalOpen}
-          />
         </Suspense>
         {user && (
           <Suspense fallback={<></>}>

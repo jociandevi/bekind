@@ -18,7 +18,6 @@ const Statistics: React.FC = () => {
 
   useEffect(() => {
     getMyStats().then((res: any) => {
-      console.log(res);
       setMyStats(res?.data);
     });
   }, [getMyStats]);

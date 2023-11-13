@@ -57,7 +57,7 @@ const PickButton: React.FC<Props> = ({ item }) => {
     if (!errorPostKindnessHistory) {
       setIsFeedbackModalOpen(true);
       dispatch(setDailyDone(true));
-      const newStreak = userStreak ? userStreak + 1 : 0;
+      const newStreak = userStreak ? userStreak + 1 : 1;
       dispatch(setUserStreak(newStreak));
     }
   };

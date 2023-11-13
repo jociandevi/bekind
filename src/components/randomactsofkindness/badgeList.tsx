@@ -4,6 +4,7 @@ import Badge from "../shared/badge";
 import { useGetApi } from "../../common/apiCalls";
 import { BadgeProps } from "../../common/interfaces";
 import Loading from "../shared/loading";
+import { spacingXs } from "../../common/variables";
 
 const BadgeList: React.FC = () => {
   const { callGetApi, loading } = useGetApi(`api/Badge`);
@@ -20,7 +21,9 @@ const BadgeList: React.FC = () => {
   }
 
   return (
-    <CenterAlignedFlexbox style={{ flexWrap: "wrap" }}>
+    <CenterAlignedFlexbox
+      style={{ flexWrap: "wrap", gap: "2vw", padding: spacingXs }}
+    >
       {badges?.map((item) => (
         <Badge key={item.id} {...item} />
       ))}
