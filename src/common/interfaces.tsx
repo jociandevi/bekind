@@ -66,7 +66,7 @@ export interface MemberStatistics {
 }
 
 export interface BadgeProps {
-  id?: number;
+  id: number;
   icon: React.ReactNode;
   iconSrc?: string;
   enabled: boolean;
@@ -75,7 +75,6 @@ export interface BadgeProps {
   description?: string;
   tooltip?: string;
   kindnessIds?: number[];
-  isOwnedByMember?: boolean;
 }
 
 export interface Member {

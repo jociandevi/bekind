@@ -16,8 +16,13 @@ const DisabledBadge = styled.div`
   }
 `;
 
-const Badge: React.FC<BadgeProps> = ({ ...item }) => {
-  const { isOwnedByMember, name, tooltip, id } = item;
+interface Props {
+  achieved?: boolean;
+  item: BadgeProps;
+}
+
+const Badge: React.FC<Props> = ({ achieved, item }) => {
+  const { name, tooltip, id } = item;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const icon = badgeIcons.find((item) => item.id === id)?.icon;
 
@@ -29,7 +34,7 @@ const Badge: React.FC<BadgeProps> = ({ ...item }) => {
         item={item}
       />
       <CenterAlignedFlexboxCol>
-        {isOwnedByMember ? (
+        {achieved ? (
           <div onClick={() => setIsModalOpen(true)}>{icon}</div>
         ) : (
           <Tooltip title={tooltip}>
