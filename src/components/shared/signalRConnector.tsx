@@ -26,6 +26,7 @@ const SignalRConnector: React.FC = () => {
         const { notificationType } = message;
         switch (notificationType) {
           case 0:
+            console.log("we got a badge notification!");
             setIsBadgeModalOpen(true);
             break;
           case 1:
