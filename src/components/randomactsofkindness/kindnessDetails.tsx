@@ -4,33 +4,24 @@ import {
   ImageContainer,
   StyledText,
 } from "../shared/sharedLayouts";
-import {
-  lightGray,
-  middleGray,
-  pink3,
-  shadow1,
-  spacingL,
-  spacingM,
-  spacingXs,
-  white,
-} from "../../common/variables";
+import { middleGray, spacingL, spacingM, white } from "../../common/variables";
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { useNavigate, useParams } from "react-router-dom";
-import { HeartFilled, ArrowLeftOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
 import Article from "../shared/article/article";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
 import Tags from "../shared/tags";
-import { useGetApi, usePostApi } from "../../common/apiCalls";
+import { useGetApi } from "../../common/apiCalls";
 import { KindnessAction } from "../../common/interfaces";
 import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import ProgressBar from "../shared/progressBar";
-import { useDelete } from "../../hooks/useDelete";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import Button from "antd/es/button";
+import LikeButton from "../shared/likeButton";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${spacingM} auto;
@@ -46,13 +37,6 @@ const OverlayBackButton = styled(Button)`
   left: ${spacingM};
   color: ${white};
   background-color: #1816188c;
-`;
-
-const OverlayHeartButton = styled(Button)`
-  position: absolute;
-  bottom: -${spacingXs};
-  right: ${spacingM};
-  box-shadow: ${shadow1};
 `;
 
 const OverlayProfileContainer = styled.div`
@@ -90,17 +74,6 @@ const KindnessDetails: React.FC = () => {
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
-  const { callPostApi } = usePostApi(`api/LikedKindness/${id}`);
-  const { callDelete } = useDelete(`api/LikedKindness/${id}`);
-
-  const onLike = () => {
-    if (isLiked) {
-      callDelete();
-    } else {
-      callPostApi();
-    }
-    setIsLiked(!isLiked);
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -111,13 +84,16 @@ const KindnessDetails: React.FC = () => {
   }, [callGetApi]);
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     async function fetchData() {
       const response = await getLikedActions();
-      const liked = response.data?.includes(id ? parseInt(id) : 0);
+      const liked = response?.data?.includes(id ? parseInt(id) : 0);
       setIsLiked(liked);
     }
     fetchData();
-  }, [getLikedActions, id]);
+  }, [getLikedActions, id, user]);
 
   if (loading) {
     return <Loading />;
@@ -137,16 +113,9 @@ const KindnessDetails: React.FC = () => {
           shape="circle"
           onClick={() => navigate("/")}
         />
-        <OverlayHeartButton
-          icon={<HeartFilled />}
-          shape="circle"
-          onClick={onLike}
-          style={{
-            borderColor: isLiked ? pink3 : white,
-            color: isLiked ? pink3 : white,
-            backgroundColor: isLiked ? white : lightGray,
-          }}
-        />
+        {action && (
+          <LikeButton item={action} isLiked={isLiked} type="details" />
+        )}
         {user && (
           <OverlayProfileContainer>
             <UserProfileIcon user={user} />

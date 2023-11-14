@@ -8,24 +8,15 @@ import {
   tabletCardWidth,
 } from "./sharedLayouts";
 import styled from "styled-components";
-import Button from "antd/es/button";
-import { HeartFilled } from "@ant-design/icons";
 import Title from "antd/es/typography/Title";
 import { useMediaQueries } from "../../common/mediaQueryHook";
 import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
 import { transformTitleToUrl } from "../../common/util";
-import { usePostApi } from "../../common/apiCalls";
-import { useDelete } from "../../hooks/useDelete";
 import PickButton from "./pickButton";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import {
-  borderRadius,
-  pink3,
-  spacingXs,
-  spacingXxs,
-  white,
-} from "../../common/variables";
+import { borderRadius, spacingXs, spacingXxs } from "../../common/variables";
+import LikeButton from "./likeButton";
 
 const CardContainer = styled.div<{
   md?: boolean;
@@ -58,13 +49,6 @@ const PaddingContainer = styled.div<{
   justify-content: flex-start;
 `;
 
-const OverlayIconButton = styled(Button)`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #1816188c;
-`;
-
 interface Props {
   item: KindnessAction;
   isGlowing?: boolean;
@@ -75,9 +59,6 @@ interface Props {
 const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
   const { md, lg, xl } = useMediaQueries();
   const navigate = useNavigate();
-  const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
-  const { callDelete } = useDelete(`api/LikedKindness/${item.id}`);
-  const [isItLiked, setIsItLiked] = useState(isLiked);
   const [preloadedSrc, setPreloadedSrc] = useState<string>("");
 
   useEffect(() => {
@@ -108,16 +89,6 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
       };
     }
   }, [item.imageUrl, shouldPreload]);
-
-  const onLike = (event: React.MouseEvent<HTMLElement>) => {
-    event.stopPropagation();
-    if (isItLiked) {
-      callDelete();
-    } else {
-      callPostApi();
-    }
-    setIsItLiked(!isItLiked);
-  };
 
   const cardAreaClicked = () => {
     const url = transformTitleToUrl(item.title);
@@ -179,16 +150,7 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
             }}
           />
         )}
-
-        <OverlayIconButton
-          icon={<HeartFilled />}
-          shape="circle"
-          onClick={onLike}
-          style={{
-            color: isItLiked ? pink3 : white,
-            borderColor: isItLiked ? pink3 : white,
-          }}
-        />
+        <LikeButton item={item} isLiked={isLiked} type="card" />
       </ImageContainer>
       <PaddingContainer md={md} lg={lg}>
         <Title level={5} style={{ margin: "15px 0 0" }}>

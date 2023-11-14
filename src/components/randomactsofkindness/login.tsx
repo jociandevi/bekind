@@ -53,10 +53,10 @@ const Login: React.FC = () => {
       <CenterAlignedFlexboxCol
         style={{ justifyContent: "space-between", height: "70vh" }}
       >
-        <CenterAlignedFlexboxCol>
-          <Title level={3}>Welcome to Outbreak!</Title>
+        <CenterAlignedFlexboxCol style={{ padding: `0 20vw` }}>
+          <Title level={2}>Welcome!</Title>
           <StyledText color={middleGray} fontSize="14px">
-            Improve your life a little bit every day.
+            Outbreaks helps you become happier with small daily actions.
           </StyledText>
         </CenterAlignedFlexboxCol>
         <CenterAlignedFlexboxCol>

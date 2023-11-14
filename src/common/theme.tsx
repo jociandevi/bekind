@@ -3,6 +3,7 @@ import {
   black,
   borderRadius,
   darkGray,
+  green5,
   middleGray,
   pink2,
   pink3,
@@ -12,6 +13,7 @@ export const theme: ThemeConfig = {
   token: {
     colorPrimary: pink3,
     colorError: pink2,
+    colorWarning: green5,
     colorInfo: middleGray,
     colorLink: darkGray,
     colorTextBase: black,
