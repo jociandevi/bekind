@@ -14,6 +14,8 @@ import CardContainer from "../shared/cardContainer";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import { spacingXs } from "../../common/variables";
+import Tour from "../shared/tour";
+import { showUserJourney } from "../shared/userJourney";
 
 const InstallModal = React.lazy(
   () => import("../shared/pwaCustomInstalls/installModal")
@@ -41,6 +43,7 @@ const RandomActOfKindnessList: React.FC = () => {
   const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
   // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
   const [apiSuccess, setApiSuccess] = useState(false);
+  const [tourIsVisible, setTourIsVisible] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -54,6 +57,11 @@ const RandomActOfKindnessList: React.FC = () => {
     }
     fetchData();
   }, [callGetApi]);
+
+  useEffect(() => {
+    const showTour = showUserJourney();
+    setTourIsVisible(showTour);
+  }, []);
 
   useEffect(() => {
     if (!user) {
@@ -98,6 +106,10 @@ const RandomActOfKindnessList: React.FC = () => {
       setSearchParams({ category: category.name });
     }
   };
+
+  if (tourIsVisible) {
+    return <Tour setTourIsVisible={setTourIsVisible} />;
+  }
 
   if (loading) {
     return <Loading />;

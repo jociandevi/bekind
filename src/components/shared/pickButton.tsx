@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Button from "antd/es/button";
 import Tooltip from "antd/es/tooltip";
 import { KindnessAction } from "../../common/interfaces";
-import { glowingStyle } from "./userJourney";
 import { usePostApi } from "../../common/apiCalls";
 import ConfirmModal from "../randomactsofkindness/modals/confirmModal";
 import FeedbackModal from "../randomactsofkindness/modals/feedbackModal";
@@ -38,7 +37,6 @@ const PickButton: React.FC<Props> = ({ item }) => {
     error: errorPostKindnessHistory,
   } = usePostApi(`api/KindnessHistory/${item?.id}`);
   const dispatch = useDispatch();
-  const isGlowing = false;
 
   const onDisabledPick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -70,11 +68,7 @@ const PickButton: React.FC<Props> = ({ item }) => {
   return (
     <>
       {!dailyIsDone ? (
-        <Button
-          style={{ boxShadow: isGlowing ? glowingStyle : undefined }}
-          type="primary"
-          onClick={onPick}
-        >
+        <Button type="primary" onClick={onPick}>
           Pick
         </Button>
       ) : (

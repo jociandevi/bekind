@@ -20,7 +20,7 @@ const BadgeList: React.FC = () => {
 
   useEffect(() => {
     getAchievedBadges().then((res: { data: BadgeProps[] }) => {
-      const achievedBadgeIds = res.data.map(({ id }) => id);
+      const achievedBadgeIds = res?.data?.map(({ id }) => id);
       setAchievedBadges(achievedBadgeIds);
     });
   }, [getAchievedBadges]);

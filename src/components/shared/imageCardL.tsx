@@ -51,7 +51,6 @@ const PaddingContainer = styled.div<{
 
 interface Props {
   item: KindnessAction;
-  isGlowing?: boolean;
   isLiked?: boolean;
   shouldPreload?: boolean;
 }

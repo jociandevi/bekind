@@ -89,7 +89,7 @@ const Profile: React.FC = () => {
 
   useEffect(() => {
     getHistory().then((res) => {
-      setPastActions(res.data);
+      setPastActions(res?.data);
     });
   }, [getHistory]);
 
