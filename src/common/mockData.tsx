@@ -5,6 +5,7 @@ import { ReactComponent as Food } from "../img/badges/food.svg";
 import { ReactComponent as Tree } from "../img/badges/tree.svg";
 import { ReactComponent as Balloon } from "../img/badges/hot-air-balloon.svg";
 import { ReactComponent as Camera } from "../img/badges/camera.svg";
+import { ReactComponent as Tent } from "../img/badges/tent.svg";
 import { Category, CategoryNames } from "./interfaces";
 import { darkGray } from "./variables";
 
@@ -36,6 +37,10 @@ export const badgeIcons: { id: number; icon: React.ReactNode }[] = [
   {
     id: 7,
     icon: <Camera width={80} height={80} />,
+  },
+  {
+    id: 8,
+    icon: <Tent width={80} height={80} />,
   },
 ];
 
