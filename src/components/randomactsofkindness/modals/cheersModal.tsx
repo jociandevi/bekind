@@ -14,15 +14,21 @@ const CheersModal: React.FC<Props> = ({
   notificationData,
 }) => {
   const { title, userImageUrl } = notificationData;
+  const header =
+    notificationData.notificationType === 1
+      ? "Cheer on others"
+      : "You got cheered on!";
+  const okText = notificationData.notificationType === 1 ? "Sure!" : "Cool!";
+  const cancelText =
+    notificationData.notificationType === 1 ? "Not today!" : undefined;
 
   const onOk = () => {
     setIsModalOpen(false);
-    // API call: lets make a backend call to send a cheer message to these users
   };
 
   return (
     <AntdModal
-      title="Cheer on others"
+      title={header}
       modalHeight={288}
       isModalOpen={isModalOpen}
       setIsModalOpen={setIsModalOpen}
@@ -30,8 +36,8 @@ const CheersModal: React.FC<Props> = ({
       description={title}
       imageUrl={userImageUrl}
       isProfileImage
-      okText="Sure!"
-      cancelText="Not today"
+      okText={okText}
+      cancelText={cancelText}
     />
   );
 };

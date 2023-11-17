@@ -26,10 +26,12 @@ const SignalRConnector: React.FC = () => {
         const { notificationType } = message;
         switch (notificationType) {
           case 0:
-            console.log("we got a badge notification!");
             setIsBadgeModalOpen(true);
             break;
           case 1:
+            setIsCheersModalOpen(true);
+            break;
+          case 2:
             setIsCheersModalOpen(true);
             break;
         }
@@ -56,13 +58,15 @@ const SignalRConnector: React.FC = () => {
           notificationData={notificationData}
         />
       )}
-      {notificationData && notificationData.notificationType === 1 && (
-        <CheersModal
-          isModalOpen={isCheersModalOpen}
-          setIsModalOpen={setIsCheersModalOpen}
-          notificationData={notificationData}
-        />
-      )}
+      {notificationData &&
+        (notificationData.notificationType === 1 ||
+          notificationData.notificationType === 2) && (
+          <CheersModal
+            isModalOpen={isCheersModalOpen}
+            setIsModalOpen={setIsCheersModalOpen}
+            notificationData={notificationData}
+          />
+        )}
     </>
   );
 };

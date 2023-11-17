@@ -16,7 +16,6 @@ const BadgeAchievedModal: React.FC<Props> = ({
   setIsModalOpen,
   notificationData,
 }) => {
-  console.log("this is the badge modal!");
   const [badge, setBadge] = useState<BadgeProps | undefined>(undefined);
   const { callGetApi } = useGetApi(`api/Badge/${notificationData?.badgeId}`);
   const icon = badgeIcons.find(
