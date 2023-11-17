@@ -25,6 +25,7 @@ const GoogleLoginButton: React.FC = () => {
       client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID || "",
       callback: handleCallbackResponse,
       auto_select: true,
+      log_level: "debug",
     });
 
     google.accounts.id.renderButton(document.getElementById("signInDiv")!, {
