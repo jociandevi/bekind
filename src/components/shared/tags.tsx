@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Flexbox, TagButton } from "./sharedLayouts";
 import Button from "antd/es/button";
 import Tooltip from "antd/es/tooltip";
 import styled from "styled-components";
-import { UserOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import { KindnessAction } from "../../common/interfaces";
-import { useGetApi } from "../../common/apiCalls";
 import { spacingXs } from "../../common/variables";
+import { useNavigate } from "react-router-dom";
 
 const TagContainer = styled(Flexbox)`
   gap: ${spacingXs};
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 const StyledButtonText = styled.span`
@@ -25,22 +24,11 @@ interface Props {
 }
 
 const Tags: React.FC<Props> = ({ item }) => {
-  const [actionCount, setActionCount] = useState<number | undefined>();
-  const { callGetApi: getActionCount } = useGetApi(
-    `api/Kindness/KindnessHistoryCount/${item.id}`
-  );
-
-  useEffect(() => {
-    async function fetchData() {
-      const daily = await getActionCount();
-      setActionCount(daily?.data);
-    }
-    fetchData();
-  }, [getActionCount]);
+  const navigate = useNavigate();
 
   return (
     <TagContainer>
-      <Tooltip title={item.title}>
+      <Tooltip title="How about trying this today?">
         <Button
           type="primary"
           size="small"
@@ -54,17 +42,10 @@ const Tags: React.FC<Props> = ({ item }) => {
       </Tooltip>
       <TagButton
         size="small"
-        icon={<UserOutlined />}
         style={{ borderRadius: "15px" }}
+        onClick={() => navigate("/")}
       >
-        {actionCount}
-      </TagButton>
-      <TagButton
-        size="small"
-        icon={<ClockCircleOutlined />}
-        style={{ borderRadius: "15px" }}
-      >
-        {item.duration ?? 20}min
+        by Eva
       </TagButton>
     </TagContainer>
   );

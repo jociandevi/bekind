@@ -26,6 +26,7 @@ import {
   spacingL,
   spacingS,
 } from "../../../common/variables";
+import ActionDetailsCard from "../actionDetailsCard";
 
 const Youtube = React.lazy(() => import("./youtube"));
 const Canva = React.lazy(() => import("./canva"));
@@ -47,6 +48,7 @@ export const ArticleContainer = styled(FlexboxCol)`
 
 const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
   const [article, setArticle] = useState<ArticlePart[]>([]);
+  const [cardIndex, setCardIndex] = useState<number | undefined>();
 
   useEffect(() => {
     const convertItemTitleToJsonName = () => {
@@ -68,6 +70,13 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
         console.error("Error fetching the article data:", error);
       });
   }, [kindness.title]);
+
+  useEffect(() => {
+    const cardIndex = article.findIndex(
+      (item) => item.type === ArticleElement.TEXT
+    );
+    setCardIndex(cardIndex);
+  }, [article]);
 
   return (
     <>
@@ -118,6 +127,9 @@ const Article: React.FC<Props> = ({ kindness, isPureText = false }) => {
               <Suspense fallback={<Loading />}>
                 <Youtube src={item.text} />
               </Suspense>
+            )}
+            {index === cardIndex && !isPureText && (
+              <ActionDetailsCard item={kindness as KindnessAction} />
             )}
           </Fragment>
         ))}

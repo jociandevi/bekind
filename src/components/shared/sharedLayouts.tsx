@@ -10,7 +10,6 @@ import {
   lightGray,
   middleGray,
   spacingXs,
-  veryLightGray,
 } from "../../common/variables";
 
 export const phoneCardWidth = "45vw";
@@ -139,6 +138,5 @@ export const CategoryButton = styled(Button)`
 
 export const TagButton = styled(Button)`
   border: none;
-  background-color: ${veryLightGray};
   color: ${middleGray};
 `;
