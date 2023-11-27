@@ -16,6 +16,7 @@ import {
   spacingS,
   spacingXs,
 } from "../../common/variables";
+import LikeButton from "./likeButton";
 
 const CardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
@@ -24,10 +25,12 @@ const CardContainer = styled.div`
   display: flex;
   margin-bottom: ${spacingS};
   max-height: 30vw;
+  align-items: center;
 `;
 
 interface Props {
   item?: KindnessHistory | number;
+  liked?: boolean;
 }
 
 const isKindnessHistory = (
@@ -36,7 +39,7 @@ const isKindnessHistory = (
   return (item as KindnessHistory).kindnessId !== undefined;
 };
 
-const ImageCardM: React.FC<Props> = ({ item }) => {
+const ImageCardM: React.FC<Props> = ({ item, liked = false }) => {
   const { md } = useMediaQueries();
   const navigate = useNavigate();
   let id;
@@ -69,16 +72,33 @@ const ImageCardM: React.FC<Props> = ({ item }) => {
 
   return (
     <CardContainer onClick={cardAreaClicked}>
-      <LazyLoadImage
-        alt={kindness?.title}
-        src={kindness?.imageUrl}
+      <div
         style={{
-          objectFit: "cover",
-          borderRadius: `${borderRadius}px`,
+          position: "relative",
           height: md ? "20vw" : "30vw",
           width: md ? "20vw" : "30vw",
         }}
-      />
+      >
+        <LazyLoadImage
+          alt={kindness?.title}
+          src={kindness?.imageUrl}
+          style={{
+            objectFit: "cover",
+            borderRadius: `${borderRadius}px`,
+            height: md ? "20vw" : "30vw",
+            width: md ? "20vw" : "30vw",
+          }}
+        />
+        {kindness && item && !isKindnessHistory(item) && (
+          <LikeButton
+            item={kindness!}
+            isLiked={liked}
+            bottom="5px"
+            right="5px"
+            position="absolute"
+          />
+        )}
+      </div>
 
       <FlexboxCol style={{ width: "30vw", padding: "15px" }}>
         <Title level={5} style={{ fontSize: "14px", margin: 0 }}>

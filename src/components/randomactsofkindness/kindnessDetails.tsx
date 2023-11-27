@@ -4,7 +4,13 @@ import {
   ImageContainer,
   StyledText,
 } from "../shared/sharedLayouts";
-import { middleGray, spacingL, spacingM, white } from "../../common/variables";
+import {
+  middleGray,
+  spacingL,
+  spacingM,
+  spacingXs,
+  white,
+} from "../../common/variables";
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { useNavigate, useParams } from "react-router-dom";
@@ -73,7 +79,8 @@ const KindnessDetails: React.FC = () => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const id = params.id;
   const { callGetApi, loading, error } = useGetApi(`api/Kindness/${id}`);
-  const { callGetApi: getLikedActions } = useGetApi(`api/LikedKindness`);
+  const { callGetApi: getLikedActions, loading: isLikedLoading } =
+    useGetApi(`api/LikedKindness`);
 
   useEffect(() => {
     async function fetchData() {
@@ -95,7 +102,7 @@ const KindnessDetails: React.FC = () => {
     fetchData();
   }, [getLikedActions, id, user]);
 
-  if (loading) {
+  if (loading || isLikedLoading) {
     return <Loading />;
   }
 
@@ -114,7 +121,13 @@ const KindnessDetails: React.FC = () => {
           onClick={() => navigate("/")}
         />
         {action && (
-          <LikeButton item={action} isLiked={isLiked} type="details" />
+          <LikeButton
+            item={action}
+            isLiked={isLiked}
+            position={"absolute"}
+            bottom={`-${spacingXs}`}
+            right={spacingM}
+          />
         )}
         {user && (
           <OverlayProfileContainer>

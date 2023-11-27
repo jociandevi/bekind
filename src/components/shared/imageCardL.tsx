@@ -149,7 +149,14 @@ const ImageCardL: React.FC<Props> = ({ item, isLiked, shouldPreload }) => {
             }}
           />
         )}
-        <LikeButton item={item} isLiked={isLiked} type="card" />
+        <LikeButton
+          item={item}
+          isLiked={isLiked}
+          top="15px"
+          right="15px"
+          backgroundColor={"#1816188c"}
+          position={"absolute"}
+        />
       </ImageContainer>
       <PaddingContainer md={md} lg={lg}>
         <Title level={5} style={{ margin: "15px 0 0" }}>

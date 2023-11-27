@@ -5,14 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { KindnessAction } from "../../common/interfaces";
 import { usePostApi } from "../../common/apiCalls";
 import { useDelete } from "../../hooks/useDelete";
-import {
-  lightGray,
-  pink3,
-  shadow1,
-  spacingM,
-  spacingXs,
-  white,
-} from "../../common/variables";
+import { lightGray, pink3, shadow1, white } from "../../common/variables";
 import message from "antd/es/message";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
@@ -20,13 +13,25 @@ import { selectUser } from "../../redux/selectors";
 interface Props {
   item: KindnessAction;
   isLiked?: boolean;
-  type: "card" | "details";
+  top?: string;
+  right?: string;
+  bottom?: string;
+  backgroundColor?: string;
+  position?: any;
 }
 
-const LikeButton: React.FC<Props> = ({ item, isLiked, type }) => {
+const LikeButton: React.FC<Props> = ({
+  item,
+  isLiked,
+  top,
+  right,
+  bottom,
+  backgroundColor,
+  position,
+}) => {
   const navigate = useNavigate();
-  const { callPostApi } = usePostApi(`api/LikedKindness/${item.id}`);
-  const { callDelete } = useDelete(`api/LikedKindness/${item.id}`);
+  const { callPostApi } = usePostApi(`api/LikedKindness/${item?.id}`);
+  const { callDelete } = useDelete(`api/LikedKindness/${item?.id}`);
   const [isItLiked, setIsItLiked] = useState(isLiked);
   const user = useSelector(selectUser);
   const [messageApi, contextHolder] = message.useMessage();
@@ -60,26 +65,20 @@ const LikeButton: React.FC<Props> = ({ item, isLiked, type }) => {
         icon={<HeartFilled />}
         shape="circle"
         onClick={onLike}
-        style={
-          type === "card"
-            ? {
-                color: isItLiked ? pink3 : white,
-                borderColor: isItLiked ? pink3 : white,
-                top: "15px",
-                right: "15px",
-                backgroundColor: "#1816188c",
-                position: "absolute",
-              }
-            : {
-                borderColor: isItLiked ? pink3 : white,
-                color: isItLiked ? pink3 : white,
-                backgroundColor: isItLiked ? white : lightGray,
-                position: "absolute",
-                bottom: `-${spacingXs}`,
-                right: spacingM,
-                boxShadow: shadow1,
-              }
-        }
+        style={{
+          color: isItLiked ? pink3 : white,
+          borderColor: isItLiked ? pink3 : white,
+          top: top ?? undefined,
+          right: right ?? undefined,
+          bottom: bottom ?? undefined,
+          backgroundColor: backgroundColor
+            ? backgroundColor
+            : isItLiked
+            ? white
+            : lightGray,
+          position: position ?? "inherit",
+          boxShadow: shadow1,
+        }}
       />
     </>
   );

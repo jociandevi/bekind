@@ -6,7 +6,6 @@ import { lightGray, middleGray, pink2, spacingS } from "../../common/variables";
 
 interface Props {
   myStats?: MemberStatistics;
-  avgStats?: number;
 }
 
 type DataObject = {
@@ -15,12 +14,12 @@ type DataObject = {
   value: number;
 };
 
-const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
+const GroupedBarChart: React.FC<Props> = ({ myStats }) => {
   const mapLastSixMonthsToValues = (values: number[]): DataObject[] => {
-    while (values.length < 6) {
+    while (values?.length < 6) {
       values.unshift(0);
     }
-    const lastSixValues = values.slice(-6);
+    const lastSixValues = values?.slice(-6);
 
     const months: string[] = [
       "January",
@@ -76,7 +75,7 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
   };
 
   const getItem = (label: string, month: string) => {
-    const data = historicalData.find(
+    const data = historicalData?.find(
       (item) => item.label === label && item.month === month
     );
     return data!;
@@ -90,10 +89,10 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
         position: "relative",
       }}
     >
-      {months.map((month, index) => (
+      {months?.map((month, index) => (
         <FlexboxCol key={index}>
           <Flexbox style={{ justifyContent: "center" }}>
-            {labels.map((label, index) => (
+            {labels?.map((label, index) => (
               <SingleBarChart
                 item={getItem(label, month)}
                 color={getColor(label)}

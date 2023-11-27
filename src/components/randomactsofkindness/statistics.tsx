@@ -24,7 +24,6 @@ const Statistics: React.FC = () => {
 
   useEffect(() => {
     getAverageStats().then((res: any) => {
-      console.log(res);
       setAvgStats(res?.data);
     });
   }, [getAverageStats]);
@@ -35,7 +34,7 @@ const Statistics: React.FC = () => {
 
   return (
     <ListLayout>
-      <GroupedBarChart myStats={myStats} avgStats={avgStats} />
+      <GroupedBarChart myStats={myStats} />
       <ProfileStatistics myStats={myStats} avgStats={avgStats} />
     </ListLayout>
   );

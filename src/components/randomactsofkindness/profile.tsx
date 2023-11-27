@@ -25,6 +25,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import { middleGray, pink3, spacingS, spacingXs } from "../../common/variables";
 import { badgeIcons } from "../../common/mockData";
+import EmptyState from "../shared/emptyState";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${spacingXs};
@@ -78,7 +79,8 @@ const Profile: React.FC = () => {
 
   const navigate = useNavigate();
   const { getHistory, loading, error } = useKindnessHistory();
-  const { callGetApi: getLiked } = useGetApi(`api/LikedKindness`);
+  const { callGetApi: getLiked, error: likedError } =
+    useGetApi(`api/LikedKindness`);
   const [pastActions, setPastActions] = useState<KindnessHistory[] | []>([]);
   const [likedActions, setLikedActions] = useState<number[] | []>([]);
   const { callGetApi: getAchievedBadges } = useGetApi(`api/Badge/MemberBadges`);
@@ -94,6 +96,7 @@ const Profile: React.FC = () => {
   useEffect(() => {
     getLiked().then((res: any) => {
       setLikedActions(res?.data);
+      console.log(res);
     });
   }, [getLiked]);
 
@@ -117,8 +120,14 @@ const Profile: React.FC = () => {
       label: `Likes`,
       children: (
         <>
-          {likedActions.map((actionId, index) => (
-            <ImageCardM item={actionId} key={index} />
+          {likedError && (
+            <EmptyState
+              title="You haven't liked any actions"
+              description="No liked actions yet. Start searching now."
+            />
+          )}
+          {likedActions?.map((actionId, index) => (
+            <ImageCardM item={actionId} key={index} liked />
           ))}
         </>
       ),
@@ -128,7 +137,13 @@ const Profile: React.FC = () => {
       label: `History`,
       children: (
         <>
-          {pastActions.map((item) => (
+          {error && (
+            <EmptyState
+              title="You haven't done any actions"
+              description="No actions done, yet. Pick one now."
+            />
+          )}
+          {pastActions?.map((item) => (
             <Fragment key={item.id}>
               <StyledText
                 color={middleGray}

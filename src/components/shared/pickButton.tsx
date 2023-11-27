@@ -45,7 +45,6 @@ const PickButton: React.FC<Props> = ({ item }) => {
   const onPick = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsConfirmModalOpen(true);
-    // completeUserJourney();
   };
 
   const onConfirmOk = (event: React.MouseEvent<HTMLElement>) => {

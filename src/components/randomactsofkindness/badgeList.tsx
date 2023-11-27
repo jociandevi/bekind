@@ -37,7 +37,7 @@ const BadgeList: React.FC = () => {
         <Badge
           key={item.id}
           item={item}
-          achieved={achievedBadges.includes(item.id)}
+          achieved={achievedBadges?.includes(item.id)}
         />
       ))}
     </CenterAlignedFlexbox>
