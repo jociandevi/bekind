@@ -1,33 +1,8 @@
 import React from "react";
 import { Flexbox, FlexboxCol, StyledText } from "./sharedLayouts";
-import styled from "styled-components";
 import SingleBarChart from "./singleBarChart";
 import { MemberStatistics } from "../../common/interfaces";
-import {
-  lightGray,
-  middleGray,
-  pink2,
-  spacingS,
-  spacingXxs,
-} from "../../common/variables";
-
-const LegendContainer = styled.div`
-  position: absolute;
-  top: 0;
-`;
-
-const ColorIndicator = styled.div<{ color?: string }>`
-  height: 10px;
-  width: 10px;
-  background-color: ${(props) => props.color ?? pink2};
-  border-radius: 3px;
-  margin-right: ${spacingXxs};
-`;
-
-const ColorAndTextContainer = styled(Flexbox)`
-  justify-content: flex-start;
-  align-items: center;
-`;
+import { lightGray, middleGray, pink2, spacingS } from "../../common/variables";
 
 interface Props {
   myStats?: MemberStatistics;
@@ -115,16 +90,6 @@ const GroupedBarChart: React.FC<Props> = ({ myStats, avgStats }) => {
         position: "relative",
       }}
     >
-      <LegendContainer>
-        {labels.map((item, index) => (
-          <ColorAndTextContainer key={index}>
-            <ColorIndicator color={colors[index]} />
-            <StyledText color={middleGray} fontSize="12px">
-              {item}
-            </StyledText>
-          </ColorAndTextContainer>
-        ))}
-      </LegendContainer>
       {months.map((month, index) => (
         <FlexboxCol key={index}>
           <Flexbox style={{ justifyContent: "center" }}>

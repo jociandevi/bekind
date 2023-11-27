@@ -39,15 +39,6 @@ const GoogleLoginButton: React.FC = () => {
     google.accounts.id.prompt();
   }, [login]);
 
-  useEffect(() => {
-    const credentialPickerContainer = document.getElementById(
-      "credential_picker_container"
-    );
-    if (credentialPickerContainer) {
-      credentialPickerContainer.style.pointerEvents = "none";
-    }
-  }, [login]);
-
   if (!google || !google.accounts || !google.accounts.id) {
     return null;
   }
