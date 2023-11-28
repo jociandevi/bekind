@@ -6,6 +6,7 @@ import Loading from "../../shared/loading";
 import { useSelector } from "react-redux";
 import { selectUserStreak } from "../../../redux/selectors";
 import { pink1 } from "../../../common/variables";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   userName?: string;
@@ -21,9 +22,18 @@ const FeedbackModal: React.FC<Props> = ({
   loading,
 }) => {
   const userStreak = useSelector(selectUserStreak);
+
+  const navigate = useNavigate();
+
   const onCheers = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     setIsModalOpen(false);
+  };
+
+  const goToLogin = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+    setIsModalOpen(false);
+    navigate("/login");
   };
 
   if (loading) {
@@ -44,9 +54,16 @@ const FeedbackModal: React.FC<Props> = ({
       imageUrl={FireImg}
       imageBackgroundColor={pink1}
       footer={
-        <Button type="primary" onClick={onCheers}>
-          Cheers!
-        </Button>
+        <>
+          <Button type={userName ? "primary" : "default"} onClick={onCheers}>
+            Cheers!
+          </Button>
+          {!userName && (
+            <Button type="primary" onClick={goToLogin}>
+              Go to login
+            </Button>
+          )}
+        </>
       }
     />
   );
