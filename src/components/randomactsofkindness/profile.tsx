@@ -6,7 +6,7 @@ import {
 } from "../shared/sharedLayouts";
 import Tabs from "antd/es/tabs";
 import styled from "styled-components";
-import { Tooltip, type TabsProps } from "antd";
+import { Tooltip, type TabsProps, Button } from "antd";
 import ImageCardM from "../shared/imageCardM";
 import Title from "antd/es/typography/Title";
 import BadgeList from "./badgeList";
@@ -21,11 +21,13 @@ import Loading from "../shared/loading";
 import PageError from "../shared/pageError";
 import useKindnessHistory from "../../hooks/useKindnessHistory";
 import Statistics from "./statistics";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import { middleGray, pink3, spacingS, spacingXs } from "../../common/variables";
 import { badgeIcons } from "../../common/mockData";
 import EmptyState from "../shared/emptyState";
+import { LogoutOutlined } from "@ant-design/icons";
+import { clearUser } from "../../common/auth.reducer";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${spacingXs};
@@ -86,6 +88,7 @@ const Profile: React.FC = () => {
   const { callGetApi: getAchievedBadges } = useGetApi(`api/Badge/MemberBadges`);
   const [badgeColor, setBadgeColor] = useState<string | undefined>();
   const [latestBadge, setLatestBadge] = useState<BadgeProps | undefined>();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getHistory().then((res) => {
@@ -96,7 +99,6 @@ const Profile: React.FC = () => {
   useEffect(() => {
     getLiked().then((res: any) => {
       setLikedActions(res?.data);
-      console.log(res);
     });
   }, [getLiked]);
 
@@ -187,6 +189,11 @@ const Profile: React.FC = () => {
     setActiveKey(key);
   };
 
+  const logout = () => {
+    navigate("/login");
+    dispatch(clearUser());
+  };
+
   const renderLatestAchievedBadge = () => {
     return (
       <BadgeContainer color={badgeColor} onClick={() => setActiveKey("3")} />
@@ -199,7 +206,14 @@ const Profile: React.FC = () => {
 
   return (
     <>
-      <Header left={<BackButton />} />
+      <Header
+        left={<BackButton />}
+        right={
+          <Button icon={<LogoutOutlined />} onClick={logout}>
+            Log out
+          </Button>
+        }
+      />
       <CenterAlignedFlexboxCol style={{ marginTop: `-${spacingS}` }}>
         <Tooltip title={latestBadge?.description}>
           <ProfileImageContainer md={md}>

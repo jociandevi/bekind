@@ -58,7 +58,6 @@ export const usePut = (url: string) => {
         } else if (response.data.status === 401) {
           setError("Looks like you are unautorized.");
           store.dispatch(removeToken());
-          localStorage.removeItem("user");
         } else if (response.status === 400 || response.data.status === 400) {
           const errorMessage = response?.data?.data?.errorMessages[0];
           setError(errorMessage || "This seems like a bad request");
