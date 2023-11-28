@@ -121,7 +121,7 @@ const steps = [
           <img
             src={two}
             alt="pick one and do it today"
-            style={{ width: "100vw" }}
+            style={{ height: "50vh" }}
           />
         </UpperHalf>
         <BottomHalf>
@@ -156,7 +156,7 @@ const steps = [
           <img
             src={three}
             alt="improve your life a little bit every day"
-            style={{ width: "100vw" }}
+            style={{ height: "50vh" }}
           />
         </UpperHalf>
         <BottomHalf>
@@ -256,7 +256,7 @@ const Tour: React.FC<Props> = ({ setTourIsVisible }) => {
               Explore
             </Button>
             <Button type="link" onClick={finishTour}>
-              ...thanks, I like to figure out myself
+              ...thanks, I'd like to figure out myself
             </Button>
           </BottomHalfFirstSlide>
         )}
