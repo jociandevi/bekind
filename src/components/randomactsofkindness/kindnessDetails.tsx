@@ -14,7 +14,6 @@ import {
 import styled from "styled-components";
 import { lgBreakPoint, mdBreakPoint } from "../../common/mediaQueryHook";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeftOutlined } from "@ant-design/icons";
 import UserProfileIcon from "../shared/userProfileIcon";
 import Article from "../shared/article/article";
 import InstallButton from "../shared/pwaCustomInstalls/installButton";
@@ -28,6 +27,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/selectors";
 import Button from "antd/es/button";
 import LikeButton from "../shared/likeButton";
+import { ReactComponent as Logo } from "../../img/outbreaktransparentlogo.svg";
 
 const MarginContainer = styled(FlexboxCol)`
   margin: ${spacingM} auto;
@@ -37,12 +37,16 @@ const MarginContainer = styled(FlexboxCol)`
   }
 `;
 
-const OverlayBackButton = styled(Button)`
+const HomePageLogoBtn = styled(Button)`
   position: absolute;
   top: ${spacingL};
   left: ${spacingM};
-  color: ${white};
-  background-color: #1816188c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: ${white};
+  opacity: 0.85;
 `;
 
 const OverlayProfileContainer = styled.div`
@@ -115,8 +119,8 @@ const KindnessDetails: React.FC = () => {
           alt={`Image of ${action?.title}`}
         />
 
-        <OverlayBackButton
-          icon={<ArrowLeftOutlined />}
+        <HomePageLogoBtn
+          icon={<Logo style={{ width: 70, height: 70 }} />}
           shape="circle"
           onClick={() => navigate("/")}
         />
