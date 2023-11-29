@@ -6,6 +6,7 @@ import { ReactComponent as Tree } from "../img/badges/tree.svg";
 import { ReactComponent as Balloon } from "../img/badges/hot-air-balloon.svg";
 import { ReactComponent as Camera } from "../img/badges/camera.svg";
 import { ReactComponent as Tent } from "../img/badges/tent.svg";
+import { ReactComponent as Sailboat } from "../img/badges/sailboat.svg";
 import { Category, CategoryNames } from "./interfaces";
 import {
   badge1,
@@ -16,6 +17,7 @@ import {
   badge6,
   badge7,
   badge8,
+  badge9,
   darkGray,
 } from "./variables";
 
@@ -63,6 +65,11 @@ export const badgeIcons: {
     id: 8,
     icon: <Tent width={80} height={80} />,
     color: badge8,
+  },
+  {
+    id: 9,
+    icon: <Sailboat width={80} height={80} />,
+    color: badge9,
   },
 ];
 
