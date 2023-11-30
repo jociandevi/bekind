@@ -7,9 +7,11 @@ import { ReactComponent as Balloon } from "../img/badges/hot-air-balloon.svg";
 import { ReactComponent as Camera } from "../img/badges/camera.svg";
 import { ReactComponent as Tent } from "../img/badges/tent.svg";
 import { ReactComponent as Sailboat } from "../img/badges/sailboat.svg";
+import { ReactComponent as Lighthouse } from "../img/badges/lighthouse.svg";
 import { Category, CategoryNames } from "./interfaces";
 import {
   badge1,
+  badge10,
   badge2,
   badge3,
   badge4,
@@ -70,6 +72,11 @@ export const badgeIcons: {
     id: 9,
     icon: <Sailboat width={80} height={80} />,
     color: badge9,
+  },
+  {
+    id: 10,
+    icon: <Lighthouse width={80} height={80} />,
+    color: badge10,
   },
 ];
 
