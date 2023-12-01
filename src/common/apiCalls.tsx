@@ -33,7 +33,7 @@ export const usePostApi = (url: string) => {
           setError("Looks like you are unautorized.");
           store.dispatch(removeToken());
         } else if (response.status === 400 || response.data.status === 400) {
-          const errorMessage = response?.data?.data?.errorMessages[0];
+          const errorMessage = response?.data?.data?.errorMessages?.[0];
           setError(errorMessage || "This seems like a bad request");
           setLoading(false);
         } else {
