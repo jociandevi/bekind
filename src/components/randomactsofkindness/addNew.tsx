@@ -55,6 +55,7 @@ const AddNew: React.FC = () => {
   useEffect(() => {
     form.setFieldsValue({
       title: action?.title,
+      titleFirstWord: action?.titleFirstWord,
       description: action?.description,
       imageUrl: action?.imageUrl,
       imageCredit: action?.imageCredit,
