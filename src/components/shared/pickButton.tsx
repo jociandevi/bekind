@@ -24,9 +24,10 @@ const DisabledButton = styled(Button)`
 
 interface Props {
   item: KindnessAction;
+  buttonText?: string;
 }
 
-const PickButton: React.FC<Props> = ({ item }) => {
+const PickButton: React.FC<Props> = ({ item, buttonText = "Pick" }) => {
   const user = useSelector(selectUser);
   const dailyIsDone = useSelector(selectDailyIsDone);
   const userStreak = useSelector(selectUserStreak);
@@ -68,14 +69,14 @@ const PickButton: React.FC<Props> = ({ item }) => {
     <>
       {!dailyIsDone ? (
         <Button type="primary" onClick={onPick}>
-          Pick
+          {buttonText}
         </Button>
       ) : (
         <Tooltip
           title="You already did your part today in making the world better!"
           trigger={"hover"}
         >
-          <DisabledButton onClick={onDisabledPick}>Pick</DisabledButton>
+          <DisabledButton onClick={onDisabledPick}>{buttonText}</DisabledButton>
         </Tooltip>
       )}
       <ConfirmModal

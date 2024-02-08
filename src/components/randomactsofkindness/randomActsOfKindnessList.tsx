@@ -29,6 +29,9 @@ const InstallAlert = React.lazy(
 const InstallIosAlert = React.lazy(
   () => import("../shared/pwaCustomInstalls/installIosAlert")
 );
+const ActionSuggestionModal = React.lazy(
+  () => import("./modals/actionSuggestionModal")
+);
 const PageError = React.lazy(() => import("../shared/pageError"));
 const Search = React.lazy(() => import("../shared/search"));
 const SignalRConnector = React.lazy(() => import("../shared/signalRConnector"));
@@ -157,6 +160,11 @@ const RandomActOfKindnessList: React.FC = () => {
         {user && (
           <Suspense fallback={<></>}>
             <SignalRConnector />
+          </Suspense>
+        )}
+        {user && actions && (
+          <Suspense fallback={<></>}>
+            <ActionSuggestionModal user={user} actions={actions} />
           </Suspense>
         )}
       </ListLayout>

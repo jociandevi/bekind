@@ -36,6 +36,7 @@ export interface ArticlePart {
 export interface KindnessAction {
   id?: number;
   title: string;
+  titleFirstWord?: string;
   description?: string;
   category: number | CategoryNames;
   imageUrl: string;
@@ -106,6 +107,8 @@ export interface Notification {
   receiverId?: string;
   title?: string;
   userImageUrl?: string;
+  userNameId?: string;
+  senderId?: string;
 }
 
 // copied from https://googleapis.dev/nodejs/google-auth-library/5.8.0/interfaces/TokenPayload.html#source

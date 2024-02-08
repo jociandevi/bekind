@@ -86,3 +86,46 @@ export const categories: Category[] = [
   { id: 2, name: CategoryNames.SOCIAL },
   { id: 3, name: CategoryNames.ENVIRONMENT },
 ];
+
+export const starterActions = [
+  {
+    day: 0,
+    actionId: 47,
+  },
+  {
+    day: 1,
+    actionId: 35,
+  },
+  {
+    day: 2,
+    actionId: 20,
+  },
+  {
+    day: 3,
+    actionId: 25,
+  },
+  {
+    day: 4,
+    actionId: 5,
+  },
+  {
+    day: 5,
+    actionId: 11,
+  },
+  {
+    day: 6,
+    actionId: 57,
+  },
+  {
+    day: 7,
+    actionId: 55,
+  },
+  {
+    day: 8,
+    actionId: 53,
+  },
+  {
+    day: 9,
+    actionId: 41,
+  },
+];
