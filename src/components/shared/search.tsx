@@ -49,7 +49,14 @@ const Search: React.FC<Props> = ({ setFilteredActions, actions }) => {
     }
   };
 
-  return <StyledSearch placeholder="Search" onChange={onChange} allowClear />;
+  return (
+    <StyledSearch
+      placeholder="Search"
+      onChange={onChange}
+      allowClear
+      id="search"
+    />
+  );
 };
 
 export default Search;

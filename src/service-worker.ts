@@ -12,7 +12,7 @@ import { clientsClaim } from "workbox-core";
 import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
-import { StaleWhileRevalidate } from "workbox-strategies";
+import { StaleWhileRevalidate, NetworkFirst } from "workbox-strategies";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -137,3 +137,19 @@ self.addEventListener("fetch", (event: any) => {
       })
   );
 });
+
+// Define a network-first strategy for Google Accounts authentication requests
+registerRoute(
+  ({ url }) => url.origin === "https://accounts.google.com",
+  new NetworkFirst({
+    cacheName: "google-auth-requests",
+    plugins: [
+      new ExpirationPlugin({
+        // Keep a limited number of entries in the cache to avoid excessive usage
+        maxEntries: 10,
+        // Automatically expire cached responses after 1 hour
+        maxAgeSeconds: 60 * 60,
+      }),
+    ],
+  })
+);
