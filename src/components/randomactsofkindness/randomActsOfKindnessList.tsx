@@ -16,6 +16,7 @@ import { selectUser } from "../../redux/selectors";
 import { spacingXs } from "../../common/variables";
 import Tour from "../shared/tour";
 import { showUserJourney } from "../shared/userJourney";
+import CookieAlert from "../shared/cookieAlert";
 
 const InstallModal = React.lazy(
   () => import("../shared/pwaCustomInstalls/installModal")
@@ -150,6 +151,9 @@ const RandomActOfKindnessList: React.FC = () => {
         </Suspense>
         <Suspense fallback={<></>}>
           <InstallAlert />
+        </Suspense>
+        <Suspense fallback={<></>}>
+          <CookieAlert />
         </Suspense>
         <Suspense fallback={<></>}>
           <InstallIosAlert />

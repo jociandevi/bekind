@@ -32,6 +32,56 @@
     "type": "ListItem"
   },
   {
+    "text": "Use of Cookies and Similar Technologies",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Cookies We Use: In order to offer you a more personalized and responsive service, we use cookies to remember your preferences and provide a secure experience. Our use of cookies falls into two categories:",
+    "type": "Text"
+  },
+  {
+    "text": "1. Necessary Cookies: These cookies are essential for the operation of our services. They include:",
+    "type": "Text"
+  },
+  {
+    "text": "Secure Persistent Login Cookies: Enable you to remain logged in to our service, making your experience more seamless.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Google Login Cookies: Facilitate secure and convenient login to our services using Google Single Sign-On (SSO), enhancing your login experience.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Statistics Cookies: These cookies help us understand how our services are being used, allowing us to improve user experience. They include:",
+    "type": "Text"
+  },
+  {
+    "text": "Google Analytics Cookies: Collect and report information on how you use the site, helping us improve our services based on user behavior and preferences.",
+    "type": "ListItem"
+  },
+  {
+    "text": "VWO Cookies: We use it for A/B testing, helping us improve our services based on user behavior and preferences.",
+    "type": "ListItem"
+  },
+  {
+    "text": "Why We Use These Cookies:",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "Necessary Cookies are used to ensure the basic functionality and security of our services. They are set by default as they are essential for using and navigating our services.",
+    "type": "Text"
+  },{
+    "text": "Statistics Cookies are used to collect information about how our services are used, which helps us to make improvements and report our performance. The use of these cookies is based on your consent, and you have the option to decline their use.",
+    "type": "Text"
+  },{
+    "text": "Managing Your Cookie Preferences",
+    "type": "HeaderMedium"
+  },
+  {
+    "text": "You have the ability to accept or decline cookies. Most web browsers automatically accept cookies, but you can usually modify your browser setting to decline cookies if you prefer.",
+    "type": "Text"
+  },
+  {
     "text": "How We Use Information We Receive About You",
     "type": "HeaderMedium"
   },
