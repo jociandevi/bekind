@@ -48,9 +48,7 @@ const HomePageLogoBtn = styled(Button)`
   opacity: 0.85;
 `;
 
-interface Props {}
-
-const Blurred: React.FC<Props> = ({}) => {
+const Blurred = () => {
   return (
     <Container>
       <WhiteBox>
