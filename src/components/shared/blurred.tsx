@@ -1,5 +1,4 @@
 import Title from "antd/es/typography/Title";
-import React from "react";
 import styled from "styled-components";
 import {
   borderRadius,
