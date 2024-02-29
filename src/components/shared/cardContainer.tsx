@@ -44,7 +44,7 @@ const CardContainer: React.FC<Props> = ({
 }) => {
   let [searchParams] = useSearchParams();
   const activeCategoryName = searchParams.get("category") || "All";
-  if (actions.length === 0) {
+  if (actions?.length === 0) {
     return null;
   }
 
@@ -60,7 +60,7 @@ const CardContainer: React.FC<Props> = ({
           justifyContent: "flex-start",
         }}
       >
-        {categoriesAndAll.map((item, index) => (
+        {categoriesAndAll?.map((item, index) => (
           <Fragment key={index}>
             {item.name === activeCategoryName ? (
               <ActiveTagButton size="small" style={{ borderRadius: "15px" }}>
@@ -79,7 +79,7 @@ const CardContainer: React.FC<Props> = ({
         ))}
       </Flexbox>
       <StyledContainer>
-        {actions.map((item, index) => (
+        {actions?.map((item, index) => (
           <ImageCardL
             item={item}
             key={item.id}

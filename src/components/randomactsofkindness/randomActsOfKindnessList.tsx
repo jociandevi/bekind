@@ -17,6 +17,7 @@ import { spacingXs } from "../../common/variables";
 import Tour from "../shared/tour";
 import { showUserJourney } from "../shared/userJourney";
 import CookieAlert from "../shared/cookieAlert";
+import Blurred from "../shared/blurred";
 
 const InstallModal = React.lazy(
   () => import("../shared/pwaCustomInstalls/installModal")
@@ -51,6 +52,16 @@ const RandomActOfKindnessList: React.FC = () => {
   // track if API call was ever successful - needed because sometimes the first API call returns with ERR_UNREACHABLE but second is 200
   const [apiSuccess, setApiSuccess] = useState(false);
   const [tourIsVisible, setTourIsVisible] = useState(false);
+  const [requireLogin, setRequireLogin] = useState(false);
+
+  useEffect(() => {
+    // lets implement A/B testing for this page
+    const hostname = window.location.hostname;
+    const requiresLogin = hostname.startsWith("app.");
+    if (requiresLogin && user === null) {
+      setRequireLogin(true);
+    }
+  }, [user]);
 
   useEffect(() => {
     async function fetchData() {
@@ -124,6 +135,7 @@ const RandomActOfKindnessList: React.FC = () => {
 
   return (
     <>
+      {requireLogin && <Blurred />}
       <ListLayout>
         <Header
           left={searchParams.size === 0 ? undefined : <BackButton />}
