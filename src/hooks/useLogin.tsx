@@ -21,7 +21,7 @@ export const useLogin = () => {
         if (response.status === 200 || response.status === 201) {
           const backendToken = response.data;
           dispatch(setToken(backendToken));
-          Cookies.set("backendToken", response.data, {
+          Cookies.set("OutbreakToken", response.data, {
             expires: 1,
             secure: true,
             httpOnly: true,

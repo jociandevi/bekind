@@ -22,6 +22,12 @@ const Login = lazy(
       /* webpackChunkName: "login" */ "./components/randomactsofkindness/login"
     )
 );
+const JoinTheMovement = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "join-the-movement" */ "./components/randomactsofkindness/joinTheMovement"
+    )
+);
 const AddEditPages = lazy(
   () =>
     import(
@@ -88,6 +94,14 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<Loading />}>
             <PrivacyPolicy />
+          </Suspense>
+        }
+      />
+      <Route
+        path="join"
+        element={
+          <Suspense fallback={<Loading />}>
+            <JoinTheMovement />
           </Suspense>
         }
       />

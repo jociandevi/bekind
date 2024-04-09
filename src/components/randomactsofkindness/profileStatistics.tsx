@@ -18,8 +18,13 @@ interface Props {
 }
 
 const ProfileStatistics: React.FC<Props> = ({ myStats, avgStats }) => {
-  const comparedToOthers =
+  let comparedToOthers =
     ((myStats?.kindnessForTheLast30DaysCount ?? 0) / (avgStats ?? 0) - 1) * 100;
+
+  if (Number.isNaN(comparedToOthers)) {
+    comparedToOthers = 0;
+  }
+
   const moreThanOthers = comparedToOthers > 0;
   const comparedToOthersText = moreThanOthers ? "More" : "Less";
 
@@ -32,7 +37,12 @@ const ProfileStatistics: React.FC<Props> = ({ myStats, avgStats }) => {
       myStats?.kindnessForTheLast180DaysCount!.length - 2
     ] ?? 0;
 
-  const comparedToYourself = (thisMonth / lastMonth - 1) * 100;
+  let comparedToYourself = (thisMonth / lastMonth - 1) * 100;
+
+  if (Number.isNaN(comparedToYourself)) {
+    comparedToYourself = 0;
+  }
+
   const moreThanYou = comparedToYourself > 0;
   const moreOrLessThanYourself = moreThanYou ? "More" : "Less";
 

@@ -24,7 +24,11 @@ const Statistics: React.FC = () => {
 
   useEffect(() => {
     getAverageStats().then((res: any) => {
-      setAvgStats(res?.data);
+      if (res && res.data) {
+        setAvgStats(res?.data);
+      } else if (res === undefined) {
+        setAvgStats(0);
+      }
     });
   }, [getAverageStats]);
 
