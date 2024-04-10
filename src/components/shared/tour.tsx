@@ -66,7 +66,7 @@ const steps = [
     content: (
       <StepContainer>
         <UpperHalfFirstSlide>
-          <Title level={1}>👋 Welcome!</Title>
+          <Title level={1}>👋 Join the movement!</Title>
           <Title
             level={4}
             style={{
@@ -76,7 +76,8 @@ const steps = [
               color: middleGray,
             }}
           >
-            Outbreak helps you become happier with small daily actions.
+            In a world full of darkness, we can build a better world with small
+            daily actions.
           </Title>
         </UpperHalfFirstSlide>
       </StepContainer>
@@ -96,7 +97,7 @@ const steps = [
             }}
             level={3}
           >
-            Browse between actions
+            We all feel lost sometimes.
           </Title>
           <Title
             level={5}
@@ -107,7 +108,8 @@ const steps = [
               color: white,
             }}
           >
-            That help you and the world.
+            But we can always find small actions that make a day a little
+            better.
           </Title>
         </BottomHalf>
       </StepContainer>
@@ -131,7 +133,7 @@ const steps = [
             }}
             level={3}
           >
-            Pick one and do it today
+            We all feel powerless sometimes.
           </Title>
           <Title
             level={5}
@@ -142,7 +144,7 @@ const steps = [
               color: white,
             }}
           >
-            Click on the cards to find out more.
+            But the combined efforts of our actions are enormous.
           </Title>
         </BottomHalf>
       </StepContainer>
@@ -166,7 +168,7 @@ const steps = [
             }}
             level={3}
           >
-            Feel the difference.
+            This is your sign to be a warrior.
           </Title>
           <Title
             level={5}
@@ -177,7 +179,7 @@ const steps = [
               color: white,
             }}
           >
-            Come back tomorrow and enjoy your life improving.
+            Pick a small action today and do it. Continue.
           </Title>
         </BottomHalf>
       </StepContainer>
