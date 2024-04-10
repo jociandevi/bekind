@@ -1,22 +1,36 @@
 import React, { useEffect, useState } from "react";
 import useSignalR from "../../hooks/useSignalR";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../redux/selectors";
 import BadgeAchievedModal from "../randomactsofkindness/modals/badgeAchievedModal";
 import { Notification } from "../../common/interfaces";
 import CheersModal from "../randomactsofkindness/modals/cheersModal";
+import { useGetApi } from "../../common/apiCalls";
+import { setToken } from "../../common/auth.reducer";
 
 const SignalRConnector: React.FC = () => {
-  const token = useSelector(selectToken);
+  const storedToken = useSelector(selectToken);
+  const [currentToken, setCurrentToken] = useState(storedToken);
   const hubConnection = useSignalR(
-    `https://bekind-api.azurewebsites.net/notificationhub?access_token=${token}`
+    `https://bekind-api.azurewebsites.net/notificationhub?access_token=${currentToken}`
   );
   const [notificationData, setNotificationData] = useState<Notification>();
   const [isBadgeModalOpen, setIsBadgeModalOpen] = useState(false);
   const [isCheersModalOpen, setIsCheersModalOpen] = useState(false);
+  const { callGetApi } = useGetApi(`api/Auth/GetNotificationHubToken`);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!token) {
+    async function fetchData() {
+      const response = await callGetApi();
+      dispatch(setToken(response?.data));
+      setCurrentToken(response?.data);
+    }
+    fetchData();
+  }, [callGetApi, dispatch]);
+
+  useEffect(() => {
+    if (!currentToken) {
       return;
     }
     if (hubConnection) {
@@ -43,7 +57,7 @@ const SignalRConnector: React.FC = () => {
         hubConnection.off("ReceiveNotification");
       }
     };
-  }, [hubConnection, token]);
+  }, [hubConnection, currentToken]);
 
   if (!notificationData) {
     return null;

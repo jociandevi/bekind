@@ -232,3 +232,7 @@ export interface TokenPayload {
    */
   hd?: string;
 }
+
+export interface CustomError extends Error {
+  isAuthError?: boolean;
+}

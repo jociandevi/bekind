@@ -33,13 +33,10 @@ const GoogleLoginButton: React.FC = () => {
     if (googleApiLoaded) {
       const handleCallbackResponse = (response: any) => {
         const userObject: TokenPayload = jwt_decode(response.credential);
-        login(response.credential);
-        const serializedData = JSON.stringify(userObject);
-        Cookies.set("googleResponseData", serializedData, {
-          expires: 1,
-          secure: true,
-          httpOnly: true,
-        });
+        login(response?.credential);
+        console.log(response);
+        console.log(userObject);
+        localStorage.setItem("email", userObject?.email as string);
       };
 
       (window as any).google.accounts.id.initialize({

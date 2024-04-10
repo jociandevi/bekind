@@ -1,8 +1,9 @@
 import { getAPI, postAPI } from "./apiCommon";
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
-import { clearUser, removeToken } from "./auth.reducer";
+import { clearUser } from "./auth.reducer";
 import { store } from "./store";
+import { CustomError } from "./interfaces";
 
 export const getApiCall = (url: string) =>
   getAPI(url).then((res) => {
@@ -10,7 +11,6 @@ export const getApiCall = (url: string) =>
       return res;
     } else if (res.data?.status === 401) {
       console.log("User seems to be unauthenticated.");
-      store.dispatch(removeToken());
       store.dispatch(clearUser());
     }
   });
@@ -29,9 +29,12 @@ export const usePostApi = (url: string) => {
         if (response.status === 200 || response.status === 201) {
           setLoading(false);
           return response;
-        } else if (response.data.status === 401) {
+        } else if (
+          response.data.status === 401 ||
+          response.isAuthError ||
+          (error && (error as unknown as CustomError).isAuthError)
+        ) {
           setError("Looks like you are unautorized.");
-          store.dispatch(removeToken());
         } else if (response.status === 400 || response.data.status === 400) {
           const errorMessage = response?.data?.data?.errorMessages?.[0];
           setError(errorMessage || "This seems like a bad request");
@@ -67,9 +70,12 @@ export const useGetApi = (url: string) => {
       if (response.status === 200 || response.status === 201) {
         setLoading(false);
         return response;
-      } else if (response?.data?.status === 401) {
+      } else if (
+        response.data.status === 401 ||
+        response.isAuthError ||
+        (error && (error as unknown as CustomError).isAuthError)
+      ) {
         setError("Looks like you are unauthorized.");
-        store.dispatch(removeToken());
         dispatch(clearUser());
       } else if (response?.status === 400 || response?.data?.status === 400) {
         const errorMessage = response?.data?.data?.errorMessages?.[0];

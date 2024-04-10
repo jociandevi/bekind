@@ -1,5 +1,7 @@
 import { KindnessAction, KindnessHistory } from "./interfaces";
 
+export const baseUrl = "https://bekind-api.azurewebsites.net";
+
 export const transformTitleToUrl = (title: string) => {
   let formattedString = title.toLowerCase();
   formattedString = formattedString

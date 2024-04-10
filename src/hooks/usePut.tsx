@@ -1,44 +1,43 @@
 import { useCallback, useState } from "react";
-import { store } from "../common/store";
-import { removeToken } from "../common/auth.reducer";
-import { Params, getTokenFromState } from "../common/apiCommon";
+import { Params } from "../common/apiCommon";
 import axios from "axios";
+import { apiInstance } from "../common/axiosInterceptor";
+import { baseUrl } from "../common/util";
 
 const putConfig: Params = {
-  baseUrl: "https://bekind-api.azurewebsites.net",
+  baseUrl,
   method: "put",
 };
 
-export const putApi = async (
-  url: string,
-  data?: any,
-  authHeader?: string
-): Promise<any> => {
-  const token = getTokenFromState();
-  return await axios({
-    ...putConfig,
-    url: `${putConfig.baseUrl}/${url}`,
-    data,
-    headers: {
-      Authorization: authHeader
-        ? `Bearer ${authHeader}`
-        : token
-        ? `Bearer ${token}`
-        : null,
-    },
-  })
-    .then((response) => {
-      return {
-        status: response.status,
-        data: response.data,
-      };
-    })
-    .catch((error) => {
-      return {
-        status: error.status,
-        data: error.response,
-      };
+export const putApi = async (url: string, data?: any): Promise<any> => {
+  try {
+    const response = await apiInstance({
+      ...putConfig,
+      url,
+      data,
     });
+    return {
+      status: response.status,
+      data: response.data,
+    };
+  } catch (error: any) {
+    let errorMessage = "An unknown error occurred.";
+    if (error.isAuthError) {
+      errorMessage = "Refresh token expired";
+    } else if (axios.isAxiosError(error) && error.response) {
+      errorMessage = error.response.data?.message || errorMessage;
+    }
+
+    // Log the error message or handle it as needed
+    console.error(errorMessage);
+
+    return {
+      status: error.response?.status || "Unknown error",
+      data: {},
+      message: errorMessage,
+      isAuthError: error.isAuthError || false,
+    };
+  }
 };
 
 export const usePut = (url: string) => {
@@ -57,7 +56,6 @@ export const usePut = (url: string) => {
           return response;
         } else if (response.data.status === 401) {
           setError("Looks like you are unautorized.");
-          store.dispatch(removeToken());
         } else if (response.status === 400 || response.data.status === 400) {
           const errorMessage = response?.data?.data?.errorMessages[0];
           setError(errorMessage || "This seems like a bad request");

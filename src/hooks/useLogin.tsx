@@ -1,8 +1,7 @@
 import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postAPI } from "../common/apiCommon";
-import { setToken, setUser } from "../common/auth.reducer";
-import Cookies from "js-cookie";
+import { setUser } from "../common/auth.reducer";
 import { getApiCall } from "../common/apiCalls";
 
 export const useLogin = () => {
@@ -19,18 +18,10 @@ export const useLogin = () => {
         const response = await postAPI("api/Auth/Login", undefined, payload);
 
         if (response.status === 200 || response.status === 201) {
-          const backendToken = response.data;
-          dispatch(setToken(backendToken));
-          Cookies.set("OutbreakToken", response.data, {
-            expires: 1,
-            secure: true,
-            httpOnly: true,
-          });
-
           const userResponse = await getApiCall("api/Member/Me");
-          const userData = userResponse.data;
-
+          const userData = userResponse?.data;
           dispatch(setUser(userData));
+          localStorage.setItem("email", userData?.email);
           setLoading(false);
           return userData;
         } else {

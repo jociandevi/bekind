@@ -28,6 +28,7 @@ import { badgeIcons } from "../../common/mockData";
 import EmptyState from "../shared/emptyState";
 import { LogoutOutlined } from "@ant-design/icons";
 import { clearUser } from "../../common/auth.reducer";
+import { apiInstance } from "../../common/axiosInterceptor";
 
 const StyledTab = styled(Tabs)`
   margin-top: ${spacingXs};
@@ -189,9 +190,15 @@ const Profile: React.FC = () => {
     setActiveKey(key);
   };
 
-  const logout = () => {
-    navigate("/login");
-    dispatch(clearUser());
+  const logout = async () => {
+    try {
+      await apiInstance.post("/api/Auth/RevokeToken");
+    } catch (error) {
+      console.error("Failed to revoke token", error);
+    } finally {
+      navigate("/login");
+      dispatch(clearUser());
+    }
   };
 
   const renderLatestAchievedBadge = () => {
