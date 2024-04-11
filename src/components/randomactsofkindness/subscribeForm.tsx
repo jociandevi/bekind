@@ -38,7 +38,7 @@ const SubscribeForm: React.FC<Props> = ({ lg }) => {
 
   const submit = (values: SubscribeProps) => {
     callPostApi(values).then((res) => {
-      if (res?.status === 201) {
+      if (res?.status === 204) {
         form.resetFields();
         setSuccess(true);
         setTimeout(() => {
