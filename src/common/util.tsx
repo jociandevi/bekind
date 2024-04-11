@@ -1,5 +1,7 @@
 import { KindnessAction, KindnessHistory } from "./interfaces";
 
+export const facebookGroupUrl = "https://www.facebook.com/groups/outbreaklife/";
+
 export const baseUrl = "https://bekind-api.azurewebsites.net";
 
 export const transformTitleToUrl = (title: string) => {

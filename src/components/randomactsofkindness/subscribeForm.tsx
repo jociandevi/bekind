@@ -9,6 +9,7 @@ import Button from "antd/es/button";
 import Title from "antd/es/typography/Title";
 import Form from "antd/es/form";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import { facebookGroupUrl } from "../../common/util";
 
 export const ArticleImage = styled.img`
   width: 100vw;
@@ -21,11 +22,9 @@ export const ArticleImage = styled.img`
   object-fit: cover;
 `;
 
-interface SubscribeProps {
+export interface SubscribeProps {
   email: string;
 }
-
-const facebookGroupUrl = "https://www.facebook.com/groups/outbreaklife/";
 
 interface Props {
   lg?: boolean;
@@ -38,7 +37,7 @@ const SubscribeForm: React.FC<Props> = ({ lg }) => {
 
   const submit = (values: SubscribeProps) => {
     callPostApi(values).then((res) => {
-      if (res?.status === 204) {
+      if (res?.status === 200) {
         form.resetFields();
         setSuccess(true);
         setTimeout(() => {
