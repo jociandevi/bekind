@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Title from "antd/es/typography/Title";
 import {
@@ -6,15 +6,16 @@ import {
   lightGray,
   shadow1,
   spacingM,
+  white,
 } from "../../common/variables";
 import Form from "antd/es/form";
-import { usePostApi } from "../../common/apiCalls";
-import { SubscribeProps } from "./subscribeForm";
-import { facebookGroupUrl } from "../../common/util";
 import { FlexboxCol, StyledInput } from "../shared/sharedLayouts";
 import Button from "antd/es/button";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import Typography from "antd/es/typography/Typography";
+
+const catSrc =
+  "https://d1rrsclargbwjh.cloudfront.net/Assets/optin-landing/cica.jpeg";
 
 const LeaveContainer = styled.div`
   display: flex;
@@ -26,34 +27,42 @@ const LeaveContainer = styled.div`
   border-radius: ${borderRadius}px;
   box-shadow: ${shadow1};
   padding: ${spacingM};
+  background-color: ${white};
 `;
 
-const AreYouSureToLeave: React.FC = () => {
-  const [form] = Form.useForm();
-  const { callPostApi } = usePostApi("api/Member/Subscribe");
-  const [success, setSuccess] = useState(false);
+export const Image = styled.img`
+  width: 100vw;
+  height: ${100 / 1.618}vw;
+  width: 50%;
+  height: 50%;
+  border-radius: 0;
+  object-fit: cover;
+  margin: 0 auto;
+`;
 
-  const submit = (values: SubscribeProps) => {
-    callPostApi(values).then((res) => {
-      if (res?.status === 200) {
-        form.resetFields();
-        setSuccess(true);
-        setTimeout(() => {
-          window.location.href = facebookGroupUrl;
-        }, 1000);
-      }
-    });
-  };
+interface Props {
+  submit: (values: any) => void;
+  success?: boolean;
+}
+
+const AreYouSureToLeave: React.FC<Props> = ({ submit, success }) => {
+  const [form] = Form.useForm();
 
   return (
     <>
       <LeaveContainer>
-        <Title level={5} color={lightGray} style={{ margin: "3vh auto 0" }}>
-          Heroes also want to leave sometimes.
-        </Title>
-        <Typography color={lightGray} style={{ margin: "1vh auto 3vh" }}>
-          Are you sure?
-        </Typography>
+        {!success && (
+          <>
+            <Image src={catSrc} alt={`Join the movement`} />
+
+            <Title level={5} color={lightGray} style={{ margin: "3vh auto 0" }}>
+              Heroes also want to leave sometimes.
+            </Title>
+            <Typography color={lightGray} style={{ margin: "1vh auto 3vh" }}>
+              Are you sure?
+            </Typography>
+          </>
+        )}
         {success ? (
           <Typography
             color={lightGray}

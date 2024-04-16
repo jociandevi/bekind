@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flexbox, StyledInput } from "../shared/sharedLayouts";
 import { lightGray, middleGray, spacingS } from "../../common/variables";
 import styled from "styled-components";
 import { lgBreakPoint } from "../../common/mediaQueryHook";
-import { usePostApi } from "../../common/apiCalls";
-import Loading from "../shared/loading";
 import Button from "antd/es/button";
 import Title from "antd/es/typography/Title";
 import Form from "antd/es/form";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import { facebookGroupUrl } from "../../common/util";
 
 export const ArticleImage = styled.img`
   width: 100vw;
@@ -22,29 +19,32 @@ export const ArticleImage = styled.img`
   object-fit: cover;
 `;
 
-export interface SubscribeProps {
-  email: string;
-}
-
 interface Props {
   lg?: boolean;
+  submit: (values: any) => void;
+  success?: boolean;
+  setUnsubmittedEmail: (value: string) => void;
 }
 
-const SubscribeForm: React.FC<Props> = ({ lg }) => {
+const SubscribeForm: React.FC<Props> = ({
+  lg,
+  submit,
+  success,
+  setUnsubmittedEmail,
+}) => {
   const [form] = Form.useForm();
-  const { callPostApi, loading } = usePostApi("api/Member/Subscribe");
-  const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState("");
 
-  const submit = (values: SubscribeProps) => {
-    callPostApi(values).then((res) => {
-      if (res?.status === 200) {
-        form.resetFields();
-        setSuccess(true);
-        setTimeout(() => {
-          window.location.href = facebookGroupUrl;
-        }, 1000);
-      }
-    });
+  useEffect(() => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailRegex.test(email)) {
+      setUnsubmittedEmail(email);
+    }
+  }, [email, setUnsubmittedEmail]);
+
+  const handleEmailChange = (e: any) => {
+    const emailInput = e.target.value;
+    setEmail(emailInput);
   };
 
   return (
@@ -62,7 +62,6 @@ const SubscribeForm: React.FC<Props> = ({ lg }) => {
       >
         Join the movement
       </Title>
-      {loading && <Loading />}
       {success ? (
         <Title
           level={5}
@@ -85,7 +84,11 @@ const SubscribeForm: React.FC<Props> = ({ lg }) => {
             style={{ marginLeft: "15%", marginRight: "15%" }}
           >
             <Flexbox style={{ gap: spacingS }}>
-              <StyledInput placeholder="Your email" />
+              <StyledInput
+                placeholder="Your email"
+                value={email}
+                onChange={handleEmailChange}
+              />
               <Button
                 icon={<ArrowRightOutlined />}
                 type="primary"
